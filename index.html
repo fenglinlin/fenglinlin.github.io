@@ -236,6 +236,274 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/11/28/http/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Fenglin">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.gif">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Feng~Lin">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Feng~Lin" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/11/28/http/" itemprop="url">
+                  Unbenannt
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-11-28T20:22:34+08:00">
+                2016-11-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <hr>
+<h2 id="title-一个http请求发送到后端的详细过程"><a href="#title-一个http请求发送到后端的详细过程" class="headerlink" title="title:一个http请求发送到后端的详细过程"></a>title:一个http请求发送到后端的详细过程</h2><p>http是一个应用层协议，在这个层的协议，只是一种通信规范，也就是因为双方要进行通讯，而约定俗成的一个规范。</p>
+<p>##通讯步骤</p>
+<p>###连接<br>当我们输入这样一个请求时，首先要建立一个socket连接，因为socket是通过ip和端口建立连接的所以之前还有一个DNS解析过程，把www.mycompany.com变成ip，如果url里不包含端口号，则会使用该协议的默认端口号。</p>
+<p>DNS的过程是这样的：首先我们知道我们本地的机器上在配置网络时都会填写DNS，这样本机就会把这个url发给这个配置的DNS服务器，如果能够找到相应的url则返回其ip，否则该DNS将继续将该解析请求发送给上级DNS，整个DNS可以看做是一个树状结构，该请求将一直发送到根直到得到结果。现在已经拥有了目标ip和端口号，这样我们就可以打开socket连接了。</p>
+<p>###请求<br>连接成功建立后，开始向web服务器发送请求，这个请求一般是GET或POST命令（POST用于FORM参数的传递）。GET命令的格式为：　　GET 路径/文件名 HTTP/1.0</p>
+<p>文件名指出所访问的文件，HTTP/1.0指出Web浏览器使用的HTTP版本。现在可以发送GET命令：<br>GET /mydir/index.html HTTP/1.0，</p>
+<p>###应答<br>web服务器收到这个请求，进行处理。从它的文档空间中搜索子目录mydir的文件index.html。如果找到该文件，Web服务器把该文件内容传送给相应的Web浏览器。</p>
+<p>为了告知浏览器，，Web服务器首先传送一些HTTP头信息，然后传送具体内容（即HTTP体信息），HTTP头信息和HTTP体信息之间用一个空行分开。<br>常用的HTTP头信息有：<br>　　① HTTP 1.0 200 OK 　这是Web服务器应答的第一行，列出服务器正在运行的HTTP版本号和应答代码。代码”200 OK”表示请求完成。<br>　　② MIME_Version:1.0　它指示MIME类型的版本。　　<br>　　③ content_type:类型　这个头信息非常重要，它指示HTTP体信息的MIME类型。如：content_type:text/html指示传送的数据是HTML文档。　<br>　　④ content_length:长度值　它指示HTTP体信息的长度（字节）。</p>
+<p>###关闭连接<br>当应答结束后，Web浏览器与Web服务器必须断开，以保证其它Web浏览器能够与Web服务器建立连接。　　</p>
+<p>##tcp/ip基本模型及概念</p>
+<p>###物理层<br>设备，中继器（repeater）,集线器（hub）。对于这一层来说，从一个端口收到数据，会转发到所有端口。</p>
+<p>###链路层</p>
+<p>协议：SDLC（Synchronous Data Link Control）HDLC（High-level Data Link Control） ppp协议独立的链路设备中最常见的当属网卡，网桥也是链路产品。集线器MODEM的某些功能有人认为属于链路层，对此还有些争议认为属于物理层设备。除此之外，所有的交换机都需要工作在数据链路层，但仅工作在数据链路层的仅是二层交换机。其他像三层交换机、四层交换机和七层交换机虽然可对应工作在OSI的三层、四层和七层，但二层功能仍是它们基本的功能。</p>
+<p>因为有了MAC地址表，所以才充分避免了冲突，因为交换机通过目的MAC地址知道应该把这个数据转发到哪个端口。而不会像HUB一样，会转发到所有滴端口。所以，交换机是可以划分冲突域滴。</p>
+<p>###网络层</p>
+<p>四个主要的协议:<br>网际协议IP：负责在主机和网络之间寻址和路由数据包。<br>地址解析协议ARP：获得同一物理网络中的硬件主机地址。<br>网际控制消息协议ICMP：发送消息，并报告有关数据包的传送错误。<br>互联组管理协议IGMP：被IP主机拿来向本地多路广播路由器报告主机组成员。</p>
+<p>该层设备有三层交换机，路由器。</p>
+<p>###传输层</p>
+<p>两个重要协议 TCP 和 UDP 。</p>
+<p>端口概念：TCP/UDP 使用 IP 地址标识网上主机，使用端口号来标识应用进程，即 TCP/UDP 用主机 IP 地址和为应用进程分配的端口号来标识应用进程。端口号是 16 位的无符号整数， TCP 的端口号和 UDP 的端口号是两个独立的序列。尽管相互独立，如果 TCP 和 UDP 同时提供某种知名服务，两个协议通常选择相同的端口号。这纯粹是为了使用方便，而不是协议本身的要求。利用端口号，一台主机上多个进程可以同时使用 TCP/UDP 提供的传输服务，并且这种通信是端到端的，它的数据由 IP 传递，但与 IP 数据报的传递路径无关。网络通信中用一个三元组可以在全局唯一标志一个应用进程：（协议，本地地址，本地端口号）。</p>
+<p>也就是说tcp和udp可以使用相同的端口。</p>
+<p>可以看到通过(协议,源端口，源ip，目的端口，目的ip)就可以用来完全标识一组网络连接。</p>
+<p>###应用层</p>
+<p>基于tcp：Telnet FTP SMTP DNS HTTP<br>基于udp：RIP NTP（网落时间协议）和DNS （DNS也使用TCP）SNMP TFTP</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/11/26/SQL server/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Fenglin">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.gif">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Feng~Lin">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Feng~Lin" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/11/26/SQL server/" itemprop="url">
+                  数据库基本管理及数据操作和查询
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-11-26T21:01:09+08:00">
+                2016-11-26
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>SQL Server 2005将数据库映射为一组操作系统文件，数据和日志信息分别存储在不同的文件中。</p>
+<h2 id="系统数据库管理"><a href="#系统数据库管理" class="headerlink" title="系统数据库管理"></a>系统数据库管理</h2><h3 id="数据库文件"><a href="#数据库文件" class="headerlink" title="数据库文件"></a>数据库文件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">用于存储数据库中的所有对象，如表、视图、存储过程等</div></pre></td></tr></table></figure>
+<h4 id="数据文件"><a href="#数据文件" class="headerlink" title="数据文件"></a>数据文件</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">次要数据文件是可选的，由用户定义并存储主要数据文件未存储的其他数据和对象，建议文件扩展名为.ndf。</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">用以记录所有事物及每个事务对数据库所做的修改</div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
   <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/11/10/nodeJs/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -511,7 +779,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">2</span>
+              <span class="site-state-item-count">4</span>
               <span class="site-state-item-name">Artikel</span>
             </a>
           </div>

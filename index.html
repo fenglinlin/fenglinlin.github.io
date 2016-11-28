@@ -183,7 +183,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Home
+            Startseite
           </a>
         </li>
       
@@ -193,7 +193,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archives
+            Archiv
           </a>
         </li>
       
@@ -275,7 +275,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Posted on</span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-11-28T20:33:14+08:00">
                 2016-11-28
               </time>
@@ -316,16 +316,9 @@
           
             <p>http是一个应用层协议，在这个层的协议，只是一种通信规范，也就是因为双方要进行通讯，而约定俗成的一个规范。</p>
 <h2 id="通讯步骤"><a href="#通讯步骤" class="headerlink" title="通讯步骤"></a>通讯步骤</h2><h3 id="连接"><a href="#连接" class="headerlink" title="连接"></a>连接</h3><p>当我们输入这样一个请求时，首先要建立一个socket连接，因为socket是通过ip和端口建立连接的所以之前还有一个DNS解析过程，把www.mycompany.com变成ip，如果url里不包含端口号，则会使用该协议的默认端口号。</p>
-<p>DNS的过程是这样的：首先我们知道我们本地的机器上在配置网络时都会填写DNS，这样本机就会把这个url发给这个配置的DNS服务器，如果能够找到相应的url则返回其ip，否则该DNS将继续将该解析请求发送给上级DNS，整个DNS可以看做是一个树状结构，该请求将一直发送到根直到得到结果。现在已经拥有了目标ip和端口号，这样我们就可以打开socket连接了。</p>
-<h3 id="请求"><a href="#请求" class="headerlink" title="请求"></a>请求</h3><p>连接成功建立后，开始向web服务器发送请求，这个请求一般是GET或POST命令（POST用于FORM参数的传递）。GET命令的格式为：　　GET 路径/文件名 HTTP/1.0</p>
-<p>文件名指出所访问的文件，HTTP/1.0指出Web浏览器使用的HTTP版本。现在可以发送GET命令：<br>GET /mydir/index.html HTTP/1.0，</p>
-<h3 id="应答"><a href="#应答" class="headerlink" title="应答"></a>应答</h3><p>web服务器收到这个请求，进行处理。从它的文档空间中搜索子目录mydir的文件index.html。如果找到该文件，Web服务器把该文件内容传送给相应的Web浏览器。</p>
-<p>为了告知浏览器，，Web服务器首先传送一些HTTP头信息，然后传送具体内容（即HTTP体信息），HTTP头信息和HTTP体信息之间用一个空行分开。<br>常用的HTTP头信息有：<br>　　① HTTP 1.0 200 OK 　这是Web服务器应答的第一行，列出服务器正在运行的HTTP版本号和应答代码。代码”200 OK”表示请求完成。<br>　　② MIME_Version:1.0　它指示MIME类型的版本。　　<br>　　③ content_type:类型　这个头信息非常重要，它指示HTTP体信息的MIME类型。如：content_type:text/html指示传送的数据是HTML文档。　<br>　　④ content_length:长度值　它指示HTTP体信息的长度（字节）。</p>
-<h3 id="关闭连接"><a href="#关闭连接" class="headerlink" title="关闭连接"></a>关闭连接</h3><p>当应答结束后，Web浏览器与Web服务器必须断开，以保证其它Web浏览器能够与Web服务器建立连接。　　</p>
-<h2 id="tcp-ip基本模型及概念"><a href="#tcp-ip基本模型及概念" class="headerlink" title="tcp/ip基本模型及概念"></a>tcp/ip基本模型及概念</h2><h3 id="物理层"><a href="#物理层" class="headerlink" title="物理层"></a>物理层</h3><p>设备，中继器（repeater）,集线器（hub）。对于这一层来说，从一个端口收到数据，会转发到所有端口。</p>
-<h3 id="链路层"><a href="#链路层" class="headerlink" title="链路层"></a>链路层</h3><p>协议：SDLC（Synchronous Data Link Control）HDLC（High-level Data Link Control） ppp协议独立的链路设备中最常见的当属网卡，网桥也是链路产品。集线器MODEM的某些功能有人认为属于链路层，对此还有些争议认为属于物理层设备。除此之外，所有的交换机都需要工作在数据链路层，但仅工作在数据链路层的仅是二层交换机。其他像三层交换机、四层交换机和七层交换机虽然可对应工作在OSI的三层、四层和七层，但二层功能仍是它们基本的功能。</p>
-<p>因为有了MAC地址表，所以才充分避免了冲突，因为交换机通过目的MAC地址知道应该把这个数据转发到哪个端口。而不会像HUB一样，会转发到所有滴端口。所以，交换机是可以划分冲突域滴。</p>
-<h3 id="网络层"><a href="#网络层" class="headerlink" title="网络层"></a>网络层</h3><p>四个主要的协议:<br>网际协议IP：负责在主机和网络之间寻址和路由数据包。<br>地址解析协议ARP：获得同一物理网络中的硬件主机地址。<br>网际控制消息协议ICMP：发送消息，并报告有关数据包的传送错误。<br>互联组管理协议IGMP：被IP主机拿来向本地多路广播路由器报告主机组成员。</p>
+<p>DNS的过程是这样的：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">### 请求</div><div class="line">     连接成功建立后，开始向web服务器发送请求，这个请求一般是GET或POST命令（POST用于FORM参数的传递）。GET命令的格式为：　　GET 路径/文件名 HTTP/1.0</div><div class="line"></div><div class="line">     文件名指出所访问的文件，HTTP/1.0指出Web浏览器使用的HTTP版本。现在可以发送GET命令：</div><div class="line">GET /mydir/index.html HTTP/1.0，</div><div class="line">### 应答</div><div class="line">    web服务器收到这个请求，进行处理。从它的文档空间中搜索子目录mydir的文件index.html。如果找到该文件，Web服务器把该文件内容传送给相应的Web浏览器。</div><div class="line"></div><div class="line">为了告知浏览器，，Web服务器首先传送一些HTTP头信息，然后传送具体内容（即HTTP体信息），HTTP头信息和HTTP体信息之间用一个空行分开。</div><div class="line">常用的HTTP头信息有：</div><div class="line">　　```① HTTP 1.0 200 OK 　这是Web服务器应答的第一行，列出服务器正在运行的HTTP版本号和应答代码。代码&quot;200 OK&quot;表示请求完成。</div></pre></td></tr></table></figure></p>
+<p>　　<figure class="highlight plain"><figcaption><span>MIME_Version:1.0　它指示MIME类型的版本。　```　</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">　　```③ content_type:类型　这个头信息非常重要，它指示HTTP体信息的MIME类型。如：content_type:text/html指示传送的数据是HTML文档。</div></pre></td></tr></table></figure></p>
+<p>　　<figure class="highlight plain"><figcaption><span>content_length:长度值　它指示HTTP体信息的长度（字节）。```</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">### 关闭连接</div><div class="line">当应答结束后，Web浏览器与Web服务器必须断开，以保证其它Web浏览器能够与Web服务器建立连接。　　</div><div class="line">## tcp/ip基本模型及概念</div><div class="line">### 物理层</div><div class="line">设备，中继器（repeater）,集线器（hub）。对于这一层来说，从一个端口收到数据，会转发到所有端口。</div><div class="line">### 链路层</div><div class="line"></div><div class="line">协议：SDLC（Synchronous Data Link Control）HDLC（High-level Data Link Control） ppp协议独立的链路设备中最常见的当属网卡，网桥也是链路产品。集线器MODEM的某些功能有人认为属于链路层，对此还有些争议认为属于物理层设备。除此之外，所有的交换机都需要工作在数据链路层，但仅工作在数据链路层的仅是二层交换机。其他像三层交换机、四层交换机和七层交换机虽然可对应工作在OSI的三层、四层和七层，但二层功能仍是它们基本的功能。</div><div class="line"></div><div class="line">因为有了MAC地址表，所以才充分避免了冲突，因为交换机通过目的MAC地址知道应该把这个数据转发到哪个端口。而不会像HUB一样，会转发到所有滴端口。所以，交换机是可以划分冲突域滴。</div><div class="line">### 网络层</div><div class="line"></div><div class="line">四个主要的协议:   </div><div class="line">```网际协议IP：负责在主机和网络之间寻址和路由数据包。 ```    </div><div class="line">```地址解析协议ARP：获得同一物理网络中的硬件主机地址。   ```  </div><div class="line">```网际控制消息协议ICMP：发送消息，并报告有关数据包的传送错误。```     </div><div class="line">```互联组管理协议IGMP：被IP主机拿来向本地多路广播路由器报告主机组成员。</div></pre></td></tr></table></figure></p>
 <p>该层设备有三层交换机，路由器。</p>
 <h3 id="传输层"><a href="#传输层" class="headerlink" title="传输层"></a>传输层</h3><p>两个重要协议 TCP 和 UDP 。</p>
 <p>端口概念：TCP/UDP 使用 IP 地址标识网上主机，使用端口号来标识应用进程，即 TCP/UDP 用主机 IP 地址和为应用进程分配的端口号来标识应用进程。端口号是 16 位的无符号整数， TCP 的端口号和 UDP 的端口号是两个独立的序列。尽管相互独立，如果 TCP 和 UDP 同时提供某种知名服务，两个协议通常选择相同的端口号。这纯粹是为了使用方便，而不是协议本身的要求。利用端口号，一台主机上多个进程可以同时使用 TCP/UDP 提供的传输服务，并且这种通信是端到端的，它的数据由 IP 传递，但与 IP 数据报的传递路径无关。网络通信中用一个三元组可以在全局唯一标志一个应用进程：（协议，本地地址，本地端口号）。</p>
@@ -409,7 +402,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Posted on</span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-11-26T21:01:09+08:00">
                 2016-11-26
               </time>
@@ -536,7 +529,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Posted on</span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-11-10T17:31:22+08:00">
                 2016-11-10
               </time>
@@ -654,7 +647,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Posted on</span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-09-30T11:10:57+08:00">
                 2016-09-30
               </time>
@@ -773,7 +766,7 @@
           <div class="site-state-item site-state-posts">
             <a href="/archives">
               <span class="site-state-item-count">4</span>
-              <span class="site-state-item-name">posts</span>
+              <span class="site-state-item-name">Artikel</span>
             </a>
           </div>
 
@@ -824,7 +817,7 @@
 
 
 <div class="powered-by">
-  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
 </div>
 
 <div class="theme-info">

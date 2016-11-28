@@ -183,7 +183,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Startseite
+            Home
           </a>
         </li>
       
@@ -193,7 +193,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archiv
+            Archives
           </a>
         </li>
       
@@ -262,7 +262,7 @@
               
                 
                 <a class="post-title-link" href="/2016/11/28/http/" itemprop="url">
-                  Unbenannt
+                  一个http请求发送到后端的详细过程
                 </a>
               
             
@@ -275,7 +275,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <span class="post-meta-item-text">Posted on</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-11-28T20:33:14+08:00">
                 2016-11-28
               </time>
@@ -314,8 +314,7 @@
       
         
           
-            <hr>
-<h2 id="title-一个http请求发送到后端的详细过程"><a href="#title-一个http请求发送到后端的详细过程" class="headerlink" title="title:一个http请求发送到后端的详细过程"></a>title:一个http请求发送到后端的详细过程</h2><p>http是一个应用层协议，在这个层的协议，只是一种通信规范，也就是因为双方要进行通讯，而约定俗成的一个规范。</p>
+            <p>http是一个应用层协议，在这个层的协议，只是一种通信规范，也就是因为双方要进行通讯，而约定俗成的一个规范。</p>
 <h2 id="通讯步骤"><a href="#通讯步骤" class="headerlink" title="通讯步骤"></a>通讯步骤</h2><h3 id="连接"><a href="#连接" class="headerlink" title="连接"></a>连接</h3><p>当我们输入这样一个请求时，首先要建立一个socket连接，因为socket是通过ip和端口建立连接的所以之前还有一个DNS解析过程，把www.mycompany.com变成ip，如果url里不包含端口号，则会使用该协议的默认端口号。</p>
 <p>DNS的过程是这样的：首先我们知道我们本地的机器上在配置网络时都会填写DNS，这样本机就会把这个url发给这个配置的DNS服务器，如果能够找到相应的url则返回其ip，否则该DNS将继续将该解析请求发送给上级DNS，整个DNS可以看做是一个树状结构，该请求将一直发送到根直到得到结果。现在已经拥有了目标ip和端口号，这样我们就可以打开socket连接了。</p>
 <h3 id="请求"><a href="#请求" class="headerlink" title="请求"></a>请求</h3><p>连接成功建立后，开始向web服务器发送请求，这个请求一般是GET或POST命令（POST用于FORM参数的传递）。GET命令的格式为：　　GET 路径/文件名 HTTP/1.0</p>
@@ -410,7 +409,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <span class="post-meta-item-text">Posted on</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-11-26T21:01:09+08:00">
                 2016-11-26
               </time>
@@ -537,7 +536,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <span class="post-meta-item-text">Posted on</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-11-10T17:31:22+08:00">
                 2016-11-10
               </time>
@@ -655,7 +654,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <span class="post-meta-item-text">Posted on</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-09-30T11:10:57+08:00">
                 2016-09-30
               </time>
@@ -774,7 +773,7 @@
           <div class="site-state-item site-state-posts">
             <a href="/archives">
               <span class="site-state-item-count">4</span>
-              <span class="site-state-item-name">Artikel</span>
+              <span class="site-state-item-name">posts</span>
             </a>
           </div>
 
@@ -825,7 +824,7 @@
 
 
 <div class="powered-by">
-  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
 </div>
 
 <div class="theme-info">

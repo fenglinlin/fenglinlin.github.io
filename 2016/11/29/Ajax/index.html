@@ -84,16 +84,19 @@
 
 
 
-<meta name="description" content="我的nodejs之路fs模块–文件系统APIFile System简介：文件模块是一个简单包装POSIX文件I/O操作方法集。可以通过调用require(‘fs’)来获取该模块。文件系统模块中的所有方法均有异步和同步异步同步的区别：异步：需要一个完成时的回调函数作为最后一个传入形参。回调函数的构成由调用的异步方法所决定，通常情况下回调函数的第一个形参为返回的错误信息。同时，使用异步版本不能保证执行">
+<meta name="description" content="Ajax是目前很普遍的一门技术，也是很值得探讨和研究的一门技术。本文将针对Ajax的发展过程并结合其在不同库框架中的使用方式来和大家分享下Ajax的那些新老语法。
+Ajax简介Ajax全称为“Asynchronous Javascript And XML”，即“异步javascript和XML”的意思。通过Ajax我们可以向服务器发送请求，在不阻塞页面的情况下进行数据交互，也可以理解为异步数据传输">
 <meta property="og:type" content="article">
-<meta property="og:title" content="nodeJS">
-<meta property="og:url" content="http://yoursite.com/2016/11/10/nodeJs/index.html">
+<meta property="og:title" content="Ajax语法浅析">
+<meta property="og:url" content="http://yoursite.com/2016/11/29/Ajax/index.html">
 <meta property="og:site_name" content="Feng~Lin">
-<meta property="og:description" content="我的nodejs之路fs模块–文件系统APIFile System简介：文件模块是一个简单包装POSIX文件I/O操作方法集。可以通过调用require(‘fs’)来获取该模块。文件系统模块中的所有方法均有异步和同步异步同步的区别：异步：需要一个完成时的回调函数作为最后一个传入形参。回调函数的构成由调用的异步方法所决定，通常情况下回调函数的第一个形参为返回的错误信息。同时，使用异步版本不能保证执行">
-<meta property="og:updated_time" content="2016-11-21T13:44:40.000Z">
+<meta property="og:description" content="Ajax是目前很普遍的一门技术，也是很值得探讨和研究的一门技术。本文将针对Ajax的发展过程并结合其在不同库框架中的使用方式来和大家分享下Ajax的那些新老语法。
+Ajax简介Ajax全称为“Asynchronous Javascript And XML”，即“异步javascript和XML”的意思。通过Ajax我们可以向服务器发送请求，在不阻塞页面的情况下进行数据交互，也可以理解为异步数据传输">
+<meta property="og:updated_time" content="2016-11-29T13:25:16.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="nodeJS">
-<meta name="twitter:description" content="我的nodejs之路fs模块–文件系统APIFile System简介：文件模块是一个简单包装POSIX文件I/O操作方法集。可以通过调用require(‘fs’)来获取该模块。文件系统模块中的所有方法均有异步和同步异步同步的区别：异步：需要一个完成时的回调函数作为最后一个传入形参。回调函数的构成由调用的异步方法所决定，通常情况下回调函数的第一个形参为返回的错误信息。同时，使用异步版本不能保证执行">
+<meta name="twitter:title" content="Ajax语法浅析">
+<meta name="twitter:description" content="Ajax是目前很普遍的一门技术，也是很值得探讨和研究的一门技术。本文将针对Ajax的发展过程并结合其在不同库框架中的使用方式来和大家分享下Ajax的那些新老语法。
+Ajax简介Ajax全称为“Asynchronous Javascript And XML”，即“异步javascript和XML”的意思。通过Ajax我们可以向服务器发送请求，在不阻塞页面的情况下进行数据交互，也可以理解为异步数据传输">
 
 
 
@@ -121,13 +124,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2016/11/10/nodeJs/"/>
+  <link rel="canonical" href="http://yoursite.com/2016/11/29/Ajax/"/>
 
 
 
 
 
-  <title> nodeJS | Feng~Lin </title>
+  <title> Ajax语法浅析 | Feng~Lin </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="">
@@ -238,7 +241,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/11/10/nodeJs/">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/11/29/Ajax/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="Fenglin">
@@ -262,7 +265,7 @@
             
             
               
-                nodeJS
+                Ajax语法浅析
               
             
           </h1>
@@ -275,8 +278,8 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-11-10T17:31:22+08:00">
-                2016-11-10
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-11-29T19:07:53+08:00">
+                2016-11-29
               </time>
             
 
@@ -311,9 +314,76 @@
       
 
       
-        <h2 id="我的nodejs之路"><a href="#我的nodejs之路" class="headerlink" title="我的nodejs之路"></a>我的nodejs之路</h2><h3 id="fs模块–文件系统API"><a href="#fs模块–文件系统API" class="headerlink" title="fs模块–文件系统API"></a>fs模块–文件系统API</h3><p>File System<br>简介：文件模块是一个简单包装POSIX文件I/O操作方法集。可以通过调用require(‘fs’)来获取该模块。文件系统模块中的所有方法均有异步和同步<br>异步同步的区别：<br>异步：需要一个完成时的回调函数作为最后一个传入形参。回调函数的构成由调用的异步方法所决定，通常情况下回调函数的第一个形参为返回的错误信息。同时，使用异步版本不能保证执行顺序。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">fs.asy(<span class="string">'../hello'</span>,<span class="keyword">function</span>(err)&#123;</div><div class="line">	<span class="keyword">if</span>(err) throw err;</div><div class="line">	console.log(<span class="string">'success'</span>)</div><div class="line">&#125;)</div></pre></td></tr></table></figure></p>
-<p>同步：如果您使用的是同步版本的操作方法，则一旦出现错误，会以通常的抛出错误的形式返回错误。 你可以用try和catch等语句来拦截错误并使程序继续进行。<br>    fs.sy(‘../hello’)<br>    console.log(‘success’);<br><!--核心模块引用--><br>var fs =require(‘fs);<br>1、读取文件readFile函数<br>readFile(filename,[options],callback);<br> filename, 必选参数，文件名<br> [options],可选参数，<br> callback 读取文件之后执行的回调函数，参数默认第一个err,第二个data<br> <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">fs.readFile(__dirname + <span class="string">'/test.js'</span>, &#123;<span class="string">'utf8'</span>&#125;, <span class="keyword">function</span> (err, data) &#123;</div><div class="line">    <span class="keyword">if</span>(err) &#123;</div><div class="line">     console.error(err);</div><div class="line">     <span class="built_in">return</span>;</div><div class="line">    &#125;</div><div class="line">    console.log(data);</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
-
+        <p>Ajax是目前很普遍的一门技术，也是很值得探讨和研究的一门技术。本文将针对Ajax的发展过程并结合其在不同库框架中的使用方式来和大家分享下Ajax的那些新老语法。</p>
+<h2 id="Ajax简介"><a href="#Ajax简介" class="headerlink" title="Ajax简介"></a>Ajax简介</h2><p>Ajax全称为“Asynchronous Javascript And XML”，即“异步javascript和XML”的意思。通过Ajax我们可以向服务器发送请求，在不阻塞页面的情况下进行数据交互，也可以理解为异步数据传输。在Ajax的帮助下我们的网页只需局部刷新即可更新数据的显示，减少了不少必要的数据量，大大提高了用户体验，缩短了用户等待的时间，使得web应用程序更小、更快、更友好。</p>
+<h3 id="原生Ajax"><a href="#原生Ajax" class="headerlink" title="原生Ajax"></a>原生Ajax</h3><p>基本上现在的所有浏览器都支持原生Ajax的功能，下面就详细介绍利用原生js我们怎样来发起和处理Ajax请求。</p>
+<h4 id="1-获取XMLHttpRequest对象"><a href="#1-获取XMLHttpRequest对象" class="headerlink" title="1.获取XMLHttpRequest对象"></a>1.获取XMLHttpRequest对象</h4><p><code>var xhr =new XMLHttpRequest();//获取浏览器内置的XMLHttpRequest对象</code></p>
+<p>如果你的项目应用不考虑低版本IE，那么可以直接用上面的方法，所有现代浏览器 (Firefox、Chrome、Safari 以及 Opera) 都内建了 XMLHttpRequest 对象。如果需要兼容老版本IE（IE5、IE6），那么可以使用 ActiveX 对象:</p>
+<pre><code>var xhr;
+if (window.XMLHttpRequest) {
+xhr=new XMLHttpRequest();
+} else if (window.ActiveXObject) { // 兼容老版本浏览器
+xhr=new ActiveXObject(&quot;Microsoft.XMLHTTP&quot;);
+}
+</code></pre><h4 id="2-参数配置"><a href="#2-参数配置" class="headerlink" title="2.参数配置"></a>2.参数配置</h4><p>有了XMLHttpRequest对象，我们还需要配置一些请求的参数信息来完成数据交互，利用open方法即可:</p>
+<pre><code>var xhr;
+if(window.XMLHttpRequest){
+    xhr=new XMLHttpRequest();
+}else if(window.ActiveXObject){
+    xhr=new ActiveXObject(&quot;Microsoft&quot;)
+}
+if(xhr){
+    xhr.open(&apos;GET&apos;,&apos;/TEST/&apos;,true);//以GET请求的方式向&apos;/test/&apos;路径发送异步请求
+}
+</code></pre><p>open方法为我们创建了一个新的http请求，其中第一个参数为请求方式，一般为’GET’或’POST’;第二个参数为请求URL;第三个参数为是否异步，默认为true。</p>
+<h4 id="发送请求"><a href="#发送请求" class="headerlink" title="发送请求"></a>发送请求</h4><p>配置完了基本参数信息，我们直接调用send方法发送请求，代码如下:</p>
+<pre><code>var xhr;
+if(window.XMLHttpRequest){
+    xhr=new XMLHttpRequest();
+}else if(window.ActiveXObject){
+    xhr = new ActiveXObject(&quot;Microsoft.XMLHTTP&quot;);
+}
+if(xhr){
+    xhr.open(&apos;GET&apos;,&apos;&apos;/test/&apos;,true);//以GET请求的方式向&apos;/test/&apos;路径发送异步请求
+    xhr.send();//调用send方法发送请求
+}
+</code></pre><p>你需要注意的是如果使用GET方法传递参数，我们可以直接将参数放在URL后面，比如’/test/?username=fl&amp;pwd=666’;如果使用POST方法，那么我们的参数需要写在send方法里</p>
+<pre><code>xhr.open(&apos;POST&apos;,&apos;/test/&apos;,true);
+xhr.setRequestHeader(&quot;Content-type&quot;,&quot;application/x-www-form-urlencoded&quot;);//将请求头设置为表单方式提交
+xhr.send(&apos;username=fl&amp;pwd=666&apos;);
+</code></pre><p>最终会以Form Data的形式传递,因此我们要修改成我们期望的数据格式JSON格式。</p>
+<pre><code>xhr.open(&apos;POST&apos;,&apos;/test/&apos;,true);
+xhr.send(JSON.stringify({username:&apos;fl&apos;,pwd:666}));
+</code></pre><h4 id="监测状态"><a href="#监测状态" class="headerlink" title="监测状态"></a>监测状态</h4><p>发送完Ajax请求之后，我们需要针对服务器返回的状态进行监测并进行相应的处理，这里我们需要使用onreadystatechange方法。<br>代码如下：</p>
+<pre><code>var xhr;
+if(window.XMLHttpRequest){
+    xhr=new XMLHttpRequest();
+}else if(window.ActiveXObject){
+    xhr = new ActiveXObject(&apos;Microsoft.XMLHTTP&apos;);
+}
+if(xhr){
+    xhr.open(&apos;GET&apos;,&apos;/test/&apos;,true);//以get请求的方式向&apos;/test/&apos;路径发送异步请求
+    xhr.send();
+    xhr.onreadystatechange = function(){//利用onreadystatechange检测状态
+        if(xhr.readyState ==4){//readyState为4表示请求响应完成
+            if(xhr.status ===200){//status为200表示请求成功
+                console.log(&apos;执行成功&apos;);
+            }else{
+                console.log(&apos;执行出错&apos;);
+            }
+        }
+    }
+}
+</code></pre><p>上面我们利用onreadystatechange监测状态，并在内部利用readyState获取当前的状态。readyState一共有5个阶段，当其为4时表示响应内容解析完成，可以在客户端调用了。当readyState为4时，我们又通过status来获取状态码，状态码为200时执行成功代码，否则执行出错代码。</p>
+<p>当然我们可以用onload来代替onreadystatechange等于4的情况，因为onload只在状态为4的时候才被调用，代码如下：</p>
+<pre><code>xhr.onload = function () {    // 调用onload           if (xhr.status === 200) {    // status为200表示请求成功
+    }
+        console.log(&apos;执行成功&apos;);
+    } else {
+    console.log(&apos;执行出错&apos;);
+    }   
+}
+</code></pre>
       
     </div>
 
@@ -339,8 +409,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/09/30/hello-world/" rel="next" title="Hello World">
-                <i class="fa fa-chevron-left"></i> Hello World
+              <a href="/2016/11/28/http/" rel="next" title="一个http请求发送到后端的详细过程">
+                <i class="fa fa-chevron-left"></i> 一个http请求发送到后端的详细过程
               </a>
             
           </div>
@@ -349,8 +419,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2016/11/26/SQL server/" rel="prev" title="数据库基本管理及数据操作和查询">
-                数据库基本管理及数据操作和查询 <i class="fa fa-chevron-right"></i>
+              <a href="/2016/11/29/javascript的函数声明/" rel="prev" title="JavaScript 的函数声明">
+                JavaScript 的函数声明 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -457,7 +527,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#我的nodejs之路"><span class="nav-number">1.</span> <span class="nav-text">我的nodejs之路</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#fs模块–文件系统API"><span class="nav-number">1.1.</span> <span class="nav-text">fs模块–文件系统API</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Ajax简介"><span class="nav-number">1.</span> <span class="nav-text">Ajax简介</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#原生Ajax"><span class="nav-number">1.1.</span> <span class="nav-text">原生Ajax</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-获取XMLHttpRequest对象"><span class="nav-number">1.1.1.</span> <span class="nav-text">1.获取XMLHttpRequest对象</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-参数配置"><span class="nav-number">1.1.2.</span> <span class="nav-text">2.参数配置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#发送请求"><span class="nav-number">1.1.3.</span> <span class="nav-text">发送请求</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#监测状态"><span class="nav-number">1.1.4.</span> <span class="nav-text">监测状态</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>

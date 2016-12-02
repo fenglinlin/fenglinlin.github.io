@@ -183,7 +183,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Startseite
+            Home
           </a>
         </li>
       
@@ -193,7 +193,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archiv
+            Archives
           </a>
         </li>
       
@@ -226,6 +226,453 @@
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/12/02/ajax简介/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Fenglin">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.gif">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Feng~Lin">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Feng~Lin" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/12/02/ajax简介/" itemprop="url">
+                  Ajax 完整教程
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-02T10:06:31+08:00">
+                2016-12-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>Ajax 由 HTML、JavaScript™ 技术、DHTML 和 DOM 组成，这一杰出的方法可以将笨拙的 Web 界面转化成交互性的 Ajax 应用程序。本文的作者是一位 Ajax 专家，他演示了这些技术如何协同工作 —— 从总体概述到细节的讨论 —— 使高效的 Web 开发成为现实。他还揭开了 Ajax 核心概念的神秘面纱，包括 XMLHttpRequest 对象。</p>
+<p>五年前，如果不知道 XML，您就是一只无人重视的丑小鸭。十八个月前，Ruby 成了关注的中心，不知道 Ruby 的程序员只能坐冷板凳了。今天，如果想跟上最新的技术时尚，那您的目标就是 Ajax。</p>
+<h2 id="Ajax简介"><a href="#Ajax简介" class="headerlink" title="Ajax简介"></a>Ajax简介</h2><p>Ajax 不仅仅 是一种时尚，它是一种构建网站的强大方法，而且不像学习一种全新的语言那样困难。</p>
+<p>但在详细探讨 Ajax 是什么之前，先让我们花几分钟了解 Ajax 做 什么。目前，编写应用程序时有两种基本的选择：</p>
+<h3 id="·桌面应用程序和·Web-应用程序"><a href="#·桌面应用程序和·Web-应用程序" class="headerlink" title="·桌面应用程序和·Web 应用程序"></a>·桌面应用程序和·Web 应用程序</h3><p>两者是类似的，桌面应用程序通常以 CD 为介质（有时候可从网站下载）并完全安装到您的计算机上。桌面应用程序可能使用互联网下载更新，但运行这些应用程序的代码在桌面计算机上。Web 应用程序运行在某处的 Web 服务器上 —— 毫不奇怪，要通过 Web 浏览器访问这种应用程序。</p>
+<p>不过，比这些应用程序的运行代码放在何处更重要的是，应用程序如何运转以及如何与其进行交互。桌面应用程序一般很快（就在您的计算机上运行，不用等待互联网连接），具有漂亮的用户界面（通常和操作系统有关）和非凡的动态性。可以单击、选择、输入、打开菜单和子菜单、到处巡游，基本上不需要等待。</p>
+<p>另一方面，Web 应用程序是最新的潮流，它们提供了在桌面上不能实现的服务（比如 Amazon.com 和 eBay）。但是，伴随着 Web 的强大而出现的是等待，等待服务器响应，等待屏幕刷新，等待请求返回和生成新的页面。</p>
+<p>显然这样说过于简略了，但基本的概念就是如此。您可能已经猜到，Ajax 尝试建立桌面应用程序的功能和交互性，与不断更新的 Web 应用程序之间的桥梁。可以使用像桌面应用程序中常见的动态用户界面和漂亮的控件，不过是在 Web 应用程序中。</p>
+<p>还等什么呢？我们来看看 Ajax 如何将笨拙的 Web 界面转化成能迅速响应的 Ajax 应用程序吧。</p>
+<p>老技术，新技巧</p>
+<p>在谈到 Ajax 时，实际上涉及到多种技术，要灵活地运用它必须深入了解这些不同的技术（本系列的头几篇文章将分别讨论这些技术）。好消息是您可能已经非常熟悉其中的大部分技术，更好的是这些技术都很容易学习，并不像完整的编程语言（如 Java 或 Ruby）那样困难。</p>
+<h4 id="Ajax应用程序用到的技术"><a href="#Ajax应用程序用到的技术" class="headerlink" title="Ajax应用程序用到的技术"></a>Ajax应用程序用到的技术</h4><figure class="highlight plain"><figcaption><span>用于建立 Web 表单并确定应用程序其他部分使用的字段。 </span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">```</div><div class="line"></div><div class="line">```·JavaScript 代码是运行 Ajax 应用程序的核心代码，帮助改进与服务器应用程序的通信。</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><figcaption><span>或 Dynamic HTML，用于动态更新表单。我们将使用 div、span 和其他动态 HTML 元素来标记 HTML。</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">```</div><div class="line"></div><div class="line">```·文档对象模型 DOM 用于（通过 JavaScript 代码）处理 HTML 结构和（某些情况下）服务器返回的 XML。</div></pre></td></tr></table></figure>
+<h3 id="Ajax-的定义"><a href="#Ajax-的定义" class="headerlink" title="Ajax 的定义"></a>Ajax 的定义</h3><p>Ajax 是 Asynchronous JavaScript and XML（以及 DHTML 等）的缩写。这个短语是 Adaptive Path 的 Jesse James Garrett 发明的（请参阅 参考资料），按照 Jesse 的解释，这不是 个首字母缩写词。</p>
+<h3 id="XMLHttpRequest-对象"><a href="#XMLHttpRequest-对象" class="headerlink" title="XMLHttpRequest 对象"></a>XMLHttpRequest 对象</h3><p>要了解的一个对象可能对您来说也是最陌生的，即 XMLHttpRequest。这是一个 JavaScript 对象，创建该对象很简单，如清单 1 所示。</p>
+<h4 id="清单1-创建新的XMLHttpRequest-对象"><a href="#清单1-创建新的XMLHttpRequest-对象" class="headerlink" title="清单1.创建新的XMLHttpRequest 对象"></a>清单1.创建新的XMLHttpRequest 对象</h4><figure class="highlight plain"><figcaption><span>language="javascript" type="text/javascript">```</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">```var xmlHttp =new XMLHttpRequest();</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">下一期文章中将进一步讨论这个对象，现在要知道这是处理所有服务器通信的对象。继续阅读之前，先停下来想一想：通过 XMLHttpRequest 对象与服务器进行对话的是 JavaScript 技术。这不是一般的应用程序流，这恰恰是 Ajax 的强大功能的来源。</div><div class="line"></div><div class="line">然后，服务器将数据返回 JavaScript 代码（仍然在 Web 表单中），后者决定如何处理这些数据。它可以迅速更新表单数据，让人感觉应用程序是立即完成的，表单没有提交或刷新而用户得到了新数据。JavaScript 代码甚至可以对收到的数据执行某种计算，再发送另一个请求，完全不需要用户干预！这就是 XMLHttpRequest 的强大之处。它可以根据需要自行与服务器进行交互，用户甚至可以完全不知道幕后发生的一切。结果就是类似于桌面应用程序的动态、快速响应、高交互性的体验，但是背后又拥有互联网的全部强大力量。</div><div class="line"></div><div class="line">加入一些 JavaScript</div><div class="line"></div><div class="line">得到 XMLHttpRequest 的句柄后，其他的 JavaScript 代码就非常简单了。事实上，我们将使用 JavaScript 代码完成非常基本的任务：</div></pre></td></tr></table></figure>
+<p>·获取表单数据：JavaScript 代码很容易从 HTML 表单中抽取数据并发送到服务器。<br>·修改表单上的数据：更新表单也很简单，从设置字段值到迅速替换图像。<br>·解析 HTML 和 XML：使用 JavaScript 代码操纵 DOM（请参阅 下一节），处理 HTML 表单服务器返回的 XML 数据的结构。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">#### 清单 2. 用 JavaScript 代码捕获和设置字段值</div><div class="line">// Get the value of the &quot;phone&quot; field and stuff it in a variable called phone</div><div class="line">var phone = document.getElementById(&quot;phone&quot;).value;</div><div class="line"></div><div class="line">// Set some values on a form using an array called response</div><div class="line">document.getElementById(&quot;order&quot;).value = response[0];</div><div class="line">document.getElementById(&quot;address&quot;).value = response[1];</div><div class="line"></div><div class="line">这里没有特别需要注意的地方，真是好极了！您应该认识到这里并没有非常复杂的东西。只要掌握了 XMLHttpRequest，Ajax 应用程序的其他部分就是如 清单 2 所示的简单 JavaScript 代码了，混合有少量的 HTML。同时，还要用一点儿 DOM，我们就来看看吧。</div><div class="line"></div><div class="line">以 DOM 结束</div><div class="line"></div><div class="line">最后还有 DOM，即文档对象模型。可能对有些读者来说 DOM 有点儿令人生畏，HTML 设计者很少使用它，即使 JavaScript 程序员也不大用到它，除非要完成某项高端编程任务。大量使用 DOM 的是 复杂的 Java 和 C/C++ 程序，这可能就是 DOM 被认为难以学习的原因。</div><div class="line"></div><div class="line">幸运的是，在 JavaScript 技术中使用 DOM 很容易，也非常直观。现在，按照常规也许应该说明如何使用 DOM，或者至少要给出一些示例代码，但这样做也可能误导您。即使不理会 DOM，仍然能深入地探讨 Ajax，这也是我准备采用的方法。以后的文章将再次讨论 DOM，现在只要知道可能需要 DOM 就可以了。当需要在 JavaScript 代码和服务器之间传递 XML 和改变 HTML 表单的时候，我们再深入研究 DOM。没有它也能做一些有趣的工作，因此现在就把 DOM 放到一边吧。</div><div class="line"></div><div class="line">#### 获取 Request 对象</div><div class="line">有了上面的基础知识后，我们来看看一些具体的例子。XMLHttpRequest 是 Ajax 应用程序的核心，而且对很多读者来说可能还比较陌生，我们就从这里开始吧。从 清单 1 可以看出，创建和使用这个对象非常简单，不是吗？等一等。</div><div class="line"></div><div class="line">还记得几年前的那些讨厌的浏览器战争吗？没有一样东西在不同的浏览器上得到同样的结果。不管您是否相信，这些战争仍然在继续，虽然规模较小。但令人奇怪的是，XMLHttpRequest 成了这场战争的牺牲品之一。因此获得 XMLHttpRequest 对象可能需要采用不同的方法。下面我将详细地进行解释。</div><div class="line">#### 清单 3. 在 Microsoft 浏览器上创建 XMLHttpRequest 对象</div></pre></td></tr></table></figure></p>
+<p>var xmlHttp = false;<br>try {<br>  xmlHttp = new ActiveXObject(“Msxml2.XMLHTTP”);<br>} catch (e) {<br>  try {<br>    xmlHttp = new ActiveXObject(“Microsoft.XMLHTTP”);<br>  } catch (e2) {<br>    xmlHttp = false;<br>  }<br>}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">您对这些代码可能还不完全理解，但没有关系。当本系列文章结束的时候，您将对 JavaScript 编程、错误处理、条件编译等有更深的了解。现在只要牢牢记住其中的两行代码：</div><div class="line">xmlHttp = new ActiveXObject(&quot;Msxml2.XMLHTTP&quot;);</div><div class="line"></div><div class="line">和</div><div class="line"></div><div class="line">xmlHttp = new ActiveXObject(&quot;Microsoft.XMLHTTP&quot;);。</div><div class="line"></div><div class="line">这两行代码基本上就是尝试使用一个版本的 MSXML 创建对象，如果失败则使用另一个版本创建该对象。不错吧？如果都不成功，则将 xmlHttp 变量设为 false，告诉您的代码出现了问题。如果出现这种情况，可能是因为安装了非 Microsoft 浏览器，需要使用不同的代码。</div><div class="line"></div><div class="line">#### 清单 4. 以支持多种浏览器的方式创建 XMLHttpRequest 对象</div></pre></td></tr></table></figure></p>
+<p>/<em> Create a new XMLHttpRequest object to talk to the Web server </em>/<br>var xmlHttp = false;<br>/<em>@cc_on @</em>/<br>/<em>@if (@_jscript_version &gt;= 5)<br>try {<br>  xmlHttp = new ActiveXObject(“Msxml2.XMLHTTP”);<br>} catch (e) {<br>  try {<br>    xmlHttp = new ActiveXObject(“Microsoft.XMLHTTP”);<br>  } catch (e2) {<br>    xmlHttp = false;<br>  }<br>}<br>@end @</em>/<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">if (!xmlHttp &amp;amp;&amp; typeof XMLHttpRequest != &apos;undefined&apos;) &#123;</div><div class="line">  xmlHttp = new XMLHttpRequest();</div><div class="line">&#125;</div><div class="line"></div><div class="line">现在先不管那些注释掉的奇怪符号，如 @cc_on，这是特殊的 JavaScript 编译器命令，将在下一期针对 XMLHttpRequest 的文章中详细讨论。这段代码的核心分为三步</div></pre></td></tr></table></figure></p>
+<p>1、建立一个变量 xmlHttp 来引用即将创建的 XMLHttpRequest 对象。<br>2、尝试在 Microsoft 浏览器中创建该对象：<br>      1）尝试使用 Msxml2.XMLHTTP 对象创建它。<br>      2）如果失败，再尝试 Microsoft.XMLHTTP 对象。<br>2、如果仍然没有建立 xmlHttp，则以非 Microsoft 的方式创建该对象。<br>最后，xmlHttp 应该引用一个有效的 XMLHttpRequest 对象，无论运行什么样的浏览器。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">### Ajax 世界中的请求/响应</div><div class="line">现在我们介绍了 Ajax，对 XMLHttpRequest 对象以及如何创建它也有了基本的了解。如果阅读得很仔细，您可能已经知道与服务器上的 Web 应用程序打交道的是 JavaScript 技术，而不是直接提交给那个应用程序的 HTML 表单。</div><div class="line"></div><div class="line">还缺少什么呢？到底如何使用 XMLHttpRequest。因为这段代码非常重要，您编写的每个 Ajax 应用程序都要以某种形式使用它，先看看 Ajax 的基本请求/响应模型是什么样吧。</div><div class="line"></div><div class="line">发出请求</div><div class="line"></div><div class="line">您已经有了一个崭新的 XMLHttpRequest 对象，现在让它干点活儿吧。首先需要一个 Web 页面能够调用的 JavaScript 方法（比如当用户输入文本或者从菜单中选择一项时）。接下来就是在所有 Ajax 应用程序中基本都雷同的流程：</div></pre></td></tr></table></figure></p>
+<p>1、从 Web 表单中获取需要的数据。<br>2、建立要连接的 URL。<br>3、打开到服务器的连接。<br>4、设置服务器在完成后要运行的函数。<br>5、发送请求。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">#### 清单 5. 发出 Ajax 请求</div></pre></td></tr></table></figure></p>
+<p>function callServer() {<br>  // Get the city and state from the web form<br>  var city = document.getElementById(“city”).value;<br>  var state = document.getElementById(“state”).value;<br>  // Only go on if there are values for both fields<br>  if ((city == null) || (city == “”)) return;<br>  if ((state == null) || (state == “”)) return;</p>
+<p>  // Build the URL to connect to<br>  var url = “/scripts/getZipCode.php?city=” + escape(city) + “&amp;state=” + escape(state);</p>
+<p>  // Open a connection to the server<br>  xmlHttp.open(“GET”, url, true);</p>
+<p>  // Setup a function for the server to run when it’s done<br>  xmlHttp.onreadystatechange = updatePage;</p>
+<p>  // Send the request<br>  xmlHttp.send(null);<br>}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">其中大部分代码意义都很明确。开始的代码使用基本 JavaScript 代码获取几个表单字段的值。然后设置一个 PHP 脚本作为链接的目标。要注意脚本 URL 的指定方式，city 和 state（来自表单）使用简单的 GET 参数附加在 URL 之后。</div><div class="line"></div><div class="line">然后打开一个连接，这是您第一次看到使用 XMLHttpRequest。其中指定了连接方法（GET）和要连接的 URL。最后一个参数如果设为 true，那么将请求一个异步连接（这就是 Ajax 的由来）。如果使用 false，那么代码发出请求后将等待服务器返回的响应。如果设为 true，当服务器在后台处理请求的时候用户仍然可以使用表单（甚至调用其他 JavaScript 方法）。</div><div class="line"></div><div class="line">xmlHttp（要记住，这是 XMLHttpRequest 对象实例）的 onreadystatechange 属性可以告诉服务器在运行完成 后（可能要用五分钟或者五个小时）做什么。因为代码没有等待服务器，必须让服务器知道怎么做以便您能作出响应。在这个示例中，如果服务器处理完了请求，一个特殊的名为 updatePage() 的方法将被触发。</div><div class="line"></div><div class="line">最后，使用值 null 调用 send()。因为已经在请求 URL 中添加了要发送给服务器的数据（city 和 state），所以请求中不需要发送任何数据。这样就发出了请求，服务器按照您的要求工作。</div><div class="line"></div><div class="line">如果没有发现任何新鲜的东西，您应该体会到这是多么简单明了！除了牢牢记住 Ajax 的异步特性外，这些内容都相当简单。应该感激 Ajax 使您能够专心编写漂亮的应用程序和界面，而不用担心复杂的 HTTP 请求/响应代码。</div><div class="line"></div><div class="line">#### 清单 5 中的代码说明了 Ajax 的易用性。数据是简单的文本，可以作为请求 URL 的一部分。用 GET 而不是更复杂的 POST 发送请求。没有 XML 和要添加的内容头部，请求体中没有要发送的数据；换句话说，这就是 Ajax 的乌托邦。</div><div class="line">#####处理响应</div><div class="line">现在要面对服务器的响应了。现在只要知道两点：</div><div class="line"></div><div class="line">·什么也不要做，直到 xmlHttp.readyState 属性的值等于 4。 </div><div class="line">·服务器将把响应填充到 xmlHttp.responseText 属性中。 </div><div class="line"></div><div class="line">其中的第一点，即就绪状态，将在下一篇文章中详细讨论，您将进一步了解 HTTP 请求的阶段，可能比您设想的还多。现在只要检查一个特定的值（4）就可以了（下一期文章中还有更多的值要介绍）。第二点，使用 xmlHttp.responseText 属性获得服务器的响应，这很简单。清单 6 中的示例方法可供服务器根据 清单 5 中发送的数据调用。</div><div class="line"></div><div class="line">#### 清单 6. 处理服务器响应</div></pre></td></tr></table></figure></p>
+<p>function updatePage() {<br>  if (xmlHttp.readyState == 4) {<br>    var response = xmlHttp.responseText;<br>    document.getElementById(“zipCode”).value = response;<br>  }<br>}<br>```</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/11/29/javascript的函数声明/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Fenglin">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.gif">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Feng~Lin">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Feng~Lin" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/11/29/javascript的函数声明/" itemprop="url">
+                  JavaScript 的函数声明
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-11-29T21:27:42+08:00">
+                2016-11-29
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="使用-function-关键字声明函数"><a href="#使用-function-关键字声明函数" class="headerlink" title="使用 function 关键字声明函数"></a>使用 function 关键字声明函数</h3><figure class="highlight plain"><figcaption><span>foo()&#123;&#125;</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">```</div><div class="line"></div><div class="line"></div><div class="line">### 使用 函数表达式 声明函数</div><div class="line"></div><div class="line">``` var bar = function()&#123;&#125;</div></pre></td></tr></table></figure>
+<h3 id="使用-Function构造函数-声明函数"><a href="#使用-Function构造函数-声明函数" class="headerlink" title="使用 Function构造函数 声明函数"></a>使用 Function构造函数 声明函数</h3><p><code>var foobar = Function(&#39;arg1&#39;, &#39;arg2&#39;, &#39;function body&#39;)</code></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/11/29/Ajax/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Fenglin">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.gif">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Feng~Lin">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Feng~Lin" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/11/29/Ajax/" itemprop="url">
+                  Ajax语法浅析
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-11-29T19:07:53+08:00">
+                2016-11-29
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>Ajax是目前很普遍的一门技术，也是很值得探讨和研究的一门技术。本文将针对Ajax的发展过程并结合其在不同库框架中的使用方式来和大家分享下Ajax的那些新老语法。</p>
+<h2 id="Ajax简介"><a href="#Ajax简介" class="headerlink" title="Ajax简介"></a>Ajax简介</h2><p>Ajax全称为“Asynchronous Javascript And XML”，即“异步javascript和XML”的意思。通过Ajax我们可以向服务器发送请求，在不阻塞页面的情况下进行数据交互，也可以理解为异步数据传输。在Ajax的帮助下我们的网页只需局部刷新即可更新数据的显示，减少了不少必要的数据量，大大提高了用户体验，缩短了用户等待的时间，使得web应用程序更小、更快、更友好。</p>
+<h3 id="原生Ajax"><a href="#原生Ajax" class="headerlink" title="原生Ajax"></a>原生Ajax</h3><p>基本上现在的所有浏览器都支持原生Ajax的功能，下面就详细介绍利用原生js我们怎样来发起和处理Ajax请求。</p>
+<h4 id="1-获取XMLHttpRequest对象"><a href="#1-获取XMLHttpRequest对象" class="headerlink" title="1.获取XMLHttpRequest对象"></a>1.获取XMLHttpRequest对象</h4><p><code>var xhr =new XMLHttpRequest();//获取浏览器内置的XMLHttpRequest对象</code></p>
+<p>如果你的项目应用不考虑低版本IE，那么可以直接用上面的方法，所有现代浏览器 (Firefox、Chrome、Safari 以及 Opera) 都内建了 XMLHttpRequest 对象。如果需要兼容老版本IE（IE5、IE6），那么可以使用 ActiveX 对象:</p>
+<pre><code>var xhr;
+if (window.XMLHttpRequest) {
+xhr=new XMLHttpRequest();
+} else if (window.ActiveXObject) { // 兼容老版本浏览器
+xhr=new ActiveXObject(&quot;Microsoft.XMLHTTP&quot;);
+}
+</code></pre><h4 id="2-参数配置"><a href="#2-参数配置" class="headerlink" title="2.参数配置"></a>2.参数配置</h4><p>有了XMLHttpRequest对象，我们还需要配置一些请求的参数信息来完成数据交互，利用open方法即可:</p>
+<pre><code>var xhr;
+if(window.XMLHttpRequest){
+    xhr=new XMLHttpRequest();
+}else if(window.ActiveXObject){
+    xhr=new ActiveXObject(&quot;Microsoft&quot;)
+}
+if(xhr){
+    xhr.open(&apos;GET&apos;,&apos;/TEST/&apos;,true);//以GET请求的方式向&apos;/test/&apos;路径发送异步请求
+}
+</code></pre><p>open方法为我们创建了一个新的http请求，其中第一个参数为请求方式，一般为’GET’或’POST’;第二个参数为请求URL;第三个参数为是否异步，默认为true。</p>
+<h4 id="发送请求"><a href="#发送请求" class="headerlink" title="发送请求"></a>发送请求</h4><p>配置完了基本参数信息，我们直接调用send方法发送请求，代码如下:</p>
+<pre><code>var xhr;
+if(window.XMLHttpRequest){
+    xhr=new XMLHttpRequest();
+}else if(window.ActiveXObject){
+    xhr = new ActiveXObject(&quot;Microsoft.XMLHTTP&quot;);
+}
+if(xhr){
+    xhr.open(&apos;GET&apos;,&apos;&apos;/test/&apos;,true);//以GET请求的方式向&apos;/test/&apos;路径发送异步请求
+    xhr.send();//调用send方法发送请求
+}
+</code></pre><p>你需要注意的是如果使用GET方法传递参数，我们可以直接将参数放在URL后面，比如’/test/?username=fl&amp;pwd=666’;如果使用POST方法，那么我们的参数需要写在send方法里</p>
+<pre><code>xhr.open(&apos;POST&apos;,&apos;/test/&apos;,true);
+xhr.setRequestHeader(&quot;Content-type&quot;,&quot;application/x-www-form-urlencoded&quot;);//将请求头设置为表单方式提交
+xhr.send(&apos;username=fl&amp;pwd=666&apos;);
+</code></pre><p>最终会以Form Data的形式传递,因此我们要修改成我们期望的数据格式JSON格式。</p>
+<pre><code>xhr.open(&apos;POST&apos;,&apos;/test/&apos;,true);
+xhr.send(JSON.stringify({username:&apos;fl&apos;,pwd:666}));
+</code></pre><h4 id="监测状态"><a href="#监测状态" class="headerlink" title="监测状态"></a>监测状态</h4><p>发送完Ajax请求之后，我们需要针对服务器返回的状态进行监测并进行相应的处理，这里我们需要使用onreadystatechange方法。<br>代码如下：</p>
+<pre><code>var xhr;
+if(window.XMLHttpRequest){
+    xhr=new XMLHttpRequest();
+}else if(window.ActiveXObject){
+    xhr = new ActiveXObject(&apos;Microsoft.XMLHTTP&apos;);
+}
+if(xhr){
+    xhr.open(&apos;GET&apos;,&apos;/test/&apos;,true);//以get请求的方式向&apos;/test/&apos;路径发送异步请求
+    xhr.send();
+    xhr.onreadystatechange = function(){//利用onreadystatechange检测状态
+        if(xhr.readyState ==4){//readyState为4表示请求响应完成
+            if(xhr.status ===200){//status为200表示请求成功
+                console.log(&apos;执行成功&apos;);
+            }else{
+                console.log(&apos;执行出错&apos;);
+            }
+        }
+    }
+}
+</code></pre><p>上面我们利用onreadystatechange监测状态，并在内部利用readyState获取当前的状态。readyState一共有5个阶段，当其为4时表示响应内容解析完成，可以在客户端调用了。当readyState为4时，我们又通过status来获取状态码，状态码为200时执行成功代码，否则执行出错代码。</p>
+<p>当然我们可以用onload来代替onreadystatechange等于4的情况，因为onload只在状态为4的时候才被调用，代码如下：</p>
+<pre><code>xhr.onload = function () {    // 调用onload           if (xhr.status === 200) {    // status为200表示请求成功
+    }
+        console.log(&apos;执行成功&apos;);
+    } else {
+    console.log(&apos;执行出错&apos;);
+    }   
+}
+</code></pre>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
     
       
 
@@ -275,7 +722,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <span class="post-meta-item-text">Posted on</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-11-28T20:33:14+08:00">
                 2016-11-28
               </time>
@@ -316,7 +763,7 @@
           
             <p>http是一个应用层协议，在这个层的协议，只是一种通信规范，也就是因为双方要进行通讯，而约定俗成的一个规范。</p>
 <h2 id="通讯步骤"><a href="#通讯步骤" class="headerlink" title="通讯步骤"></a>通讯步骤</h2><h3 id="连接"><a href="#连接" class="headerlink" title="连接"></a>连接</h3><p>当我们输入这样一个请求时，首先要建立一个socket连接，因为socket是通过ip和端口建立连接的所以之前还有一个DNS解析过程，把www.mycompany.com变成ip，如果url里不包含端口号，则会使用该协议的默认端口号。</p>
-<p>DNS的过程是这样的：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">### 请求</div><div class="line">     连接成功建立后，开始向web服务器发送请求，这个请求一般是GET或POST命令（POST用于FORM参数的传递）。GET命令的格式为：　　GET 路径/文件名 HTTP/1.0</div><div class="line"></div><div class="line">     文件名指出所访问的文件，HTTP/1.0指出Web浏览器使用的HTTP版本。现在可以发送GET命令：</div><div class="line">GET /mydir/index.html HTTP/1.0，</div><div class="line">### 应答</div><div class="line">    web服务器收到这个请求，进行处理。从它的文档空间中搜索子目录mydir的文件index.html。如果找到该文件，Web服务器把该文件内容传送给相应的Web浏览器。</div><div class="line"></div><div class="line">为了告知浏览器，，Web服务器首先传送一些HTTP头信息，然后传送具体内容（即HTTP体信息），HTTP头信息和HTTP体信息之间用一个空行分开。</div><div class="line">常用的HTTP头信息有：</div><div class="line">　　```① HTTP 1.0 200 OK 　这是Web服务器应答的第一行，列出服务器正在运行的HTTP版本号和应答代码。代码&quot;200 OK&quot;表示请求完成。</div></pre></td></tr></table></figure></p>
+<p>DNS的过程是这样的：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">### 请求</div><div class="line">     连接成功建立后，开始向web服务器发送请求，这个请求一般是GET或POST命令（POST用于FORM参数的传递）。GET命令的格式为：　　GET 路径/文件名 HTTP/1.0</div><div class="line"></div><div class="line">     文件名指出所访问的文件，HTTP/1.0指出Web浏览器使用的HTTP版本。现在可以发送GET命令：</div><div class="line">### 应答</div><div class="line">    web服务器收到这个请求，进行处理。从它的文档空间中搜索子目录mydir的文件index.html。如果找到该文件，Web服务器把该文件内容传送给相应的Web浏览器。</div><div class="line"></div><div class="line">为了告知浏览器，，Web服务器首先传送一些HTTP头信息，然后传送具体内容（即HTTP体信息），HTTP头信息和HTTP体信息之间用一个空行分开。</div><div class="line">常用的HTTP头信息有：</div><div class="line">　　```① HTTP 1.0 200 OK 　这是Web服务器应答的第一行，列出服务器正在运行的HTTP版本号和应答代码。代码&quot;200 OK&quot;表示请求完成。</div></pre></td></tr></table></figure></p>
 <p>　　<figure class="highlight plain"><figcaption><span>MIME_Version:1.0　它指示MIME类型的版本。　```　</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">　　```③ content_type:类型　这个头信息非常重要，它指示HTTP体信息的MIME类型。如：content_type:text/html指示传送的数据是HTML文档。</div></pre></td></tr></table></figure></p>
 <p>　　<figure class="highlight plain"><figcaption><span>content_length:长度值　它指示HTTP体信息的长度（字节）。```</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">### 关闭连接</div><div class="line">当应答结束后，Web浏览器与Web服务器必须断开，以保证其它Web浏览器能够与Web服务器建立连接。　　</div><div class="line">## tcp/ip基本模型及概念</div><div class="line">### 物理层</div><div class="line">设备，中继器（repeater）,集线器（hub）。对于这一层来说，从一个端口收到数据，会转发到所有端口。</div><div class="line">### 链路层</div><div class="line"></div><div class="line">协议：SDLC（Synchronous Data Link Control）HDLC（High-level Data Link Control） ppp协议独立的链路设备中最常见的当属网卡，网桥也是链路产品。集线器MODEM的某些功能有人认为属于链路层，对此还有些争议认为属于物理层设备。除此之外，所有的交换机都需要工作在数据链路层，但仅工作在数据链路层的仅是二层交换机。其他像三层交换机、四层交换机和七层交换机虽然可对应工作在OSI的三层、四层和七层，但二层功能仍是它们基本的功能。</div><div class="line"></div><div class="line">因为有了MAC地址表，所以才充分避免了冲突，因为交换机通过目的MAC地址知道应该把这个数据转发到哪个端口。而不会像HUB一样，会转发到所有滴端口。所以，交换机是可以划分冲突域滴。</div><div class="line">### 网络层</div><div class="line"></div><div class="line">四个主要的协议:   </div><div class="line">```网际协议IP：负责在主机和网络之间寻址和路由数据包。 ```    </div><div class="line">```地址解析协议ARP：获得同一物理网络中的硬件主机地址。   ```  </div><div class="line">```网际控制消息协议ICMP：发送消息，并报告有关数据包的传送错误。```     </div><div class="line">```互联组管理协议IGMP：被IP主机拿来向本地多路广播路由器报告主机组成员。</div></pre></td></tr></table></figure></p>
 <p>该层设备有三层交换机，路由器。</p>
@@ -402,7 +849,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <span class="post-meta-item-text">Posted on</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-11-26T21:01:09+08:00">
                 2016-11-26
               </time>
@@ -529,7 +976,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <span class="post-meta-item-text">Posted on</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-11-10T17:31:22+08:00">
                 2016-11-10
               </time>
@@ -647,7 +1094,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <span class="post-meta-item-text">Posted on</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-09-30T11:10:57+08:00">
                 2016-09-30
               </time>
@@ -765,8 +1212,8 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">4</span>
-              <span class="site-state-item-name">Artikel</span>
+              <span class="site-state-item-count">7</span>
+              <span class="site-state-item-name">posts</span>
             </a>
           </div>
 
@@ -817,7 +1264,7 @@
 
 
 <div class="powered-by">
-  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
 </div>
 
 <div class="theme-info">

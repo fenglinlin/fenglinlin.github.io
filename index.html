@@ -183,7 +183,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Startseite
+            Home
           </a>
         </li>
       
@@ -193,7 +193,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archiv
+            Archives
           </a>
         </li>
       
@@ -226,6 +226,179 @@
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/12/03/javascript之BOM/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Fenglin">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.gif">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Feng~Lin">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Feng~Lin" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/12/03/javascript之BOM/" itemprop="url">
+                  Untitled
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-03T12:00:24+08:00">
+                2016-12-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <hr>
+<h2 id="title-《JavaScript-闯关记》之BOM"><a href="#title-《JavaScript-闯关记》之BOM" class="headerlink" title="title:《JavaScript 闯关记》之BOM"></a>title:《JavaScript 闯关记》之BOM</h2><p>ECMAScript 是 JavaScript 的核心，但如果要在 Web 中使用 JavaScript，那么 BOM（浏览器对象模型）则无疑才是真正的核心。BOM 提供了很多对象，用于访问浏览器的功能，这些功能与任何网页内容无关。多年来，缺少事实上的规范导致 BOM 有很多问题，因为浏览器提供商会按照各自的想法随意去扩展它。W3C 为了把浏览器中 JavaScript 最基本的部分标准化，已经将 BOM 的主要方面纳入了 HTML5 的规范中。</p>
+<h2 id="window-对象"><a href="#window-对象" class="headerlink" title="window 对象"></a>window 对象</h2><p>BOM 的核心对象是 window，它表示浏览器的一个实例。在浏览器中，window 对象有双重角色，它既是通过 JavaScript 访问浏览器窗口的一个接口，又是 ECMAScript 规定的 Global 对象。这意味着在网页中定义的任何一个对象、变量和函数，都以 window 作为其 Global 对象，因此有权访问 isNaN()、isFinite()、parseInt()、parseFloat() 等方法。</p>
+<h3 id="全局作用域"><a href="#全局作用域" class="headerlink" title="全局作用域"></a>全局作用域</h3><p>由于 window 对象同时扮演着 ECMAScript 中 Global 对象的角色，因此所有在全局作用域中声明的变量、函数都会变成 window 对象的属性和方法。来看下面的例子。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">var age = 29;</div><div class="line">function sayAge()&#123;</div><div class="line">    console.log(this.age);</div><div class="line">&#125;</div><div class="line"></div><div class="line">console.log(window.age);    // 29</div><div class="line">sayAge();                   // 29</div><div class="line">window.sayAge();</div></pre></td></tr></table></figure>
+<p>抛开全局变量会成为 window 对象的属性不谈，定义全局变量与在 window 对象上直接定义属性还是有一点差别：全局变量不能通过 delete 运算符删除，而直接在 window 对象上的定义的属性可以。例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">var age = 29;</div><div class="line">window.color = &quot;red&quot;;</div><div class="line"></div><div class="line">// 在 IE &lt; 9 时抛出错误，在其他所有浏览器中都返回 false </div><div class="line">delete window.age;</div><div class="line"></div><div class="line">// 在 IE &lt; 9 时抛出错误，在其他所有浏览器中都返回 true</div><div class="line">delete window.color;        // return true</div><div class="line"></div><div class="line">console.log(window.age);    // 29</div><div class="line">console.log(window.color);  // undefined</div></pre></td></tr></table></figure>
+<p>使用 var 语句添加的 window 属性有一个名为 Configurable 的特性，这个特性的值被默认设置为 false，因此这样定义的属性不可以通过 delete 运算符删除。IE8 及更早版本在遇到使用 delete 删除 window 属性的语句时，不管该属性最初是如何创建的，都会抛出错误，以示警告。IE9 及更高版本不会抛出错误。</p>
+<p>另外，还要记住一件事：尝试访问未声明的变量会抛出错误，但是通过查询 window 对象，可以知道某个可能未声明的变量是否存在。例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">// 这里会抛出错误，因为 oldValue 未定义</div><div class="line">var newValue = oldValue;</div><div class="line"></div><div class="line">// 这里不会抛出错误，因为这是一次属性查询</div><div class="line">// newValue 的值是 undefined</div><div class="line">var newValue = window.oldValue;</div></pre></td></tr></table></figure>
+<h3 id="窗口关系及框架"><a href="#窗口关系及框架" class="headerlink" title="窗口关系及框架"></a>窗口关系及框架</h3><p>如果页面中包含框架，则每个框架都拥有自己的 window 对象，并且保存在 frames 集合中。在 frames 集合中，可以通过数值索引（从0开始，从左至右，从上到下）或者框架名称来访问相应的 window 对象。每个 window 对象都有一个 name 属性，其中包含框架的名称。下面是一个包含框架的页面：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">&lt;html&gt;</div><div class="line">    &lt;head&gt;</div><div class="line">        &lt;title&gt;Frameset Example&lt;/title&gt;</div><div class="line">    &lt;/head&gt;</div><div class="line">    &lt;frameset rows=&quot;160,*&quot;&gt;</div><div class="line">        &lt;frame src=&quot;frame.htm&quot; name=&quot;topFrame&quot;&gt;</div><div class="line">        &lt;frameset cols=&quot;50%,50%&quot;&gt;</div><div class="line">            &lt;frame src=&quot;anotherframe.htm&quot; name=&quot;leftFrame&quot;&gt;</div><div class="line">            &lt;frame src=&quot;yetanotherframe.htm&quot; name=&quot;rightFrame&quot;&gt;</div><div class="line">        &lt;/frameset&gt;</div><div class="line">    &lt;/frameset&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
+<p>对这个例子而言，可以通过 window.frames[0] 或者 window.frames[“topFrame”] 来引用上方的框架。不过最好使用 top 而非 window 来引用这些框架（例如 top.frames[0]），因为 top 对象始终指向最高（最外）层的框架，也就是浏览器窗口。使用它可以确保在一个框架中正确地访问另一个框架。因为对于在一个框架中编写的任何代码来说，其中的 window 对象指向的都是那个框架的特定实例，而非最高层的框架。</p>
+<p>与 top 相对的另一个 window 对象是 parent。顾名思义，parent（父）对象始终指向当前框架的直接上层框架。在某些情况下，parent 有可能等于 top；但在没有框架的情况下，parent 一定等于 top（此时它们都等于 window）。</p>
+<p>与框架有关的最后一个对象是 self，它始终指向 window；实际上，self 和 window 对象可以互换使用。引入 self 对象的目的只是为了与 top 和 parent 对象对应起来，因此它不格外包含其他值。</p>
+<p>所有这些对象都是 window 对象的属性，可以通过 window.parent、window.top 等形式来访问。同时，这也意味着可以将不同层次的 window 对象连缀起来，例如 window.parent.parent.frames[0]。</p>
+<p>在使用框架的情况下，浏览器中会存在多个 Global 对象。在每个框架中定义的全局变量会自动成为框架中 window 对象的属性。由于每个 window 对象都包含原生类型的构造函数，因此每个框架都有一套自己的构造函数，这些构造函数一一对应，但并不相等。例如，top.Object 并不等于 top.frames[0].Object。这个问题会影响到对跨框架传递的对象使用 instanceof 运算符。</p>
+<h3 id="导航和打开窗口"><a href="#导航和打开窗口" class="headerlink" title="导航和打开窗口"></a>导航和打开窗口</h3><p>使用 window.open() 方法既可以导航到一个特定的 URL，也可以打开一个新的浏览器窗口。这个方法可以接收4个参数：要加载的URL、窗口目标、一个特性字符串以及一个表示新页面是否取代浏览器历史记录中当前加载页面的布尔值。通常只须传递第一个参数，最后一个参数只在不打开新窗口的情况下使用。</p>
+<p>如果为 window.open() 传递了第二个参数，而且该参数是已有窗口或框架的名称，那么就会在具有该名称的窗口或框架中加载第一个参数指定的 URL。看下面的例子。</p>
+<figure class="highlight plain"><figcaption><span>等同于 <a href="http://shijiajie.com" target="newWindow"></a></span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">window.open(&quot;http://shijiajie.com/&quot;, &quot;newWindow&quot;);</div></pre></td></tr></table></figure>
+<h3 id="弹出窗口"><a href="#弹出窗口" class="headerlink" title="弹出窗口"></a>弹出窗口</h3><p>如果给 window.open() 传递的第二个参数并不是一个已经存在的窗口或框架，那么该方法就会根据在第三个参数位置上传入的字符串创建一个新窗口或新标签页。如果没有传入第三个参数，那么就会打开一个带有全部默认设置（工具栏、地址栏和状态栏等）的新浏览器窗口（或者打开一个新标签页）。在不打开新窗口的情况下，会忽略第三个参数。</p>
+<p>第三个参数是一个逗号分隔的设置字符串，表示在新窗口中都显示哪些特性。下表列出了可以出现在这个字符串中的设置选项。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">设置	值	说明</div><div class="line">fullscreen	yes或no	表示浏览器窗口是否最大化。仅限IE</div><div class="line">height	数值	表示新窗口的高度。不能小于100</div><div class="line">left	数值	表示新窗口的左坐标。不能是负值</div><div class="line">location	yes或no	表示是否在浏览器窗口中显示地址栏。不同浏览器的默认值不同。如果设置为no，地址栏可能会隐藏，也可能会被禁用（取决于浏览器）</div><div class="line">menubar	yes或no	表示是否在浏览器窗口中显示菜单栏。默认值为no</div><div class="line">resizable	yes或no	表示是否可以通过拖动浏览器窗口的边框改变其大小。默认值为no</div><div class="line">scrollbars	yes或no	表示如果内容在视口中显示不下，是否允许滚动。默认值为no</div><div class="line">status	yes或no	表示是否在浏览器窗口中显示状态栏。默认值为no</div><div class="line">toolbar	yes或no	表示是否在浏览器窗口中显示工具栏。默认值为no</div><div class="line">top	数值	表示新窗口的上坐标。不能是负值</div><div class="line">width	数值	表示新窗口的宽度。不能小于100</div></pre></td></tr></table></figure>
+<p>这行代码会打开一个新的可以调整大小的窗口，窗口初始大小为400×400像素，并且距屏幕上沿和左边各10像素。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&quot;height=400,width=400,top=10,left=10,resizable=yes&quot;);</div></pre></td></tr></table></figure>
+<p>window.open() 方法会返回一个指向新窗口的引用。引用的对象与其他 window 对象大致相似，但我们可以对其进行更多控制。例如，有些浏览器在默认情况下可能不允许我们针对主浏览器窗口调整大小或移动位置，但却允许我们针对通过window.open()创建的窗口调整大小或移动位置。通过这个返回的对象，可以像操作其他窗口一样操作新打开的窗口，如下所示。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">var win = window.open(&quot;http://shijiajie.com/&quot;,&quot;newWindow&quot;,</div><div class="line">    &quot;height=400,width=400,top=10,left=10,resizable=yes&quot;);</div><div class="line"></div><div class="line">// 调整大小</div><div class="line">win.resizeTo(500,500);</div><div class="line"></div><div class="line">// 移动位置</div><div class="line">win.moveTo(100,100);</div><div class="line"></div><div class="line">// 关闭窗口</div><div class="line">win.close();</div></pre></td></tr></table></figure>
+<p>但是，close() 方法仅适用于通过 window.open() 打开的弹出窗口。对于浏览器的主窗口，如果没有得到用户的允许是不能关闭它的。</p>
+<p>新创建的 window 对象有一个 opener 属性，其中保存着打开它的原始窗口对象。这个属性只在弹出窗口中的最外层 window 对象（top）中有定义，而且指向调用 window.open() 的窗口或框架。例如：</p>
+<figure class="highlight plain"><figcaption><span>win = window.open("http://shijiajie.com/","newWindow",</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">    &quot;height=400,width=400,top=10,left=10,resizable=yes&quot;);</div><div class="line">console.log(win.opener === window);   // true</div></pre></td></tr></table></figure>
+<p>虽然弹出窗口中有一个指针指向打开它的原始窗口，但原始窗口中并没有这样的指针指向弹出窗口。窗口并不跟踪记录它们打开的弹出窗口，因此我们只能在必要的时候自己来手动实现跟踪。</p>
+<h3 id="弹出窗口屏蔽程序"><a href="#弹出窗口屏蔽程序" class="headerlink" title="弹出窗口屏蔽程序"></a>弹出窗口屏蔽程序</h3><p>曾经有一段时间，广告商在网上使用弹出窗口达到了肆无忌惮的程度。他们经常把弹出窗口打扮成系统对话框的模样，引诱用户去点击其中的广告。由于看起来像是系统对话框，一般用户很难分辨是真是假。为了解决这个问题，大多数浏览器内置有弹出窗口屏蔽程序，将绝大多数用户不想看到弹出窗口屏蔽掉。</p>
+<p>于是，在弹出窗口被屏蔽时，就应该考虑两种可能性。如果是浏览器内置的屏蔽程序阻止的弹出窗口，那么 window.open() 很可能会返回 null，如果是浏览器扩展或其他程序阻止的弹出窗口，那么 window.open() 通常会抛出一个错误。因此，要想准确地检测出弹出窗口是否被屏蔽，必须在检测返回值的同时，将对 window.open() 的调用封装在一个 try-catch 块中，如下所示。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">var blocked = false;</div><div class="line"></div><div class="line">try &#123;</div><div class="line">    var win = window.open(&quot;http://shijiajie.com&quot;, &quot;_blank&quot;);</div><div class="line">    if (win == null)&#123;</div><div class="line">        blocked = true;</div><div class="line">    &#125;</div><div class="line">&#125; catch (ex)&#123;</div><div class="line">    blocked = true;</div><div class="line">&#125;</div><div class="line">if (blocked)&#123;</div><div class="line">    console.log(&quot;The popup was blocked!&quot;);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="间歇调用和超时调用"><a href="#间歇调用和超时调用" class="headerlink" title="间歇调用和超时调用"></a>间歇调用和超时调用</h3><p>JavaScript 是单线程语言，但它允许通过设置超时值和间歇时间值来调度代码在特定的时刻执行。前者是在指定的时间过后执行代码，而后者则是每隔指定的时间就执行一次代码。</p>
+<p>超时调用需要使用 window 对象的 setTimeout() 方法，它接受两个参数：要执行的代码和以毫秒表示的时间（即在执行代码前需要等待多少毫秒）。其中，第一个参数可以是一个包含 JavaScript 代码的字符串（就和在 eval() 函数中使用的字符串一样），也可以是一个函数。例如，下面对 setTimeout() 的两次调用都会在一秒钟后显示一个警告框。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">// 不建议传递字符串</div><div class="line">setTimeout(&quot;console.log(&apos;Hello world!&apos;) &quot;, 1000);</div><div class="line"></div><div class="line">// 推荐的调用方式</div><div class="line">setTimeout(function() &#123; </div><div class="line">    console.log(&quot;Hello world!&quot;); </div><div class="line">&#125;, 1000);</div></pre></td></tr></table></figure>
+<p>虽然这两种调用方式都没有问题，但由于传递字符串可能导致性能损失，因此不建议以字符串作为第一个参数。</p>
+<p>第二个参数是一个表示等待多长时间的毫秒数，但经过该时间后指定的代码不一定会执行。JavaScript 是一个单线程序的解释器，因此一定时间内只能执行一段代码。为了控制要执行的代码，就有一个 JavaScript 任务队列。这些任务会按照将它们添加到队列的顺序执行。setTimeout() 的第二个参数告诉 JavaScript 再过多长时间把当前任务添加到队列中。如果队列是空的，那么添加的代码会立即执行；如果队列不是空的，那么它就要等前面的代码执行完了以后再执行。</p>
+<p>调用 setTimeout() 之后，该方法会返回一个数值 ID，表示超时调用。这个超时调用 ID 是计划执行代码的唯一标识符，可以通过它来取消超时调用。要取消尚未执行的超时调用计划，可以调用 clearTimeout() 方法并将相应的超时调用 ID 作为参数传递给它，如下所示。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">// 设置超时调用</div><div class="line">var timeoutId = setTimeout(function() &#123;</div><div class="line">    console.log(&quot;Hello world!&quot;);</div><div class="line">&#125;, 1000);</div><div class="line"></div><div class="line">// 注意：把它取消</div><div class="line">clearTimeout(timeoutId);</div></pre></td></tr></table></figure>
+<p>只要是在指定的时间尚未过去之前调用 clearTimeout()，就可以完全取消超时调用。前面的代码在设置超时调用之后马上又调用了 clearTimeout()，结果就跟什么也没有发生一样。</p>
+<p>间歇调用与超时调用类似，只不过它会按照指定的时间间隔重复执行代码，直至间歇调用被取消或者页面被卸载。设置间歇调用的方法是 setInterval()，它接受的参数与 setTimeout() 相同：要执行的代码（字符串或函数）和每次执行之前需要等待的毫秒数。下面来看一个例子。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">// 不建议传递字符串</div><div class="line">setInterval (&quot;console.log(&apos;Hello world!&apos;) &quot;, 10000);</div><div class="line"></div><div class="line">// 推荐的调用方式</div><div class="line">setInterval (function() &#123; </div><div class="line">    console.log(&quot;Hello world!&quot;); </div><div class="line">&#125;, 10000);</div></pre></td></tr></table></figure>
+<p>调用 setInterval() 方法同样也会返回一个间歇调用 ID，该 ID 可用于在将来某个时刻取消间歇调用。要取消尚未执行的间歇调用，可以使用 clearInterval() 方法并传入相应的间歇调用 ID。取消间歇调用的重要性要远远高于取消超时调用，因为在不加干涉的情况下，间歇调用将会一直执行到页面卸载。以下是一个常见的使用间歇调用的例子。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">var num = 0;</div><div class="line">var max = 10;</div><div class="line">var intervalId = null;</div><div class="line"></div><div class="line">function incrementNumber() &#123;</div><div class="line">    num++;</div><div class="line">    // 如果执行次数达到了max设定的值，则取消后续尚未执行的调用</div><div class="line">    if (num == max) &#123;</div><div class="line">        clearInterval(intervalId);</div><div class="line">        console.log(&quot;Done&quot;);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">intervalId = setInterval(incrementNumber, 500);</div></pre></td></tr></table></figure>
+<p>在这个例子中，变量num每半秒钟递增一次，当递增到最大值时就会取消先前设定的间歇调用。这个模式也可以使用超时调用来实现，如下所示。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">var num = 0;</div><div class="line">var max = 10;</div><div class="line"></div><div class="line">function incrementNumber() &#123;</div><div class="line">    num++;</div><div class="line"></div><div class="line">    // 如果执行次数未达到max设定的值，则设置另一次超时调用</div><div class="line">    if (num &lt; max) &#123;</div><div class="line">        setTimeout(incrementNumber, 500);</div><div class="line">    &#125; else &#123;</div><div class="line">        console.log(&quot;Done&quot;);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">setTimeout(incrementNumber, 500);</div></pre></td></tr></table></figure>
+<p>可见，在使用超时调用时，没有必要跟踪超时调用 ID，因为每次执行代码之后，如果不再设置另一次超时调用，调用就会自行停止。一般认为，使用超时调用来模拟间歇调用的是一种最佳模式。在开发环境下，很少使用真正的间歇调用，原因是后一个间歇调用可能会在前一个间歇调用结束之前启动。而像前面示例中那样使用超时调用，则完全可以避免这一点。所以，最好不要使用间歇调用。</p>
+<h3 id="系统对话框"><a href="#系统对话框" class="headerlink" title="系统对话框"></a>系统对话框</h3><p>浏览器通过 alert()、confirm() 和 prompt() 方法可以调用系统对话框向用户显示消息。系统对话框与在浏览器中显示的网页没有关系，也不包含 HTML。它们的外观由操作系统及（或）浏览器设置决定，而不是由 CSS 决定。此外，通过这几个方法打开的对话框都是同步和模态的。也就是说，显示这些对话框的时候代码会停止执行，而关掉这些对话框后代码又会恢复执行。</p>
+<p>第一种对话框是调用 alert() 方法生成的。它向用户显示一个系统对话框，其中包含指定的文本和一个 OK（“确定”）按钮。通常使用 alert() 生成的“警告”对话框向用户显示一些他们无法控制的消息，例如错误消息。而用户只能在看完消息后关闭对话框。</p>
+<p>第二种对话框是调用 confirm() 方法生成的。从向用户显示消息的方面来看，这种“确认”对话框很像是一个“警告”对话框。但二者的主要区别在于“确认”对话框除了显示OK按钮外，还会显示一个 Cancel（“取消”）按钮，两个按钮可以让用户决定是否执行给定的操作。</p>
+<p>为了确定用户是单击了OK还是Cancel，可以检查 confirm() 方法返回的布尔值：true 表示单击了OK，false 表示单击了Cancel或单击了右上角的 X 按钮。确认对话框的典型用法如下。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">if (confirm(&quot;Are you sure?&quot;)) &#123;</div><div class="line">    alert(&quot;I&apos;m so glad you&apos;re sure! &quot;);</div><div class="line">&#125; else &#123;</div><div class="line">    alert(&quot;I&apos;m sorry to hear you&apos;re not sure.&quot;);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>最后一种对话框是通过调用 prompt() 方法生成的，这是一个“提示”框，用于提示用户输入一些文本。提示框中除了显示 OK 和 Cancel 按钮之外，还会显示一个文本输入域，以供用户在其中输入内容。prompt() 方法接受两个参数：要显示给用户的文本提示和文本输入域的默认值（可以是一个空字符串）。</p>
+<p>如果用户单击了 OK 按钮，则 promp() 返回文本输入域的值；如果用户单击了 Cancel 或没有单击 OK 而是通过其他方式关闭了对话框，则该方法返回 null。下面是一个例子。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">var result = prompt(&quot;What is your name? &quot;, &quot;&quot;);</div><div class="line">if (result !== null) &#123;</div><div class="line">    alert(&quot;Welcome, &quot; + result);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
     
       
 
@@ -275,7 +448,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <span class="post-meta-item-text">Posted on</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-11-12T00:00:00+08:00">
                 2016-11-12
               </time>
@@ -408,7 +581,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <span class="post-meta-item-text">Posted on</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-06-19T00:00:00+08:00">
                 2016-06-19
               </time>
@@ -526,7 +699,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <span class="post-meta-item-text">Posted on</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-05-20T00:00:00+08:00">
                 2016-05-20
               </time>
@@ -664,7 +837,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <span class="post-meta-item-text">Posted on</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-04-30T00:00:00+08:00">
                 2016-04-30
               </time>
@@ -802,7 +975,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <span class="post-meta-item-text">Posted on</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-03-20T00:00:00+08:00">
                 2016-03-20
               </time>
@@ -948,7 +1121,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <span class="post-meta-item-text">Posted on</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-03-11T00:00:00+08:00">
                 2016-03-11
               </time>
@@ -1133,7 +1306,7 @@ if(xhr){
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <span class="post-meta-item-text">Posted on</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-03-10T00:00:00+08:00">
                 2016-03-10
               </time>
@@ -1277,7 +1450,7 @@ if(xhr){
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <span class="post-meta-item-text">Posted on</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-01-15T00:00:00+08:00">
                 2016-01-15
               </time>
@@ -1411,7 +1584,7 @@ if(xhr){
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <span class="post-meta-item-text">Posted on</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2015-11-05T00:00:00+08:00">
                 2015-11-05
               </time>
@@ -1490,134 +1663,6 @@ if(xhr){
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2015/11/03/一款有趣的Javascript动画效果/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="Fenglin">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="/images/avatar.gif">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="Feng~Lin">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="Feng~Lin" src="">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2015/11/03/一款有趣的Javascript动画效果/" itemprop="url">
-                  【BOOM】一款有趣的Javascript动画效果
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2015-11-03T00:00:00+08:00">
-                2015-11-03
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>实践出真知，有的时候看到一些有趣的现象就想着用自己所学的知识复现一下。</p>
-<h3 id="boomJS-缘起"><a href="#boomJS-缘起" class="headerlink" title="boomJS 缘起"></a>boomJS 缘起</h3><p>前几天在 github 上看到同事的一个这样的小项目，在 IOS 上实现了这样一个小动画效果，看上去蛮炫的，效果图：<br><img src="http://images2015.cnblogs.com/blog/608782/201603/608782-20160329172558519-1556108424.gif" alt="Generating"><br>我就寻思着，在浏览器环境下，用 Javascript 怎么实现呢？</p>
-<p>在浓烈的好奇心驱使下，最终利用 Javascript 和 CSS3 完成了模仿上面的效果，通过调用方法，可以将页面上的图片一键爆炸，我给它起了个 boomJS 的名字，贴两张效果图：<br><img src="http://images2015.cnblogs.com/blog/608782/201603/608782-20160329172955207-1171725961.gif" alt="Generating"><br><img src="http://images2015.cnblogs.com/blog/608782/201604/608782-20160427142448798-1647044740.gif" alt="Generating"></p>
-<h4 id="boomJS-实现"><a href="#boomJS-实现" class="headerlink" title="boomJS 实现"></a>boomJS 实现</h4><p>我感觉效果还是可以的，因为没有使用 canvas ，所以无法取到图片上每个像素的颜色值。使用了一些比较讨（sha）巧（bi）的方法，下面简单讲讲如何实现的：</p>
-<p>1、构造新图容器，隐藏原图</p>
-<p>原本的图是 <img> 标签的图，一张整图，最终的效果当然不是在原图上 boom ，看上去连贯的动画本质上只是一个障眼法，利用 Javascript 做了一些巧妙的变换，所以第一步所做的就是取到原图的高宽及相对浏览器视窗的定位，再创建一个新的容器附着在原图之上，然后隐藏原图。</p>
-<p>这个方法里面我主要用到了 getBoundingClientRect 这个方法，该方法返回元素的大小及其相对于视口的位置，完美满足我的需要。</p>
-<p>嗯，这一步做了什么呢？简单的如下所示：<br><img src="http://images2015.cnblogs.com/blog/608782/201603/608782-20160329174940629-1244384805.jpg" alt="Generating"><br>2、生成一张张是碎裂小图</p>
-<p>最后效果是图片 boom 一下裂开，所以第二步要做的就是模拟出一小块一小块小图，这里每一个小块就是一个新的 div ，然后利用图片的定位 background-position 将其定位到合适的位置，嘿，看看效果：<br><img src="http://images2015.cnblogs.com/blog/608782/201603/608782-20160329175415879-795860893.jpg" alt="Generating"><br>可以看到，这里分割成了很多个小块，每个小块其实是一个 div 然后，这些小块被添加到我们上一步中设置的容器当中，然后利用原图设置 div 的背景图，所有 div 利用的都是原图一张背景图，接着图片定位就可以完成这样一个效果，说起来很简单，但是中间经历了很多计算，如何分割图片，图片的 width 与 height 比（是横图还是竖图），每个小块 div 的定位及小 div 背景图的定位，具体的可以到这里看看:boomJS。</p>
-<p>最后为了好看，设置了圆角，但是这样爆炸的话，感觉不够真实，图片一块一块的清晰可辨。所以利用缩放 scale ，随机让每个小块放大或者缩小，再看看缩放后的效果<br><img src="http://images2015.cnblogs.com/blog/608782/201603/608782-20160329180108660-1834990187.jpg" alt="Generating"><br>嗯，模糊了很多，效果近一步增强，这样爆开来比较真实。<br>3、boom 爆炸！</p>
-<p>嗯，到了鸡冻人心的最后一步，要做的就是给每一个 div 小块设置运动轨迹，然后同时爆开。</p>
-<p>比较繁琐，需要先算出图片的中心点，然后每个 div 块点以中心为基准点向外做直线运动，不得不说，做这个我还特意恶补了一下高中的几何知识（囧）。为了效果更加真实，每个 div 块运动的直线距离添加一个正负值恰当的随机数，那么就可以达到有的块炸的比较远，有的块炸的比较近。利用未缩放的小块图片做一下大概的示意图：<br><img src="http://images2015.cnblogs.com/blog/608782/201603/608782-20160329181134285-701094219.jpg" alt="Generating"></p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1663,8 +1708,8 @@ if(xhr){
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">29</span>
-              <span class="site-state-item-name">Artikel</span>
+              <span class="site-state-item-count">30</span>
+              <span class="site-state-item-name">posts</span>
             </a>
           </div>
 
@@ -1715,7 +1760,7 @@ if(xhr){
 
 
 <div class="powered-by">
-  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
 </div>
 
 <div class="theme-info">

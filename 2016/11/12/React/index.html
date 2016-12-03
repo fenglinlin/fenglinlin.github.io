@@ -1,0 +1,650 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="title: React 技术栈React 是目前最热门的前端框架
+Facebook 公司2013年推出
+现在最好的社区支持和生态圈
+大量的第三方工具
+React 的优点组件模式：代码复用和团队分工
+虚拟 DOM：性能优势
+移动端支持：跨终端
+React 的缺点学习曲线较陡峭
+全新的一套概念，与其他所有框架截然不同
+只有采用它的整个技术栈，才能发挥最大威力
+More info: React 非常先">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Feng~Lin">
+<meta property="og:url" content="http://yoursite.com/2016/11/12/React/index.html">
+<meta property="og:site_name" content="Feng~Lin">
+<meta property="og:description" content="title: React 技术栈React 是目前最热门的前端框架
+Facebook 公司2013年推出
+现在最好的社区支持和生态圈
+大量的第三方工具
+React 的优点组件模式：代码复用和团队分工
+虚拟 DOM：性能优势
+移动端支持：跨终端
+React 的缺点学习曲线较陡峭
+全新的一套概念，与其他所有框架截然不同
+只有采用它的整个技术栈，才能发挥最大威力
+More info: React 非常先">
+<meta property="og:image" content="https://github.com/ruanyf/jstraining/blob/master/docs/images/react-logo.png?raw=true">
+<meta property="og:updated_time" content="2016-12-03T11:55:18.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Feng~Lin">
+<meta name="twitter:description" content="title: React 技术栈React 是目前最热门的前端框架
+Facebook 公司2013年推出
+现在最好的社区支持和生态圈
+大量的第三方工具
+React 的优点组件模式：代码复用和团队分工
+虚拟 DOM：性能优势
+移动端支持：跨终端
+React 的缺点学习曲线较陡峭
+全新的一套概念，与其他所有框架截然不同
+只有采用它的整个技术栈，才能发挥最大威力
+More info: React 非常先">
+<meta name="twitter:image" content="https://github.com/ruanyf/jstraining/blob/master/docs/images/react-logo.png?raw=true">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2016/11/12/React/"/>
+
+
+
+
+
+  <title>  | Feng~Lin </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Feng~Lin</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Startseite
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archiv
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/11/12/React/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Fenglin">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.gif">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Feng~Lin">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Feng~Lin" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-11-12T00:00:00+08:00">
+                2016-11-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="title-React-技术栈"><a href="#title-React-技术栈" class="headerlink" title="title: React 技术栈"></a>title: React 技术栈</h2><p>React 是目前最热门的前端框架</p>
+<p>Facebook 公司2013年推出</p>
+<p>现在最好的社区支持和生态圈</p>
+<p>大量的第三方工具<br><img src="https://github.com/ruanyf/jstraining/blob/master/docs/images/react-logo.png?raw=true" alt="Generating"></p>
+<h2 id="React-的优点"><a href="#React-的优点" class="headerlink" title="React 的优点"></a>React 的优点</h2><p>组件模式：代码复用和团队分工</p>
+<p>虚拟 DOM：性能优势</p>
+<p>移动端支持：跨终端</p>
+<h2 id="React-的缺点"><a href="#React-的缺点" class="headerlink" title="React 的缺点"></a>React 的缺点</h2><p>学习曲线较陡峭</p>
+<p>全新的一套概念，与其他所有框架截然不同</p>
+<p>只有采用它的整个技术栈，才能发挥最大威力</p>
+<p>More info: React 非常先进和强大，但是学习和实现成本都不低</p>
+<h3 id="JSX-语法"><a href="#JSX-语法" class="headerlink" title="JSX 语法"></a>JSX 语法</h3><p>React 使用 JSX 语法，JavaScript 代码中可以写 HTML 代码。</p>
+<figure class="highlight plain"><figcaption><span>myTitle = <h1>Hello, world!</h1>;</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">```</div><div class="line"></div><div class="line"></div><div class="line">### JSX 语法解释</div><div class="line">（1）JSX 语法的最外层，只能有一个节点。</div><div class="line"></div><div class="line">``` </div><div class="line">// 错误</div><div class="line">let myTitle = &lt;p&gt;Hello&lt;/p&gt;&lt;p&gt;World&lt;/p&gt;;</div></pre></td></tr></table></figure>
+<p>（2）JSX 语法中可以插入 JavaScript 代码，使用大括号。</p>
+<figure class="highlight plain"><figcaption><span>myTitle = <p>&#123;'Hello ' + 'World'&#125;</p></span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">```</div><div class="line"></div><div class="line">### Babel 转码器</div><div class="line">JavaScript 引擎（包括浏览器和 Node）都不认识 JSX，需要首先使用 Babel 转码，然后才能运行。</div><div class="line"></div><div class="line">React 需要加载两个库：React 和 React-DOM，前者是 React 的核心库，后者是 React 的 DOM 适配库。</div><div class="line"></div><div class="line">Babel 用来在浏览器转换 JSX 语法，如果服务器已经转好了，浏览器就不需要加载这个库。</div><div class="line"></div><div class="line">## React 组件</div><div class="line">#### 实验目的</div><div class="line">学会通过状态变动，引发组件的重新渲染。</div><div class="line">#### 操作步骤</div><div class="line">浏览器打开demos/react-component-demo/index3.html，仔细查看源码。</div><div class="line">#### 注意事项</div></pre></td></tr></table></figure>
+<p> class MyTitle extends React.Component {<br>    constructor(…args) {<br>      super(…args);<br>      this.state = {<br>        name: ‘访问者’<br>      };<br>    }<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">constructor是组件的构造函数，会在创建实例时自动调用。...args表示组件参数，super(...args)是 ES6 规定的写法。this.state对象用来存放内部状态，这里是定义初始状态。</div><div class="line"></div><div class="line">```&lt;div&gt;</div><div class="line">  &lt;input</div><div class="line">    type=&quot;text&quot;</div><div class="line">    onChange=&#123;this.handleChange.bind(this)&#125;</div><div class="line">  /&gt;</div><div class="line">  &lt;p&gt;你好，&#123;this.state.name&#125;&lt;/p&gt;</div><div class="line">&lt;/div&gt;;</div></pre></td></tr></table></figure></p>
+<p>this.state.name表示读取this.state的name属性。每当输入框有变动，就会自动调用onChange指定的监听函数，这里是this.handleChange，.bind(this)表示该方法内部的this，绑定当前组件。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/06/19/nodeJs/" rel="next" title="">
+                <i class="fa fa-chevron-left"></i> 
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/12/03/利用CSS、JavaScript及Ajax实现图片预加载/" rel="prev" title="利用CSS、JavaScript及Ajax实现图片预加载">
+                利用CSS、JavaScript及Ajax实现图片预加载 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Inhaltsverzeichnis
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Übersicht
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="Fenglin" />
+          <p class="site-author-name" itemprop="name">Fenglin</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">30</span>
+              <span class="site-state-item-name">Artikel</span>
+            </a>
+          </div>
+
+          
+
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#title-React-技术栈"><span class="nav-number">1.</span> <span class="nav-text">title: React 技术栈</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#React-的优点"><span class="nav-number">2.</span> <span class="nav-text">React 的优点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#React-的缺点"><span class="nav-number">3.</span> <span class="nav-text">React 的缺点</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#JSX-语法"><span class="nav-number">3.1.</span> <span class="nav-text">JSX 语法</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number"></span> <span class="nav-text">Hello, world!</span></a></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Fenglin</span>
+</div>
+
+
+<div class="powered-by">
+  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>

@@ -1,0 +1,697 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="title: 正则表达式学习笔记正则表达式对于我来说一直像黑暗魔法一样的存在。手机正则去网上搜，邮箱正则去网上搜，复杂点的看看文档拼凑一下，再复杂只能厚着脸皮让其他同事给写一个。从来没有系统的学习过，今天准备拿下它。
+1. 学习目标：了解正则表达式语法在IDE中使用正则表达式在javascript 中使用正则表达式处理字符串
+2. 什么是正则表达式正则表达式，又称正规表示式、正规表示法、正规表达式">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Feng~Lin">
+<meta property="og:url" content="http://yoursite.com/2014/04/30/正则表达式学习笔记/index.html">
+<meta property="og:site_name" content="Feng~Lin">
+<meta property="og:description" content="title: 正则表达式学习笔记正则表达式对于我来说一直像黑暗魔法一样的存在。手机正则去网上搜，邮箱正则去网上搜，复杂点的看看文档拼凑一下，再复杂只能厚着脸皮让其他同事给写一个。从来没有系统的学习过，今天准备拿下它。
+1. 学习目标：了解正则表达式语法在IDE中使用正则表达式在javascript 中使用正则表达式处理字符串
+2. 什么是正则表达式正则表达式，又称正规表示式、正规表示法、正规表达式">
+<meta property="og:image" content="https://dn-myg6wstv.qbox.me/3fd0c8d1c0e6614ddffc.jpg">
+<meta property="og:image" content="https://dn-myg6wstv.qbox.me/a774384e61752ce942a0.jpg">
+<meta property="og:image" content="https://dn-myg6wstv.qbox.me/f536f473724093a5548e.jpg">
+<meta property="og:image" content="https://dn-myg6wstv.qbox.me/eeb1d71e254fde06090e.jpg">
+<meta property="og:image" content="https://dn-myg6wstv.qbox.me/d7f51998f922e51426cb.jpg">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2016/11/29/98b62e4c4bb46a7d4bb6caaf609bb2e1">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2016/11/29/b5b8d1d93fa5dced5a98f4dca5f52632">
+<meta property="og:image" content="https://dn-myg6wstv.qbox.me/bb10c84bef012f611b82.jpg">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2016/11/29/ffe199631d6c0de91fbdbe8343419b24">
+<meta property="og:image" content="https://dn-myg6wstv.qbox.me/dbd465a091a35072deef.jpg">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2016/11/29/eb573baedf3ae2c4d6255070b80d2303">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2016/11/30/7dfdc4fb6d063e1c2918b132cd1f78fe">
+<meta property="og:image" content="https://dn-myg6wstv.qbox.me/13f9df65830c8ab8777a.jpg">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2016/11/29/fe3bba2938289b6c77b0b2072687027d">
+<meta property="og:image" content="https://dn-myg6wstv.qbox.me/92296621793c1e9b289e.jpg">
+<meta property="og:updated_time" content="2016-12-03T11:51:20.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Feng~Lin">
+<meta name="twitter:description" content="title: 正则表达式学习笔记正则表达式对于我来说一直像黑暗魔法一样的存在。手机正则去网上搜，邮箱正则去网上搜，复杂点的看看文档拼凑一下，再复杂只能厚着脸皮让其他同事给写一个。从来没有系统的学习过，今天准备拿下它。
+1. 学习目标：了解正则表达式语法在IDE中使用正则表达式在javascript 中使用正则表达式处理字符串
+2. 什么是正则表达式正则表达式，又称正规表示式、正规表示法、正规表达式">
+<meta name="twitter:image" content="https://dn-myg6wstv.qbox.me/3fd0c8d1c0e6614ddffc.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2014/04/30/正则表达式学习笔记/"/>
+
+
+
+
+
+  <title>  | Feng~Lin </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Feng~Lin</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Startseite
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archiv
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2014/04/30/正则表达式学习笔记/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Fenglin">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.gif">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Feng~Lin">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Feng~Lin" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2014-04-30T00:00:00+08:00">
+                2014-04-30
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="title-正则表达式学习笔记"><a href="#title-正则表达式学习笔记" class="headerlink" title="title: 正则表达式学习笔记"></a>title: 正则表达式学习笔记</h2><p>正则表达式对于我来说一直像黑暗魔法一样的存在。手机正则去网上搜，邮箱正则去网上搜，复杂点的看看文档拼凑一下，再复杂只能厚着脸皮让其他同事给写一个。从来没有系统的学习过，今天准备拿下它。</p>
+<h4 id="1-学习目标："><a href="#1-学习目标：" class="headerlink" title="1. 学习目标："></a>1. 学习目标：</h4><p>了解正则表达式语法<br>在IDE中使用正则表达式<br>在javascript 中使用正则表达式处理字符串</p>
+<h4 id="2-什么是正则表达式"><a href="#2-什么是正则表达式" class="headerlink" title="2. 什么是正则表达式"></a>2. 什么是正则表达式</h4><p>正则表达式，又称正规表示式、正规表示法、正规表达式、规则表达式、常规表示法（英语：Regular Expression，在代码中常简写为regex、regexp或RE），计算机科学的一个概念。正则表达式使用单个字符串来描述、匹配一系列匹配某个句法规则的字符串。在很多文本编辑器里，正则表达式通常被用来检索、替换那些匹配某个模式的文本。</p>
+<p>通俗的讲就是按照某种规则去匹配符合条件的字符串</p>
+<h4 id="3-利用图形化工具理解正则表达式"><a href="#3-利用图形化工具理解正则表达式" class="headerlink" title="3.利用图形化工具理解正则表达式"></a>3.利用图形化工具理解正则表达式</h4><p>辅助理解正则表达的在线工具 <a href="https://regexper.com/" target="_blank" rel="external">https://regexper.com/</a> 我们利用这个工具辅助理解，正则表达式。语法没懂表着急，后面会有，这里只是学会用工具帮助我们学习。<br>手机号正则</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">```</div><div class="line">![Generating](https://dn-myg6wstv.qbox.me/1ce345adabe2cc8b2b96.jpg)</div><div class="line">注释：以1开头，第二位为3 4 5 7 9 其中一个，以9位（本身1次加重复8次）0-9数字结尾</div><div class="line"></div><div class="line">单词边界</div><div class="line"></div><div class="line">```/\bis\b/</div></pre></td></tr></table></figure>
+<p><img src="https://dn-myg6wstv.qbox.me/3fd0c8d1c0e6614ddffc.jpg" alt="Generating"></p>
+<p>注释： is前后都是单词的边界，比较晦涩难懂？感受下两者的区别，\b 会方道语法部分讲解<br><img src="https://dn-myg6wstv.qbox.me/a774384e61752ce942a0.jpg" alt="Generating"><br><img src="https://dn-myg6wstv.qbox.me/f536f473724093a5548e.jpg" alt="Generating"><br>URL分组替换</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">```</div><div class="line">看不懂的不要慌语法部分后面会有介绍，这里只是展示利用可视化的图形帮助我们理解正则表达式，可以回来再看木有关系</div><div class="line"></div><div class="line">![Generating](https://dn-myg6wstv.qbox.me/72a64c0f5f5ba4e7eaee.jpg)</div><div class="line"></div><div class="line">正则表达式中括号用来分组，这个时候我们可以通过用$1来获取 group#1的内容</div><div class="line"></div><div class="line">![Generating](https://user-gold-cdn.xitu.io/2016/11/29/1e337fa1b28952765d0f60e834c884ea)</div><div class="line"></div><div class="line">说下这个正则的意义，如果网站用了https，网站引用静态资源也必须是https，否则报错。如果写成 // 会自动识别 http 或者 https</div><div class="line"></div><div class="line">日期匹配与分组替换</div><div class="line"></div><div class="line">```/^\d&#123;4&#125;[/-]\d&#123;2&#125;[/-]\d&#123;2&#125;$/</div></pre></td></tr></table></figure>
+<p><img src="https://dn-myg6wstv.qbox.me/eeb1d71e254fde06090e.jpg" alt="Generating"></p>
+<p>这个正则比较复杂，画符念咒的地方太多了，一一分析：</p>
+<p>1.Start of line 是由^生效的表示以此开头</p>
+<p>2.对应结尾End of line 由$生效表示以此结尾</p>
+<p>2.接着看digit 由 \d 生效表示数字</p>
+<p>4.3times 由{4} 生效表示重复4次，开始的时候有疑问，为什么不是 4times 。后来明白作者的用意，正则表达式是一个规则，用这个规则去从字符串开始匹配到结束（注意计算机读字符串可是不会分行的，都是一个串，我们看到的多行，人家会认为是个 \t ）这里设计好像小火车的轨道一直开到末尾。digit 传过一次，3times表示再来三次循环，共4次，后面的once同理。 自己被自己啰嗦到了。</p>
+<p>5.接下来，是 one of 在手机正则里面已经出现了。表示什么都行。只要符合这两个都让通过。</p>
+<h2 id="Js中Regexp对象"><a href="#Js中Regexp对象" class="headerlink" title="Js中Regexp对象"></a>Js中Regexp对象</h2><p>Javascript 通过内置对象RegExp支持正则表达式，有两种方法实例化RegExp对象</p>
+<p>字面量方法</p>
+<figure class="highlight plain"><figcaption><span>reg =/\bis\b/g```</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">构造函数</div><div class="line"></div><div class="line">```const reg = new RegExp(&apos;\\bis\\b&apos;, &apos;g&apos;)</div></pre></td></tr></table></figure>
+<p>注意：第一个参数为正则表达式字符串（注意转译），第二个参数为修饰符，修饰符g代表全局搜索，后面会有详细介绍。</p>
+<h2 id="正则表达式语法"><a href="#正则表达式语法" class="headerlink" title="正则表达式语法"></a>正则表达式语法</h2><p>1 修饰符 （三个 g i m）</p>
+<p>修饰符与其他语法特殊，字面量方法声名的时候放到//后，构造函数声明的时候，作为第二个参数传入。整个正则表达式可以理解为正则表达式规则字符串+修饰符</p>
+<p>g：global 执行一个全局匹配<br>i：ignore case执行一个不区分大小写的匹配<br>m: multiple lines多行匹配<br>修饰符可以一起用 const reg =/\bis\b/gim</p>
+<p>来说说他们有什么作用</p>
+<p>有g和没有g的区别</p>
+<p><img src="https://dn-myg6wstv.qbox.me/d7f51998f922e51426cb.jpg" alt="Generating"></p>
+<p>没有g只替换了第一个，有g 所有的都换了</p>
+<p><img src="https://user-gold-cdn.xitu.io/2016/11/29/98b62e4c4bb46a7d4bb6caaf609bb2e1" alt="Generating"></p>
+<p>有i和没有i的区别</p>
+<p><img src="https://user-gold-cdn.xitu.io/2016/11/29/b5b8d1d93fa5dced5a98f4dca5f52632" alt="Generating"></p>
+<p>有i忽略大小写，没有i严格区分大小写</p>
+<p><img src="https://dn-myg6wstv.qbox.me/bb10c84bef012f611b82.jpg" alt="Generating"></p>
+<p>2 元字符</p>
+<p>正则表达式由两种基本字符组成：</p>
+<p>原义字符<br>非打印字符<br>元字符 (* + ? $ ^ . | \ ( ) { } [ ])<br>3 原义字符</p>
+<p>这个没什么好解释的，我们一直在举例的 /is/ 匹配字符串’is’</p>
+<p>\将下一个字符标记为一个特殊字符、或一个原义字符、或一个向后引用、或一个八进制转义符。例如，n”匹配字符“n”。“\n”匹配一个换行符。序列“\”匹配“\”而“(”则匹配“(”。</p>
+<p>4 非打印字符</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">字符	描述</div><div class="line">\cx	匹配由x指明的控制字符。例如， \cM 匹配一个 Control-M 或回车符。x 的值必须为 A-Z 或 a-z 之一。否则，将 c 视为一个原义的 &apos;c&apos; 字符。</div><div class="line">\f	匹配一个换页符。等价于 \x0c 和 \cL。</div><div class="line">\n	匹配一个换行符。等价于 \x0a 和 \cJ。</div><div class="line">\r	匹配一个回车符。等价于 \x0d 和 \cM。</div><div class="line">\s	匹配任何空白字符，包括空格、制表符、换页符等等。等价于 [ \f\n\r\t\v]。</div><div class="line">\S	匹配任何非空白字符。等价于 [^ \f\n\r\t\v]。</div><div class="line">\t	匹配一个制表符。等价于 \x09 和 \cI。</div><div class="line">\v	匹配一个垂直制表符。等价于 \x0b 和 \cK。</div></pre></td></tr></table></figure>
+<p>非打印字符，以\n为例</p>
+<p><img src="https://user-gold-cdn.xitu.io/2016/11/29/ffe199631d6c0de91fbdbe8343419b24" alt="Genearating"><br>其他的在前端引用比较少，应该在后端处理文本文件的时候会用到</p>
+<ol>
+<li>字符类 []</li>
+</ol>
+<p>在前面的手机号正则例子🌰中，我们已经使用过[] /^1[34578][0-9]{9}$/ : [34578]表示34578任意一个数字即可。在日期匹配与分组替换例子🌰中 /^\d{4}[/-]\d{2}[/-]\d{2}$/ 表示符合 ／ - 都可以<br><img src="https://dn-myg6wstv.qbox.me/dbd465a091a35072deef.jpg" alt="Generating"></p>
+<ol>
+<li>字符类取反 [^]</li>
+</ol>
+<p>表示不属于此类</p>
+<p><img src="https://user-gold-cdn.xitu.io/2016/11/29/eb573baedf3ae2c4d6255070b80d2303" alt="Generating"></p>
+<p>空格也不属于，好多狗🐶</p>
+<ol>
+<li>范围类[-]</li>
+</ol>
+<p>正则表达式支持一定范围规则比如 [a-z] [A-Z] [0-9] 可以连写[a-z0-9] 如果你只是想匹配-在 范围类最后加-即可。请看实例。<br><img src="https://user-gold-cdn.xitu.io/2016/11/30/7dfdc4fb6d063e1c2918b132cd1f78fe" alt="Generating"></p>
+<ol>
+<li>预定义类</li>
+</ol>
+<p>常用为了方便书写</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">字符	等价类	含义</div><div class="line">.	[^\n\r]	除了回车符和换行符之外的所有字符</div><div class="line">\d	[0-9]	数字字符</div><div class="line">\D	[^0-9]	非数字字符</div><div class="line">\s	[\t\n\x0B\f\r]	空白符</div><div class="line">\S	[^\t\n\x0B\f\r]	非空白符</div><div class="line">\w	[a-zA-Z_0-9]	单词字符（字母、数字、下划线）</div><div class="line">\W	[^a-zA-Z_0-9]	非单词字符</div></pre></td></tr></table></figure>
+<p>有了这些预定义类，写一些正则就很方便了，比如我们希望匹配一个 ab+数字+任意字符 的字符串，就可以这样写了 /ab\d./</p>
+<p><img src="https://dn-myg6wstv.qbox.me/13f9df65830c8ab8777a.jpg" alt="Generating"></p>
+<ol>
+<li>边界</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">字符	含义</div><div class="line">^	以xx开头</div><div class="line">$	以xx结尾</div><div class="line">\b	单词边界，指[a-zA-Z_0-9]之外的字符</div><div class="line">\B	非单词边界</div></pre></td></tr></table></figure>
+<p>边界顾名思义即定义匹配的边界条件，上面基本都在前面的例子碰到了，这里演示下\b与\B 的区别</p>
+<p><img src="https://user-gold-cdn.xitu.io/2016/11/29/fe3bba2938289b6c77b0b2072687027d" alt="Generating"></p>
+<ol>
+<li>量词</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">字符	含义</div><div class="line">?	出现零次或一次</div><div class="line">*	出现零次或多次(任意次)</div><div class="line">+	出现一次或多次（至道一次）</div><div class="line">&#123;n&#125;	对应零次或者n次</div><div class="line">&#123;n,m&#125;	至少出现n次但不超过m次</div><div class="line">&#123;n,&#125;	至少出现n次(+的升级版)</div><div class="line">&#123;0,n&#125;	至多出现n次(其实就是&#123;n,m&#125; 方便记忆而已)</div></pre></td></tr></table></figure>
+<p>如果没有量词，要匹配4位数字这样写就可以/\d\d\d\d/, 如果匹配50位100位呢？那不是要疯掉了？<br>有了量词，就可以这样写/\d{100}/, 量词的使用我们在手机号中使用过，表现在可视化中就是循环多少次。</p>
+<p>凑一个上面都包含的实例<br><code>/\d?@\d*@\d+@\d{10}@\d{10,20}@\d{10,}@\d{0,10}/</code><br><img src="https://dn-myg6wstv.qbox.me/92296621793c1e9b289e.jpg" alt="Generating"></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2014/04/02/SQL server/" rel="next" title="">
+                <i class="fa fa-chevron-left"></i> 
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2014/09/30/数据类型/" rel="prev" title="">
+                 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Inhaltsverzeichnis
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Übersicht
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="Fenglin" />
+          <p class="site-author-name" itemprop="name">Fenglin</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">30</span>
+              <span class="site-state-item-name">Artikel</span>
+            </a>
+          </div>
+
+          
+
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#title-正则表达式学习笔记"><span class="nav-number">1.</span> <span class="nav-text">title: 正则表达式学习笔记</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-学习目标："><span class="nav-number">1.0.1.</span> <span class="nav-text">1. 学习目标：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-什么是正则表达式"><span class="nav-number">1.0.2.</span> <span class="nav-text">2. 什么是正则表达式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-利用图形化工具理解正则表达式"><span class="nav-number">1.0.3.</span> <span class="nav-text">3.利用图形化工具理解正则表达式</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Js中Regexp对象"><span class="nav-number">2.</span> <span class="nav-text">Js中Regexp对象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#正则表达式语法"><span class="nav-number">3.</span> <span class="nav-text">正则表达式语法</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Fenglin</span>
+</div>
+
+
+<div class="powered-by">
+  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>

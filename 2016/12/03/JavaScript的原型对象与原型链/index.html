@@ -84,19 +84,26 @@
 
 
 
-<meta name="description" content="使用 function 关键字声明函数foo()&amp;#123;&amp;#125;123456```### 使用 函数表达式 声明函数``` var bar = function()&amp;#123;&amp;#125;
-使用 Function构造函数 声明函数var foobar = Function(&amp;#39;arg1&amp;#39;, &amp;#39;arg2&amp;#39;, &amp;#39;function body&amp;#39;)">
+<meta name="description" content="早前在博客园发的几篇基础文，都是图解系列，总结了一些JavaScript容易混淆的知识点，现在拿来在掘金分享一下吧。
+原文地址：三张图搞懂JavaScript的原型对象与原型链
+对于新人来说，JavaScript的原型是一个很让人头疼的事情，一来prototype容易与proto混淆，二来它们之间的各种指向实在有些复杂，其实市面上已经有非常多的文章在尝试说清楚，有一张所谓很经典的图，上面画了各种线">
 <meta property="og:type" content="article">
-<meta property="og:title" content="JavaScript 的函数声明">
-<meta property="og:url" content="http://yoursite.com/2016/11/29/javascript的函数声明/index.html">
+<meta property="og:title" content="JavaScript的原型对象与原型链">
+<meta property="og:url" content="http://yoursite.com/2016/12/03/JavaScript的原型对象与原型链/index.html">
 <meta property="og:site_name" content="Feng~Lin">
-<meta property="og:description" content="使用 function 关键字声明函数foo()&amp;#123;&amp;#125;123456```### 使用 函数表达式 声明函数``` var bar = function()&amp;#123;&amp;#125;
-使用 Function构造函数 声明函数var foobar = Function(&amp;#39;arg1&amp;#39;, &amp;#39;arg2&amp;#39;, &amp;#39;function body&amp;#39;)">
-<meta property="og:updated_time" content="2016-11-29T13:29:47.000Z">
+<meta property="og:description" content="早前在博客园发的几篇基础文，都是图解系列，总结了一些JavaScript容易混淆的知识点，现在拿来在掘金分享一下吧。
+原文地址：三张图搞懂JavaScript的原型对象与原型链
+对于新人来说，JavaScript的原型是一个很让人头疼的事情，一来prototype容易与proto混淆，二来它们之间的各种指向实在有些复杂，其实市面上已经有非常多的文章在尝试说清楚，有一张所谓很经典的图，上面画了各种线">
+<meta property="og:image" content="https://dn-myg6wstv.qbox.me/2e7817d676e605e54e62.png">
+<meta property="og:image" content="https://dn-myg6wstv.qbox.me/414693e5821245adeb86.png">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2016/11/29/877d6c73f3b810ddd1692fffd06c290b">
+<meta property="og:updated_time" content="2016-12-03T03:50:10.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="JavaScript 的函数声明">
-<meta name="twitter:description" content="使用 function 关键字声明函数foo()&amp;#123;&amp;#125;123456```### 使用 函数表达式 声明函数``` var bar = function()&amp;#123;&amp;#125;
-使用 Function构造函数 声明函数var foobar = Function(&amp;#39;arg1&amp;#39;, &amp;#39;arg2&amp;#39;, &amp;#39;function body&amp;#39;)">
+<meta name="twitter:title" content="JavaScript的原型对象与原型链">
+<meta name="twitter:description" content="早前在博客园发的几篇基础文，都是图解系列，总结了一些JavaScript容易混淆的知识点，现在拿来在掘金分享一下吧。
+原文地址：三张图搞懂JavaScript的原型对象与原型链
+对于新人来说，JavaScript的原型是一个很让人头疼的事情，一来prototype容易与proto混淆，二来它们之间的各种指向实在有些复杂，其实市面上已经有非常多的文章在尝试说清楚，有一张所谓很经典的图，上面画了各种线">
+<meta name="twitter:image" content="https://dn-myg6wstv.qbox.me/2e7817d676e605e54e62.png">
 
 
 
@@ -124,13 +131,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2016/11/29/javascript的函数声明/"/>
+  <link rel="canonical" href="http://yoursite.com/2016/12/03/JavaScript的原型对象与原型链/"/>
 
 
 
 
 
-  <title> JavaScript 的函数声明 | Feng~Lin </title>
+  <title> JavaScript的原型对象与原型链 | Feng~Lin </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="">
@@ -241,7 +248,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/11/29/javascript的函数声明/">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/12/03/JavaScript的原型对象与原型链/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="Fenglin">
@@ -265,7 +272,7 @@
             
             
               
-                JavaScript 的函数声明
+                JavaScript的原型对象与原型链
               
             
           </h1>
@@ -278,8 +285,8 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-11-29T21:27:42+08:00">
-                2016-11-29
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-03T11:50:10+08:00">
+                2016-12-03
               </time>
             
 
@@ -314,9 +321,16 @@
       
 
       
-        <h3 id="使用-function-关键字声明函数"><a href="#使用-function-关键字声明函数" class="headerlink" title="使用 function 关键字声明函数"></a>使用 function 关键字声明函数</h3><figure class="highlight plain"><figcaption><span>foo()&#123;&#125;</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">```</div><div class="line"></div><div class="line"></div><div class="line">### 使用 函数表达式 声明函数</div><div class="line"></div><div class="line">``` var bar = function()&#123;&#125;</div></pre></td></tr></table></figure>
-<h3 id="使用-Function构造函数-声明函数"><a href="#使用-Function构造函数-声明函数" class="headerlink" title="使用 Function构造函数 声明函数"></a>使用 Function构造函数 声明函数</h3><p><code>var foobar = Function(&#39;arg1&#39;, &#39;arg2&#39;, &#39;function body&#39;)</code></p>
-
+        <p>早前在博客园发的几篇基础文，都是图解系列，总结了一些JavaScript容易混淆的知识点，现在拿来在掘金分享一下吧。</p>
+<p>原文地址：<a href="http://shuiyi.io/article/5" target="_blank" rel="external">三张图搞懂JavaScript的原型对象与原型链</a></p>
+<p>对于新人来说，JavaScript的原型是一个很让人头疼的事情，一来prototype容易与<strong>proto</strong>混淆，二来它们之间的各种指向实在有些复杂，其实市面上已经有非常多的文章在尝试说清楚，有一张所谓很经典的图，上面画了各种线条，一会连接这个一会连接那个，说实话我自己看得就非常头晕，更谈不上完全理解了。所以我自己也想尝试一下，看看能不能把原型中的重要知识点拆分出来，用最简单的图表形式说清楚。</p>
+<p>我们知道原型是一个对象，其他对象可以通过它实现属性继承。但是尼玛除了prototype，又有一个<strong>proto</strong>是用来干嘛的？长那么像，让人怎么区分呢？它们都指向谁，那么混乱怎么记啊？原型链又是什么鬼？相信不少初学者甚至有一定经验的老鸟都不一定能完全说清楚，下面用三张简单的图，配合一些示例代码来理解一下。</p>
+<h3 id="1、prototype和proto的区别"><a href="#1、prototype和proto的区别" class="headerlink" title="1、prototype和proto的区别"></a>1、prototype和<strong>proto</strong>的区别</h3><p><img src="https://dn-myg6wstv.qbox.me/2e7817d676e605e54e62.png" alt="Generating"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">var a = &#123;&#125;;</div><div class="line">console.log(a.prototype); //undefined</div><div class="line">console.log(a.__proto__);  //Object &#123;&#125;</div><div class="line"></div><div class="line">var b = function()&#123;&#125;</div><div class="line">console.log(b.prototype); //b &#123;&#125;</div><div class="line">console.log(b.__proto__);  //function() &#123;&#125;</div></pre></td></tr></table></figure>
+<h3 id="2、proto属性指向谁"><a href="#2、proto属性指向谁" class="headerlink" title="2、proto属性指向谁"></a>2、<strong>proto</strong>属性指向谁</h3><p><img src="https://dn-myg6wstv.qbox.me/414693e5821245adeb86.png" alt="Generating"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">/*1、字面量方式*/</div><div class="line">var a = &#123;&#125;;</div><div class="line">console.log(a.constructor); //function Object() &#123; [native code] &#125; (即构造器Object）</div><div class="line">console.log(a.__proto__ === a.constructor.prototype); //true</div><div class="line"></div><div class="line">/*2、构造器方式*/</div><div class="line">var A = function ()&#123;&#125;; var a = new A();</div><div class="line">console.log(a.constructor); // function()&#123;&#125;（即构造器function A）</div><div class="line">console.log(a.__proto__ === a.constructor.prototype); //true</div><div class="line"></div><div class="line">/*3、Object.create()方式*/</div><div class="line">var a1 = &#123;a:1&#125; </div><div class="line">var a2 = Object.create(a1);</div><div class="line">console.log(a2.constructor); //function Object() &#123; [native code] &#125; (即构造器Object)</div><div class="line">console.log(a2.__proto__ === a1);// true </div><div class="line">console.log(a2.__proto__ === a2.constructor.prototype); //false（此处即为图1中的例外情况）</div></pre></td></tr></table></figure>
+<h2 id="什么是原型链"><a href="#什么是原型链" class="headerlink" title="什么是原型链"></a>什么是原型链</h2><p><img src="https://user-gold-cdn.xitu.io/2016/11/29/877d6c73f3b810ddd1692fffd06c290b" alt="Generating"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">var A = function()&#123;&#125;;</div><div class="line">var a = new A();</div><div class="line">console.log(a.__proto__); //Object &#123;&#125;（即构造器function A 的原型对象）</div><div class="line">console.log(a.__proto__.__proto__); //Object &#123;&#125;（即构造器function Object 的原型对象）</div><div class="line">console.log(a.__proto__.__proto__.__proto__); //null</div></pre></td></tr></table></figure>
       
     </div>
 
@@ -342,8 +356,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/11/29/Ajax/" rel="next" title="Ajax语法浅析">
-                <i class="fa fa-chevron-left"></i> Ajax语法浅析
+              <a href="/2016/12/03/Function 和 Object 的关系/" rel="next" title="一张图看懂 Function 和 Object 的关系及简述 instanceof 运算符">
+                <i class="fa fa-chevron-left"></i> 一张图看懂 Function 和 Object 的关系及简述 instanceof 运算符
               </a>
             
           </div>
@@ -352,8 +366,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2016/12/02/ajax简介/" rel="prev" title="Ajax 完整教程">
-                Ajax 完整教程 <i class="fa fa-chevron-right"></i>
+              <a href="/2016/12/03/javascript之BOM/" rel="prev" title="">
+                 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -460,7 +474,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#使用-function-关键字声明函数"><span class="nav-number">1.</span> <span class="nav-text">使用 function 关键字声明函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用-Function构造函数-声明函数"><span class="nav-number">2.</span> <span class="nav-text">使用 Function构造函数 声明函数</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1、prototype和proto的区别"><span class="nav-number">1.</span> <span class="nav-text">1、prototype和proto的区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2、proto属性指向谁"><span class="nav-number">2.</span> <span class="nav-text">2、proto属性指向谁</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是原型链"><span class="nav-number"></span> <span class="nav-text">什么是原型链</span></a></div>
             
 
           </div>

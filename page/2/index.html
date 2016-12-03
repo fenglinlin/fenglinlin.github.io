@@ -183,7 +183,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Startseite
+            Home
           </a>
         </li>
       
@@ -193,7 +193,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archiv
+            Archives
           </a>
         </li>
       
@@ -236,7 +236,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/11/28/http/">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/12/03/Function 和 Object 的关系/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="Fenglin">
@@ -261,8 +261,8 @@
             
               
                 
-                <a class="post-title-link" href="/2016/11/28/http/" itemprop="url">
-                  一个http请求发送到后端的详细过程
+                <a class="post-title-link" href="/2016/12/03/Function 和 Object 的关系/" itemprop="url">
+                  一张图看懂 Function 和 Object 的关系及简述 instanceof 运算符
                 </a>
               
             
@@ -275,9 +275,9 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-11-28T20:33:14+08:00">
-                2016-11-28
+              <span class="post-meta-item-text">Posted on</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-03T11:44:55+08:00">
+                2016-12-03
               </time>
             
 
@@ -314,17 +314,19 @@
       
         
           
-            <p>http是一个应用层协议，在这个层的协议，只是一种通信规范，也就是因为双方要进行通讯，而约定俗成的一个规范。</p>
-<h2 id="通讯步骤"><a href="#通讯步骤" class="headerlink" title="通讯步骤"></a>通讯步骤</h2><h3 id="连接"><a href="#连接" class="headerlink" title="连接"></a>连接</h3><p>当我们输入这样一个请求时，首先要建立一个socket连接，因为socket是通过ip和端口建立连接的所以之前还有一个DNS解析过程，把www.mycompany.com变成ip，如果url里不包含端口号，则会使用该协议的默认端口号。</p>
-<p>DNS的过程是这样的：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">### 请求</div><div class="line">     连接成功建立后，开始向web服务器发送请求，这个请求一般是GET或POST命令（POST用于FORM参数的传递）。GET命令的格式为：　　GET 路径/文件名 HTTP/1.0</div><div class="line"></div><div class="line">     文件名指出所访问的文件，HTTP/1.0指出Web浏览器使用的HTTP版本。现在可以发送GET命令：</div><div class="line">### 应答</div><div class="line">    web服务器收到这个请求，进行处理。从它的文档空间中搜索子目录mydir的文件index.html。如果找到该文件，Web服务器把该文件内容传送给相应的Web浏览器。</div><div class="line"></div><div class="line">为了告知浏览器，，Web服务器首先传送一些HTTP头信息，然后传送具体内容（即HTTP体信息），HTTP头信息和HTTP体信息之间用一个空行分开。</div><div class="line">常用的HTTP头信息有：</div><div class="line">　　```① HTTP 1.0 200 OK 　这是Web服务器应答的第一行，列出服务器正在运行的HTTP版本号和应答代码。代码&quot;200 OK&quot;表示请求完成。</div></pre></td></tr></table></figure></p>
-<p>　　<figure class="highlight plain"><figcaption><span>MIME_Version:1.0　它指示MIME类型的版本。　```　</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">　　```③ content_type:类型　这个头信息非常重要，它指示HTTP体信息的MIME类型。如：content_type:text/html指示传送的数据是HTML文档。</div></pre></td></tr></table></figure></p>
-<p>　　<figure class="highlight plain"><figcaption><span>content_length:长度值　它指示HTTP体信息的长度（字节）。```</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">### 关闭连接</div><div class="line">当应答结束后，Web浏览器与Web服务器必须断开，以保证其它Web浏览器能够与Web服务器建立连接。　　</div><div class="line">## tcp/ip基本模型及概念</div><div class="line">### 物理层</div><div class="line">设备，中继器（repeater）,集线器（hub）。对于这一层来说，从一个端口收到数据，会转发到所有端口。</div><div class="line">### 链路层</div><div class="line"></div><div class="line">协议：SDLC（Synchronous Data Link Control）HDLC（High-level Data Link Control） ppp协议独立的链路设备中最常见的当属网卡，网桥也是链路产品。集线器MODEM的某些功能有人认为属于链路层，对此还有些争议认为属于物理层设备。除此之外，所有的交换机都需要工作在数据链路层，但仅工作在数据链路层的仅是二层交换机。其他像三层交换机、四层交换机和七层交换机虽然可对应工作在OSI的三层、四层和七层，但二层功能仍是它们基本的功能。</div><div class="line"></div><div class="line">因为有了MAC地址表，所以才充分避免了冲突，因为交换机通过目的MAC地址知道应该把这个数据转发到哪个端口。而不会像HUB一样，会转发到所有滴端口。所以，交换机是可以划分冲突域滴。</div><div class="line">### 网络层</div><div class="line"></div><div class="line">四个主要的协议:   </div><div class="line">```网际协议IP：负责在主机和网络之间寻址和路由数据包。 ```    </div><div class="line">```地址解析协议ARP：获得同一物理网络中的硬件主机地址。   ```  </div><div class="line">```网际控制消息协议ICMP：发送消息，并报告有关数据包的传送错误。```     </div><div class="line">```互联组管理协议IGMP：被IP主机拿来向本地多路广播路由器报告主机组成员。</div></pre></td></tr></table></figure></p>
-<p>该层设备有三层交换机，路由器。</p>
-<h3 id="传输层"><a href="#传输层" class="headerlink" title="传输层"></a>传输层</h3><p>两个重要协议 TCP 和 UDP 。</p>
-<p>端口概念：TCP/UDP 使用 IP 地址标识网上主机，使用端口号来标识应用进程，即 TCP/UDP 用主机 IP 地址和为应用进程分配的端口号来标识应用进程。端口号是 16 位的无符号整数， TCP 的端口号和 UDP 的端口号是两个独立的序列。尽管相互独立，如果 TCP 和 UDP 同时提供某种知名服务，两个协议通常选择相同的端口号。这纯粹是为了使用方便，而不是协议本身的要求。利用端口号，一台主机上多个进程可以同时使用 TCP/UDP 提供的传输服务，并且这种通信是端到端的，它的数据由 IP 传递，但与 IP 数据报的传递路径无关。网络通信中用一个三元组可以在全局唯一标志一个应用进程：（协议，本地地址，本地端口号）。</p>
-<p>也就是说tcp和udp可以使用相同的端口。</p>
-<p>可以看到通过(协议,源端口，源ip，目的端口，目的ip)就可以用来完全标识一组网络连接。</p>
-<h3 id="应用层"><a href="#应用层" class="headerlink" title="应用层"></a>应用层</h3><p>基于tcp：Telnet FTP SMTP DNS HTTP<br>基于udp：RIP NTP（网落时间协议）和DNS （DNS也使用TCP）SNMP TFTP</p>
+            <h2 id="一、instanceof究竟是运算什么的？"><a href="#一、instanceof究竟是运算什么的？" class="headerlink" title="一、instanceof究竟是运算什么的？"></a>一、instanceof究竟是运算什么的？</h2><p>我曾经简单理解 instanceof 只是检测一个对象是否是另个对象 new 出来的实例（例如var a = new Object()，a instanceof Object返回true），但实际 instanceof 的运算规则上比这个更复杂。</p>
+<p>首先w3c上有官方解释（传送门，有兴趣的同学可以去看看），但是一如既往地让人无法一目了然地看懂……</p>
+<p>知乎上有同学把这个解释翻译成人能读懂的语言（传送门），看起来似乎明白一些了：</p>
+<p>//假设instanceof运算符左边是L，右边是R<br>L instanceof R //instanceof运算时，通过判断L的原型链上是否存在R.prototype<br>L.<strong>proto</strong>.<strong>proto</strong> ….. === R.prototype ？ //如果存在返回true 否则返回false<br>注意：instanceof 运算时会递归查找L的原型链，即 L.<strong>proto</strong>.<strong>proto</strong>.<strong>proto</strong>.<strong>proto</strong>… 直到找到了或者找到顶层为止。</p>
+<p>所以一句话理解 instanceof 的运算规则为：</p>
+<p>instanceof 检测左侧的 <strong>proto</strong> 原型链上，是否存在右侧的 prototype 原型。</p>
+<h2 id="二、图解构造器Function和Object的关系"><a href="#二、图解构造器Function和Object的关系" class="headerlink" title="二、图解构造器Function和Object的关系"></a>二、图解构造器Function和Object的关系</h2><p><img src="https://user-gold-cdn.xitu.io/2016/11/29/ce8bff088a74cda6789a11f6075b7411" alt="Generating"></p>
+<h4 id="我们再配合代码来看一下就明白了："><a href="#我们再配合代码来看一下就明白了：" class="headerlink" title="我们再配合代码来看一下就明白了："></a>我们再配合代码来看一下就明白了：</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">//①构造器Function的构造器是它自身</div><div class="line">Function.constructor=== Function;//true</div><div class="line"></div><div class="line">//②构造器Object的构造器是Function（由此可知所有构造器的constructor都指向Function）</div><div class="line">Object.constructor === Function;//true</div><div class="line"></div><div class="line">//③构造器Function的__proto__是一个特殊的匿名函数function() &#123;&#125;</div><div class="line">console.log(Function.__proto__);//function() &#123;&#125;</div><div class="line"></div><div class="line">//④这个特殊的匿名函数的__proto__指向Object的prototype原型。</div><div class="line">Function.__proto__.__proto__ === Object.prototype//true</div><div class="line"></div><div class="line">//⑤Object的__proto__指向Function的prototype，也就是上面③中所述的特殊匿名函数</div><div class="line">Object.__proto__ === Function.prototype;//true</div><div class="line">Function.prototype === Function.__proto__;//true</div></pre></td></tr></table></figure>
+<h2 id="三、当构造器Object和Function遇到instanceof"><a href="#三、当构造器Object和Function遇到instanceof" class="headerlink" title="三、当构造器Object和Function遇到instanceof"></a>三、当构造器Object和Function遇到instanceof</h2><p>我们回过头来看第一部分那个“奇怪的现象”，从上面那个图中我们可以看到：</p>
+<p>Function.<strong>proto</strong>.<strong>proto</strong> === Object.prototype;//true<br>Object.<strong>proto</strong> === Function.prototype;//true<br>所以再看回第一点中我们说的 instanceof 的运算规则，Function instanceof Object 和 Object instanceof Function 运算的结果当然都是true啦！</p>
+<p>如果看完以上，你还觉得上面的关系看晕了的话，只需要记住下面两个最重要的关系，其他关系就可以推导出来了：</p>
+<p>所有的构造器的 constructor 都指向 Function</p>
+<p>Function 的 prototype 指向一个特殊匿名函数，而这个特殊匿名函数的 <strong>proto</strong> 指向 Object.prototype</p>
 
           
         
@@ -363,7 +365,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/11/26/SQL server/">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/12/03/利用CSS、JavaScript及Ajax实现图片预加载/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="Fenglin">
@@ -388,252 +390,7 @@
             
               
                 
-                <a class="post-title-link" href="/2016/11/26/SQL server/" itemprop="url">
-                  数据库基本管理及数据操作和查询
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-11-26T21:01:09+08:00">
-                2016-11-26
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>SQL Server 2005将数据库映射为一组操作系统文件，数据和日志信息分别存储在不同的文件中。</p>
-<h2 id="系统数据库管理"><a href="#系统数据库管理" class="headerlink" title="系统数据库管理"></a>系统数据库管理</h2><h3 id="数据库文件"><a href="#数据库文件" class="headerlink" title="数据库文件"></a>数据库文件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">用于存储数据库中的所有对象，如表、视图、存储过程等</div></pre></td></tr></table></figure>
-<h4 id="数据文件"><a href="#数据文件" class="headerlink" title="数据文件"></a>数据文件</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">次要数据文件是可选的，由用户定义并存储主要数据文件未存储的其他数据和对象，建议文件扩展名为.ndf。</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">用以记录所有事物及每个事务对数据库所做的修改</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/11/10/nodeJs/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="Fenglin">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="/images/avatar.gif">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="Feng~Lin">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="Feng~Lin" src="">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/11/10/nodeJs/" itemprop="url">
-                  nodeJS
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-11-10T17:31:22+08:00">
-                2016-11-10
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="我的nodejs之路"><a href="#我的nodejs之路" class="headerlink" title="我的nodejs之路"></a>我的nodejs之路</h2><h3 id="fs模块–文件系统API"><a href="#fs模块–文件系统API" class="headerlink" title="fs模块–文件系统API"></a>fs模块–文件系统API</h3><p>File System<br>简介：文件模块是一个简单包装POSIX文件I/O操作方法集。可以通过调用require(‘fs’)来获取该模块。文件系统模块中的所有方法均有异步和同步<br>异步同步的区别：<br>异步：需要一个完成时的回调函数作为最后一个传入形参。回调函数的构成由调用的异步方法所决定，通常情况下回调函数的第一个形参为返回的错误信息。同时，使用异步版本不能保证执行顺序。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">fs.asy(<span class="string">'../hello'</span>,<span class="keyword">function</span>(err)&#123;</div><div class="line">	<span class="keyword">if</span>(err) throw err;</div><div class="line">	console.log(<span class="string">'success'</span>)</div><div class="line">&#125;)</div></pre></td></tr></table></figure></p>
-<p>同步：如果您使用的是同步版本的操作方法，则一旦出现错误，会以通常的抛出错误的形式返回错误。 你可以用try和catch等语句来拦截错误并使程序继续进行。<br>    fs.sy(‘../hello’)<br>    console.log(‘success’);<br><!--核心模块引用--><br>var fs =require(‘fs);<br>1、读取文件readFile函数<br>readFile(filename,[options],callback);<br> filename, 必选参数，文件名<br> [options],可选参数，<br> callback 读取文件之后执行的回调函数，参数默认第一个err,第二个data<br> <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">fs.readFile(__dirname + <span class="string">'/test.js'</span>, &#123;<span class="string">'utf8'</span>&#125;, <span class="keyword">function</span> (err, data) &#123;</div><div class="line">    <span class="keyword">if</span>(err) &#123;</div><div class="line">     console.error(err);</div><div class="line">     <span class="built_in">return</span>;</div><div class="line">    &#125;</div><div class="line">    console.log(data);</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/09/30/预加载/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="Fenglin">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="/images/avatar.gif">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="Feng~Lin">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="Feng~Lin" src="">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/09/30/预加载/" itemprop="url">
+                <a class="post-title-link" href="/2016/12/03/利用CSS、JavaScript及Ajax实现图片预加载/" itemprop="url">
                   利用CSS、JavaScript及Ajax实现图片预加载
                 </a>
               
@@ -647,9 +404,9 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-09-30T11:10:57+08:00">
-                2016-09-30
+              <span class="post-meta-item-text">Posted on</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-03T10:22:00+08:00">
+                2016-12-03
               </time>
             
 
@@ -737,11 +494,1167 @@
 
 
     
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/12/03/15 个有趣的 JavaScript 与 CSS 库/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Fenglin">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.gif">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Feng~Lin">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Feng~Lin" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/12/03/15 个有趣的 JavaScript 与 CSS 库/" itemprop="url">
+                  15 个有趣的 JavaScript 与 CSS 库
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-03T10:14:01+08:00">
+                2016-12-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>在十一月份的前端技术列表中，我们整合了一些令人感到惊叹的 GitHub 项目，其中包含了新的 CSS 框架、node.js包管理器，以及用于实现图标、加载效果、工具提示的纯 CSS 解决方案。</p>
+<p>那么，让我们一起来看看吧。Have Fun ！<br>More info: <a href="http://www.jianshu.com/p/f651fc45e586" target="_blank" rel="external">原文链接</a></p>
+<h2 id="1-Wing"><a href="#1-Wing" class="headerlink" title="1. Wing"></a>1. Wing</h2><p><img src="http://upload-images.jianshu.io/upload_images/675733-cb254909e1a7104b.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Generating"><br>Wing 是一个微型（压缩后仅有4KB）响应式的 CSS 框架，它提供了一个 12 列响应式网格以及基础的样式组件集，可为你的建站工作打下坚实的基础。当然，这个项目最酷的地方在于，它绝大多数的 HTML 元素都是自动样式化的，而不需要任何额外的类。希望你会喜欢！</p>
+<h2 id="2-Shave"><a href="#2-Shave" class="headerlink" title="2. Shave"></a>2. Shave</h2><p><img src="http://upload-images.jianshu.io/upload_images/675733-e5c16f99705b69df.png?imageMogr2/auto-orient/strip%7CimageView2/2" alt="Generating"><br>Shave 是一个零依赖、轻量级的 JavaScript 插件，它能截断多行文本，以适应基于 max-height 设定好的 html 元素，并将原始文本字符串存储在隐藏的<span>元素中，以便你的文本能够完整地保留在页面中。Shave 不依赖任何库，同时它在 jQuery 中提供了一个独立版本的插件。</span></p>
+<h2 id="3-Cerebral"><a href="#3-Cerebral" class="headerlink" title="3. Cerebral"></a>3. Cerebral</h2><p><img src="http://upload-images.jianshu.io/upload_images/675733-e4457a425165d111.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Generating"><br>一个 JavaScript MVC 应用程序状态管理器，并且它有独立的调试器。在 Cerebral 中，应用程序的状态被存储在单个的树模型中，该模型管理着所有服务器端和客户端的状态。</p>
+<p>而调试器具有对模型、控制器以及视图的实时管理权限。</p>
+<h2 id="4-Wenk"><a href="#4-Wenk" class="headerlink" title="4. Wenk"></a>4. Wenk</h2><p><img src="http://upload-images.jianshu.io/upload_images/675733-5a6757e7aeb89123.png?imageMogr2/auto-orient/strip%7CimageView2/2" alt="Generating"><br>Wenk 是一个轻量级纯 CSS 写的文本工具提示库。虽然它的压缩版仅有700字节，但它依然能够管理并提供一些定制选项。诸如不同提示工具的大小、位置和文本对齐。</p>
+<h2 id="5-CSS-Loader"><a href="#5-CSS-Loader" class="headerlink" title="5. CSS Loader"></a>5. CSS Loader</h2><p><img src="http://upload-images.jianshu.io/upload_images/675733-c5f251eac10f50b8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Generating"><br>CSS Loader 是一个非常有用加载器。它允许开发人员利用纯 CSS 文件，以及一个空<div>元素便可以快速的创建加载指示器。</div></p>
+<h2 id="6-Yarn"><a href="#6-Yarn" class="headerlink" title="6. Yarn"></a>6. Yarn</h2><p><img src="http://upload-images.jianshu.io/upload_images/675733-df75ef46172e3d0d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Generating"><br>相信近期 Facebook 推出的开源 Node.js 包管理器 Yarn，大家已经有所耳闻了。它具备强大的缓存系统，能够大大降低包的安装时间，并且能够为参与一个项目的所有用户维持相同的节点模块（node_modules）目录结构，有助于减少难以追踪的 bug 和在多台机器上复制。</p>
+<p>虽然，它与 NPM 产生背景不同，但使用 Yarn 几乎可以等同于使用 NPM ，开发人员需要更快的了解它哦！</p>
+<h2 id="7-Canvas-Gauges"><a href="#7-Canvas-Gauges" class="headerlink" title="7. Canvas Gauges"></a>7. Canvas Gauges</h2><p><img src="http://upload-images.jianshu.io/upload_images/675733-0ee26399dc9c9746.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Generating"><br>Canvas Gauges 是一个利用纯 JavaScript 和 HTML5 Canvas（画布）打造的可完全自定义的仪表，你可以用它来创建诸如机动车速度表、温度计等类型的测量设备。</p>
+<p>由于它的代码量很小，并且没有依赖，同时适用于物联网设备。你可以通过网站的示例来了解它。</p>
+<h2 id="8-CSS-Icon"><a href="#8-CSS-Icon" class="headerlink" title="8. CSS Icon"></a>8. CSS Icon</h2><p><img src="http://upload-images.jianshu.io/upload_images/675733-8baa7d49a03b348a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Generating"><br>CSS Icon 是一个汇聚了500+ 纯 CSS 代码实现的图标集网站。使用起来也十分简单，当你点击了某一个图标，便会弹出图标对应的 HTML 与 CSS 代码，同时你可以直观的了解到 CSS 代码的什么部分，实现了图标的哪些元素。</p>
+<p>如此棒的项目，是不是得给满分呢？快来 Enjoy吧！</p>
+<h2 id="9-CurrencyFormatter-js"><a href="#9-CurrencyFormatter-js" class="headerlink" title="9. CurrencyFormatter.js"></a>9. CurrencyFormatter.js</h2><p><img src="http://upload-images.jianshu.io/upload_images/675733-3e528b67a1975632.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Generating"><br>CurrencyFormatter.js 是一款简单实用的纯 JS 格式化货币库。它支持 155 种不同国家的货币格式，以及超过 700 种不同语言的本地化设置。</p>
+<p>此外，它还能处理某些不采用的货币格式，功能非常强大。</p>
+<h2 id="10-KUTE-js"><a href="#10-KUTE-js" class="headerlink" title="10. KUTE.js"></a>10. KUTE.js</h2><p><img src="http://upload-images.jianshu.io/upload_images/675733-cb8e9ade131f97bd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Generating"><br>一款具有高性能的原生 JavaScript 动画引擎：KUTE.js. 它的核心库提供了所有基本的动画方法，你可以添加许多插件来丰富 KUTE 的功能。同时，它还具备单独的扩展，可以同时与jQuery、SVG、CSS属性等一起工作。</p>
+<h2 id="11-Vue-Material"><a href="#11-Vue-Material" class="headerlink" title="11. Vue Material"></a>11. Vue Material</h2><p><img src="http://upload-images.jianshu.io/upload_images/675733-1f94116a76144d11.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Generating"><br>Vue Material 是一个根据 Material Design 规范构建的轻量级 Vue.js 框架。它旨在提供一组可重用的高品质组件和一系列 UI 元素，通过 Vue2.0 支持现代的 Web 浏览器来构建应用程序。</p>
+<p>该库也很容易实现，除了 Vue.js 之外没有任何依赖。</p>
+<h2 id="12-Test-Cafe"><a href="#12-Test-Cafe" class="headerlink" title="12. Test Cafe"></a>12. Test Cafe</h2><p><img src="http://upload-images.jianshu.io/upload_images/675733-816ea37812a0b5f9.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Generating"><br>Test Cafe 是一个纯 Node.js 编写的用于测试 Web 应用程序端到端的解决方案。它基于 Node.js，并且不需要安装 NPM 包之外的任何东西——不需要浏览器插件以及编译器。</p>
+<p>一旦你编写了测试，运行 Test Cafe，它将为你进行浏览器测试、收集结果并创建报告。</p>
+<h2 id="13-Core-css"><a href="#13-Core-css" class="headerlink" title="13. Core.css"></a>13. Core.css</h2><p><img src="http://upload-images.jianshu.io/upload_images/675733-2a324c854c22cf1c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Generating"><br>Core.css 是一个用于构建响应式网站的轻量级框架。它压缩后仅有 1.3kb，同时它没有预先设定的元素和内置动画。所以适用于搭建任何小型的 Web 项目。</p>
+<h2 id="14-Flv-js"><a href="#14-Flv-js" class="headerlink" title="14. Flv.js"></a>14. Flv.js</h2><p><img src="http://upload-images.jianshu.io/upload_images/675733-ffc24bcc45efbd20.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Generating"><br>B站相信大家都不会陌生，而 Flv.js 就是由 bilibili 网站开源的 HTML5 Flash 视频（FLV）播放器，纯原生 JavaScript 开发（ECMAScript 6 编写） ，没有用到 Flash。</p>
+<p>它的工作原理是 Flv.js 在 JavaScript 中流式解析 flv 文件流，并实时转封装为 fmp4 ，通过 Media Source Extensions 喂给浏览器，实现了 FLV 格式视频的播放。</p>
+<h2 id="15-Next-js"><a href="#15-Next-js" class="headerlink" title="15. Next.js"></a>15. Next.js</h2><p><img src="http://upload-images.jianshu.io/upload_images/675733-b4e20443c458cec1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Generating"><br>Next.js 是一个基于 React 的通用 JavaScript 框架。它提供了一种便利的方式来创建新的 JavaScript Web 应用程序。开发人员不必在搭建 Webpack 或 Babel 的配置上花费太多的时间了。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/12/03/css3的3d起步/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Fenglin">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.gif">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Feng~Lin">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Feng~Lin" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/12/03/css3的3d起步/" itemprop="url">
+                  玩转css3的3D
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-03T09:57:16+08:00">
+                2016-12-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="css3的3d起步"><a href="#css3的3d起步" class="headerlink" title="css3的3d起步"></a>css3的3d起步</h2><p>要玩转css3的3d，就必须了解几个词汇，便是透视(perspective)、旋转(rotate)和移动(translate)。透视即是以现实的视角来看屏幕上的2D事物，从而展现3D的效果。旋转则不再是2D平面上的旋转，而是三维坐标系的旋转，就包括X轴，Y轴，Z轴旋转。平移同理。</p>
+<p>当然用理论来说明，估计你还不明白。下面是3个gif：</p>
+<p>沿着X轴旋转<br><img src="https://user-gold-cdn.xitu.io/2016/11/29/66b980b1aa085ae825a282edaec6f4aa.gif" alt="Generating"></p>
+<p>沿着Y轴旋转<br><img src="https://user-gold-cdn.xitu.io/2016/11/29/6f11deaab529539b97e36a1ff938ab80.gif" alt="Generating"></p>
+<p>沿着Z轴旋转<br><img src="https://user-gold-cdn.xitu.io/2016/11/29/5cb3015fefcd2afd175ae7c9efda786e.gif" alt="Generating"></p>
+<p>旋转应该没问题了，那理解平移起来就比较容易了，就是在在X轴、Y轴、z轴移动。</p>
+<p>你可能会说透视比较不好理解，下面我介绍一下透视的几个属性。</p>
+<p>###perspective<br>perspective英文名便是透视，没有这东西就没办法形成3D效果，但是这个东西是怎么让我们浏览器形成3D 效果的呢，可以看下面这张图，其实学过绘画的应该知道透视关系，而这里就是这个道理。<br><img src="https://user-gold-cdn.xitu.io/2016/11/29/5cff35b9465ae65775b6480fd462858e.png" alt="Generating"><br>但是在css里它是有数值的，例如perspective: 1000px这个代表什么呢？我们可以这样理解，如果我们直接眼睛靠着物体看，物体就超大占满我们的视线，我们离它距离越来越大，它在变小，立体感也就出来了是不是，其实这个数值构造了一个我们眼睛离屏幕的距离，也就构造了一个虚拟3D假象。</p>
+<h3 id="perspective-origin"><a href="#perspective-origin" class="headerlink" title="perspective-origin"></a>perspective-origin</h3><p>由上面我们了解了perspective，而加上了这个origin是什么，我们前面说的这个是眼睛离物体的距离，而这个就是眼睛的视线，我们的视点的不同位置就决定了我们看到的不同景象，默认是中心，为perspectice-origin: 50% 50%,第一个数值是 3D 元素所基于的 X 轴，第二个定义在 y 轴上的位置</p>
+<p>当为元素定义 perspective-origin 属性时，其子元素会获得透视效果，而不是元素本身。必须与 perspective 属性一同使用，而且只影响 3D 转换元素。(W3school)</p>
+<p><img src="https://user-gold-cdn.xitu.io/2016/11/29/4fc1d93ec26ce2d8f6b32ca6021bc1e8.png" alt="Generating"></p>
+<h3 id="transform-style"><a href="#transform-style" class="headerlink" title="transform-style"></a>transform-style</h3><p>perspective又来了，没错，它是css中3D的关键，transform-style默认是flat，如果你要在元素上视线3D效果的话，就必须用上transform-style: preserve-3d,否则就只是平面的变换，而不是3D的变换</p>
+<h2 id="手把手带你玩转css3-3d"><a href="#手把手带你玩转css3-3d" class="headerlink" title="手把手带你玩转css3-3d"></a>手把手带你玩转css3-3d</h2><p>以上我们稍微了解概念，下面就开始实战吧！ 我们看一个效果，是不是很酷炫~ </p>
+<p><img src="https://user-gold-cdn.xitu.io/2016/11/29/269f9d4042e48f2822c936093fe8a5ba.gif" alt="Generating"></p>
+<h3 id="第一步：html结构"><a href="#第一步：html结构" class="headerlink" title="第一步：html结构"></a>第一步：html结构</h3><p>很简单的一个容器包裹着一个装了6个piece的piece-box</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&lt;div class=&quot;container&quot;&gt;</div><div class="line">       &lt;div class=&quot;piece-box&quot;&gt;</div><div class="line">           &lt;div class=&quot;piece piece-1&quot;&gt;&lt;/div&gt;</div><div class="line">           &lt;div class=&quot;piece piece-2&quot;&gt;&lt;/div&gt;</div><div class="line">           &lt;div class=&quot;piece piece-3&quot;&gt;&lt;/div&gt;</div><div class="line">           &lt;div class=&quot;piece piece-4&quot;&gt;&lt;/div&gt;</div><div class="line">           &lt;div class=&quot;piece piece-5&quot;&gt;&lt;/div&gt;</div><div class="line">           &lt;div class=&quot;piece piece-6&quot;&gt;&lt;/div&gt;</div><div class="line">       &lt;/div&gt;</div><div class="line">   &lt;/div&gt;</div></pre></td></tr></table></figure>
+<h3 id="第二步：-加上必要的3D属性，进入3D世界"><a href="#第二步：-加上必要的3D属性，进入3D世界" class="headerlink" title="第二步： 加上必要的3D属性，进入3D世界"></a>第二步： 加上必要的3D属性，进入3D世界</h3><p>通过上面的讲解，应该对perspective比较熟悉了吧,</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">/*容器*/</div><div class="line">   .container &#123;</div><div class="line">       -webkit-perspective: 1000px;</div><div class="line">       -moz-perspective: 1000px;</div><div class="line">       -ms-perspective: 1000px;</div><div class="line">       perspective: 1000px;</div><div class="line">   &#125;</div><div class="line">   /*piece盒子*/</div><div class="line">    .piece-box &#123;</div><div class="line">           perspective-origin: 50% 50%;</div><div class="line">           -webkit-transform-style: preserve-3d;</div><div class="line">           -moz-transform-style: preserve-3d;</div><div class="line">           -ms-transform-style: preserve-3d;</div><div class="line">           transform-style: preserve-3d;</div><div class="line">   &#125;</div></pre></td></tr></table></figure>
+<h3 id="第三步：加入必要的样式"><a href="#第三步：加入必要的样式" class="headerlink" title="第三步：加入必要的样式"></a>第三步：加入必要的样式</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div></pre></td><td class="code"><pre><div class="line">/*容器*/</div><div class="line">     .container &#123;</div><div class="line">         -webkit-perspective: 1000px;</div><div class="line">         -moz-perspective: 1000px;</div><div class="line">         -ms-perspective: 1000px;</div><div class="line">         perspective: 1000px;</div><div class="line">     &#125;</div><div class="line">     /*piece盒子*/</div><div class="line">     .piece-box &#123;</div><div class="line">         position: relative;</div><div class="line">         width: 200px;</div><div class="line">         height: 200px;</div><div class="line">         margin: 300px auto;</div><div class="line">         perspective-origin: 50% 50%;</div><div class="line">         -webkit-transform-style: preserve-3d;</div><div class="line">         -moz-transform-style: preserve-3d;</div><div class="line">         -ms-transform-style: preserve-3d;</div><div class="line">         transform-style: preserve-3d;</div><div class="line">     &#125;</div><div class="line">     /*piece通用样式*/</div><div class="line">     .piece &#123;</div><div class="line">         position: absolute;</div><div class="line">         width: 200px;</div><div class="line">         height: 200px;</div><div class="line">         background: red;</div><div class="line">         opacity: 0.5;</div><div class="line">     &#125;</div><div class="line">     .piece-1 &#123;</div><div class="line">         background: #FF6666;</div><div class="line">     &#125;</div><div class="line">     .piece-2 &#123;</div><div class="line">         background: #FFFF00;</div><div class="line">     &#125;</div><div class="line">     .piece-3 &#123;</div><div class="line">         background: #006699;</div><div class="line">     &#125;</div><div class="line">     .piece-4 &#123;</div><div class="line">         background: #009999;</div><div class="line">     &#125;</div><div class="line">     .piece-5 &#123;</div><div class="line">         background: #FF0033;</div><div class="line">     &#125;</div><div class="line">     .piece-6 &#123;</div><div class="line">         background: #FF6600;</div><div class="line">     &#125;</div></pre></td></tr></table></figure>
+<p>当然，在你完成这步之后你还是只看到一个正方形，也就是我们的piece-6,因为我们的3Dtransform还没开始<br><img src="https://user-gold-cdn.xitu.io/2016/11/29/17df207cfea90ec75e38e4978688b4b4.png" alt="Generating"></p>
+<h3 id="第四步：3D变换来袭"><a href="#第四步：3D变换来袭" class="headerlink" title="第四步：3D变换来袭"></a>第四步：3D变换来袭</h3><p>首先是实现走马灯，我们先不要让它走，先实现灯部分。 如何实现呢？因为要构成一个圆，圆是360度，而我们有6个piece，那么，很容易想到，我们需要把每一个piece以递增60度的方式rotateY，就变成如下</p>
+<p><img src="https://user-gold-cdn.xitu.io/2016/11/29/b00246872359f5a5afbe1437f1af6f5e.png" alt="Generating"><br>如何把他们从中心拉开呢？</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">这里我们还要注意一点，在我们使元素绕Y轴旋转以后，其实X轴和Z轴也会跟着旋转，所所以正方体的每个面的垂直线还是Z轴，我们就只需要改变下translateZ的值,而当translateZ为正的时候，就朝着我们的方向走来，这样就可以拉开了</div></pre></td></tr></table></figure>
+<p><img src="https://user-gold-cdn.xitu.io/2016/11/29/bcac2b546f1b8707d509ed906c9e108e.jpg" alt="Generating"><br>下面我们再修改下css<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div></pre></td><td class="code"><pre><div class="line">.piece-1 &#123;</div><div class="line">           background: #FF6666;</div><div class="line">           -webkit-transform: rotateY(0deg) translateZ(173.2px);</div><div class="line">           -ms-transform: rotateY(0deg) translateZ(173.2px);</div><div class="line">           -o-transform: rotateY(0deg) translateZ(173.2px);</div><div class="line">           transform: rotateY(0deg) translateZ(173.2px);</div><div class="line">       &#125;</div><div class="line">       .piece-2 &#123;</div><div class="line">           background: #FFFF00;</div><div class="line">           -webkit-transform: rotateY(60deg) translateZ(173.2px);</div><div class="line">           -ms-transform: rotateY(60deg) translateZ(173.2px);</div><div class="line">           -o-transform: rotateY(60deg) translateZ(173.2px);</div><div class="line">           transform: rotateY(60deg) translateZ(173.2px);</div><div class="line">       &#125;</div><div class="line">       .piece-3 &#123;</div><div class="line">           background: #006699;</div><div class="line">           -webkit-transform: rotateY(120deg) translateZ(173.2px);</div><div class="line">           -ms-transform: rotateY(120deg) translateZ(173.2px);</div><div class="line">           -o-transform: rotateY(120deg) translateZ(173.2px);</div><div class="line">           transform: rotateY(120deg) translateZ(173.2px);</div><div class="line">       &#125;</div><div class="line">       .piece-4 &#123;</div><div class="line">           background: #009999;</div><div class="line">           -webkit-transform: rotateY(180deg) translateZ(173.2px);</div><div class="line">           -ms-transform: rotateY(180deg) translateZ(173.2px);</div><div class="line">           -o-transform: rotateY(180deg) translateZ(173.2px);</div><div class="line">           transform: rotateY(180deg) translateZ(173.2px);</div><div class="line">       &#125;</div><div class="line">       .piece-5 &#123;</div><div class="line">           background: #FF0033;</div><div class="line">           -webkit-transform: rotateY(240deg) translateZ(173.2px);</div><div class="line">           -ms-transform: rotateY(240deg) translateZ(173.2px);</div><div class="line">           -o-transform: rotateY(240deg) translateZ(173.2px);</div><div class="line">           transform: rotateY(240deg) translateZ(173.2px);</div><div class="line">       &#125;</div><div class="line">       .piece-6 &#123;</div><div class="line">           background: #FF6600;</div><div class="line">           -webkit-transform: rotateY(300deg) translateZ(173.2px);</div><div class="line">           -ms-transform: rotateY(300deg) translateZ(173.2px);</div><div class="line">           -o-transform: rotateY(300deg) translateZ(173.2px);</div><div class="line">           transform: rotateY(300deg) translateZ(173.2px);</div><div class="line">       &#125;</div></pre></td></tr></table></figure></p>
+<p><img src="https://user-gold-cdn.xitu.io/2016/11/29/eef649b1a49f60bc31bfab5cf595eafd.png" alt="Generating"></p>
+<h3 id="第五步：animation让3D动起来"><a href="#第五步：animation让3D动起来" class="headerlink" title="第五步：animation让3D动起来"></a>第五步：animation让3D动起来</h3><p>要实现走马灯动，其实很简单，我们只要在piece-box上加上旋转动画就行了,5s完成动画，从0度旋转到360度</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div></pre></td><td class="code"><pre><div class="line">/*piece盒子*/</div><div class="line">        .piece-box &#123;</div><div class="line">            position: relative;</div><div class="line">            width: 200px;</div><div class="line">            height: 200px;</div><div class="line">            margin: 300px auto;</div><div class="line">            perspective-origin: 50% 50%;</div><div class="line">            -webkit-transform-style: preserve-3d;</div><div class="line">            -moz-transform-style: preserve-3d;</div><div class="line">            -ms-transform-style: preserve-3d;</div><div class="line">            transform-style: preserve-3d;</div><div class="line">            animation: pieceRotate 5s;</div><div class="line">            -moz-animation: pieceRotate 5s; /* Firefox */</div><div class="line">            -webkit-animation: pieceRotate 5s; /* Safari and Chrome */</div><div class="line">            -o-animation: pieceRotate 5s ; /* Opera */</div><div class="line">        &#125;</div><div class="line">        /*走马灯动画*/</div><div class="line">        @keyframes pieceRotate</div><div class="line">        &#123;</div><div class="line">        0%   &#123;-webkit-transform: rotateY(0deg);</div><div class="line">                -ms-transform: rotateY(0deg);</div><div class="line">                -o-transform: rotateY(0deg);</div><div class="line">                transform: rotateY(0deg);&#125;</div><div class="line">        100% &#123;-webkit-transform: rotateY(360deg);</div><div class="line">                -ms-transform: rotateY(360deg);</div><div class="line">                -o-transform: rotateY(360deg);</div><div class="line">                transform: rotateY(360deg);&#125;</div><div class="line">        &#125;</div><div class="line">        /* Firefox */</div><div class="line">        @-moz-keyframes pieceRotate</div><div class="line">        &#123;</div><div class="line">        0%   &#123;-webkit-transform: rotateY(0deg);</div><div class="line">                -ms-transform: rotateY(0deg);</div><div class="line">                -o-transform: rotateY(0deg);</div><div class="line">                transform: rotateY(0deg);&#125;</div><div class="line">        100% &#123;-webkit-transform: rotateY(360deg);</div><div class="line">                -ms-transform: rotateY(360deg);</div><div class="line">                -o-transform: rotateY(360deg);</div><div class="line">                transform: rotateY(360deg);&#125;</div><div class="line">        &#125;</div><div class="line">        /* Safari and Chrome */</div><div class="line">        @-webkit-keyframes pieceRotate</div><div class="line">        &#123;</div><div class="line">        0%   &#123;-webkit-transform: rotateY(0deg);</div><div class="line">                -ms-transform: rotateY(0deg);</div><div class="line">                -o-transform: rotateY(0deg);</div><div class="line">                transform: rotateY(0deg);&#125;</div><div class="line">        100% &#123;-webkit-transform: rotateY(360deg);</div><div class="line">                -ms-transform: rotateY(360deg);</div><div class="line">                -o-transform: rotateY(360deg);</div><div class="line">                transform: rotateY(360deg);&#125;</div><div class="line">        &#125;</div><div class="line">        /* Opera */</div><div class="line">        @-o-keyframes pieceRotate</div><div class="line">        &#123;</div><div class="line">        0%   &#123;-webkit-transform: rotateY(0deg);</div><div class="line">                -ms-transform: rotateY(0deg);</div><div class="line">                -o-transform: rotateY(0deg);</div><div class="line">                transform: rotateY(0deg);&#125;</div><div class="line">        100% &#123;-webkit-transform: rotateY(360deg);</div><div class="line">                -ms-transform: rotateY(360deg);</div><div class="line">                -o-transform: rotateY(360deg);</div><div class="line">                transform: rotateY(360deg);&#125;</div><div class="line">        &#125;</div></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/12/02/数据类型/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Fenglin">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.gif">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Feng~Lin">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Feng~Lin" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/12/02/数据类型/" itemprop="url">
+                  JS的数据类型和变量
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-02T22:49:05+08:00">
+                2016-12-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h2><p>计算机顾名思义就是可以做数学计算的机器，因此，计算机程序理所当然地可以处理各种数值。但是，计算机能处理的远不止数值，还可以处理文本、图形、音频、视频、网页等各种各样的数据，不同的数据，需要定义不同的数据类型。在JavaScript中定义了以下几种数据类型：</p>
+<h3 id="Number"><a href="#Number" class="headerlink" title="Number"></a>Number</h3><h4 id="JavaScript不区分整数和浮点数，统一用Number表示，以下都是合法的Number类型："><a href="#JavaScript不区分整数和浮点数，统一用Number表示，以下都是合法的Number类型：" class="headerlink" title="JavaScript不区分整数和浮点数，统一用Number表示，以下都是合法的Number类型："></a>JavaScript不区分整数和浮点数，统一用Number表示，以下都是合法的Number类型：</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">123; // 整数123</div><div class="line">0.456; // 浮点数0.456</div><div class="line">1.2345e3; // 科学计数法表示1.2345x1000，等同于1234.5</div><div class="line">-99; // 负数</div><div class="line">NaN; // NaN表示Not a Number，当无法计算结果时用NaN表示</div><div class="line">Infinity; // Infinity表示无限大，当数值超过了JavaScript的Number所能表示的最大值时，就表示为Infinity</div></pre></td></tr></table></figure>
+<p>计算机由于使用二进制，所以，有时候用十六进制表示整数比较方便，十六进制用0x前缀和0-9，a-f表示，例如：0xff00，0xa5b4c3d2，等等，它们和十进制表示的数值完全一样。</p>
+<p>Number可以直接做四则运算，规则和数学一致：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">1 + 2; // 3</div><div class="line">(1 + 2) * 5 / 2; // 7.5</div><div class="line">2 / 0; // Infinity</div><div class="line">0 / 0; // NaN</div><div class="line">10 % 3; // 1</div><div class="line">10.5 % 3; // 1.5</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">```</div><div class="line"></div><div class="line">### 字符串</div><div class="line">字符串是以单引号&apos;或双引号&quot;括起来的任意文本，比如&apos;abc&apos;，&quot;xyz&quot;等等。请注意，&apos;&apos;或&quot;&quot;本身只是一种表示方式，不是字符串的一部分，因此，字符串&apos;abc&apos;只有a，b，c这3个字符。</div><div class="line"></div><div class="line">### 布尔值</div><div class="line">布尔值和布尔代数的表示完全一致，一个布尔值只有true、false两种值，要么是true，要么是false，可以直接用true、false表示布尔值，也可以通过布尔运算计算出来：</div><div class="line"></div><div class="line">``` </div><div class="line">true; // 这是一个true值</div><div class="line">false; // 这是一个false值</div><div class="line">2 &gt; 1; // 这是一个true值</div><div class="line">2 &gt;= 3; // 这是一个false值</div></pre></td></tr></table></figure>
+<p>&amp;&amp;运算是与运算，只有所有都为true，&amp;&amp;运算结果才是true：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">true &amp;&amp; true; // 这个&amp;&amp;语句计算结果为true</div><div class="line">true &amp;&amp; false; // 这个&amp;&amp;语句计算结果为false</div><div class="line">false &amp;&amp; true &amp;&amp; false; // 这个&amp;&amp;语句计算结果为false</div></pre></td></tr></table></figure>
+<p>||运算是或运算，只要其中有一个为true，||运算结果就是true：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">false || false; // 这个||语句计算结果为false</div><div class="line">true || false; // 这个||语句计算结果为true</div><div class="line">false || true || false; // 这个||语句计算结果为true</div></pre></td></tr></table></figure>
+<p>!运算是非运算，它是一个单目运算符，把true变成false，false变成true：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">! true; // 结果为false</div><div class="line">! false; // 结果为true</div><div class="line">! (2 &gt; 5); // 结果为true</div></pre></td></tr></table></figure>
+<p>布尔值经常用在条件判断中，比如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">var age = 15;</div><div class="line">if (age &gt;= 18) &#123;</div><div class="line">    alert(&apos;adult&apos;);</div><div class="line">&#125; else &#123;</div><div class="line">    alert(&apos;teenager&apos;);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>### 比较运算符<br>当我们对Number做比较时，可以通过比较运算符得到一个布尔值：</p>
+<p>2 &gt; 5; // false<br>5 &gt;= 2; // true<br>7 == 7; // true<br>实际上，JavaScript允许对任意数据类型做比较：</p>
+<p>false == 0; // true<br>false === 0; // false<br>要特别注意相等运算符==。JavaScript在设计时，有两种比较运算符：</p>
+<p>第一种是==比较，它会自动转换数据类型再比较，很多时候，会得到非常诡异的结果；</p>
+<p>第二种是===比较，它不会自动转换数据类型，如果数据类型不一致，返回false，如果一致，再比较。</p>
+<p>由于JavaScript这个设计缺陷，不要使用==比较，始终坚持使用===比较。</p>
+<p>另一个例外是NaN这个特殊的Number与所有其他值都不相等，包括它自己：</p>
+<p>NaN === NaN; // false<br>唯一能判断NaN的方法是通过isNaN()函数：</p>
+<p>isNaN(NaN); // true<br>最后要注意浮点数的相等比较：</p>
+<p>1 / 3 === (1 - 2 / 3); // false<br>这不是JavaScript的设计缺陷。浮点数在运算过程中会产生误差，因为计算机无法精确表示无限循环小数。要比较两个浮点数是否相等，只能计算它们之差的绝对值，看是否小于某个阈值：</p>
+<p>Math.abs(1 / 3 - (1 - 2 / 3)) &lt; 0.0000001; // true<br>null和undefined</p>
+<p>null表示一个“空”的值，它和0以及空字符串’’不同，0是一个数值，’’表示长度为0的字符串，而null表示“空”。</p>
+<p>在其他语言中，也有类似JavaScript的null的表示，例如Java也用null，Swift用nil，Python用None表示。但是，在JavaScript中，还有一个和null类似的undefined，它表示“未定义”。</p>
+<p>JavaScript的设计者希望用null表示一个空的值，而undefined表示值未定义。事实证明，这并没有什么卵用，区分两者的意义不大。大多数情况下，我们都应该用null。undefined仅仅在判断函数参数是否传递的情况下有用。</p>
+<p>数组</p>
+<p>数组是一组按顺序排列的集合，集合的每个值称为元素。JavaScript的数组可以包括任意数据类型。例如：</p>
+<p>[1, 2, 3.14, ‘Hello’, null, true];<br>上述数组包含6个元素。数组用[]表示，元素之间用,分隔。</p>
+<p>另一种创建数组的方法是通过Array()函数实现：</p>
+<p>new Array(1, 2, 3); // 创建了数组[1, 2, 3]<br>然而，出于代码的可读性考虑，强烈建议直接使用[]。</p>
+<p>数组的元素可以通过索引来访问。请注意，索引的起始值为0：</p>
+<p>var arr = [1, 2, 3.14, ‘Hello’, null, true];<br>arr[0]; // 返回索引为0的元素，即1<br>arr[5]; // 返回索引为5的元素，即true<br>arr[6]; // 索引超出了范围，返回undefined<br>对象</p>
+<p>JavaScript的对象是一组由键-值组成的无序集合，例如：</p>
+<p>var person = {<br>    name: ‘Bob’,<br>    age: 20,<br>    tags: [‘js’, ‘web’, ‘mobile’],<br>    city: ‘Beijing’,<br>    hasCar: true,<br>    zipcode: null<br>};<br>JavaScript对象的键都是字符串类型，值可以是任意数据类型。上述person对象一共定义了6个键值对，其中每个键又称为对象的属性，例如，person的name属性为’Bob’，zipcode属性为null。</p>
+<p>要获取一个对象的属性，我们用对象变量.属性名的方式：</p>
+<p>person.name; // ‘Bob’<br>person.zipcode; // null<br>变量</p>
+<p>变量的概念基本上和初中代数的方程变量是一致的，只是在计算机程序中，变量不仅可以是数字，还可以是任意数据类型。</p>
+<p>变量在JavaScript中就是用一个变量名表示，变量名是大小写英文、数字、$和_的组合，且不能用数字开头。变量名也不能是JavaScript的关键字，如if、while等。申明一个变量用var语句，比如：</p>
+<p>var a; // 申明了变量a，此时a的值为undefined<br>var $b = 1; // 申明了变量$b，同时给$b赋值，此时$b的值为1<br>var s_007 = ‘007’; // s_007是一个字符串<br>var Answer = true; // Answer是一个布尔值true<br>var t = null; // t的值是null<br>变量名也可以用中文，但是，请不要给自己找麻烦。</p>
+<p>在JavaScript中，使用等号=对变量进行赋值。可以把任意数据类型赋值给变量，同一个变量可以反复赋值，而且可以是不同类型的变量，但是要注意只能用var申明一次，例如：</p>
+<p>var a = 123; // a的值是整数123<br>a = ‘ABC’; // a变为字符串<br>这种变量本身类型不固定的语言称之为动态语言，与之对应的是静态语言。静态语言在定义变量时必须指定变量类型，如果赋值的时候类型不匹配，就会报错。例如Java是静态语言，赋值语句如下：</p>
+<p>int a = 123; // a是整数类型变量，类型用int申明<br>a = “ABC”; // 错误：不能把字符串赋给整型变量<br>和静态语言相比，动态语言更灵活，就是这个原因。</p>
+<p>请不要把赋值语句的等号等同于数学的等号。比如下面的代码：</p>
+<p>var x = 10;<br>x = x + 2;<br>如果从数学上理解x = x + 2那无论如何是不成立的，在程序中，赋值语句先计算右侧的表达式x + 2，得到结果12，再赋给变量x。由于x之前的值是10，重新赋值后，x的值变成12。</p>
+<p>strict模式</p>
+<p>JavaScript在设计之初，为了方便初学者学习，并不强制要求用var申明变量。这个设计错误带来了严重的后果：如果一个变量没有通过var申明就被使用，那么该变量就自动被申明为全局变量：</p>
+<p>i = 10; // i现在是全局变量<br>在同一个页面的不同的JavaScript文件中，如果都不用var申明，恰好都使用了变量i，将造成变量i互相影响，产生难以调试的错误结果。</p>
+<p>使用var申明的变量则不是全局变量，它的范围被限制在该变量被申明的函数体内（函数的概念将稍后讲解），同名变量在不同的函数体内互不冲突。</p>
+<p>为了修补JavaScript这一严重设计缺陷，ECMA在后续规范中推出了strict模式，在strict模式下运行的JavaScript代码，强制通过var申明变量，未使用var申明变量就使用的，将导致运行错误。</p>
+<p>启用strict模式的方法是在JavaScript代码的第一行写上：</p>
+<p>‘use strict’;<br>这是一个字符串，不支持strict模式的浏览器会把它当做一个字符串语句执行，支持strict模式的浏览器将开启strict模式运行JavaScript。</p>
+<p>来测试一下你的浏览器是否能支持strict模式：</p>
+<p>‘use strict’;<br>// 如果浏览器支持strict模式，<br>// 下面的代码将报ReferenceError错误:</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/12/02/十大经典算法排序总结对比/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Fenglin">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.gif">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Feng~Lin">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Feng~Lin" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/12/02/十大经典算法排序总结对比/" itemprop="url">
+                  JS家的排序算法
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-02T22:41:09+08:00">
+                2016-12-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>原文作者：<a href="http://www.jianshu.com/p/1b4068ccd505" target="_blank" rel="external">不是小羊的肖恩</a></p>
+<h2 id="十大经典算法排序总结对比"><a href="#十大经典算法排序总结对比" class="headerlink" title="十大经典算法排序总结对比"></a>十大经典算法排序总结对比</h2><p><img src="http://upload-images.jianshu.io/upload_images/1867034-1d3e43cdb301fc9b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Generating"></p>
+<p>####名词解释：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">n: 数据规模</div><div class="line">k:“桶”的个数</div><div class="line">In-place: 占用常数内存，不占用额外内存</div><div class="line">Out-place: 占用额外内存</div><div class="line">稳定性：排序后2个相等键值的顺序和排序之前它们的顺序相同</div></pre></td></tr></table></figure></p>
+<h3 id="冒泡排序（Bubble-Sort）"><a href="#冒泡排序（Bubble-Sort）" class="headerlink" title="冒泡排序（Bubble Sort）"></a>冒泡排序（Bubble Sort）</h3><h4 id="冒泡排序须知："><a href="#冒泡排序须知：" class="headerlink" title="冒泡排序须知："></a>冒泡排序须知：</h4><p>作为最简单的排序算法之一，冒泡排序给我的感觉就像Abandon在单词书里出现的感觉一样，每次都在第一页第一位，所以最熟悉。。。冒泡排序还有一种优化算法，就是立一个flag，当在一趟序列遍历中元素没有发生交换，则证明该序列已经有序。但这种改进对于提升性能来说并没有什么太大作用。。</p>
+<h5 id="什么时候最快（Best-Cases）："><a href="#什么时候最快（Best-Cases）：" class="headerlink" title="什么时候最快（Best Cases）："></a>什么时候最快（Best Cases）：</h5><p>当输入的数据已经是正序时（都已经是正序了，我还要你冒泡排序有何用啊。。。。）</p>
+<h5 id="什么时候最慢（Worst-Cases）："><a href="#什么时候最慢（Worst-Cases）：" class="headerlink" title="什么时候最慢（Worst Cases）："></a>什么时候最慢（Worst Cases）：</h5><p>当输入的数据是反序时（写一个for循环反序输出数据不就行了，干嘛要用你冒泡排序呢，我是闲的吗。。。）</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1867034-e19840224b331fae.gif?imageMogr2/auto-orient/strip" alt="Generating"></p>
+<h4 id="冒泡排序JavaScript代码实现："><a href="#冒泡排序JavaScript代码实现：" class="headerlink" title="冒泡排序JavaScript代码实现："></a>冒泡排序JavaScript代码实现：</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">function bubbleSort(arr) &#123;</div><div class="line">    var len = arr.length;</div><div class="line">    for (var i = 0; i &lt; len; i++) &#123;</div><div class="line">        for (var j = 0; j &lt; len - 1 - i; j++) &#123;</div><div class="line">            if (arr[j] &gt; arr[j+1]) &#123;        //相邻元素两两对比</div><div class="line">                var temp = arr[j+1];        //元素交换</div><div class="line">                arr[j+1] = arr[j];</div><div class="line">                arr[j] = temp;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    return arr;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="选择排序（Selection-Sort）"><a href="#选择排序（Selection-Sort）" class="headerlink" title="选择排序（Selection Sort）"></a>选择排序（Selection Sort）</h2><h3 id="选择排序须知："><a href="#选择排序须知：" class="headerlink" title="选择排序须知："></a>选择排序须知：</h3><p>在时间复杂度上表现最稳定的排序算法之一，因为无论什么数据进去都是O(n²)的时间复杂度。。。所以用到它的时候，数据规模越小越好。唯一的好处可能就是不占用额外的内存空间了吧。</p>
+<h4 id="选择排序动图演示："><a href="#选择排序动图演示：" class="headerlink" title="选择排序动图演示："></a>选择排序动图演示：</h4><p><img src="http://upload-images.jianshu.io/upload_images/1867034-c6cc220cfb2b9ac8.gif?imageMogr2/auto-orient/strip" alt="Generating"></p>
+<h5 id="选择排序JavaScript代码实现："><a href="#选择排序JavaScript代码实现：" class="headerlink" title="选择排序JavaScript代码实现："></a>选择排序JavaScript代码实现：</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">function selectionSort(arr) &#123;</div><div class="line">    var len = arr.length;</div><div class="line">    var minIndex, temp;</div><div class="line">    for (var i = 0; i &lt; len - 1; i++) &#123;</div><div class="line">        minIndex = i;</div><div class="line">        for (var j = i + 1; j &lt; len; j++) &#123;</div><div class="line">            if (arr[j] &lt; arr[minIndex]) &#123;     //寻找最小的数</div><div class="line">                minIndex = j;                 //将最小数的索引保存</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        temp = arr[i];</div><div class="line">        arr[i] = arr[minIndex];</div><div class="line">        arr[minIndex] = temp;</div><div class="line">    &#125;</div><div class="line">    return arr;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="插入排序（Insertion-Sort）"><a href="#插入排序（Insertion-Sort）" class="headerlink" title="插入排序（Insertion Sort）"></a>插入排序（Insertion Sort）</h2><h3 id="插入排序须知："><a href="#插入排序须知：" class="headerlink" title="插入排序须知："></a>插入排序须知：</h3><p>插入排序的代码实现虽然没有冒泡排序和选择排序那么简单粗暴，但它的原理应该是最容易理解的了，因为只要打过扑克牌的人都应该能够秒懂。当然，如果你说你打扑克牌摸牌的时候从来不按牌的大小整理牌，那估计这辈子你对插入排序的算法都不会产生任何兴趣了。。。<br>插入排序和冒泡排序一样，也有一种优化算法，叫做拆半插入。对于这种算法，得了懒癌的我就套用教科书上的一句经典的话吧：感兴趣的同学可以在课后自行研究。。。<br><img src="http://upload-images.jianshu.io/upload_images/1867034-d1537e355abdd298.gif?imageMogr2/auto-orient/strip" alt="Generating"></p>
+<h4 id="插入排序JavaScript代码实现："><a href="#插入排序JavaScript代码实现：" class="headerlink" title="插入排序JavaScript代码实现："></a>插入排序JavaScript代码实现：</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">function insertionSort(arr) &#123;</div><div class="line">    var len = arr.length;</div><div class="line">    var preIndex, current;</div><div class="line">    for (var i = 1; i &lt; len; i++) &#123;</div><div class="line">        preIndex = i - 1;</div><div class="line">        current = arr[i];</div><div class="line">        while(preIndex &gt;= 0 &amp;&amp; arr[preIndex] &gt; current) &#123;</div><div class="line">            arr[preIndex+1] = arr[preIndex];</div><div class="line">            preIndex--;</div><div class="line">        &#125;</div><div class="line">        arr[preIndex+1] = current;</div><div class="line">    &#125;</div><div class="line">    return arr;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="希尔排序（Shell-Sort）"><a href="#希尔排序（Shell-Sort）" class="headerlink" title="希尔排序（Shell Sort）"></a>希尔排序（Shell Sort）</h2><h3 id="希尔排序须知："><a href="#希尔排序须知：" class="headerlink" title="希尔排序须知："></a>希尔排序须知：</h3><p>希尔排序是插入排序的一种更高效率的实现。它与插入排序的不同之处在于，它会优先比较距离较远的元素。希尔排序的核心在于间隔序列的设定。既可以提前设定好间隔序列，也可以动态的定义间隔序列。动态定义间隔序列的算法是《算法（第4版》的合著者Robert Sedgewick提出的。在这里，我就使用了这种方法。</p>
+<h4 id="希尔排序JavaScript代码实现："><a href="#希尔排序JavaScript代码实现：" class="headerlink" title="希尔排序JavaScript代码实现："></a>希尔排序JavaScript代码实现：</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">function shellSort(arr) &#123;</div><div class="line">    var len = arr.length,</div><div class="line">        temp,</div><div class="line">        gap = 1;</div><div class="line">    while(gap &lt; len/3) &#123;          //动态定义间隔序列</div><div class="line">        gap =gap*3+1;</div><div class="line">    &#125;</div><div class="line">    for (gap; gap &gt; 0; gap = Math.floor(gap/3)) &#123;</div><div class="line">        for (var i = gap; i &lt; len; i++) &#123;</div><div class="line">            temp = arr[i];</div><div class="line">            for (var j = i-gap; j &gt;= 0 &amp;&amp; arr[j] &gt; temp; j-=gap) &#123;</div><div class="line">                arr[j+gap] = arr[j];</div><div class="line">            &#125;</div><div class="line">            arr[j+gap] = temp;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    return arr;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="归并排序（Merge-Sort）"><a href="#归并排序（Merge-Sort）" class="headerlink" title="归并排序（Merge Sort）"></a>归并排序（Merge Sort）</h2><h3 id="归并排序须知："><a href="#归并排序须知：" class="headerlink" title="归并排序须知："></a>归并排序须知：</h3><p>作为一种典型的分而治之思想的算法应用，归并排序的实现由两种方法：</p>
+<p>1、自上而下的递归（所有递归的方法都可以用迭代重写，所以就有了第2种方法）<br>2、自下而上的迭代<br>在《数据结构与算法JavaScript描述》中，作者给出了自下而上的迭代方法。但是对于递归法，作者却认为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">However, it is not possible to do so in JavaScript, as the recursion goes too deep</div><div class="line">for the language to handle.</div><div class="line">然而,在 JavaScript 中这种方式不太可行,因为这个算法的递归深度对它来讲太深了。</div></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/12/02/React/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Fenglin">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.gif">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Feng~Lin">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Feng~Lin" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/12/02/React/" itemprop="url">
+                  React 技术栈
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-02T14:32:23+08:00">
+                2016-12-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>React 是目前最热门的前端框架</p>
+<p>Facebook 公司2013年推出</p>
+<p>现在最好的社区支持和生态圈</p>
+<p>大量的第三方工具<br><img src="https://github.com/ruanyf/jstraining/blob/master/docs/images/react-logo.png?raw=true" alt="Generating"></p>
+<h2 id="React-的优点"><a href="#React-的优点" class="headerlink" title="React 的优点"></a>React 的优点</h2><p>组件模式：代码复用和团队分工</p>
+<p>虚拟 DOM：性能优势</p>
+<p>移动端支持：跨终端</p>
+<h2 id="React-的缺点"><a href="#React-的缺点" class="headerlink" title="React 的缺点"></a>React 的缺点</h2><p>学习曲线较陡峭</p>
+<p>全新的一套概念，与其他所有框架截然不同</p>
+<p>只有采用它的整个技术栈，才能发挥最大威力</p>
+<p>More info: React 非常先进和强大，但是学习和实现成本都不低</p>
+<h3 id="JSX-语法"><a href="#JSX-语法" class="headerlink" title="JSX 语法"></a>JSX 语法</h3><p>React 使用 JSX 语法，JavaScript 代码中可以写 HTML 代码。</p>
+<figure class="highlight plain"><figcaption><span>myTitle = <h1>Hello, world!</h1>;</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">```</div><div class="line"></div><div class="line"></div><div class="line">### JSX 语法解释</div><div class="line">（1）JSX 语法的最外层，只能有一个节点。</div><div class="line"></div><div class="line">``` </div><div class="line">// 错误</div><div class="line">let myTitle = &lt;p&gt;Hello&lt;/p&gt;&lt;p&gt;World&lt;/p&gt;;</div></pre></td></tr></table></figure>
+<p>（2）JSX 语法中可以插入 JavaScript 代码，使用大括号。</p>
+<figure class="highlight plain"><figcaption><span>myTitle = <p>&#123;'Hello ' + 'World'&#125;</p></span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">```</div><div class="line"></div><div class="line">### Babel 转码器</div><div class="line">JavaScript 引擎（包括浏览器和 Node）都不认识 JSX，需要首先使用 Babel 转码，然后才能运行。</div><div class="line"></div><div class="line">React 需要加载两个库：React 和 React-DOM，前者是 React 的核心库，后者是 React 的 DOM 适配库。</div><div class="line"></div><div class="line">Babel 用来在浏览器转换 JSX 语法，如果服务器已经转好了，浏览器就不需要加载这个库。</div><div class="line"></div><div class="line">## React 组件</div><div class="line">#### 实验目的</div><div class="line">学会通过状态变动，引发组件的重新渲染。</div><div class="line">#### 操作步骤</div><div class="line">浏览器打开demos/react-component-demo/index3.html，仔细查看源码。</div><div class="line">#### 注意事项</div></pre></td></tr></table></figure>
+<p> class MyTitle extends React.Component {<br>    constructor(…args) {<br>      super(…args);<br>      this.state = {<br>        name: ‘访问者’<br>      };<br>    }<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">constructor是组件的构造函数，会在创建实例时自动调用。...args表示组件参数，super(...args)是 ES6 规定的写法。this.state对象用来存放内部状态，这里是定义初始状态。</div><div class="line"></div><div class="line">```&lt;div&gt;</div><div class="line">  &lt;input</div><div class="line">    type=&quot;text&quot;</div><div class="line">    onChange=&#123;this.handleChange.bind(this)&#125;</div><div class="line">  /&gt;</div><div class="line">  &lt;p&gt;你好，&#123;this.state.name&#125;&lt;/p&gt;</div><div class="line">&lt;/div&gt;;</div></pre></td></tr></table></figure></p>
+<p>this.state.name表示读取this.state的name属性。每当输入框有变动，就会自动调用onChange指定的监听函数，这里是this.handleChange，.bind(this)表示该方法内部的this，绑定当前组件。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/12/02/http入门协议/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Fenglin">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.gif">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Feng~Lin">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Feng~Lin" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/12/02/http入门协议/" itemprop="url">
+                  HTTP 协议入门
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-02T12:01:28+08:00">
+                2016-12-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>HTTP 协议是互联网的基础协议，也是网页开发的必备知识，最新版本 HTTP/2 更是让它成为技术热点。<br>本文介绍 HTTP 协议的历史演变和设计思路。转自阮一峰老师的网络日志，好东西大家一起分享</p>
+<p><img src="http://www.ruanyifeng.com/blogimg/asset/2016/bg2016081901.jpg" alt="Generating"></p>
+<h2 id="一、HTTP-0-9"><a href="#一、HTTP-0-9" class="headerlink" title="一、HTTP/0.9"></a>一、HTTP/0.9</h2><p>HTTP 是基于 TCP/IP 协议的应用层协议。它不涉及数据包（packet）传输，主要规定了客户端和服务器之间的通信格式，默认使用80端口。</p>
+<p>最早版本是1991年发布的0.9版。该版本极其简单，只有一个命令<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">```GET /index.html</div></pre></td></tr></table></figure></p>
+<p>上面命令表示，TCP 连接（connection）建立后，客户端向服务器请求（request）网页index.html。<br>协议规定，服务器只能回应HTML格式的字符串，不能回应别的格式。</p>
+<p>服务器发送完毕，就关闭TCP连接</p>
+<h2 id="二、HTTP-1-0"><a href="#二、HTTP-1-0" class="headerlink" title="二、HTTP/1.0"></a>二、HTTP/1.0</h2><h3 id="2-1-简介"><a href="#2-1-简介" class="headerlink" title="2.1 简介"></a>2.1 简介</h3><p>1996年5月，HTTP/1.0 版本发布，内容大大增加。<br>首先，任何格式的内容都可以发送。这使得互联网不仅可以传输文字，还能传输图像、视频、二进制文件。这为互联网的大发展奠定了基础。<br>其次，除了GET命令，还引入了POST命令和HEAD命令，丰富了浏览器与服务器的互动手段。<br>再次，HTTP请求和回应的格式也变了。除了数据部分，每次通信都必须包括头信息（HTTP header），用来描述一些元数据。<br>其他的新增功能还包括状态码（status code）、多字符集支持、多部分发送（multi-part type）、权限（authorization）、缓存（cache）、内容编码（content encoding）等。</p>
+<h3 id="2-2-请求格式"><a href="#2-2-请求格式" class="headerlink" title="2.2 请求格式"></a>2.2 请求格式</h3><p>下面是一个1.0版的HTTP请求的例子。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">GET / HTTP/1.0</div><div class="line">User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_5)</div><div class="line">Accept: */*</div></pre></td></tr></table></figure>
+<p>第一行是请求命令，必须在尾部添加协议版本（HTTP/1.0）。后面就是多行头信息，描述客户端的情况。</p>
+<h3 id="2-3-回应格式"><a href="#2-3-回应格式" class="headerlink" title="2.3 回应格式"></a>2.3 回应格式</h3><p>服务器的回应如下。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">HTTP/1.0 200 OK </div><div class="line">Content-Type: text/plain</div><div class="line">Content-Length: 137582</div><div class="line">Expires: Thu, 05 Dec 1997 16:00:00 GMT</div><div class="line">Last-Modified: Wed, 5 August 1996 15:55:28 GMT</div><div class="line">Server: Apache 0.84</div><div class="line">&lt;html&gt;</div><div class="line">	   &lt;body&gt;Hello World&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
+<p>回应的格式是”头信息 + 一个空行（\r\n） + 数据”。其中，第一行是”协议版本 + 状态码（status code） + 状态描述”。</p>
+<h3 id="2-4-Content-Type-字段"><a href="#2-4-Content-Type-字段" class="headerlink" title="2.4 Content-Type 字段"></a>2.4 Content-Type 字段</h3><p>关于字符的编码，1.0版规定，头信息必须是 ASCII 码，后面的数据可以是任何格式。因此，服务器回应的时候，必须告诉客户端，数据是什么格式，这就是Content-Type字段的作用。<br>下面是一些常见的Content-Type字段的值。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">text/plain</div><div class="line">text/html</div><div class="line">text/css</div><div class="line">image/jpeg</div><div class="line">image/png</div><div class="line">image/svg+xml</div><div class="line">audio/mp4</div><div class="line">video/mp4</div><div class="line">application/javascript</div><div class="line">application/pdf</div><div class="line">application/zip</div><div class="line">application/atom+xml</div></pre></td></tr></table></figure>
+<p>这些数据类型总称为MIME type，每个值包括一级类型和二级类型，之间用斜杠分隔。<br>除了预定义的类型，厂商也可以自定义类型。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">```</div><div class="line"></div><div class="line">上面的类型表明，发送的是Debian系统的二进制数据包。</div><div class="line">MIME type还可以在尾部使用分号，添加参数。</div><div class="line"></div><div class="line">```Content-Type: text/html; charset=utf-8</div></pre></td></tr></table></figure></p>
+<p>上面的类型表明，发送的是网页，而且编码是UTF-8。<br>客户端请求的时候，可以使用Accept字段声明自己可以接受哪些数据格式。</p>
+<p>MIME type不仅用在HTTP协议，还可以用在其他地方，比如HTML网页。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=UTF-8&quot; /&gt;</div><div class="line">&lt;!-- 等同于 --&gt;</div><div class="line">&lt;meta charset=&quot;utf-8&quot; /&gt;</div></pre></td></tr></table></figure></p>
+<h3 id="2-5-Content-Encoding-字段"><a href="#2-5-Content-Encoding-字段" class="headerlink" title="2.5 Content-Encoding 字段"></a>2.5 Content-Encoding 字段</h3><p>由于发送的数据可以是任何格式，因此可以把数据压缩后再发送。Content-Encoding字段说明数据的压缩方法。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Content-Encoding: gzip</div><div class="line">Content-Encoding: compress</div><div class="line">Content-Encoding: deflate</div></pre></td></tr></table></figure>
+<h3 id="2-6-缺点"><a href="#2-6-缺点" class="headerlink" title="2.6 缺点"></a>2.6 缺点</h3><p>HTTP/1.0 版的主要缺点是，每个TCP连接只能发送一个请求。发送数据完毕，连接就关闭，如果还要请求其他资源，就必须再新建一个连接。</p>
+<p>TCP连接的新建成本很高，因为需要客户端和服务器三次握手，并且开始时发送速率较慢（slow start）。所以，HTTP 1.0版本的性能比较差。随着网页加载的外部资源越来越多，这个问题就愈发突出了。</p>
+<p>为了解决这个问题，有些浏览器在请求时，用了一个非标准的Connection字段。</p>
+<figure class="highlight plain"><figcaption><span>keep-alive</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">```</div><div class="line"></div><div class="line">这个字段要求服务器不要关闭TCP连接，以便其他请求复用。服务器同样回应这个字段。</div><div class="line"></div><div class="line">```Connection: keep-alive</div></pre></td></tr></table></figure>
+<h2 id="三、HTTP-1-1"><a href="#三、HTTP-1-1" class="headerlink" title="三、HTTP/1.1"></a>三、HTTP/1.1</h2><p>1997年1月，HTTP/1.1 版本发布，只比 1.0 版本晚了半年。它进一步完善了 HTTP 协议，一直用到了20年后的今天，直到现在还是最流行的版本。</p>
+<h3 id="3-1-持久连接"><a href="#3-1-持久连接" class="headerlink" title="3.1 持久连接"></a>3.1 持久连接</h3><p>1.1 版的最大变化，就是引入了持久连接（persistent connection），即TCP连接默认不关闭，可以被多个请求复用，不用声明Connection: keep-alive</p>
+<p>客户端和服务器发现对方一段时间没有活动，就可以主动关闭连接。不过，规范的做法是，客户端在最后一个请求时，发送Connection: close，明确要求服务器关闭TCP连接。</p>
+<p>目前，对于同一个域名，大多数浏览器允许同时建立6个持久连接。</p>
+<h3 id="3-2-管道机制"><a href="#3-2-管道机制" class="headerlink" title="3.2 管道机制"></a>3.2 管道机制</h3><p>1.1 版还引入了管道机制（pipelining），即在同一个TCP连接里面，客户端可以同时发送多个请求。这样就进一步改进了HTTP协议的效率</p>
+<p>举例来说，客户端需要请求两个资源。以前的做法是，在同一个TCP连接里面，先发送A请求，然后等待服务器做出回应，收到后再发出B请求。管道机制则是允许浏览器同时发出A请求和B请求，但是服务器还是按照顺序，先回应A请求，完成后再回应B请求</p>
+<h3 id="3-3-Content-Length-字段"><a href="#3-3-Content-Length-字段" class="headerlink" title="3.3 Content-Length 字段"></a>3.3 Content-Length 字段</h3><p>一个TCP连接现在可以传送多个回应，势必就要有一种机制，区分数据包是属于哪一个回应的。这就是Content-length字段的作用，声明本次回应的数据长度。</p>
+<p>Content-Length: 3495</p>
+<h3 id="3-4-分块传输编码"><a href="#3-4-分块传输编码" class="headerlink" title="3.4 分块传输编码"></a>3.4 分块传输编码</h3><p>使用Content-Length字段的前提条件是，服务器发送回应之前，必须知道回应的数据长度。</p>
+<p>对于一些很耗时的动态操作来说，这意味着，服务器要等到所有操作完成，才能发送数据，显然这样的效率不高。更好的处理方法是，产生一块数据，就发送一块，采用”流模式”（stream）取代”缓存模式”（buffer）。</p>
+<p>因此，1.1版规定可以不使用Content-Length字段，而使用”分块传输编码”（chunked transfer encoding）。只要请求或回应的头信息有Transfer-Encoding字段，就表明回应将由数量未定的数据块组成。</p>
+<p>Transfer-Encoding: chunked</p>
+<p>每个非空的数据块之前，会有一个16进制的数值，表示这个块的长度。最后是一个大小为0的块，就表示本次回应的数据发送完了。下面是一个例子。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">HTTP/1.1 200 OK</div><div class="line">Content-Type: text/plain</div><div class="line">Transfer-Encoding: chunked</div><div class="line"></div><div class="line">25</div><div class="line">This is the data in the first chunk</div><div class="line"></div><div class="line">1C</div><div class="line">and this is the second one</div><div class="line"></div><div class="line">3</div><div class="line">con</div><div class="line"></div><div class="line">8</div><div class="line">sequence</div><div class="line"></div><div class="line">0</div></pre></td></tr></table></figure>
+<h3 id="3-5-其他功能"><a href="#3-5-其他功能" class="headerlink" title="3.5 其他功能"></a>3.5 其他功能</h3><p>1.1版还新增了许多动词方法：PUT、PATCH、HEAD、 OPTIONS、DELETE。<br>另外，客户端请求的头信息新增了Host字段，用来指定服务器的域名。</p>
+<p><code>Host: www.example.com</code><br>有了Host字段，就可以将请求发往同一台服务器上的不同网站，为虚拟主机的兴起打下了基础。</p>
+<h2 id="四、SPDY-协议"><a href="#四、SPDY-协议" class="headerlink" title="四、SPDY 协议"></a>四、SPDY 协议</h2><p>2009年，谷歌公开了自行研发的 SPDY 协议，主要解决 HTTP/1.1 效率不高的问题。</p>
+<p>这个协议在Chrome浏览器上证明可行以后，就被当作 HTTP/2 的基础，主要特性都在 HTTP/2 之中得到继承。</p>
+<h2 id="五、HTTP-2"><a href="#五、HTTP-2" class="headerlink" title="五、HTTP/2"></a>五、HTTP/2</h2><p>2015年，HTTP/2 发布。它不叫 HTTP/2.0，是因为标准委员会不打算再发布子版本了，下一个新版本将是 HTTP/3。</p>
+<h3 id="5-1-二进制协议"><a href="#5-1-二进制协议" class="headerlink" title="5.1 二进制协议"></a>5.1 二进制协议</h3><p>HTTP/1.1 版的头信息肯定是文本（ASCII编码），数据体可以是文本，也可以是二进制。HTTP/2 则是一个彻底的二进制协议，头信息和数据体都是二进制，并且统称为”帧”（frame）：头信息帧和数据帧。</p>
+<p>二进制协议的一个好处是，可以定义额外的帧。HTTP/2 定义了近十种帧，为将来的高级应用打好了基础。如果使用文本实现这种功能，解析数据将会变得非常麻烦，二进制解析则方便得多。</p>
+<h3 id="5-2-多工"><a href="#5-2-多工" class="headerlink" title="5.2 多工"></a>5.2 多工</h3><p>HTTP/2 复用TCP连接，在一个连接里，客户端和浏览器都可以同时发送多个请求或回应，而且不用按照顺序一一对应，这样就避免了”队头堵塞”。</p>
+<p>举例来说，在一个TCP连接里面，服务器同时收到了A请求和B请求，于是先回应A请求，结果发现处理过程非常耗时，于是就发送A请求已经处理好的部分， 接着回应B请求，完成后，再发送A请求剩下的部分。</p>
+<p>这样双向的、实时的通信，就叫做多工（Multiplexing）。</p>
+<h3 id="5-3-数据流"><a href="#5-3-数据流" class="headerlink" title="5.3 数据流"></a>5.3 数据流</h3><p>因为 HTTP/2 的数据包是不按顺序发送的，同一个连接里面连续的数据包，可能属于不同的回应。因此，必须要对数据包做标记，指出它属于哪个回应。</p>
+<p>HTTP/2 将每个请求或回应的所有数据包，称为一个数据流（stream）。每个数据流都有一个独一无二的编号。数据包发送的时候，都必须标记数据流ID，用来区分它属于哪个数据流。另外还规定，客户端发出的数据流，ID一律为奇数，服务器发出的，ID为偶数。</p>
+<p>数据流发送到一半的时候，客户端和服务器都可以发送信号（RST_STREAM帧），取消这个数据流。1.1版取消数据流的唯一方法，就是关闭TCP连接。这就是说，HTTP/2 可以取消某一次请求，同时保证TCP连接还打开着，可以被其他请求使用。</p>
+<p>客户端还可以指定数据流的优先级。优先级越高，服务器就会越早回应。</p>
+<h3 id="5-4-头信息压缩"><a href="#5-4-头信息压缩" class="headerlink" title="5.4 头信息压缩"></a>5.4 头信息压缩</h3><p>HTTP 协议不带有状态，每次请求都必须附上所有信息。所以，请求的很多字段都是重复的，比如Cookie和User Agent，一模一样的内容，每次请求都必须附带，这会浪费很多带宽，也影响速度。</p>
+<p>HTTP/2 对这一点做了优化，引入了头信息压缩机制（header compression）。一方面，头信息使用gzip或compress压缩后再发送；另一方面，客户端和服务器同时维护一张头信息表，所有字段都会存入这个表，生成一个索引号，以后就不发送同样字段了，只发送索引号，这样就提高速度了。</p>
+<h3 id="5-5-服务器推送"><a href="#5-5-服务器推送" class="headerlink" title="5.5 服务器推送"></a>5.5 服务器推送</h3><p>HTTP/2 允许服务器未经请求，主动向客户端发送资源，这叫做服务器推送（server push）。</p>
+<p>常见场景是客户端请求一个网页，这个网页里面包含很多静态资源。正常情况下，客户端必须收到网页后，解析HTML源码，发现有静态资源，再发出静态资源请求。其实，服务器可以预期到客户端请求网页后，很可能会再请求静态资源，所以就主动把这些静态资源随着网页一起发给客户端了</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/12/02/ajax简介/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Fenglin">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.gif">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Feng~Lin">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Feng~Lin" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/12/02/ajax简介/" itemprop="url">
+                  Ajax 完整教程
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-02T10:06:31+08:00">
+                2016-12-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>Ajax 由 HTML、JavaScript™ 技术、DHTML 和 DOM 组成，这一杰出的方法可以将笨拙的 Web 界面转化成交互性的 Ajax 应用程序。本文的作者是一位 Ajax 专家，他演示了这些技术如何协同工作 —— 从总体概述到细节的讨论 —— 使高效的 Web 开发成为现实。他还揭开了 Ajax 核心概念的神秘面纱，包括 XMLHttpRequest 对象。</p>
+<p>五年前，如果不知道 XML，您就是一只无人重视的丑小鸭。十八个月前，Ruby 成了关注的中心，不知道 Ruby 的程序员只能坐冷板凳了。今天，如果想跟上最新的技术时尚，那您的目标就是 Ajax。</p>
+<h2 id="Ajax简介"><a href="#Ajax简介" class="headerlink" title="Ajax简介"></a>Ajax简介</h2><p>Ajax 不仅仅 是一种时尚，它是一种构建网站的强大方法，而且不像学习一种全新的语言那样困难。</p>
+<p>但在详细探讨 Ajax 是什么之前，先让我们花几分钟了解 Ajax 做 什么。目前，编写应用程序时有两种基本的选择：</p>
+<h3 id="·桌面应用程序和·Web-应用程序"><a href="#·桌面应用程序和·Web-应用程序" class="headerlink" title="·桌面应用程序和·Web 应用程序"></a>·桌面应用程序和·Web 应用程序</h3><p>两者是类似的，桌面应用程序通常以 CD 为介质（有时候可从网站下载）并完全安装到您的计算机上。桌面应用程序可能使用互联网下载更新，但运行这些应用程序的代码在桌面计算机上。Web 应用程序运行在某处的 Web 服务器上 —— 毫不奇怪，要通过 Web 浏览器访问这种应用程序。</p>
+<p>不过，比这些应用程序的运行代码放在何处更重要的是，应用程序如何运转以及如何与其进行交互。桌面应用程序一般很快（就在您的计算机上运行，不用等待互联网连接），具有漂亮的用户界面（通常和操作系统有关）和非凡的动态性。可以单击、选择、输入、打开菜单和子菜单、到处巡游，基本上不需要等待。</p>
+<p>另一方面，Web 应用程序是最新的潮流，它们提供了在桌面上不能实现的服务（比如 Amazon.com 和 eBay）。但是，伴随着 Web 的强大而出现的是等待，等待服务器响应，等待屏幕刷新，等待请求返回和生成新的页面。</p>
+<p>显然这样说过于简略了，但基本的概念就是如此。您可能已经猜到，Ajax 尝试建立桌面应用程序的功能和交互性，与不断更新的 Web 应用程序之间的桥梁。可以使用像桌面应用程序中常见的动态用户界面和漂亮的控件，不过是在 Web 应用程序中。</p>
+<p>还等什么呢？我们来看看 Ajax 如何将笨拙的 Web 界面转化成能迅速响应的 Ajax 应用程序吧。</p>
+<p>老技术，新技巧</p>
+<p>在谈到 Ajax 时，实际上涉及到多种技术，要灵活地运用它必须深入了解这些不同的技术（本系列的头几篇文章将分别讨论这些技术）。好消息是您可能已经非常熟悉其中的大部分技术，更好的是这些技术都很容易学习，并不像完整的编程语言（如 Java 或 Ruby）那样困难。</p>
+<h4 id="Ajax应用程序用到的技术"><a href="#Ajax应用程序用到的技术" class="headerlink" title="Ajax应用程序用到的技术"></a>Ajax应用程序用到的技术</h4><figure class="highlight plain"><figcaption><span>用于建立 Web 表单并确定应用程序其他部分使用的字段。 </span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">```</div><div class="line"></div><div class="line">```·JavaScript 代码是运行 Ajax 应用程序的核心代码，帮助改进与服务器应用程序的通信。</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><figcaption><span>或 Dynamic HTML，用于动态更新表单。我们将使用 div、span 和其他动态 HTML 元素来标记 HTML。</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">```</div><div class="line"></div><div class="line">```·文档对象模型 DOM 用于（通过 JavaScript 代码）处理 HTML 结构和（某些情况下）服务器返回的 XML。</div></pre></td></tr></table></figure>
+<h3 id="Ajax-的定义"><a href="#Ajax-的定义" class="headerlink" title="Ajax 的定义"></a>Ajax 的定义</h3><p>Ajax 是 Asynchronous JavaScript and XML（以及 DHTML 等）的缩写。这个短语是 Adaptive Path 的 Jesse James Garrett 发明的（请参阅 参考资料），按照 Jesse 的解释，这不是 个首字母缩写词。</p>
+<h3 id="XMLHttpRequest-对象"><a href="#XMLHttpRequest-对象" class="headerlink" title="XMLHttpRequest 对象"></a>XMLHttpRequest 对象</h3><p>要了解的一个对象可能对您来说也是最陌生的，即 XMLHttpRequest。这是一个 JavaScript 对象，创建该对象很简单，如清单 1 所示。</p>
+<h4 id="清单1-创建新的XMLHttpRequest-对象"><a href="#清单1-创建新的XMLHttpRequest-对象" class="headerlink" title="清单1.创建新的XMLHttpRequest 对象"></a>清单1.创建新的XMLHttpRequest 对象</h4><figure class="highlight plain"><figcaption><span>language="javascript" type="text/javascript">```</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">```var xmlHttp =new XMLHttpRequest();</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">下一期文章中将进一步讨论这个对象，现在要知道这是处理所有服务器通信的对象。继续阅读之前，先停下来想一想：通过 XMLHttpRequest 对象与服务器进行对话的是 JavaScript 技术。这不是一般的应用程序流，这恰恰是 Ajax 的强大功能的来源。</div><div class="line"></div><div class="line">然后，服务器将数据返回 JavaScript 代码（仍然在 Web 表单中），后者决定如何处理这些数据。它可以迅速更新表单数据，让人感觉应用程序是立即完成的，表单没有提交或刷新而用户得到了新数据。JavaScript 代码甚至可以对收到的数据执行某种计算，再发送另一个请求，完全不需要用户干预！这就是 XMLHttpRequest 的强大之处。它可以根据需要自行与服务器进行交互，用户甚至可以完全不知道幕后发生的一切。结果就是类似于桌面应用程序的动态、快速响应、高交互性的体验，但是背后又拥有互联网的全部强大力量。</div><div class="line"></div><div class="line">加入一些 JavaScript</div><div class="line"></div><div class="line">得到 XMLHttpRequest 的句柄后，其他的 JavaScript 代码就非常简单了。事实上，我们将使用 JavaScript 代码完成非常基本的任务：</div></pre></td></tr></table></figure>
+<p>·获取表单数据：JavaScript 代码很容易从 HTML 表单中抽取数据并发送到服务器。<br>·修改表单上的数据：更新表单也很简单，从设置字段值到迅速替换图像。<br>·解析 HTML 和 XML：使用 JavaScript 代码操纵 DOM（请参阅 下一节），处理 HTML 表单服务器返回的 XML 数据的结构。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">#### 清单 2. 用 JavaScript 代码捕获和设置字段值</div><div class="line">// Get the value of the &quot;phone&quot; field and stuff it in a variable called phone</div><div class="line">var phone = document.getElementById(&quot;phone&quot;).value;</div><div class="line"></div><div class="line">// Set some values on a form using an array called response</div><div class="line">document.getElementById(&quot;order&quot;).value = response[0];</div><div class="line">document.getElementById(&quot;address&quot;).value = response[1];</div><div class="line"></div><div class="line">这里没有特别需要注意的地方，真是好极了！您应该认识到这里并没有非常复杂的东西。只要掌握了 XMLHttpRequest，Ajax 应用程序的其他部分就是如 清单 2 所示的简单 JavaScript 代码了，混合有少量的 HTML。同时，还要用一点儿 DOM，我们就来看看吧。</div><div class="line"></div><div class="line">以 DOM 结束</div><div class="line"></div><div class="line">最后还有 DOM，即文档对象模型。可能对有些读者来说 DOM 有点儿令人生畏，HTML 设计者很少使用它，即使 JavaScript 程序员也不大用到它，除非要完成某项高端编程任务。大量使用 DOM 的是 复杂的 Java 和 C/C++ 程序，这可能就是 DOM 被认为难以学习的原因。</div><div class="line"></div><div class="line">幸运的是，在 JavaScript 技术中使用 DOM 很容易，也非常直观。现在，按照常规也许应该说明如何使用 DOM，或者至少要给出一些示例代码，但这样做也可能误导您。即使不理会 DOM，仍然能深入地探讨 Ajax，这也是我准备采用的方法。以后的文章将再次讨论 DOM，现在只要知道可能需要 DOM 就可以了。当需要在 JavaScript 代码和服务器之间传递 XML 和改变 HTML 表单的时候，我们再深入研究 DOM。没有它也能做一些有趣的工作，因此现在就把 DOM 放到一边吧。</div><div class="line"></div><div class="line">#### 获取 Request 对象</div><div class="line">有了上面的基础知识后，我们来看看一些具体的例子。XMLHttpRequest 是 Ajax 应用程序的核心，而且对很多读者来说可能还比较陌生，我们就从这里开始吧。从 清单 1 可以看出，创建和使用这个对象非常简单，不是吗？等一等。</div><div class="line"></div><div class="line">还记得几年前的那些讨厌的浏览器战争吗？没有一样东西在不同的浏览器上得到同样的结果。不管您是否相信，这些战争仍然在继续，虽然规模较小。但令人奇怪的是，XMLHttpRequest 成了这场战争的牺牲品之一。因此获得 XMLHttpRequest 对象可能需要采用不同的方法。下面我将详细地进行解释。</div><div class="line">#### 清单 3. 在 Microsoft 浏览器上创建 XMLHttpRequest 对象</div></pre></td></tr></table></figure></p>
+<p>var xmlHttp = false;<br>try {<br>  xmlHttp = new ActiveXObject(“Msxml2.XMLHTTP”);<br>} catch (e) {<br>  try {<br>    xmlHttp = new ActiveXObject(“Microsoft.XMLHTTP”);<br>  } catch (e2) {<br>    xmlHttp = false;<br>  }<br>}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">您对这些代码可能还不完全理解，但没有关系。当本系列文章结束的时候，您将对 JavaScript 编程、错误处理、条件编译等有更深的了解。现在只要牢牢记住其中的两行代码：</div><div class="line">xmlHttp = new ActiveXObject(&quot;Msxml2.XMLHTTP&quot;);</div><div class="line"></div><div class="line">和</div><div class="line"></div><div class="line">xmlHttp = new ActiveXObject(&quot;Microsoft.XMLHTTP&quot;);。</div><div class="line"></div><div class="line">这两行代码基本上就是尝试使用一个版本的 MSXML 创建对象，如果失败则使用另一个版本创建该对象。不错吧？如果都不成功，则将 xmlHttp 变量设为 false，告诉您的代码出现了问题。如果出现这种情况，可能是因为安装了非 Microsoft 浏览器，需要使用不同的代码。</div><div class="line"></div><div class="line">#### 清单 4. 以支持多种浏览器的方式创建 XMLHttpRequest 对象</div></pre></td></tr></table></figure></p>
+<p>/<em> Create a new XMLHttpRequest object to talk to the Web server </em>/<br>var xmlHttp = false;<br>/<em>@cc_on @</em>/<br>/<em>@if (@_jscript_version &gt;= 5)<br>try {<br>  xmlHttp = new ActiveXObject(“Msxml2.XMLHTTP”);<br>} catch (e) {<br>  try {<br>    xmlHttp = new ActiveXObject(“Microsoft.XMLHTTP”);<br>  } catch (e2) {<br>    xmlHttp = false;<br>  }<br>}<br>@end @</em>/<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">if (!xmlHttp &amp;amp;&amp; typeof XMLHttpRequest != &apos;undefined&apos;) &#123;</div><div class="line">  xmlHttp = new XMLHttpRequest();</div><div class="line">&#125;</div><div class="line"></div><div class="line">现在先不管那些注释掉的奇怪符号，如 @cc_on，这是特殊的 JavaScript 编译器命令，将在下一期针对 XMLHttpRequest 的文章中详细讨论。这段代码的核心分为三步</div></pre></td></tr></table></figure></p>
+<p>1、建立一个变量 xmlHttp 来引用即将创建的 XMLHttpRequest 对象。<br>2、尝试在 Microsoft 浏览器中创建该对象：<br>      1）尝试使用 Msxml2.XMLHTTP 对象创建它。<br>      2）如果失败，再尝试 Microsoft.XMLHTTP 对象。<br>2、如果仍然没有建立 xmlHttp，则以非 Microsoft 的方式创建该对象。<br>最后，xmlHttp 应该引用一个有效的 XMLHttpRequest 对象，无论运行什么样的浏览器。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">### Ajax 世界中的请求/响应</div><div class="line">现在我们介绍了 Ajax，对 XMLHttpRequest 对象以及如何创建它也有了基本的了解。如果阅读得很仔细，您可能已经知道与服务器上的 Web 应用程序打交道的是 JavaScript 技术，而不是直接提交给那个应用程序的 HTML 表单。</div><div class="line"></div><div class="line">还缺少什么呢？到底如何使用 XMLHttpRequest。因为这段代码非常重要，您编写的每个 Ajax 应用程序都要以某种形式使用它，先看看 Ajax 的基本请求/响应模型是什么样吧。</div><div class="line"></div><div class="line">发出请求</div><div class="line"></div><div class="line">您已经有了一个崭新的 XMLHttpRequest 对象，现在让它干点活儿吧。首先需要一个 Web 页面能够调用的 JavaScript 方法（比如当用户输入文本或者从菜单中选择一项时）。接下来就是在所有 Ajax 应用程序中基本都雷同的流程：</div></pre></td></tr></table></figure></p>
+<p>1、从 Web 表单中获取需要的数据。<br>2、建立要连接的 URL。<br>3、打开到服务器的连接。<br>4、设置服务器在完成后要运行的函数。<br>5、发送请求。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">#### 清单 5. 发出 Ajax 请求</div></pre></td></tr></table></figure></p>
+<p>function callServer() {<br>  // Get the city and state from the web form<br>  var city = document.getElementById(“city”).value;<br>  var state = document.getElementById(“state”).value;<br>  // Only go on if there are values for both fields<br>  if ((city == null) || (city == “”)) return;<br>  if ((state == null) || (state == “”)) return;</p>
+<p>  // Build the URL to connect to<br>  var url = “/scripts/getZipCode.php?city=” + escape(city) + “&amp;state=” + escape(state);</p>
+<p>  // Open a connection to the server<br>  xmlHttp.open(“GET”, url, true);</p>
+<p>  // Setup a function for the server to run when it’s done<br>  xmlHttp.onreadystatechange = updatePage;</p>
+<p>  // Send the request<br>  xmlHttp.send(null);<br>}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">其中大部分代码意义都很明确。开始的代码使用基本 JavaScript 代码获取几个表单字段的值。然后设置一个 PHP 脚本作为链接的目标。要注意脚本 URL 的指定方式，city 和 state（来自表单）使用简单的 GET 参数附加在 URL 之后。</div><div class="line"></div><div class="line">然后打开一个连接，这是您第一次看到使用 XMLHttpRequest。其中指定了连接方法（GET）和要连接的 URL。最后一个参数如果设为 true，那么将请求一个异步连接（这就是 Ajax 的由来）。如果使用 false，那么代码发出请求后将等待服务器返回的响应。如果设为 true，当服务器在后台处理请求的时候用户仍然可以使用表单（甚至调用其他 JavaScript 方法）。</div><div class="line"></div><div class="line">xmlHttp（要记住，这是 XMLHttpRequest 对象实例）的 onreadystatechange 属性可以告诉服务器在运行完成 后（可能要用五分钟或者五个小时）做什么。因为代码没有等待服务器，必须让服务器知道怎么做以便您能作出响应。在这个示例中，如果服务器处理完了请求，一个特殊的名为 updatePage() 的方法将被触发。</div><div class="line"></div><div class="line">最后，使用值 null 调用 send()。因为已经在请求 URL 中添加了要发送给服务器的数据（city 和 state），所以请求中不需要发送任何数据。这样就发出了请求，服务器按照您的要求工作。</div><div class="line"></div><div class="line">如果没有发现任何新鲜的东西，您应该体会到这是多么简单明了！除了牢牢记住 Ajax 的异步特性外，这些内容都相当简单。应该感激 Ajax 使您能够专心编写漂亮的应用程序和界面，而不用担心复杂的 HTTP 请求/响应代码。</div><div class="line"></div><div class="line">#### 清单 5 中的代码说明了 Ajax 的易用性。数据是简单的文本，可以作为请求 URL 的一部分。用 GET 而不是更复杂的 POST 发送请求。没有 XML 和要添加的内容头部，请求体中没有要发送的数据；换句话说，这就是 Ajax 的乌托邦。</div><div class="line">#####处理响应</div><div class="line">现在要面对服务器的响应了。现在只要知道两点：</div><div class="line"></div><div class="line">·什么也不要做，直到 xmlHttp.readyState 属性的值等于 4。 </div><div class="line">·服务器将把响应填充到 xmlHttp.responseText 属性中。 </div><div class="line"></div><div class="line">其中的第一点，即就绪状态，将在下一篇文章中详细讨论，您将进一步了解 HTTP 请求的阶段，可能比您设想的还多。现在只要检查一个特定的值（4）就可以了（下一期文章中还有更多的值要介绍）。第二点，使用 xmlHttp.responseText 属性获得服务器的响应，这很简单。清单 6 中的示例方法可供服务器根据 清单 5 中发送的数据调用。</div><div class="line"></div><div class="line">#### 清单 6. 处理服务器响应</div></pre></td></tr></table></figure></p>
+<p>function updatePage() {<br>  if (xmlHttp.readyState == 4) {<br>    var response = xmlHttp.responseText;<br>    document.getElementById(“zipCode”).value = response;<br>  }<br>}<br>```</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/11/29/javascript的函数声明/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Fenglin">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.gif">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Feng~Lin">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Feng~Lin" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/11/29/javascript的函数声明/" itemprop="url">
+                  JavaScript 的函数声明
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-11-29T21:27:42+08:00">
+                2016-11-29
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="使用-function-关键字声明函数"><a href="#使用-function-关键字声明函数" class="headerlink" title="使用 function 关键字声明函数"></a>使用 function 关键字声明函数</h3><figure class="highlight plain"><figcaption><span>foo()&#123;&#125;</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">```</div><div class="line"></div><div class="line"></div><div class="line">### 使用 函数表达式 声明函数</div><div class="line"></div><div class="line">``` var bar = function()&#123;&#125;</div></pre></td></tr></table></figure>
+<h3 id="使用-Function构造函数-声明函数"><a href="#使用-Function构造函数-声明函数" class="headerlink" title="使用 Function构造函数 声明函数"></a>使用 Function构造函数 声明函数</h3><p><code>var foobar = Function(&#39;arg1&#39;, &#39;arg2&#39;, &#39;function body&#39;)</code></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -782,8 +1695,8 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">14</span>
-              <span class="site-state-item-name">Artikel</span>
+              <span class="site-state-item-count">25</span>
+              <span class="site-state-item-name">posts</span>
             </a>
           </div>
 
@@ -834,7 +1747,7 @@
 
 
 <div class="powered-by">
-  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
 </div>
 
 <div class="theme-info">

@@ -84,27 +84,29 @@
 
 
 
-<meta name="description" content="title:谈谈一些有趣的CSS题目（一）– 左边竖条的实现方法题目1、下面这个图形，只使用一个标签，可以有多少种实现方式：
-假设我们的单标签是一个 div:
-123```定义如下通用CSS：
-div{    position:relative;    width:200px;    height:60px;    background:#ddd;}12### 法一：border这个应该是最最最">
+<meta name="description" content="title:消失的边界线问题看看下图，经常会在一些导航栏中见到，要求每行中最后一列的右边框消失，如何在所有浏览器中最便捷优雅的实现？
+如果是不需要兼容 IE8- ，那么使用 CSS3 新增的选择器无疑是一种好方法。
+1234// 使用伪类选择器，选择第 3n 个元素去掉边框li:nth-child(3n)&amp;#123;  border-right:none;&amp;#125;
+当然，如果个数确定也不多，">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Feng~Lin">
-<meta property="og:url" content="http://yoursite.com/2016/12/03/谈谈一些有趣的CSS题目（一）-- 左边竖条的实现方法/index.html">
+<meta property="og:url" content="http://yoursite.com/2016/12/03/消失的边界线问题/index.html">
 <meta property="og:site_name" content="Feng~Lin">
-<meta property="og:description" content="title:谈谈一些有趣的CSS题目（一）– 左边竖条的实现方法题目1、下面这个图形，只使用一个标签，可以有多少种实现方式：
-假设我们的单标签是一个 div:
-123```定义如下通用CSS：
-div{    position:relative;    width:200px;    height:60px;    background:#ddd;}12### 法一：border这个应该是最最最">
-<meta property="og:image" content="http://images2015.cnblogs.com/blog/608782/201609/608782-20160921195001074-1905115525.png">
-<meta property="og:updated_time" content="2016-12-03T07:10:06.000Z">
+<meta property="og:description" content="title:消失的边界线问题看看下图，经常会在一些导航栏中见到，要求每行中最后一列的右边框消失，如何在所有浏览器中最便捷优雅的实现？
+如果是不需要兼容 IE8- ，那么使用 CSS3 新增的选择器无疑是一种好方法。
+1234// 使用伪类选择器，选择第 3n 个元素去掉边框li:nth-child(3n)&amp;#123;  border-right:none;&amp;#125;
+当然，如果个数确定也不多，">
+<meta property="og:image" content="http://images2015.cnblogs.com/blog/608782/201610/608782-20161011103637321-450120553.png">
+<meta property="og:image" content="http://images2015.cnblogs.com/blog/608782/201610/608782-20161011103832352-670395593.png">
+<meta property="og:image" content="http://images2015.cnblogs.com/blog/608782/201610/608782-20161011103909977-1473235634.png">
+<meta property="og:updated_time" content="2016-12-03T07:15:28.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Feng~Lin">
-<meta name="twitter:description" content="title:谈谈一些有趣的CSS题目（一）– 左边竖条的实现方法题目1、下面这个图形，只使用一个标签，可以有多少种实现方式：
-假设我们的单标签是一个 div:
-123```定义如下通用CSS：
-div{    position:relative;    width:200px;    height:60px;    background:#ddd;}12### 法一：border这个应该是最最最">
-<meta name="twitter:image" content="http://images2015.cnblogs.com/blog/608782/201609/608782-20160921195001074-1905115525.png">
+<meta name="twitter:description" content="title:消失的边界线问题看看下图，经常会在一些导航栏中见到，要求每行中最后一列的右边框消失，如何在所有浏览器中最便捷优雅的实现？
+如果是不需要兼容 IE8- ，那么使用 CSS3 新增的选择器无疑是一种好方法。
+1234// 使用伪类选择器，选择第 3n 个元素去掉边框li:nth-child(3n)&amp;#123;  border-right:none;&amp;#125;
+当然，如果个数确定也不多，">
+<meta name="twitter:image" content="http://images2015.cnblogs.com/blog/608782/201610/608782-20161011103637321-450120553.png">
 
 
 
@@ -132,7 +134,7 @@ div{    position:relative;    width:200px;    height:60px;    background:#ddd;}1
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2016/12/03/谈谈一些有趣的CSS题目（一）-- 左边竖条的实现方法/"/>
+  <link rel="canonical" href="http://yoursite.com/2016/12/03/消失的边界线问题/"/>
 
 
 
@@ -249,7 +251,7 @@ div{    position:relative;    width:200px;    height:60px;    background:#ddd;}1
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/12/03/谈谈一些有趣的CSS题目（一）-- 左边竖条的实现方法/">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/12/03/消失的边界线问题/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="Fenglin">
@@ -286,7 +288,7 @@ div{    position:relative;    width:200px;    height:60px;    background:#ddd;}1
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-03T15:10:06+08:00">
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-03T15:15:28+08:00">
                 2016-12-03
               </time>
             
@@ -323,18 +325,22 @@ div{    position:relative;    width:200px;    height:60px;    background:#ddd;}1
 
       
         <hr>
-<h2 id="title-谈谈一些有趣的CSS题目（一）–-左边竖条的实现方法"><a href="#title-谈谈一些有趣的CSS题目（一）–-左边竖条的实现方法" class="headerlink" title="title:谈谈一些有趣的CSS题目（一）– 左边竖条的实现方法"></a>title:谈谈一些有趣的CSS题目（一）– 左边竖条的实现方法</h2><p>题目1、下面这个图形，只使用一个标签，可以有多少种实现方式：<br><img src="http://images2015.cnblogs.com/blog/608782/201609/608782-20160921195001074-1905115525.png" alt="Generating"></p>
-<p>假设我们的单标签是一个 div:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">```</div><div class="line"></div><div class="line">定义如下通用CSS：</div></pre></td></tr></table></figure>
-<p>div{<br>    position:relative;<br>    width:200px;<br>    height:60px;<br>    background:#ddd;<br>}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">### 法一：border</div><div class="line">这个应该是最最最容易想到的了</div></pre></td></tr></table></figure></p>
-<p>div{<br>    border-left:5px solid deeppink;<br>}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">### 法二：使用伪元素</div></pre></td></tr></table></figure></p>
-<p>div::after{<br>    content:””;<br>    width:5px;<br>    height:60px;<br>    position:absolute;<br>    top:0;<br>    left:0;<br>    background:deeppink;<br>}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">### 法三：外 box-shadow</div><div class="line">盒阴影 box-shadow 大部分人都只是用了生成阴影，其实阴影可以有多重阴影，阴影不可以不虚化，这就需要去了解一下 box-shaodw 的每一个参数具体作用。使用 box-shaodw 解题</div></pre></td></tr></table></figure></p>
-<p>div{<br>    box-shadow:-5px 0px 0 0 deeppink;<br>}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">### 法四：内 box-shadow</div><div class="line">盒阴影还有一个参数 inset ，用于设置内阴影，也可以完成：</div></pre></td></tr></table></figure></p>
-<p>div{<br>    box-shadow:inset 5px 0px 0 0 deeppink;<br>}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">### 法五：drop-shadow</div><div class="line">drop-shadow 是 CSS3 新增滤镜 filter 中的其中一个滤镜，也可以生成阴影，不过它的数值参数个数只有 3 个，比之 box-shadow 少一个。</div></pre></td></tr></table></figure></p>
-<p>div{<br>    filter:drop-shadow(-5px 0 0 deeppink);<br>}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">### 法六：渐变 linearGradient</div><div class="line">灵活使用 CSS3 的渐变可以完成大量想不到的图形，CSS3 的渐变分为线性渐变和径向渐变，本题使用线性渐变，可以轻易解题：</div></pre></td></tr></table></figure></p>
-<p>div{<br>    background-image:linear-gradient(90deg, deeppink 0px, deeppink 5px, transparent 5px);<br>}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">### 法七：轮廓 outline</div><div class="line">这个用的比较少，outline （轮廓）是绘制于元素周围的一条线，位于边框边缘的外围，可起到突出元素的作用。这个方法算是下下之选。</div></pre></td></tr></table></figure></p>
-<p>div{<br>    height:50px;<br>    outline:5px solid deeppink;<br>}<br>div{<br>    position:absolute;<br>    content:””;<br>    top:-5px;<br>    bottom:-5px;<br>    right:-5px;<br>    left:0;<br>    background:#ddd;<br>}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">### 法八、滚动条</div></pre></td></tr></table></figure></p>
-<p>div{<br>    width:205px;<br>    background:deeppink;<br>    overflow-y:scroll;<br>}<br>div::-webkit-scrollbar{<br>    width: 200px;<br>    background-color:#ddd;<br>}<br>```</p>
+<h2 id="title-消失的边界线问题"><a href="#title-消失的边界线问题" class="headerlink" title="title:消失的边界线问题"></a>title:消失的边界线问题</h2><p>看看下图，经常会在一些导航栏中见到，要求每行中最后一列的右边框消失，如何在所有浏览器中最便捷优雅的实现？<br><img src="http://images2015.cnblogs.com/blog/608782/201610/608782-20161011103637321-450120553.png" alt="Generating"></p>
+<p>如果是不需要兼容 IE8- ，那么使用 CSS3 新增的选择器无疑是一种好方法。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">// 使用伪类选择器，选择第 3n 个元素去掉边框</div><div class="line">li:nth-child(3n)&#123;</div><div class="line">  border-right:none;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>当然，如果个数确定也不多，给需要去掉右边框的元素直接添加一个特定的 class 也就完事。或者，使用 table 虽然繁琐一点，不过也能实现。</p>
+<p>不过这样都不够优雅。</p>
+<blockquote>
+<p>这里有个小技巧，就是通过添加反向边框并且增加一个负的 margin 来实现。<br>首先，假定我们的 ul 结构如下：</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">&lt;div class=&quot;ul-container&quot;&gt;</div><div class="line">   	&lt;ul&gt;</div><div class="line">      		&lt;li&gt;测试&lt;/li&gt;</div><div class="line">       	&lt;li&gt;消失&lt;/li&gt;</div><div class="line">       	&lt;li&gt;边界线&lt;/li&gt;</div><div class="line">       	&lt;li&gt;右侧&lt;/li&gt;</div><div class="line">       	&lt;li&gt;边界线&lt;/li&gt;</div><div class="line">       	&lt;li&gt;消失&lt;/li&gt;</div><div class="line">       	&lt;li&gt;测试&lt;/li&gt;</div><div class="line">   	&lt;/ul&gt;</div><div class="line">&lt;/div&gt;</div></pre></td></tr></table></figure>
+<p>如图中所示，假定每行排列 3 个 li ，每个 li 宽 100px ，我们的 ul 和 ul-container 宽度都设为 300px 。</p>
+<p>最重要的是，每个 li 设置一个左边框而不是右边框：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">.ul-container,</div><div class="line">ul&#123;</div><div class="line">  width:300px;</div><div class="line">&#125;</div><div class="line"> </div><div class="line">li&#123;</div><div class="line">  float:left;</div><div class="line">  width:99px;</div><div class="line">  border-left:1px solid #999;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>我们会得到如下这样的结果：<br><img src="http://images2015.cnblogs.com/blog/608782/201610/608782-20161011103832352-670395593.png" alt="Genearting"><br>接下来，我们将容器 ul-container 设置为 overflow:hidden ，并且将 ul 左移一个像素 margin-left:-1px。</p>
+<p>这样 ul 中第一列的所有边框都因为左移了一像素并且被 overflow:hidden 而消失了，造成了下一个 li 的右边框看着像左边框一样，其实只是个障眼法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">.ul-container&#123;</div><div class="line">  overflow:hidden;</div><div class="line">&#125;</div><div class="line">ul&#123;</div><div class="line">  margin-left:-1px;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>效果图就如一开始图示所示：<br><img src="http://images2015.cnblogs.com/blog/608782/201610/608782-20161011103909977-1473235634.png" alt="Generating"></p>
 
       
     </div>
@@ -361,7 +367,7 @@ div{    position:relative;    width:200px;    height:60px;    background:#ddd;}1
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/12/03/css总结/" rel="next" title="">
+              <a href="/2016/12/03/谈谈一些有趣的CSS题目（一）-- 左边竖条的实现方法/" rel="next" title="">
                 <i class="fa fa-chevron-left"></i> 
               </a>
             
@@ -370,10 +376,6 @@ div{    position:relative;    width:200px;    height:60px;    background:#ddd;}1
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/12/03/消失的边界线问题/" rel="prev" title="">
-                 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -479,7 +481,7 @@ div{    position:relative;    width:200px;    height:60px;    background:#ddd;}1
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#title-谈谈一些有趣的CSS题目（一）–-左边竖条的实现方法"><span class="nav-number">1.</span> <span class="nav-text">title:谈谈一些有趣的CSS题目（一）– 左边竖条的实现方法</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#title-消失的边界线问题"><span class="nav-number">1.</span> <span class="nav-text">title:消失的边界线问题</span></a></li></ol></div>
             
 
           </div>

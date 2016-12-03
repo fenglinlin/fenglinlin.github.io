@@ -183,7 +183,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Home
+            Startseite
           </a>
         </li>
       
@@ -193,7 +193,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archives
+            Archiv
           </a>
         </li>
       
@@ -226,148 +226,6 @@
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2015/03/18/css3的3d起步/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="Fenglin">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="/images/avatar.gif">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="Feng~Lin">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="Feng~Lin" src="">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2015/03/18/css3的3d起步/" itemprop="url">
-                  玩转css3的3D
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2015-03-18T00:00:00+08:00">
-                2015-03-18
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="css3的3d起步"><a href="#css3的3d起步" class="headerlink" title="css3的3d起步"></a>css3的3d起步</h2><p>要玩转css3的3d，就必须了解几个词汇，便是透视(perspective)、旋转(rotate)和移动(translate)。透视即是以现实的视角来看屏幕上的2D事物，从而展现3D的效果。旋转则不再是2D平面上的旋转，而是三维坐标系的旋转，就包括X轴，Y轴，Z轴旋转。平移同理。</p>
-<p>当然用理论来说明，估计你还不明白。下面是3个gif：</p>
-<p>沿着X轴旋转<br><img src="https://user-gold-cdn.xitu.io/2016/11/29/66b980b1aa085ae825a282edaec6f4aa.gif" alt="Generating"></p>
-<p>沿着Y轴旋转<br><img src="https://user-gold-cdn.xitu.io/2016/11/29/6f11deaab529539b97e36a1ff938ab80.gif" alt="Generating"></p>
-<p>沿着Z轴旋转<br><img src="https://user-gold-cdn.xitu.io/2016/11/29/5cb3015fefcd2afd175ae7c9efda786e.gif" alt="Generating"></p>
-<p>旋转应该没问题了，那理解平移起来就比较容易了，就是在在X轴、Y轴、z轴移动。</p>
-<p>你可能会说透视比较不好理解，下面我介绍一下透视的几个属性。</p>
-<p>###perspective<br>perspective英文名便是透视，没有这东西就没办法形成3D效果，但是这个东西是怎么让我们浏览器形成3D 效果的呢，可以看下面这张图，其实学过绘画的应该知道透视关系，而这里就是这个道理。<br><img src="https://user-gold-cdn.xitu.io/2016/11/29/5cff35b9465ae65775b6480fd462858e.png" alt="Generating"><br>但是在css里它是有数值的，例如perspective: 1000px这个代表什么呢？我们可以这样理解，如果我们直接眼睛靠着物体看，物体就超大占满我们的视线，我们离它距离越来越大，它在变小，立体感也就出来了是不是，其实这个数值构造了一个我们眼睛离屏幕的距离，也就构造了一个虚拟3D假象。</p>
-<h3 id="perspective-origin"><a href="#perspective-origin" class="headerlink" title="perspective-origin"></a>perspective-origin</h3><p>由上面我们了解了perspective，而加上了这个origin是什么，我们前面说的这个是眼睛离物体的距离，而这个就是眼睛的视线，我们的视点的不同位置就决定了我们看到的不同景象，默认是中心，为perspectice-origin: 50% 50%,第一个数值是 3D 元素所基于的 X 轴，第二个定义在 y 轴上的位置</p>
-<p>当为元素定义 perspective-origin 属性时，其子元素会获得透视效果，而不是元素本身。必须与 perspective 属性一同使用，而且只影响 3D 转换元素。(W3school)</p>
-<p><img src="https://user-gold-cdn.xitu.io/2016/11/29/4fc1d93ec26ce2d8f6b32ca6021bc1e8.png" alt="Generating"></p>
-<h3 id="transform-style"><a href="#transform-style" class="headerlink" title="transform-style"></a>transform-style</h3><p>perspective又来了，没错，它是css中3D的关键，transform-style默认是flat，如果你要在元素上视线3D效果的话，就必须用上transform-style: preserve-3d,否则就只是平面的变换，而不是3D的变换</p>
-<h2 id="手把手带你玩转css3-3d"><a href="#手把手带你玩转css3-3d" class="headerlink" title="手把手带你玩转css3-3d"></a>手把手带你玩转css3-3d</h2><p>以上我们稍微了解概念，下面就开始实战吧！ 我们看一个效果，是不是很酷炫~ </p>
-<p><img src="https://user-gold-cdn.xitu.io/2016/11/29/269f9d4042e48f2822c936093fe8a5ba.gif" alt="Generating"></p>
-<h3 id="第一步：html结构"><a href="#第一步：html结构" class="headerlink" title="第一步：html结构"></a>第一步：html结构</h3><p>很简单的一个容器包裹着一个装了6个piece的piece-box</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&lt;div class=&quot;container&quot;&gt;</div><div class="line">       &lt;div class=&quot;piece-box&quot;&gt;</div><div class="line">           &lt;div class=&quot;piece piece-1&quot;&gt;&lt;/div&gt;</div><div class="line">           &lt;div class=&quot;piece piece-2&quot;&gt;&lt;/div&gt;</div><div class="line">           &lt;div class=&quot;piece piece-3&quot;&gt;&lt;/div&gt;</div><div class="line">           &lt;div class=&quot;piece piece-4&quot;&gt;&lt;/div&gt;</div><div class="line">           &lt;div class=&quot;piece piece-5&quot;&gt;&lt;/div&gt;</div><div class="line">           &lt;div class=&quot;piece piece-6&quot;&gt;&lt;/div&gt;</div><div class="line">       &lt;/div&gt;</div><div class="line">   &lt;/div&gt;</div></pre></td></tr></table></figure>
-<h3 id="第二步：-加上必要的3D属性，进入3D世界"><a href="#第二步：-加上必要的3D属性，进入3D世界" class="headerlink" title="第二步： 加上必要的3D属性，进入3D世界"></a>第二步： 加上必要的3D属性，进入3D世界</h3><p>通过上面的讲解，应该对perspective比较熟悉了吧,</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">/*容器*/</div><div class="line">   .container &#123;</div><div class="line">       -webkit-perspective: 1000px;</div><div class="line">       -moz-perspective: 1000px;</div><div class="line">       -ms-perspective: 1000px;</div><div class="line">       perspective: 1000px;</div><div class="line">   &#125;</div><div class="line">   /*piece盒子*/</div><div class="line">    .piece-box &#123;</div><div class="line">           perspective-origin: 50% 50%;</div><div class="line">           -webkit-transform-style: preserve-3d;</div><div class="line">           -moz-transform-style: preserve-3d;</div><div class="line">           -ms-transform-style: preserve-3d;</div><div class="line">           transform-style: preserve-3d;</div><div class="line">   &#125;</div></pre></td></tr></table></figure>
-<h3 id="第三步：加入必要的样式"><a href="#第三步：加入必要的样式" class="headerlink" title="第三步：加入必要的样式"></a>第三步：加入必要的样式</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div></pre></td><td class="code"><pre><div class="line">/*容器*/</div><div class="line">     .container &#123;</div><div class="line">         -webkit-perspective: 1000px;</div><div class="line">         -moz-perspective: 1000px;</div><div class="line">         -ms-perspective: 1000px;</div><div class="line">         perspective: 1000px;</div><div class="line">     &#125;</div><div class="line">     /*piece盒子*/</div><div class="line">     .piece-box &#123;</div><div class="line">         position: relative;</div><div class="line">         width: 200px;</div><div class="line">         height: 200px;</div><div class="line">         margin: 300px auto;</div><div class="line">         perspective-origin: 50% 50%;</div><div class="line">         -webkit-transform-style: preserve-3d;</div><div class="line">         -moz-transform-style: preserve-3d;</div><div class="line">         -ms-transform-style: preserve-3d;</div><div class="line">         transform-style: preserve-3d;</div><div class="line">     &#125;</div><div class="line">     /*piece通用样式*/</div><div class="line">     .piece &#123;</div><div class="line">         position: absolute;</div><div class="line">         width: 200px;</div><div class="line">         height: 200px;</div><div class="line">         background: red;</div><div class="line">         opacity: 0.5;</div><div class="line">     &#125;</div><div class="line">     .piece-1 &#123;</div><div class="line">         background: #FF6666;</div><div class="line">     &#125;</div><div class="line">     .piece-2 &#123;</div><div class="line">         background: #FFFF00;</div><div class="line">     &#125;</div><div class="line">     .piece-3 &#123;</div><div class="line">         background: #006699;</div><div class="line">     &#125;</div><div class="line">     .piece-4 &#123;</div><div class="line">         background: #009999;</div><div class="line">     &#125;</div><div class="line">     .piece-5 &#123;</div><div class="line">         background: #FF0033;</div><div class="line">     &#125;</div><div class="line">     .piece-6 &#123;</div><div class="line">         background: #FF6600;</div><div class="line">     &#125;</div></pre></td></tr></table></figure>
-<p>当然，在你完成这步之后你还是只看到一个正方形，也就是我们的piece-6,因为我们的3Dtransform还没开始<br><img src="https://user-gold-cdn.xitu.io/2016/11/29/17df207cfea90ec75e38e4978688b4b4.png" alt="Generating"></p>
-<h3 id="第四步：3D变换来袭"><a href="#第四步：3D变换来袭" class="headerlink" title="第四步：3D变换来袭"></a>第四步：3D变换来袭</h3><p>首先是实现走马灯，我们先不要让它走，先实现灯部分。 如何实现呢？因为要构成一个圆，圆是360度，而我们有6个piece，那么，很容易想到，我们需要把每一个piece以递增60度的方式rotateY，就变成如下</p>
-<p><img src="https://user-gold-cdn.xitu.io/2016/11/29/b00246872359f5a5afbe1437f1af6f5e.png" alt="Generating"><br>如何把他们从中心拉开呢？</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">这里我们还要注意一点，在我们使元素绕Y轴旋转以后，其实X轴和Z轴也会跟着旋转，所所以正方体的每个面的垂直线还是Z轴，我们就只需要改变下translateZ的值,而当translateZ为正的时候，就朝着我们的方向走来，这样就可以拉开了</div></pre></td></tr></table></figure>
-<p><img src="https://user-gold-cdn.xitu.io/2016/11/29/bcac2b546f1b8707d509ed906c9e108e.jpg" alt="Generating"><br>下面我们再修改下css<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div></pre></td><td class="code"><pre><div class="line">.piece-1 &#123;</div><div class="line">           background: #FF6666;</div><div class="line">           -webkit-transform: rotateY(0deg) translateZ(173.2px);</div><div class="line">           -ms-transform: rotateY(0deg) translateZ(173.2px);</div><div class="line">           -o-transform: rotateY(0deg) translateZ(173.2px);</div><div class="line">           transform: rotateY(0deg) translateZ(173.2px);</div><div class="line">       &#125;</div><div class="line">       .piece-2 &#123;</div><div class="line">           background: #FFFF00;</div><div class="line">           -webkit-transform: rotateY(60deg) translateZ(173.2px);</div><div class="line">           -ms-transform: rotateY(60deg) translateZ(173.2px);</div><div class="line">           -o-transform: rotateY(60deg) translateZ(173.2px);</div><div class="line">           transform: rotateY(60deg) translateZ(173.2px);</div><div class="line">       &#125;</div><div class="line">       .piece-3 &#123;</div><div class="line">           background: #006699;</div><div class="line">           -webkit-transform: rotateY(120deg) translateZ(173.2px);</div><div class="line">           -ms-transform: rotateY(120deg) translateZ(173.2px);</div><div class="line">           -o-transform: rotateY(120deg) translateZ(173.2px);</div><div class="line">           transform: rotateY(120deg) translateZ(173.2px);</div><div class="line">       &#125;</div><div class="line">       .piece-4 &#123;</div><div class="line">           background: #009999;</div><div class="line">           -webkit-transform: rotateY(180deg) translateZ(173.2px);</div><div class="line">           -ms-transform: rotateY(180deg) translateZ(173.2px);</div><div class="line">           -o-transform: rotateY(180deg) translateZ(173.2px);</div><div class="line">           transform: rotateY(180deg) translateZ(173.2px);</div><div class="line">       &#125;</div><div class="line">       .piece-5 &#123;</div><div class="line">           background: #FF0033;</div><div class="line">           -webkit-transform: rotateY(240deg) translateZ(173.2px);</div><div class="line">           -ms-transform: rotateY(240deg) translateZ(173.2px);</div><div class="line">           -o-transform: rotateY(240deg) translateZ(173.2px);</div><div class="line">           transform: rotateY(240deg) translateZ(173.2px);</div><div class="line">       &#125;</div><div class="line">       .piece-6 &#123;</div><div class="line">           background: #FF6600;</div><div class="line">           -webkit-transform: rotateY(300deg) translateZ(173.2px);</div><div class="line">           -ms-transform: rotateY(300deg) translateZ(173.2px);</div><div class="line">           -o-transform: rotateY(300deg) translateZ(173.2px);</div><div class="line">           transform: rotateY(300deg) translateZ(173.2px);</div><div class="line">       &#125;</div></pre></td></tr></table></figure></p>
-<p><img src="https://user-gold-cdn.xitu.io/2016/11/29/eef649b1a49f60bc31bfab5cf595eafd.png" alt="Generating"></p>
-<h3 id="第五步：animation让3D动起来"><a href="#第五步：animation让3D动起来" class="headerlink" title="第五步：animation让3D动起来"></a>第五步：animation让3D动起来</h3><p>要实现走马灯动，其实很简单，我们只要在piece-box上加上旋转动画就行了,5s完成动画，从0度旋转到360度</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div></pre></td><td class="code"><pre><div class="line">/*piece盒子*/</div><div class="line">        .piece-box &#123;</div><div class="line">            position: relative;</div><div class="line">            width: 200px;</div><div class="line">            height: 200px;</div><div class="line">            margin: 300px auto;</div><div class="line">            perspective-origin: 50% 50%;</div><div class="line">            -webkit-transform-style: preserve-3d;</div><div class="line">            -moz-transform-style: preserve-3d;</div><div class="line">            -ms-transform-style: preserve-3d;</div><div class="line">            transform-style: preserve-3d;</div><div class="line">            animation: pieceRotate 5s;</div><div class="line">            -moz-animation: pieceRotate 5s; /* Firefox */</div><div class="line">            -webkit-animation: pieceRotate 5s; /* Safari and Chrome */</div><div class="line">            -o-animation: pieceRotate 5s ; /* Opera */</div><div class="line">        &#125;</div><div class="line">        /*走马灯动画*/</div><div class="line">        @keyframes pieceRotate</div><div class="line">        &#123;</div><div class="line">        0%   &#123;-webkit-transform: rotateY(0deg);</div><div class="line">                -ms-transform: rotateY(0deg);</div><div class="line">                -o-transform: rotateY(0deg);</div><div class="line">                transform: rotateY(0deg);&#125;</div><div class="line">        100% &#123;-webkit-transform: rotateY(360deg);</div><div class="line">                -ms-transform: rotateY(360deg);</div><div class="line">                -o-transform: rotateY(360deg);</div><div class="line">                transform: rotateY(360deg);&#125;</div><div class="line">        &#125;</div><div class="line">        /* Firefox */</div><div class="line">        @-moz-keyframes pieceRotate</div><div class="line">        &#123;</div><div class="line">        0%   &#123;-webkit-transform: rotateY(0deg);</div><div class="line">                -ms-transform: rotateY(0deg);</div><div class="line">                -o-transform: rotateY(0deg);</div><div class="line">                transform: rotateY(0deg);&#125;</div><div class="line">        100% &#123;-webkit-transform: rotateY(360deg);</div><div class="line">                -ms-transform: rotateY(360deg);</div><div class="line">                -o-transform: rotateY(360deg);</div><div class="line">                transform: rotateY(360deg);&#125;</div><div class="line">        &#125;</div><div class="line">        /* Safari and Chrome */</div><div class="line">        @-webkit-keyframes pieceRotate</div><div class="line">        &#123;</div><div class="line">        0%   &#123;-webkit-transform: rotateY(0deg);</div><div class="line">                -ms-transform: rotateY(0deg);</div><div class="line">                -o-transform: rotateY(0deg);</div><div class="line">                transform: rotateY(0deg);&#125;</div><div class="line">        100% &#123;-webkit-transform: rotateY(360deg);</div><div class="line">                -ms-transform: rotateY(360deg);</div><div class="line">                -o-transform: rotateY(360deg);</div><div class="line">                transform: rotateY(360deg);&#125;</div><div class="line">        &#125;</div><div class="line">        /* Opera */</div><div class="line">        @-o-keyframes pieceRotate</div><div class="line">        &#123;</div><div class="line">        0%   &#123;-webkit-transform: rotateY(0deg);</div><div class="line">                -ms-transform: rotateY(0deg);</div><div class="line">                -o-transform: rotateY(0deg);</div><div class="line">                transform: rotateY(0deg);&#125;</div><div class="line">        100% &#123;-webkit-transform: rotateY(360deg);</div><div class="line">                -ms-transform: rotateY(360deg);</div><div class="line">                -o-transform: rotateY(360deg);</div><div class="line">                transform: rotateY(360deg);&#125;</div><div class="line">        &#125;</div></pre></td></tr></table></figure>
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
     
       
 
@@ -417,7 +275,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Posted on</span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2015-03-17T00:00:00+08:00">
                 2015-03-17
               </time>
@@ -589,7 +447,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Posted on</span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2015-03-01T00:00:00+08:00">
                 2015-03-01
               </time>
@@ -749,7 +607,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Posted on</span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2015-01-22T00:00:00+08:00">
                 2015-01-22
               </time>
@@ -932,7 +790,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Posted on</span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2015-01-20T00:00:00+08:00">
                 2015-01-20
               </time>
@@ -1064,7 +922,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Posted on</span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2014-12-29T00:00:00+08:00">
                 2014-12-29
               </time>
@@ -1192,7 +1050,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Posted on</span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2014-12-26T00:00:00+08:00">
                 2014-12-26
               </time>
@@ -1335,7 +1193,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Posted on</span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2014-09-30T00:00:00+08:00">
                 2014-09-30
               </time>
@@ -1507,7 +1365,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Posted on</span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2014-04-30T00:00:00+08:00">
                 2014-04-30
               </time>
@@ -1697,7 +1555,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Posted on</span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2014-04-02T00:00:00+08:00">
                 2014-04-02
               </time>
@@ -1821,8 +1679,8 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">30</span>
-              <span class="site-state-item-name">posts</span>
+              <span class="site-state-item-count">29</span>
+              <span class="site-state-item-name">Artikel</span>
             </a>
           </div>
 
@@ -1873,7 +1731,7 @@
 
 
 <div class="powered-by">
-  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
 </div>
 
 <div class="theme-info">

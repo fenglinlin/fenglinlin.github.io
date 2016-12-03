@@ -84,27 +84,30 @@
 
 
 
-<meta name="description" content="title: 高性能滚动 scroll 及页面渲染优化本文主要想谈谈页面优化之滚动优化。
+<meta name="description" content="本文主要想谈谈页面优化之滚动优化。
 主要内容包括了为何需要优化滚动事件，滚动与页面渲染的关系，节流与防抖，pointer-events:none 优化滚动。因为本文涉及了很多很多基础，可以对照上面的知识点，选择性跳到相应地方阅读。
 博主链接
-滚动优化的由来滚动优化其实也不仅仅指滚动（scroll 事件），还包括了例如 resize 这类会频繁触">
+滚动优化的由来滚动优化其实也不仅仅指滚动（scroll 事件），还包括了例如 resize 这类会频繁触发的事件。简单的看看：
+1234var i = 0;w">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Feng~Lin">
+<meta property="og:title" content="高性能滚动 scroll 及页面渲染优化">
 <meta property="og:url" content="http://yoursite.com/2015/07/21/高性能滚动 scroll 及页面渲染优化/index.html">
 <meta property="og:site_name" content="Feng~Lin">
-<meta property="og:description" content="title: 高性能滚动 scroll 及页面渲染优化本文主要想谈谈页面优化之滚动优化。
+<meta property="og:description" content="本文主要想谈谈页面优化之滚动优化。
 主要内容包括了为何需要优化滚动事件，滚动与页面渲染的关系，节流与防抖，pointer-events:none 优化滚动。因为本文涉及了很多很多基础，可以对照上面的知识点，选择性跳到相应地方阅读。
 博主链接
-滚动优化的由来滚动优化其实也不仅仅指滚动（scroll 事件），还包括了例如 resize 这类会频繁触">
+滚动优化的由来滚动优化其实也不仅仅指滚动（scroll 事件），还包括了例如 resize 这类会频繁触发的事件。简单的看看：
+1234var i = 0;w">
 <meta property="og:image" content="http://images2015.cnblogs.com/blog/608782/201605/608782-20160516205933748-797476534.gif">
 <meta property="og:image" content="http://images2015.cnblogs.com/blog/608782/201605/608782-20160516214245123-1124441228.jpg">
-<meta property="og:updated_time" content="2016-12-03T11:50:51.000Z">
+<meta property="og:updated_time" content="2016-12-03T12:03:22.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Feng~Lin">
-<meta name="twitter:description" content="title: 高性能滚动 scroll 及页面渲染优化本文主要想谈谈页面优化之滚动优化。
+<meta name="twitter:title" content="高性能滚动 scroll 及页面渲染优化">
+<meta name="twitter:description" content="本文主要想谈谈页面优化之滚动优化。
 主要内容包括了为何需要优化滚动事件，滚动与页面渲染的关系，节流与防抖，pointer-events:none 优化滚动。因为本文涉及了很多很多基础，可以对照上面的知识点，选择性跳到相应地方阅读。
 博主链接
-滚动优化的由来滚动优化其实也不仅仅指滚动（scroll 事件），还包括了例如 resize 这类会频繁触">
+滚动优化的由来滚动优化其实也不仅仅指滚动（scroll 事件），还包括了例如 resize 这类会频繁触发的事件。简单的看看：
+1234var i = 0;w">
 <meta name="twitter:image" content="http://images2015.cnblogs.com/blog/608782/201605/608782-20160516205933748-797476534.gif">
 
 
@@ -139,7 +142,7 @@
 
 
 
-  <title>  | Feng~Lin </title>
+  <title> 高性能滚动 scroll 及页面渲染优化 | Feng~Lin </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="">
@@ -274,7 +277,7 @@
             
             
               
-                
+                高性能滚动 scroll 及页面渲染优化
               
             
           </h1>
@@ -323,7 +326,7 @@
       
 
       
-        <h2 id="title-高性能滚动-scroll-及页面渲染优化"><a href="#title-高性能滚动-scroll-及页面渲染优化" class="headerlink" title="title: 高性能滚动 scroll 及页面渲染优化"></a>title: 高性能滚动 scroll 及页面渲染优化</h2><p>本文主要想谈谈页面优化之滚动优化。</p>
+        <p>本文主要想谈谈页面优化之滚动优化。</p>
 <p>主要内容包括了为何需要优化滚动事件，滚动与页面渲染的关系，节流与防抖，pointer-events:none 优化滚动。因为本文涉及了很多很多基础，可以对照上面的知识点，选择性跳到相应地方阅读。</p>
 <p><a href="http://www.cnblogs.com/coco1s/p/5499469.html" target="_blank" rel="external">博主链接</a></p>
 <h3 id="滚动优化的由来"><a href="#滚动优化的由来" class="headerlink" title="滚动优化的由来"></a>滚动优化的由来</h3><p>滚动优化其实也不仅仅指滚动（scroll 事件），还包括了例如 resize 这类会频繁触发的事件。简单的看看：</p>
@@ -514,7 +517,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#title-高性能滚动-scroll-及页面渲染优化"><span class="nav-number">1.</span> <span class="nav-text">title: 高性能滚动 scroll 及页面渲染优化</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#滚动优化的由来"><span class="nav-number">1.1.</span> <span class="nav-text">滚动优化的由来</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#滚动与页面渲染的关系"><span class="nav-number">1.2.</span> <span class="nav-text">滚动与页面渲染的关系</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#防抖（Debouncing）和节流（Throttling）"><span class="nav-number">1.3.</span> <span class="nav-text">防抖（Debouncing）和节流（Throttling）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#节流（Throttling）"><span class="nav-number">1.4.</span> <span class="nav-text">节流（Throttling）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#简单的节流函数"><span class="nav-number">1.5.</span> <span class="nav-text">// 简单的节流函数</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#滚动优化的由来"><span class="nav-number">1.</span> <span class="nav-text">滚动优化的由来</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#滚动与页面渲染的关系"><span class="nav-number">2.</span> <span class="nav-text">滚动与页面渲染的关系</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#防抖（Debouncing）和节流（Throttling）"><span class="nav-number">3.</span> <span class="nav-text">防抖（Debouncing）和节流（Throttling）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#节流（Throttling）"><span class="nav-number">4.</span> <span class="nav-text">节流（Throttling）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#简单的节流函数"><span class="nav-number">5.</span> <span class="nav-text">// 简单的节流函数</span></a></li></ol></div>
             
 
           </div>

@@ -183,7 +183,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Startseite
+            Home
           </a>
         </li>
       
@@ -193,7 +193,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archiv
+            Archives
           </a>
         </li>
       
@@ -226,6 +226,756 @@
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/12/03/一款有趣的Javascript动画效果/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Fenglin">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.gif">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Feng~Lin">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Feng~Lin" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/12/03/一款有趣的Javascript动画效果/" itemprop="url">
+                  Untitled
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-03T16:52:43+08:00">
+                2016-12-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <hr>
+<h2 id="title-【BOOM】一款有趣的Javascript动画效果"><a href="#title-【BOOM】一款有趣的Javascript动画效果" class="headerlink" title="title:【BOOM】一款有趣的Javascript动画效果"></a>title:【BOOM】一款有趣的Javascript动画效果</h2><p>实践出真知，有的时候看到一些有趣的现象就想着用自己所学的知识复现一下。</p>
+<h3 id="boomJS-缘起"><a href="#boomJS-缘起" class="headerlink" title="boomJS 缘起"></a>boomJS 缘起</h3><p>前几天在 github 上看到同事的一个这样的小项目，在 IOS 上实现了这样一个小动画效果，看上去蛮炫的，效果图：<br><img src="http://images2015.cnblogs.com/blog/608782/201603/608782-20160329172558519-1556108424.gif" alt="Generating"><br>我就寻思着，在浏览器环境下，用 Javascript 怎么实现呢？</p>
+<p>在浓烈的好奇心驱使下，最终利用 Javascript 和 CSS3 完成了模仿上面的效果，通过调用方法，可以将页面上的图片一键爆炸，我给它起了个 boomJS 的名字，贴两张效果图：<br><img src="http://images2015.cnblogs.com/blog/608782/201603/608782-20160329172955207-1171725961.gif" alt="Generating"><br><img src="http://images2015.cnblogs.com/blog/608782/201604/608782-20160427142448798-1647044740.gif" alt="Generating"></p>
+<h4 id="boomJS-实现"><a href="#boomJS-实现" class="headerlink" title="boomJS 实现"></a>boomJS 实现</h4><p>我感觉效果还是可以的，因为没有使用 canvas ，所以无法取到图片上每个像素的颜色值。使用了一些比较讨（sha）巧（bi）的方法，下面简单讲讲如何实现的：</p>
+<p>1、构造新图容器，隐藏原图</p>
+<p>原本的图是 <img> 标签的图，一张整图，最终的效果当然不是在原图上 boom ，看上去连贯的动画本质上只是一个障眼法，利用 Javascript 做了一些巧妙的变换，所以第一步所做的就是取到原图的高宽及相对浏览器视窗的定位，再创建一个新的容器附着在原图之上，然后隐藏原图。</p>
+<p>这个方法里面我主要用到了 getBoundingClientRect 这个方法，该方法返回元素的大小及其相对于视口的位置，完美满足我的需要。</p>
+<p>嗯，这一步做了什么呢？简单的如下所示：<br><img src="http://images2015.cnblogs.com/blog/608782/201603/608782-20160329174940629-1244384805.jpg" alt="Generating"><br>2、生成一张张是碎裂小图</p>
+<p>最后效果是图片 boom 一下裂开，所以第二步要做的就是模拟出一小块一小块小图，这里每一个小块就是一个新的 div ，然后利用图片的定位 background-position 将其定位到合适的位置，嘿，看看效果：<br><img src="http://images2015.cnblogs.com/blog/608782/201603/608782-20160329175415879-795860893.jpg" alt="Generating"><br>可以看到，这里分割成了很多个小块，每个小块其实是一个 div 然后，这些小块被添加到我们上一步中设置的容器当中，然后利用原图设置 div 的背景图，所有 div 利用的都是原图一张背景图，接着图片定位就可以完成这样一个效果，说起来很简单，但是中间经历了很多计算，如何分割图片，图片的 width 与 height 比（是横图还是竖图），每个小块 div 的定位及小 div 背景图的定位，具体的可以到这里看看:boomJS。</p>
+<p>最后为了好看，设置了圆角，但是这样爆炸的话，感觉不够真实，图片一块一块的清晰可辨。所以利用缩放 scale ，随机让每个小块放大或者缩小，再看看缩放后的效果<br><img src="http://images2015.cnblogs.com/blog/608782/201603/608782-20160329180108660-1834990187.jpg" alt="Generating"><br>嗯，模糊了很多，效果近一步增强，这样爆开来比较真实。<br>3、boom 爆炸！</p>
+<p>嗯，到了鸡冻人心的最后一步，要做的就是给每一个 div 小块设置运动轨迹，然后同时爆开。</p>
+<p>比较繁琐，需要先算出图片的中心点，然后每个 div 块点以中心为基准点向外做直线运动，不得不说，做这个我还特意恶补了一下高中的几何知识（囧）。为了效果更加真实，每个 div 块运动的直线距离添加一个正负值恰当的随机数，那么就可以达到有的块炸的比较远，有的块炸的比较近。利用未缩放的小块图片做一下大概的示意图：<br><img src="http://images2015.cnblogs.com/blog/608782/201603/608782-20160329181134285-701094219.jpg" alt="Generating"></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/12/03/酷炫的3D旋转透视/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Fenglin">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.gif">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Feng~Lin">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Feng~Lin" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/12/03/酷炫的3D旋转透视/" itemprop="url">
+                  酷炫的3D旋转透视
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-03T16:47:54+08:00">
+                2016-12-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="立方体-3D-旋转"><a href="#立方体-3D-旋转" class="headerlink" title="立方体 3D 旋转"></a>立方体 3D 旋转</h3><p><img src="http://images2015.cnblogs.com/blog/608782/201604/608782-20160420200619726-1892214308.gif" alt="Generating"></p>
+<h3 id="3D-透视照片墙"><a href="#3D-透视照片墙" class="headerlink" title="3D 透视照片墙"></a>3D 透视照片墙</h3><p><img src="http://images2015.cnblogs.com/blog/608782/201604/608782-20160420200713757-1615207836.gif" alt="Generating"></p>
+<h3 id="跳跃的音符"><a href="#跳跃的音符" class="headerlink" title="跳跃的音符"></a>跳跃的音符</h3><p><img src="http://images2015.cnblogs.com/blog/608782/201604/608782-20160420200745726-1099998183.gif" alt="Generating"><br>可能上面的效果对精通 CSS3 的而言小菜一碟，写本文的目的也是我自己学习积累的一个过程，感兴趣的就可以一起往下看啦。</p>
+<p>其实 CSS3 效果真的很强大，上面的效果都是纯 CSS 实现，个人感觉越是深入 CSS 的学习，越是觉得自己不懂 CSS ，不过话说回来，这些效果的实用场景不大，但是作为一个有追求的前端，我觉得还是有必要去好好了解一下这些属性。</p>
+<p>所以本文接下来要讲的大概有：</p>
+<ul>
+<li>transform-style: preserve-3d 三维效果</li>
+<li>perspective and perspective-origin 3D视距，透视/景深效果</li>
+<li>CSS3 filter CSS3滤镜</li>
+<li>transparent、radial-gradient 透明与渐变</li>
+</ul>
+<h3 id="transform-style-实现-3D-效果"><a href="#transform-style-实现-3D-效果" class="headerlink" title="transform-style 实现 3D 效果"></a>transform-style 实现 3D 效果</h3><p>要利用 CSS3 实现 3D 的效果，最主要的就是借助 transform-style 属性。transform-style 只有两个值可以选择：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">// 语法：</div><div class="line">transform-style: flat|preserve-3d;</div><div class="line"> </div><div class="line">transform-style: flat; // 默认，子元素将不保留其 3D 位置</div><div class="line">transform-style: preserve-3d; // 子元素将保留其 3D 位置。</div></pre></td></tr></table></figure>
+<p>当我们指定一个容器的 transform-style 的属性值为 preserve-3d 时，容器的后代元素便会具有 3D 效果，这样说有点抽象，也就是当前父容器设置了 preserve-3d 值后，它的子元素就可以相对于父元素所在的平面，进行 3D 变形操作。</p>
+<p>当父元素设置了 transform-style:preserve-3d 后，就可以对子元素进行 3D 变形操作了，3D 变形和 2D 变形一样可以，使用 transform 属性来设置，或者可以通过制定的函数或者通过三维矩阵来对元素变型操作：</p>
+<p>1、使用 translateX(length) 、translateY(length) 、 translateZ(length) 来进行 3D 位移操作，与 2D 操作一样，对元素进行位移操作，也可以合并为 translate3d(x,y,z) 这种写法；</p>
+<p>2、使用 scaleX() 、scaleY() 、scaleY() 来进行3D 缩放操作，也可以合并为 scale3d(number,number,number) 这种写法；</p>
+<p>3、使用 rotateX(angle) 、rotateY(angle) 、rotateZ(angle) 来进行 3D 旋转操作，也可以合并为 rotate3d(Xangle,Yangle,Zangle) 这种写法。</p>
+<p>对于 API 的学习，我建议去源头看看，不要满足于消费别人的总结，transform-style API。</p>
+<p>这里要特别提出的，3D 坐标轴，所谓的绕 X、Y、Z 轴的三个轴，这个不难，感觉空间想象困难的，照着 API 试试，绕每个轴都转一下就明白了：</p>
+<p><img src="http://images2015.cnblogs.com/blog/608782/201604/608782-20160420204327070-2018617361.jpg" alt="Generating"><br>了解过后，那么依靠上面所说的，其实我们就已经可以做一个立方体出来了。所谓实践出真知，下面就看看该如何一步步得到一个立方体。</p>
+<h4 id="1、准备六个正方形"><a href="#1、准备六个正方形" class="headerlink" title="1、准备六个正方形"></a>1、准备六个正方形</h4><p>这个好理解，正方体六个面，首先用 div 做出 6 个面，包裹在同一个父级容器下面，父级容器设置 transform-style:preserve-3d ，这样接下来就可以对 6 个面进行 3D 变换操作，为了方便演示，我用 6 个颜色不一样的面：<br><img src="http://images2015.cnblogs.com/blog/608782/201604/608782-20160420211622538-1247795543.png" alt="Generating"><br>上面的图是示意有 6 个面，当然我们要把 6 个正方形 div 设置为绝对定位，重叠叠在一起，那么应该是这样的，只能看到一个面：</p>
+<p><img src="http://images2015.cnblogs.com/blog/608782/201604/608782-20160420212046913-8708739.png" alt="Generating"></p>
+<h4 id="2、父容器做简单的变换"><a href="#2、父容器做简单的变换" class="headerlink" title="2、父容器做简单的变换"></a>2、父容器做简单的变换</h4><p>为了最后的看上去的效果好看，我们需要先对父容器进行变换，运用上面说的 rotate 属性，将容器的角度改变一下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">.cube-container&#123;</div><div class="line">    -webkit-transform: rotateX(-33.5deg) rotateY(45deg);</div><div class="line">    transform: rotateX(-33.5deg) rotateY(45deg);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>那么，变换之后，得到这样一个图形：</p>
+<p><img src="http://images2015.cnblogs.com/blog/608782/201604/608782-20160420212424210-970963234.png" alt="Generating"></p>
+<p>嗯，这个时候，6 个 div 面仍然是重叠在一起的。</p>
+<h4 id="3、对每个面做-3D-变换"><a href="#3、对每个面做-3D-变换" class="headerlink" title="3、对每个面做 3D 变换"></a>3、对每个面做 3D 变换</h4><p>接下来就是对每个面进行 3D 变换了，运用 rotate 可以对 div 平面进行旋转，运用 translate 可以对 div 平面进行平移，而且要记住现在我们是在三维空间内变换，转啊转啊，我们可能会得到这样的形状：</p>
+<p><img src="http://images2015.cnblogs.com/blog/608782/201604/608782-20160420213037460-2134833277.png" alt="Generating"></p>
+<p>算好旋转角度和偏移距离，最后上面的 6 个面就可以完美拼成一个立方体咯！为了效果更好，我给每个面增加一些透明度，最后得到一个完整的立方体：</p>
+<p><img src="http://images2015.cnblogs.com/blog/608782/201604/608782-20160420213602023-1033538645.png" alt="Generating"></p>
+<p>为了更有立体感，我们可以调整父容器的旋转角度，旋转看上去更立体的角度:<br><img src="http://images2015.cnblogs.com/blog/608782/201604/608782-20160420213703210-315149157.png" alt="Generating"></p>
+<p>至此，一个 3D 立方体就完成了。写这篇文章的时候，本来到这里，这一块应该就结束了，但是写到这里的时候，突然突发奇想，既然正方体可以（正六面体），那么正四面体，正八面体甚至球体应该也能做出来吧？</p>
+<p>嗯，没有按住躁动的心，立马动手尝试了一番，最后做出了下面的两个：<br><img src="http://images2015.cnblogs.com/blog/608782/201604/608782-20160421144115507-846563066.gif" alt="Generating"><img src="http://images2015.cnblogs.com/blog/608782/201604/608782-20160421144121851-1403370952.gif" alt="Generating"></p>
+<h4 id="CSS3-实现正四面体"><a href="#CSS3-实现正四面体" class="headerlink" title="CSS3 实现正四面体"></a>CSS3 实现正四面体</h4><p>和正方体一样，我们首先要准备 4 个三角形（下面会详细讲如何利用 CSS3 制作一个三角形 div），注意 4 个三角形应该是重叠在一起的，然后将其中三个分别沿着三条边的中心点旋转 70.5 度（正四面体临面夹角），就可以得到一个正四面体。</p>
+<p>注意沿着三条边的中心点旋转 70.5 度这句话，意思是每个图形要定位一次旋转中心，也就是 transform-origin 属性，它允许我们设置旋转元素的基点位置。</p>
+<h4 id="CSS3-实现球体"><a href="#CSS3-实现球体" class="headerlink" title="CSS3 实现球体"></a>CSS3 实现球体</h4><p>上面的 GIF 图因为添加了 animation 动画效果，看上去很像一个球体在运动，其实只用了 4 个 div，每个 div 利用 border-radius:100% 设置为圆形，然后以中心点为基准，每个圆形 div 绕 Y 轴旋转不同的角度，再让整个圆形容器绕 Y 轴动起来，就可以得到这样一个效果了。</p>
+<h5 id="perspective-and-perspective-origin-3D视距，透视-景深效果"><a href="#perspective-and-perspective-origin-3D视距，透视-景深效果" class="headerlink" title="perspective and perspective-origin 3D视距，透视/景深效果"></a>perspective and perspective-origin 3D视距，透视/景深效果</h5><p>继续说 3D ，接下来要说的属性是 persepective 和 perspective-origin 。</p>
+<h5 id="persepective"><a href="#persepective" class="headerlink" title="persepective"></a>persepective</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">// 语法</div><div class="line">perspective: number|none;</div></pre></td></tr></table></figure>
+<p>perspective 为一个元素设置三维透视的距离，仅作用于元素的后代，而不是其元素本身。</p>
+<p>简单来说，当元素没有设置 perspective 时，也就是当 perspective:none/0 时所有后代元素被压缩在同一个二维平面上，不存在景深的效果。</p>
+<p>而如果设置 perspective 后，将会看到三维的效果</p>
+<h5 id="perspective-origin"><a href="#perspective-origin" class="headerlink" title="perspective-origin"></a>perspective-origin</h5><p>perspective-origin 表示 3D 元素透视视角的基点位置，默认的透视视角中心在容器是 perspective 所在的元素，而不是他的后代元素的中点，也就是 perspective-origin: 50% 50%。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/12/03/高性能滚动 scroll 及页面渲染优化/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Fenglin">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.gif">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Feng~Lin">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Feng~Lin" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/12/03/高性能滚动 scroll 及页面渲染优化/" itemprop="url">
+                  高性能滚动 scroll 及页面渲染优化
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-03T16:37:16+08:00">
+                2016-12-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>本文主要想谈谈页面优化之滚动优化。</p>
+<p>主要内容包括了为何需要优化滚动事件，滚动与页面渲染的关系，节流与防抖，pointer-events:none 优化滚动。因为本文涉及了很多很多基础，可以对照上面的知识点，选择性跳到相应地方阅读。</p>
+<p><a href="http://www.cnblogs.com/coco1s/p/5499469.html" target="_blank" rel="external">博主链接</a></p>
+<h3 id="滚动优化的由来"><a href="#滚动优化的由来" class="headerlink" title="滚动优化的由来"></a>滚动优化的由来</h3><p>滚动优化其实也不仅仅指滚动（scroll 事件），还包括了例如 resize 这类会频繁触发的事件。简单的看看：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">var i = 0;</div><div class="line">window.addEventListener(&apos;scroll&apos;,function()&#123;</div><div class="line">    console.log(i++);</div><div class="line">&#125;,false);</div></pre></td></tr></table></figure>
+<p>输出如下：<br><img src="http://images2015.cnblogs.com/blog/608782/201605/608782-20160516205933748-797476534.gif" alt="Generating"></p>
+<blockquote>
+<p>在绑定 scroll 、resize 这类事件时，当它发生时，它被触发的频次非常高，间隔很近。如果事件中涉及到大量的位置计算、DOM 操作、元素重绘等工作且这些工作无法在下一个 scroll 事件触发前完成，就会造成浏览器掉帧。加之用户鼠标滚动往往是连续的，就会持续触发 scroll 事件导致掉帧扩大、浏览器 CPU 使用率增加、用户体验受到影响。</p>
+</blockquote>
+<p>在滚动事件中绑定回调应用场景也非常多，在图片的懒加载、下滑自动加载数据、侧边浮动导航栏等中有着广泛的应用。</p>
+<p>当用户浏览网页时，拥有平滑滚动经常是被忽视但却是用户体验中至关重要的部分。当滚动表现正常时，用户就会感觉应用十分流畅，令人愉悦，反之，笨重不自然卡顿的滚动，则会给用户带来极大不舒爽的感觉。</p>
+<h3 id="滚动与页面渲染的关系"><a href="#滚动与页面渲染的关系" class="headerlink" title="滚动与页面渲染的关系"></a>滚动与页面渲染的关系</h3><p>&gt;<br>为什么滚动事件需要去优化？因为它影响了性能。那它影响了什么性能呢？额……这个就要从页面性能问题由什么决定说起。</p>
+<p>我觉得搞技术一定要追本溯源，不要看到别人一篇文章说滚动事件会导致卡顿并说了一堆解决方案优化技巧就如获至宝奉为圭臬，我们需要的不是拿来主义而是批判主义，多去源头看看。</p>
+<p>从问题出发，一步一步寻找到最后，就很容易找到问题的症结所在，只有这样得出的解决方法才容易记住。</p>
+<p>说教了一堆废话，不喜欢的直接忽略哈，回到正题，要找到优化的入口就要知道问题出在哪里，对于页面优化而言，那么我们就要知道页面的渲染原理：</p>
+<p>浏览器渲染原理我在我上一篇文章里也要详细的讲到，不过更多的是从动画渲染的角度去讲的：【Web动画】CSS3 3D 行星运转 &amp;&amp; 浏览器渲染原理 。</p>
+<p>想了想，还是再简单的描述下，我发现每次 review 这些知识点都有新的收获，这次换一张图，以 chrome 为例子，一个 Web 页面的展示，简单来说可以认为经历了以下下几个步骤：<br><img src="http://images2015.cnblogs.com/blog/608782/201605/608782-20160516214245123-1124441228.jpg" alt="Generating"></p>
+<ul>
+<li><p>JavaScript：一般来说，我们会使用 JavaScript 来实现一些视觉变化的效果。比如做一个动画或者往页面里添加一些 DOM 元素等。</p>
+</li>
+<li><p>Style：计算样式，这个过程是根据 CSS 选择器，对每个 DOM 元素匹配对应的 CSS 样式。这一步结束之后，就确定了每个 DOM 元素上该应用什么 CSS 样式规则。</p>
+</li>
+<li><p>Layout：布局，上一步确定了每个 DOM 元素的样式规则，这一步就是具体计算每个 DOM 元素最终在屏幕上显示的大小和位置。web 页面中元素的布局是相对的，因此一个元素的布局发生变化，会联动地引发其他元素的布局发生变化。比如，<body> 元素的宽度的变化会影响其子元素的宽度，其子元素宽度的变化也会继续对其孙子元素产生影响。因此对于浏览器来说，布局过程是经常发生的。</body></p>
+</li>
+<li><p>Paint：绘制，本质上就是填充像素的过程。包括绘制文字、颜色、图像、边框和阴影等，也就是一个 DOM 元素所有的可视效果。一般来说，这个绘制过程是在多个层上完成的。</p>
+</li>
+<li><p>Composite：渲染层合并，由上一步可知，对页面中 DOM 元素的绘制是在多个层上进行的。在每个层上完成绘制过程之后，浏览器会将所有层按照合理的顺序合并成一个图层，然后显示在屏幕上。对于有位置重叠的元素的页面，这个过程尤其重要，因为一旦图层的合并顺序出错，将会导致元素显示异常。<br>这里又涉及了层（GraphicsLayer）的概念，GraphicsLayer 层是作为纹理(texture)上传给 GPU 的，现在经常能看到说 GPU 硬件加速，就和所谓的层的概念密切相关。但是和本文的滚动优化相关性不大，有兴趣深入了解的可以自行 google 更多。</p>
+</li>
+</ul>
+<p>简单来说，网页生成的时候，至少会渲染（Layout+Paint）一次。用户访问的过程中，还会不断重新的重排（reflow）和重绘（repaint）。</p>
+<p>其中，用户 scroll 和 resize 行为（即是滑动页面和改变窗口大小）会导致页面不断的重新渲染。</p>
+<p>当你滚动页面时，浏览器可能会需要绘制这些层(有时也被称为合成层)里的一些像素。通过元素分组，当某个层的内容改变时，我们只需要更新该层的结构，并仅仅重绘和栅格化渲染层结构里变化的那一部分，而无需完全重绘。显然，如果当你滚动时，像视差网站(戳我看看)这样有东西在移动时，有可能在多层导致大面积的内容调整，这会导致大量的绘制工作。</p>
+<h3 id="防抖（Debouncing）和节流（Throttling）"><a href="#防抖（Debouncing）和节流（Throttling）" class="headerlink" title="防抖（Debouncing）和节流（Throttling）"></a>防抖（Debouncing）和节流（Throttling）</h3><p>scroll 事件本身会触发页面的重新渲染，同时 scroll 事件的 handler 又会被高频度的触发, 因此事件的 handler 内部不应该有复杂操作，例如 DOM 操作就不应该放在事件处理中。</p>
+<p>针对此类高频度触发事件问题（例如页面 scroll ，屏幕 resize，监听用户输入等），下面介绍两种常用的解决方法，防抖和节流。</p>
+<p>防抖（Debouncing）<br>防抖技术即是可以把多个顺序地调用合并成一次，也就是在一定时间内，规定事件被触发的次数。</p>
+<p>通俗一点来说，看看下面这个简化的例子：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">// 简单的防抖动函数</div><div class="line">function debounce(func, wait, immediate) &#123;</div><div class="line">    // 定时器变量</div><div class="line">    var timeout;</div><div class="line">    return function() &#123;</div><div class="line">        // 每次触发 scroll handler 时先清除定时器</div><div class="line">        clearTimeout(timeout);</div><div class="line">        // 指定 xx ms 后触发真正想进行的操作 handler</div><div class="line">        timeout = setTimeout(func, wait);</div><div class="line">    &#125;;</div><div class="line">&#125;;</div><div class="line"> </div><div class="line">// 实际想绑定在 scroll 事件上的 handler</div><div class="line">function realFunc()&#123;</div><div class="line">    console.log(&quot;Success&quot;);</div><div class="line">&#125;</div><div class="line"> </div><div class="line">// 采用了防抖动</div><div class="line">window.addEventListener(&apos;scroll&apos;,debounce(realFunc,500));</div><div class="line">// 没采用防抖动</div><div class="line">window.addEventListener(&apos;scroll&apos;,realFunc);</div></pre></td></tr></table></figure>
+<p>上面简单的防抖的例子可以拿到浏览器下试一下，大概功能就是如果 500ms 内没有连续触发两次 scroll 事件，那么才会触发我们真正想在 scroll 事件中触发的函数。</p>
+<p>上面的示例可以更好的封装一下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">// 防抖动函数</div><div class="line">function debounce(func, wait, immediate) &#123;</div><div class="line">    var timeout;</div><div class="line">    return function() &#123;</div><div class="line">        var context = this, args = arguments;</div><div class="line">        var later = function() &#123;</div><div class="line">            timeout = null;</div><div class="line">            if (!immediate) func.apply(context, args);</div><div class="line">        &#125;;</div><div class="line">        var callNow = immediate &amp;&amp; !timeout;</div><div class="line">        clearTimeout(timeout);</div><div class="line">        timeout = setTimeout(later, wait);</div><div class="line">        if (callNow) func.apply(context, args);</div><div class="line">    &#125;;</div><div class="line">&#125;;</div><div class="line"> </div><div class="line">var myEfficientFn = debounce(function() &#123;</div><div class="line">    // 滚动中的真正的操作</div><div class="line">&#125;, 250);</div><div class="line"> </div><div class="line">// 绑定监听</div><div class="line">window.addEventListener(&apos;resize&apos;, myEfficientFn);</div></pre></td></tr></table></figure>
+<h3 id="节流（Throttling）"><a href="#节流（Throttling）" class="headerlink" title="节流（Throttling）"></a>节流（Throttling）</h3><p>防抖函数确实不错，但是也存在问题，譬如图片的懒加载，我希望在下滑过程中图片不断的被加载出来，而不是只有当我停止下滑时候，图片才被加载出来。又或者下滑时候的数据的 ajax 请求加载也是同理。</p>
+<p>这个时候，我们希望即使页面在不断被滚动，但是滚动 handler 也可以以一定的频率被触发（譬如 250ms 触发一次），这类场景，就要用到另一种技巧，称为节流函数（throttling）。</p>
+<p>节流函数，只允许一个函数在 X 毫秒内执行一次。</p>
+<p>与防抖相比，节流函数最主要的不同在于它保证在 X 毫秒内至少执行一次我们希望触发的事件 handler。</p>
+<p>与防抖相比，节流函数多了一个 mustRun 属性，代表 mustRun 毫秒内，必然会触发一次 handler ，同样是利用定时器，看看简单的示例：</p>
+<h3 id="简单的节流函数"><a href="#简单的节流函数" class="headerlink" title="// 简单的节流函数"></a>// 简单的节流函数</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">function throttle(func, wait, mustRun) &#123;</div><div class="line">    var timeout,</div><div class="line">        startTime = new Date();</div><div class="line"> </div><div class="line">    return function() &#123;</div><div class="line">        var context = this,</div><div class="line">            args = arguments,</div><div class="line">            curTime = new Date();</div><div class="line"> </div><div class="line">        clearTimeout(timeout);</div><div class="line">        // 如果达到了规定的触发时间间隔，触发 handler</div><div class="line">        if(curTime - startTime &gt;= mustRun)&#123;</div><div class="line">            func.apply(context,args);</div><div class="line">            startTime = curTime;</div><div class="line">        // 没达到触发间隔，重新设定定时器</div><div class="line">        &#125;else&#123;</div><div class="line">            timeout = setTimeout(func, wait);</div><div class="line">        &#125;</div><div class="line">    &#125;;</div><div class="line">&#125;;</div><div class="line">// 实际想绑定在 scroll 事件上的 handler</div><div class="line">function realFunc()&#123;</div><div class="line">    console.log(&quot;Success&quot;);</div><div class="line">&#125;</div><div class="line">// 采用了节流函数</div><div class="line">window.addEventListener(&apos;scroll&apos;,throttle(realFunc,500,1000));</div></pre></td></tr></table></figure>
+<p>上面简单的节流函数的例子可以拿到浏览器下试一下，大概功能就是如果在一段时间内 scroll 触发的间隔一直短于 500ms ，那么能保证事件我们希望调用的 handler 至少在 1000ms 内会触发一次。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/12/03/CSS -before 和 -after/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Fenglin">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.gif">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Feng~Lin">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Feng~Lin" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/12/03/CSS -before 和 -after/" itemprop="url">
+                  Untitled
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-03T16:29:22+08:00">
+                2016-12-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <hr>
+<h2 id="title-CSS-before-和-after"><a href="#title-CSS-before-和-after" class="headerlink" title="title:CSS :before 和 :after"></a>title:CSS :before 和 :after</h2><h3 id="什么是-before和-after？-该如何使用他们？"><a href="#什么是-before和-after？-该如何使用他们？" class="headerlink" title="什么是:before和:after？ 该如何使用他们？"></a>什么是:before和:after？ 该如何使用他们？</h3><p>&gt;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">```</div><div class="line">```:after是css中的一种伪元素，可用于在某个元素之后插入某些内容。</div></pre></td></tr></table></figure></p>
+<p>下面我们先跑个简单的代码测试下效果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">&lt;style&gt;</div><div class="line">  		p:before&#123;</div><div class="line">       	content: &quot;H&quot;  /*:before和:after必带技能，重要性为满5颗星*/</div><div class="line">   	&#125;</div><div class="line">   	p:after&#123;</div><div class="line">       	content: &quot;d&quot;  /*:before和:after必带技能，重要性为满5颗星*/</div><div class="line">   	&#125;</div><div class="line"> 	&lt;/style&gt;</div><div class="line"> 	&lt;p&gt;ello Worl&lt;/p&gt;</div></pre></td></tr></table></figure>
+<p> 以上的代码将会在页面中展现的是”Hello World”。我们通过浏览器的”审查元素”看到的内容是：</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;p&gt;</div><div class="line"> ::before</div><div class="line"> &quot;ello Worl&quot;</div><div class="line"> ::after</div><div class="line">&lt;/p&gt;</div></pre></td></tr></table></figure>
+<p>  p标签内部的内容的前面会被插入一个:before伪元素，该伪元素内包含的内容是”H”；而在p标签内的内容后面会被插入一个:after伪元素，该元素包含的内容是”d”。作为一只合格的程序猴子，捍卫”Hello World”的完整存在是必要的。<br>既然笔记主要针对是:before和:after，那么肯定不会只是仅仅有以上的简单介绍就完事。下面我们看看平常该怎么使用他们。</p>
+<h3 id="1-结合border写个对话框的样式。"><a href="#1-结合border写个对话框的样式。" class="headerlink" title="1.结合border写个对话框的样式。"></a>1.结合border写个对话框的样式。</h3><p>本兽将上面这句话拆成2部分：结合border，写个对话框的样式。<br>既然是结合border，那么我们先转个小话题，简单由浅入深的介绍下怎么用border画三角形样式(这个三角形在写对话框样式的时候需要)：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&lt;style&gt;</div><div class="line">   .triangle&#123;</div><div class="line">       width: 0;</div><div class="line">       height: 0;</div><div class="line">       border-left:50px solid red;</div><div class="line">       border-bottom:50px solid blue;</div><div class="line">       border-top:50px solid black;</div><div class="line">       border-right:50px solid purple    &#125;</div><div class="line"> &lt;/style&gt;</div><div class="line"> &lt;div class=&quot;triangle&quot;&gt;&lt;/div&gt;</div></pre></td></tr></table></figure>
+<p>以上代码将会在页面上展示一个正方形，左边是个红色的三角形，右边是紫色的三角形，上面是黑色的三角形，下面是蓝色的三角形。那么有人就会问，我们要的不是三角形么？野兽你画个正方形逗我呢？</p>
+<p>我们对上面的样式做些修改：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">.triangle&#123;</div><div class="line">      width: 0;</div><div class="line">      height: 0;</div><div class="line">      border:50px transparent solid; /*这里我们将元素的边框宽度设置为50px，transparent表示边框颜色是透明的，solid表示边框是实线的*/</div><div class="line">      border-top-color: black;  /*这里我们仅将上边框的颜色设置为黑色，众所周知，css后面的样式代码会覆盖之前的相同的样式代码，至于其他三边的还是透明色*/</div><div class="line">      /*border-bottom-color: black; /*这里设置底部边框色为黑色*/</div><div class="line">      border-left-color: black;  /*这里设置左边边框色为黑色*/</div><div class="line">      border-right-color:black*/ /*这里设置右边边框色为黑色*/</div><div class="line">  &#125;</div></pre></td></tr></table></figure>
+<p>然后这时我们就会看到一个在顶部的方向向下的三角形。解释已详细的写在css样式的注释里。</p>
+<p>接下来我们加上:before：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">&lt;style&gt;</div><div class="line">   .test-div&#123;</div><div class="line">       position: relative;  /*日常相对定位*/</div><div class="line">       width:150px;</div><div class="line">       height:36px;</div><div class="line">       border-radius:5px;</div><div class="line">       border:black 1px solid;</div><div class="line">       background: rgba(245,245,245,1)    &#125;</div><div class="line">   .test-div:before&#123;</div><div class="line">       content: &quot;&quot;;  /*:before和:after必带技能，重要性为满5颗星*/</div><div class="line">       display: block;</div><div class="line">       position: absolute;  /*日常绝对定位*/</div><div class="line">       top:8px;</div><div class="line">       width: 0;</div><div class="line">       height: 0;</div><div class="line">       border:6px transparent solid;</div><div class="line">       left:-12px;</div><div class="line">       border-right-color: rgba(245,245,245,1);</div><div class="line">   &#125;</div><div class="line"> &lt;/style&gt;</div><div class="line"> &lt;div class=&quot;test-div&quot;&gt;&lt;/div&gt;</div></pre></td></tr></table></figure>
+<p>通过以上代码，我们将会看见一个类似微信/QQ的对话框样式,但是美中不足的是，在对话框的四周的边框不是完整的，而是在对话框的突出三角形上是木有边框的T_T瞬间冷场有木有，该怎么办呢？让召唤:after穿着棉大衣来救场吧~<br>完整代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">&lt;style&gt;</div><div class="line">   .test-div&#123;</div><div class="line">       position: relative;  /*日常相对定位*/</div><div class="line">       width:150px;</div><div class="line">       height: 36px;</div><div class="line">       border:black 1px solid;</div><div class="line">       border-radius:5px;</div><div class="line">       background: rgba(245,245,245,1)    &#125;</div><div class="line">   .test-div:before,.test-div:after&#123;</div><div class="line">       content: &quot;&quot;;  /*:before和:after必带技能，重要性为满5颗星*/</div><div class="line">       display: block;</div><div class="line">       position: absolute;  /*日常绝对定位*/</div><div class="line">       top:8px;</div><div class="line">       width: 0;</div><div class="line">       height: 0;</div><div class="line">       border:6px transparent solid;</div><div class="line">   &#125;</div><div class="line">   .test-div:before&#123;</div><div class="line">       left:-11px;</div><div class="line">       border-right-color: rgba(245,245,245,1);</div><div class="line">       z-index:1    &#125;</div><div class="line">   .test-div:after&#123;</div><div class="line">       left:-12px;</div><div class="line">       border-right-color: rgba(0,0,0,1);</div><div class="line">       z-index: 0    &#125;</div><div class="line"> &lt;/style&gt;</div><div class="line"> &lt;div class=&quot;test-div&quot;&gt;&lt;/div&gt;</div></pre></td></tr></table></figure>
+<p>好了，完整的一个对话框样式呈现在眼前了，至于对话框的小三角形的方向，相信大家看了上上段对于border介绍的代码也都知道该怎么做了吧，没错，就是改下position的位置，改下border显示颜色的方位~ (本兽不喜欢贴图片，体谅下额，需要的可以拷贝代码直接运行看效果，造轮子不仅仅是造轮子，也能让人加深印象，更好的理解)</p>
+<h3 id="2-作为内容的半透明背景层。"><a href="#2-作为内容的半透明背景层。" class="headerlink" title="2.作为内容的半透明背景层。"></a>2.作为内容的半透明背景层。</h3><p>比如我们的需求是做一个半透明的登录框吧(这里也是在代码中通过注释来解释)：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line">&lt;style&gt;</div><div class="line">     body&#123;</div><div class="line">         background: url(img/1.jpg) no-repeat left top /*这里本兽加了个图片背景，用以区分背景的半透明及内容的完全不透明*/</div><div class="line">     &#125;</div><div class="line">     .test-div&#123;</div><div class="line">         position: relative;  /*日常相对定位(重要，下面内容也会介绍)*/</div><div class="line">         width:300px;</div><div class="line">         height: 120px;</div><div class="line">         padding: 20px 10px;</div><div class="line">         font-weight: bold;</div><div class="line">     &#125;</div><div class="line">     .test-div:before&#123;</div><div class="line">         position: absolute;  /*日常绝对定位(重要，下面内容也会略带介绍)*/</div><div class="line">         content: &quot;&quot;;  /*:before和:after必带技能，重要性为满5颗星*/</div><div class="line">         top:0;</div><div class="line">         left: 0;</div><div class="line">         width: 100%;  /*和内容一样的宽度*/</div><div class="line">         height: 100%;  /*和内容一样的高度*/</div><div class="line">         background: rgba(255,255,255,.5); /*给定背景白色，透明度50%*/</div><div class="line">         z-index:-1 /*日常元素堆叠顺序(重要，下面内容也会略带介绍)*/</div><div class="line">     &#125;</div><div class="line"> &lt;/style&gt;</div><div class="line"> &lt;!--这里容兽偷个懒，布局简单写写--&gt;</div><div class="line"> &lt;div class=&quot;test-div&quot;&gt;</div><div class="line">     &lt;table&gt;</div><div class="line">         &lt;tr&gt;</div><div class="line">             &lt;td&gt;Name&lt;/td&gt;</div><div class="line">             &lt;td&gt;&lt;input placeholder=&quot;your name&quot; /&gt;&lt;/td&gt;</div><div class="line">         &lt;/tr&gt; </div><div class="line">         &lt;tr&gt;</div><div class="line">             &lt;td&gt;Password&lt;/td&gt;</div><div class="line">             &lt;td&gt;&lt;input placeholder=&quot;your password&quot; /&gt;&lt;/td&gt;</div><div class="line">         &lt;/tr&gt; </div><div class="line">         &lt;tr&gt;</div><div class="line">             &lt;td&gt;&lt;/td&gt;</div><div class="line">             &lt;td&gt;&lt;input type=&quot;button&quot; value=&quot;login&quot; /&gt;&lt;/td&gt;</div><div class="line">         &lt;/tr&gt;</div><div class="line">     &lt;/table&gt;</div><div class="line"> &lt;/div&gt;</div></pre></td></tr></table></figure>
+<p>上面的代码拷贝过去，加上张图片可测试效果。<br>当然，:bofore和:after也还有其他更多的巧妙用法，这里也不一一列出来了，这里放上一个用这两个伪元素加上css3动画实现一些比较好看及实用的动态效果的链接：ht tp: //tympanus.net/Development/HoverEffectIdeas/</p>
+<p>说完了:before和:after，我们稍微扯扯一些其他的css样式及布局注意点(可能大家不怎么注意，从而导致一些布局和样式出问题)。</p>
+<p>###position 定位的问题<br>position属性规定了元素的定位类型，默认为static。</p>
+<p>该属性还可以有下值：</p>
+<p>absolute：生成绝对定位的元素，相对于 static 定位以外的第一个父元素进行定位。</p>
+<p>fixed：生成绝对定位的元素，相对于浏览器窗口进行定位。</p>
+<p>relative：生成相对定位的元素，相对于其正常位置进行定位。</p>
+<p>inherit：规定应该从父元素继承 position 属性的值。</p>
+<p>效果：</p>
+<!--position:absolute-->
+<p>  <style><br>      body{<br>          height: 2000px  /<em>这里将body的高度设置为2000px是为了区分absolute和fixed的差别</em>/<br>      }<br>      .test-div{<br>          position:absolute;<br>          left:50px;<br>          top:50px      }<br>  </style><br>  <div class="test-div">Hello World</div><!--position:fixed--><br>  <style><br>      body{<br>          height: 2000px  /<em>这里将body的高度设置为2000px是为了区分absolute和fixed的差别</em>/<br>      }<br>      .test-div{<br>          position:fixed;<br>          left:50px;<br>          top:50px      }<br>  </style><br>  <div class="test-div">Hello World</div><!--position:relative + position:absolute--><br>  <style><br>      .out-div{<br>          width: 300px;<br>          height: 300px;<br>          background: purple;  /<em>这里定义个背景，让我们知道这个div在哪</em>/<br>          margin:50px 0px 0px 50px;<br>          position: relative      }<br>      .in-div{<br>          position:absolute;<br>          left:50px;<br>          top:50px      }<br>  </style><br>  <div class="out-div"><br>      <div class="in-div">Hello World</div><br>  </div></p>
+<p>代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line">&lt;!--position:absolute--&gt;</div><div class="line"> &lt;style&gt;</div><div class="line">     body&#123;</div><div class="line">         height: 2000px  /*这里将body的高度设置为2000px是为了区分absolute和fixed的差别*/</div><div class="line">     &#125;</div><div class="line">     .test-div&#123;</div><div class="line">         position:absolute;</div><div class="line">         left:50px;</div><div class="line">         top:50px      &#125;</div><div class="line"> &lt;/style&gt;</div><div class="line"> &lt;div class=&quot;test-div&quot;&gt;Hello World&lt;/div&gt;&lt;!--position:fixed--&gt;</div><div class="line"> &lt;style&gt;</div><div class="line">     body&#123;</div><div class="line">         height: 2000px  /*这里将body的高度设置为2000px是为了区分absolute和fixed的差别*/</div><div class="line">     &#125;</div><div class="line">     .test-div&#123;</div><div class="line">         position:fixed;</div><div class="line">         left:50px;</div><div class="line">         top:50px      &#125;</div><div class="line"> &lt;/style&gt;</div><div class="line"> &lt;div class=&quot;test-div&quot;&gt;Hello World&lt;/div&gt;&lt;!--position:relative + position:absolute--&gt;</div><div class="line"> &lt;style&gt;</div><div class="line">     .out-div&#123;</div><div class="line">         width: 300px;</div><div class="line">         height: 300px;</div><div class="line">         background: purple;  /*这里定义个背景，让我们知道这个div在哪*/</div><div class="line">         margin:50px 0px 0px 50px;</div><div class="line">         position: relative      &#125;</div><div class="line">     .in-div&#123;</div><div class="line">         position:absolute;</div><div class="line">         left:50px;</div><div class="line">         top:50px      &#125;</div><div class="line"> &lt;/style&gt;</div><div class="line"> &lt;div class=&quot;out-div&quot;&gt;</div><div class="line">     &lt;div class=&quot;in-div&quot;&gt;Hello World&lt;/div&gt;</div><div class="line"> &lt;/div&gt;</div></pre></td></tr></table></figure>
+<h3 id="z-index-元素堆叠排序"><a href="#z-index-元素堆叠排序" class="headerlink" title="z-index 元素堆叠排序"></a>z-index 元素堆叠排序</h3><p>z-index用于设置或检索对象的堆叠顺序，对应的脚本特性为zIndex。</p>
+<p>z-index的数值越大，该元素的堆叠层级越高。</p>
+<p>代码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">&lt;style&gt;</div><div class="line">     .first-div&#123;</div><div class="line">         width: 300px;</div><div class="line">         height: 300px;</div><div class="line">         background: purple;  /*这里定义个背景，让我们知道这个div在哪*/</div><div class="line">         position: absolute;</div><div class="line">         left:50px;</div><div class="line">         top:50px;</div><div class="line">         z-index: 1      &#125;</div><div class="line">     .second-div&#123;</div><div class="line">         position:absolute;</div><div class="line">         left:80px;</div><div class="line">         top:80px;</div><div class="line">         width:50px;</div><div class="line">         height: 50px;</div><div class="line">         background: white;</div><div class="line">         z-index: 2      &#125;</div><div class="line"> &lt;/style&gt;</div><div class="line"> &lt;div class=&quot;first-div&quot;&gt;&lt;/div&gt;</div><div class="line"> &lt;div class=&quot;second-div&quot;&gt;&lt;/div&gt;</div></pre></td></tr></table></figure>
+<p>这里我们将第一个div和第二个div位置放到一起，方便看z-index的效果。以上代码的样式是紫色的正方形里面有个白色的小正方形。因为小正方形的z-index大于大正方形的z-index，所以能显示出，当我们把.first-div的z-index设置为3，这时候就看不到白色的小正方形了，它被紫色的大正方形无情的挡掉了…</p>
+<h3 id="zoom-元素缩放比例"><a href="#zoom-元素缩放比例" class="headerlink" title="zoom 元素缩放比例"></a>zoom 元素缩放比例</h3><p>zoom适用于所有元素，用于设置或检索对象的缩放比例，对应的脚本特性为zoom，原比例的值是1。</p>
+<p>代码：</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">&lt;style&gt;</div><div class="line">    div&#123;</div><div class="line">        width: 100px;</div><div class="line">        height: 100px;</div><div class="line">        float: left      &#125;</div><div class="line">    .first-div&#123;</div><div class="line">        background: purple;</div><div class="line">        zoom:1.5      &#125;</div><div class="line">    .second-div&#123;</div><div class="line">        background: black;</div><div class="line">        zoom:1      &#125;</div><div class="line">    .third-div&#123;</div><div class="line">        background: red;</div><div class="line">        zoom:.5      &#125;</div><div class="line">&lt;/style&gt;</div><div class="line">&lt;div class=&quot;first-div&quot;&gt;&lt;/div&gt;</div><div class="line">&lt;div class=&quot;second-div&quot;&gt;&lt;/div&gt;</div><div class="line">&lt;div class=&quot;third-div&quot;&gt;&lt;/div&gt;</div></pre></td></tr></table></figure>
+<p>  以上代码将会展示的依次是紫色-黑色-红色的div，大小分别是100px的1.5倍，1倍，0.5倍。</p>
+<h3 id="em-和-rem-是什么"><a href="#em-和-rem-是什么" class="headerlink" title="em 和 rem 是什么"></a>em 和 rem 是什么</h3><p>1em等于当前的字体尺寸，数值的改变意味着字体大小的调整。em 有继承这个特性，也就是说，外部父元素定义了字体的em大小，内部子元素会继承这一属性的样式。<br>rem = root em 。顾名思义，root即根部的，顶部的。也就是根部的em，这个根部指的是HTML根元素。所以rem的大小是针对HTML根元素的大小做字体的相对大小的调整。<br>效果：</p>
+<p> <style><br>      body{<br>        font-size: 12px;<br>      }<br>      /<em>html{<br>          font-size: 12px;<br>      }</em>/<br>      div{<br>          width: 200px;<br>          height: 100px;<br>          float:left      }<br>      .first-div{<br>          font-size: 1em      }<br>      .second-div{<br>          font-size: 2em      }<br>      .third-div{<br>          font-size: 1rem      }<br>      .fourth-div{<br>          font-size: 2rem      }<br>  </style><br>  <div class="first-div">Hello World</div><br>  <div class="second-div">Hello World</div><br>  <div class="third-div">Hello World</div><br>  <div class="fourth-div">Hello World</div></p>
+<p>代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">&lt;style&gt;</div><div class="line">     body&#123;</div><div class="line">       font-size: 12px;  </div><div class="line">     &#125;</div><div class="line">     /*html&#123;</div><div class="line">         font-size: 12px;</div><div class="line">     &#125;*/</div><div class="line">     div&#123;</div><div class="line">         width: 200px;</div><div class="line">         height: 100px;</div><div class="line">         float:left      &#125;</div><div class="line">     .first-div&#123;</div><div class="line">         font-size: 1em      &#125;</div><div class="line">     .second-div&#123;</div><div class="line">         font-size: 2em      &#125;</div><div class="line">     .third-div&#123;</div><div class="line">         font-size: 1rem      &#125;</div><div class="line">     .fourth-div&#123;</div><div class="line">         font-size: 2rem      &#125;</div><div class="line"> &lt;/style&gt;</div><div class="line"> &lt;div class=&quot;first-div&quot;&gt;Hello World&lt;/div&gt;</div><div class="line"> &lt;div class=&quot;second-div&quot;&gt;Hello World&lt;/div&gt;</div><div class="line"> &lt;div class=&quot;third-div&quot;&gt;Hello World&lt;/div&gt;</div><div class="line"> &lt;div class=&quot;fourth-div&quot;&gt;Hello World&lt;/div&gt;</div></pre></td></tr></table></figure>
+<p>以上代码分别展示了不同大小的字体，em和rem的区别可以通过仅仅注释body字体样式和html字体样式来看看他们之间的差别。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/12/03/SS 伪类before:after content内容生成技术/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Fenglin">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.gif">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Feng~Lin">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Feng~Lin" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/12/03/SS 伪类before:after content内容生成技术/" itemprop="url">
+                  CSS 伪类before/after content内容生成技术----纯CSS实现tooltip
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-03T16:16:44+08:00">
+                2016-12-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="一、介绍before-after"><a href="#一、介绍before-after" class="headerlink" title="一、介绍before/after"></a>一、介绍before/after</h3><p>CSS中的before和after伪类选择器早在CSS2时就被引入，改属性被所有主流浏览器所支持了。<br>before和after顾名思义，分别指的是伪元素在元素前/后添加内容，默认他们是display是inline，但是可以使用CSS设置为block。<br>应用before/和after也比较简单，举个例子：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">a:after &#123;</div><div class="line">      content: &quot; after &quot;;</div><div class="line">      display:  block;</div><div class="line">      coloe: red;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>可以在浏览器看到，a标签元素后面多出了一段文字 after。（在CSS3中伪类元素使用是如a::after的，不过目前两者并无多大区别）。<br>（伪元素不可通过DOM使用，IE6/7对该属性不支持）</p>
+<p>after和before伪元素有许多用处，还可以简化代码，比如可以写一个计数器、tip小三角形、清除浮动……特别在CSS3中新加的一些属性更是丰富了它的应用，这里有个小教程，用before/after伪元素来实现一个纯CSS3的tooltip。</p>
+<h3 id="二、tooltip实现教程"><a href="#二、tooltip实现教程" class="headerlink" title="二、tooltip实现教程"></a>二、tooltip实现教程</h3><p>这里我们主要是用草after/before伪元素content中的attr属性，先来看看实现后的样子：</p>
+<h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h4><p>鼠标hover button之后，出现一个tooltip小标签。<br>代码先贴上：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE html&gt;</div><div class="line">&lt;html lang=&quot;en&quot;&gt;</div><div class="line">&lt;head&gt;</div><div class="line">    &lt;meta charset=&quot;UTF-8&quot;&gt;</div><div class="line">    &lt;title&gt;demo&lt;/title&gt;</div><div class="line">    &lt;style&gt;</div><div class="line">        .btn &#123;</div><div class="line">            position: relative;</div><div class="line">            display: block;</div><div class="line">            margin: 200px auto;</div><div class="line">            width: 200px;</div><div class="line">            padding: 10px 20px;</div><div class="line">            font-size: 20px;</div><div class="line">            background: #fff;</div><div class="line">            color: #6bdf4e;</div><div class="line">            border: 1px solid #6bdf4e;</div><div class="line">            cursor: pointer;</div><div class="line">        &#125;</div><div class="line">        .btn::after &#123;</div><div class="line">            content: attr(data-tip);</div><div class="line">            display: none;</div><div class="line">            position: absolute;</div><div class="line">            padding: 5px 10px;</div><div class="line">            left: 50%;</div><div class="line">            bottom: 100%;</div><div class="line">            margin-bottom: 12px;</div><div class="line">            transform: translateX(-50%);</div><div class="line">            font-size: 16px;</div><div class="line">            background: #000;</div><div class="line">            color: #fff;</div><div class="line">            cursor: default;</div><div class="line">        &#125;</div><div class="line">        .btn::before &#123;</div><div class="line">            content: &quot; &quot;;</div><div class="line">            position: absolute;</div><div class="line">            display: none;</div><div class="line">            left: 50%;</div><div class="line">            bottom: 100%;</div><div class="line">            transform: translateX(-50%);</div><div class="line">            margin-bottom: 3px;</div><div class="line">            width: 0;</div><div class="line">            height: 0;</div><div class="line">            border-left: 6px solid transparent;</div><div class="line">            border-right: 6px solid transparent;</div><div class="line">            border-top: 9px solid #000;</div><div class="line">        &#125;</div><div class="line">        .btn:hover::after,</div><div class="line">        .btn:hover::before &#123;</div><div class="line">            display: block;</div><div class="line">        &#125;</div><div class="line">    &lt;/style&gt;</div><div class="line">&lt;/head&gt;</div><div class="line">&lt;body&gt;</div><div class="line"></div><div class="line">    &lt;button class=&quot;btn&quot; data-tip=&quot;ToolTip&quot;&gt;button&lt;/button&gt;</div><div class="line"></div><div class="line">&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
+<h4 id="实现过程"><a href="#实现过程" class="headerlink" title="实现过程"></a>实现过程</h4><hr>
+<ul>
+<li>一. 创建一个标签，然后在标签内加上一个属性 data-[] = “ToolTip”,[]表示的是自定义的属性名称，引号里面是tooltip需要显示的内容。</li>
+<li>二. 给标签加样式，position设置为relative，因为之后伪元素需要设置绝对定位来设置位置。</li>
+<li>三. 给after加样式，after是需要显示的tooltip，通过content: attr(data-tip);拿到需要显示的内容，设置绝对定位，调整位置。</li>
+<li>四. 给before加样式，before需要设置成一个小三角tip放在after下面。</li>
+<li>五. 给after/before的display都设置为none。</li>
+<li>六. 给需要tooltip的元素伪类选择hover时设置after/before的display为block，这里需要注意的是after/before默认display为inline，所以我们前面创建调试是display应该先设置为block。</li>
+<li>七. 打开浏览器查看效果~</li>
+</ul>
+<p>##三、对于不支持伪元素的IE6/7<br>解决方法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">var $beforeAfter = function(dom) &#123;</div><div class="line">    if (document.querySelector || !dom &amp;&amp; dom.nodeType !== 1) return;</div><div class="line">    var content = dom.getAttribute(&quot;data-content&quot;) || &apos;&apos;;     </div><div class="line">    var before = document.createElement(&quot;before&quot;)</div><div class="line">        , after = document.createElement(&quot;after&quot;);</div><div class="line">    before.innerHTML = content;</div><div class="line">    after.innerHTML = content;</div><div class="line">    dom.insertBefore(before, dom.firstChild);</div><div class="line">    dom.appendChild(after);</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
     
       
 
@@ -275,7 +1025,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <span class="post-meta-item-text">Posted on</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-03T15:15:28+08:00">
                 2016-12-03
               </time>
@@ -407,7 +1157,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <span class="post-meta-item-text">Posted on</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-03T15:10:06+08:00">
                 2016-12-03
               </time>
@@ -535,7 +1285,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <span class="post-meta-item-text">Posted on</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-03T15:01:23+08:00">
                 2016-12-03
               </time>
@@ -718,7 +1468,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <span class="post-meta-item-text">Posted on</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-03T14:43:57+08:00">
                 2016-12-03
               </time>
@@ -904,7 +1654,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <span class="post-meta-item-text">Posted on</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-03T14:30:33+08:00">
                 2016-12-03
               </time>
@@ -1002,797 +1752,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/12/03/css样式之垂直居中/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="Fenglin">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="/images/avatar.gif">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="Feng~Lin">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="Feng~Lin" src="">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/12/03/css样式之垂直居中/" itemprop="url">
-                  CSS的垂直居中和水平居中总结
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-03T14:14:35+08:00">
-                2016-12-03
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>总括： CSS居中一直是一个比较敏感的话题，为了以后开发的方便，楼主觉得确实需要总结一下了，总的来说，居中问题分为垂直居中和水平居中，实际上水平居中是很简单的，但垂直居中的方式和方法就千奇百怪了。</p>
-<p>原文地址：CSS居中小谈</p>
-<p>知乎专栏&amp;&amp;简书专题：前端进击者（知乎）&amp;&amp;前端进击者（简书）</p>
-<p>博主博客地址：Damonare的个人博客</p>
-<p>人生用物，各有天限；夏涝太多，必有秋旱。</p>
-<h3 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h3><h4 id="内联元素居中方案"><a href="#内联元素居中方案" class="headerlink" title="内联元素居中方案"></a>内联元素居中方案</h4><h6 id="水平居中设置："><a href="#水平居中设置：" class="headerlink" title="水平居中设置："></a>水平居中设置：</h6><p>行内元素 设置 text-align:center；</p>
-<p>Flex布局 设置display:flex;justify-content:center;(灵活运用)</p>
-<h6 id="垂直居中设置："><a href="#垂直居中设置：" class="headerlink" title="垂直居中设置："></a>垂直居中设置：</h6><p>父元素高度确定的单行文本（内联元素） 设置 height = line-height；<br>父元素高度确定的多行文本（内联元素） a:插入 table （插入方法和水平居中一样），然后设置 vertical-align:middle； b:先设置 display:table-cell 再设置 vertical-align:middle；</p>
-<p>块级元素居中方案</p>
-<h6 id="水平居中设置：-1"><a href="#水平居中设置：-1" class="headerlink" title="水平居中设置："></a>水平居中设置：</h6><p>定宽块状元素 设置 左右 margin 值为 auto；</p>
-<p>不定宽块状元素 a:在元素外加入 table 标签（完整的，包括 table、tbody、tr、td），该元素写在 td 内，然后设置 margin 的值为 auto； b:给该元素设置 display:inine 方法； c:父元素设置 position:relative 和 left:50%，子元素设置 position:relative 和 left:50%；</p>
-<h6 id="垂直居中设置：-1"><a href="#垂直居中设置：-1" class="headerlink" title="垂直居中设置："></a>垂直居中设置：</h6><p>1.使用position:absolute（fixed）,设置left、top、margin-left、margin-top的属性;</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">.box&#123;</div><div class="line">position:absolute;/*或fixed*/</div><div class="line">top:50%;</div><div class="line">left:50%;</div><div class="line">margin-top:-100px;</div><div class="line">margin-left:-200px;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>2.利用position:fixed（absolute）属性，margin:auto这个必须不要忘记了;</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">.box&#123;</div><div class="line">    position: absolute;或fixed</div><div class="line">    top:0;</div><div class="line">    right:0;</div><div class="line">    bottom:0;</div><div class="line">    left:0;</div><div class="line">    margin: auto;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>3.利用display:table-cell属性使内容垂直居中,这个方法在多行文字居中的时候用的比较多;<br>HTML代码：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;div class=&quot;box&quot;&gt;</div><div class="line">   	&lt;span&gt;多行文字，此处居中设置&lt;/span&gt;</div><div class="line">&lt;/div&gt;</div></pre></td></tr></table></figure>
-<p>CSS代码：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">.box&#123;</div><div class="line">    display:table-cell;</div><div class="line">    vertical-align:middle;</div><div class="line">    text-align:center;</div><div class="line">    width:100px;</div><div class="line">    height:120px;</div><div class="line">    background:purple;</div><div class="line">&#125;</div><div class="line">.box span&#123;</div><div class="line">    display: inline-block;</div><div class="line">    vertical-align: middle;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>4.使用css3的新属性transform:translate(x,y)属性;</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">.box&#123;</div><div class="line">    position: absolute;</div><div class="line">    top:50%;</div><div class="line">    left:50%;</div><div class="line">    transform: translate(-50%,-50%);</div><div class="line">    -webkit-transform:translate(-50%,-50%);</div><div class="line">    -moz-transform:translate(-50%,-50%);</div><div class="line">    -ms-transform:translate(-50%,-50%);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>5.最高大上的一种，使用before，after伪元素;<br>HTML代码：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;div class=&apos;box&apos;&gt;</div><div class="line">  		&lt;div class=&apos;content&apos;&gt;</div><div class="line">       	垂直居中</div><div class="line">   	&lt;/div&gt;</div><div class="line">&lt;/div&gt;</div></pre></td></tr></table></figure>
-<p>CSS代码：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">.box&#123;</div><div class="line">    position:fixed;</div><div class="line">    display:block;</div><div class="line">    background:rgba(0,0,0,.5);</div><div class="line">&#125;</div><div class="line">.box:before&#123;</div><div class="line">    content:&apos;&apos;;</div><div class="line">    display:inline-block;</div><div class="line">    vertical-align:middle;</div><div class="line">    height:100%;</div><div class="line">&#125;</div><div class="line">.box:after&#123;</div><div class="line">    content:&apos;&apos;;</div><div class="line">    display:inline-block;</div><div class="line">    vertical-align:middle;</div><div class="line">    height:100%;</div><div class="line">&#125;</div><div class="line">.box .content&#123;</div><div class="line">    width:60px;</div><div class="line">    height:60px;</div><div class="line">    line-height:60px;</div><div class="line">    color:red;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>6.Flex布局;</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">.box&#123;</div><div class="line">    display: -webkit-box;</div><div class="line">    display: -webkit-flex;</div><div class="line">    display: -moz-box;</div><div class="line">    display: -moz-flex;</div><div class="line">    display: -ms-flexbox;</div><div class="line">    display: flex;</div><div class="line">    水平居中</div><div class="line">    -webkit-box-align: center;</div><div class="line">    -moz-box-align: center;</div><div class="line">    -ms-flex-pack:center;</div><div class="line">    -webkit-justify-content: center;</div><div class="line">    -moz-justify-content: center;</div><div class="line">    justify-content: center;</div><div class="line">     垂直居中</div><div class="line">    -webkit-box-pack: center;</div><div class="line">    -moz-box-pack: center;</div><div class="line">    -ms-flex-align:center;</div><div class="line">    -webkit-align-items: center;</div><div class="line">    -moz-align-items: center;</div><div class="line">    align-items: center;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/12/03/FLEX/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="Fenglin">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="/images/avatar.gif">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="Feng~Lin">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="Feng~Lin" src="">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/12/03/FLEX/" itemprop="url">
-                  FLEX
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-03T12:22:52+08:00">
-                2016-12-03
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="flex-css快速入门，极速布局"><a href="#flex-css快速入门，极速布局" class="headerlink" title="flex.css快速入门，极速布局"></a>flex.css快速入门，极速布局</h2><h3 id="什么是flex-css"><a href="#什么是flex-css" class="headerlink" title="什么是flex.css?"></a>什么是flex.css?</h3><p>css3 flex 布局相信很多人已经听说过甚至已经在开发中使用过它，但是我想我们都会有一个共同的经历，面对它的各种版本，各种坑，傻傻的分不清楚，flex.css就是对flex布局的一种封装，通过简洁的属性设置就能使得它完美的运行在移动端的各种浏览器，甚至能运行在ie10+的各种PC端浏览器中。它天然的能够很好的将页面布局和css进行分离，让css专注于元素的显示效果，我称之为声明式布局……</p>
-<p>flex和data-flex</p>
-<p>flex.css 有两个版本，一个是flex.css一个是data-flex.css，这两个版本其实是一样的，唯一的区别是，一个是使用flex属性设置，一个是使用data-flex属性设置。react 不支持flex属性直接布局，所以data-flex.css实际上是为了react而诞生的</p>
-<h3 id="安装flex-css"><a href="#安装flex-css" class="headerlink" title="安装flex.css"></a>安装flex.css</h3><p>官方地址：<a href="https://github.com/lzxb/flex.css" target="_blank" rel="external">https://github.com/lzxb/flex.css</a></p>
-<p>通过npm安装：</p>
-<figure class="highlight plain"><figcaption><span>install --save flex.css```</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">本例子教程例子，则是从官方项目下载下来后，解压出来后，将dist目录下的flex.css文件引入使用</div><div class="line">#### Hello world</div></pre></td></tr></table></figure>
-<html lang="en">
-
-<p><head><br>    <meta charset="UTF-8"><br>    <title>Hello worldtitle&gt;<br>    <link rel="stylesheet" href="./flex.css"><br>    <style type="text/css"><br>        .box {<br>            width: 150px;<br>            height: 150px;<br>            border: 1px solid #ddd;<br>        }<br>    style&gt;<br>head&gt;</p>
-<p><body><br>    <div class="box" flex>Hello worlddiv&gt;<br>body&gt;</p>
-<p>html&gt;</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">![Generating](https://dn-mhke0kuv.qbox.me/7a8dd2bdcad9c30fe2ec.png)</div><div class="line">#### 设置主轴方向</div></pre></td></tr></table></figure>
-<html lang="en">
-
-<p><head><br>    <meta charset="UTF-8"><br>    <title>设置主轴方向title&gt;<br>    <link rel="stylesheet" href="./flex.css"><br>    <style type="text/css"><br>        .box {<br>            width: 150px;<br>            height: 150px;<br>            border: 1px solid #ddd;<br>        }<br>        .item {<br>            width: 30px;<br>            height: 30px;<br>            line-height: 30px;<br>            color: #fff;<br>            text-align: center;<br>        }<br>    style&gt;<br>head&gt;</p>
-<p><body><br>    <h2>从上到下h2&gt;<br>    <div class="box" flex="dir:top"><br>        <div class="item" style="background: red;">1div&gt;<br>        <div class="item" style="background: blue;">2div&gt;<br>        <div class="item" style="background: #000;">3div&gt;<br>    div&gt;<br>    <h2>从右到左h2&gt;<br>    <div class="box" flex="dir:right"><br>        <div class="item" style="background: red;">1div&gt;<br>        <div class="item" style="background: blue;">2div&gt;<br>        <div class="item" style="background: #000;">3div&gt;<br>    div&gt;<br>    <h2>从下到上h2&gt;<br>    <div class="box" flex="dir:bottom"><br>        <div class="item" style="background: red;">1div&gt;<br>        <div class="item" style="background: blue;">2div&gt;<br>        <div class="item" style="background: #000;">3div&gt;<br>    div&gt;<br>    <h2>从左到右（默认）h2&gt;<br>    <div class="box" flex="dir:left"><br>        <div class="item" style="background: red;">1div&gt;<br>        <div class="item" style="background: blue;">2div&gt;<br>        <div class="item" style="background: #000;">3div&gt;<br>    div&gt;<br>body&gt;</p>
-<p>html&gt;</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">![Generating](https://dn-mhke0kuv.qbox.me/b9c18c27fddb017e97b1.png)</div><div class="line"></div><div class="line">#### 主轴对齐方式</div></pre></td></tr></table></figure>
-<html lang="en">
-
-<p><head><br>    <meta charset="UTF-8"><br>    <title>主轴对齐方式title&gt;<br>    <link rel="stylesheet" href="./flex.css"><br>    <style type="text/css"><br>        .box {<br>            width: 150px;<br>            height: 150px;<br>            border: 1px solid #ddd;<br>        }<br>        .item {<br>            width: 30px;<br>            height: 30px;<br>            line-height: 30px;<br>            color: #fff;<br>            text-align: center;<br>        }<br>    style&gt;<br>head&gt;</p>
-<p><body><br>    <h2>从右到左h2&gt;<br>    <div class="box" flex="main:right"><br>        <div class="item" style="background: red;">1div&gt;<br>        <div class="item" style="background: blue;">2div&gt;<br>        <div class="item" style="background: #000;">3div&gt;<br>    div&gt;<br>    <h2>从左到右（默认）h2&gt;<br>    <div class="box" flex="main:left"><br>        <div class="item" style="background: red;">1div&gt;<br>        <div class="item" style="background: blue;">2div&gt;<br>        <div class="item" style="background: #000;">3div&gt;<br>    div&gt;<br>    <h2>两端对齐h2&gt;<br>    <div class="box" flex="main:justify"><br>        <div class="item" style="background: red;">1div&gt;<br>        <div class="item" style="background: blue;">2div&gt;<br>        <div class="item" style="background: #000;">3div&gt;<br>    div&gt;<br>    <h2>居中对齐h2&gt;<br>    <div class="box" flex="main:center"><br>        <div class="item" style="background: red;">1div&gt;<br>        <div class="item" style="background: blue;">2div&gt;<br>        <div class="item" style="background: #000;">3div&gt;<br>    div&gt;<br>body&gt;</p>
-<p>html&gt;</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">![Generating](https://user-gold-cdn.xitu.io/2016/11/29/e2c27f71fac79cfe32967d6fd535812f)</div><div class="line"></div><div class="line">#### 交叉轴对齐方式</div></pre></td></tr></table></figure>
-<html lang="en">
-
-<p><head><br>    <meta charset="UTF-8"><br>    <title>交叉轴对齐方式title&gt;<br>    <link rel="stylesheet" href="./flex.css"><br>    <style type="text/css"><br>        .box {<br>            width: 150px;<br>            height: 150px;<br>            border: 1px solid #ddd;<br>        }<br>        .item {<br>            width: 30px;<br>            /<em>height: 30px;</em>/<br>            line-height: 30px;<br>            color: #fff;<br>            text-align: center;<br>        }<br>    style&gt;<br>head&gt;</p>
-<p><body><br>    <h2>从上到下（默认）h2&gt;<br>    <div class="box" flex="cross:top"><br>        <div class="item" style="background: red;">1div&gt;<br>        <div class="item" style="background: blue;">2div&gt;<br>        <div class="item" style="background: #000;">3div&gt;<br>    div&gt;<br>    <h2>从下到上h2&gt;<br>    <div class="box" flex="cross:bottom"><br>        <div class="item" style="background: red;">1div&gt;<br>        <div class="item" style="background: blue;">2div&gt;<br>        <div class="item" style="background: #000;">3div&gt;<br>    div&gt;<br>    <h2>基线对齐h2&gt;<br>    <div class="box" flex="cross:baseline"><br>        <div class="item" style="font-size: 30px; background: red;">1div&gt;<br>        <div class="item" style="font-size: 12px; background: blue;">2div&gt;<br>        <div class="item" style="font-size: 40px; background: #000;">3div&gt;<br>    div&gt;<br>    <h2>居中对齐h2&gt;<br>    <div class="box" flex="cross:center"><br>        <div class="item" style="background: red;">1div&gt;<br>        <div class="item" style="background: blue;">2div&gt;<br>        <div class="item" style="background: #000;">3div&gt;<br>    div&gt;<br>    <h2>高度并排铺满h2&gt;<br>    <div class="box" flex="cross:stretch"><br>        <div class="item" style="background: red;">1div&gt;<br>        <div class="item" style="background: blue;">2div&gt;<br>        <div class="item" style="background: #000;">3div&gt;<br>    div&gt;<br>body&gt;</p>
-<p>html&gt;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">![Generating](https://dn-mhke0kuv.qbox.me/c64f9a3067720de8e04a.png)</div><div class="line">#### 子元素设置</div></pre></td></tr></table></figure></p>
-<html lang="en">
-
-<p><head><br>    <meta charset="UTF-8"><br>    <title>交叉轴对齐方式title&gt;<br>    <link rel="stylesheet" href="./flex.css"><br>    <style type="text/css"><br>        .box {<br>            width: 150px;<br>            height: 150px;<br>            border: 1px solid #ddd;<br>        }<br>        .item {<br>            width: 30px;<br>            height: 30px;<br>            line-height: 30px;<br>            color: #fff;<br>            text-align: center;<br>        }<br>    style&gt;<br>head&gt;</p>
-<p><body><br>    <h2>子元素平分空间h2&gt;<br>    <div class="box" flex="box:mean"><br>        <div class="item" style="background: red;">1div&gt;<br>        <div class="item" style="background: blue;">2div&gt;<br>        <div class="item" style="background: #000;">3div&gt;<br>    div&gt;<br>    <h2>第一个子元素不要多余空间，其他子元素平分多余空间h2&gt;<br>    <div class="box" flex="box:first"><br>        <div class="item" style="background: red;">1div&gt;<br>        <div class="item" style="background: blue;">2div&gt;<br>        <div class="item" style="background: #000;">3div&gt;<br>    div&gt;<br>    <h2>最后一个子元素不要多余空间，其他子元素平分多余空间h2&gt;<br>    <div class="box" flex="box:last"><br>        <div class="item" style="background: red;">1div&gt;<br>        <div class="item" style="background: blue;">2div&gt;<br>        <div class="item" style="background: #000;">3div&gt;<br>    div&gt;<br>    <h2>两端第一个元素不要多余空间，其他子元素平分多余空间h2&gt;<br>    <div class="box" flex="box:justify"><br>        <div class="item" style="background: red;">1div&gt;<br>        <div class="item" style="background: blue;">2div&gt;<br>        <div class="item" style="background: #000;">3div&gt;<br>    div&gt;<br>body&gt;</p>
-<p>html&gt;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">![Generating](https://dn-mhke0kuv.qbox.me/5beac2b8194dfbb980ed.png)</div><div class="line"></div><div class="line">#### flex-box元素剩余空间比例分配</div><div class="line"></div><div class="line">取值范围(0-10)，单独设置子元素多余空间的如何分配，设置为0，则子元素不占用多余的多余空间</div><div class="line"></div><div class="line">多余空间分配 = 当前flex-box值/子元素的flex-box值相加之和</div><div class="line"></div><div class="line">#### flex-box实现两端不需要多余空间，中间占满剩余空间</div></pre></td></tr></table></figure></p>
-<html lang="en">
-
-<p><head><br>    <meta charset="UTF-8"><br>    <title>flex-box实现两端不需要多余空间，中间占满剩余空间title&gt;<br>    <link rel="stylesheet" href="./flex.css"><br>    <style type="text/css"><br>        .box {<br>            width: 150px;<br>            height: 150px;<br>            border: 1px solid #ddd;<br>        }<br>        .item {<br>            width: 30px;<br>            height: 30px;<br>            line-height: 30px;<br>            color: #fff;<br>            text-align: center;<br>        }<br>    style&gt;<br>head&gt;</p>
-<p><body><br>    <h2>flex-box实现两端不需要多余空间，中间占满剩余空间h2&gt;<br>    <div class="box" flex><br>        <div class="item" flex-box="0" style="background: red;">1div&gt;<br>        <div class="item" flex-box="1" style="background: blue;">2div&gt;<br>        <div class="item" flex-box="0" style="background: #000;">3div&gt;<br>    div&gt;<br>body&gt;</p>
-<p>html&gt;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">![Generating](https://dn-mhke0kuv.qbox.me/f0844c27cd9ec24d38dc.png)</div><div class="line"></div><div class="line">#### 水平居中</div></pre></td></tr></table></figure></p>
-<html lang="en">
-
-<p><head><br>    <meta charset="UTF-8"><br>    <title>水平居中title&gt;<br>    <link rel="stylesheet" href="./flex.css"><br>    <style type="text/css"><br>        .box {<br>            width: 150px;<br>            height: 150px;<br>            border: 1px solid #ddd;<br>        }<br>        .item {<br>            width: 30px;<br>            height: 30px;<br>            line-height: 30px;<br>            color: #fff;<br>            text-align: center;<br>        }<br>    style&gt;<br>head&gt;</p>
-<p><body><br>    <h2>水平居中h2&gt;<br>    <div class="box" flex="main:center cross:center"><br>        <div class="item" style="background: red;">1div&gt;<br>        <div class="item" style="background: blue;">2div&gt;<br>        <div class="item" style="background: #000;">3div&gt;<br>    div&gt;<br>body&gt;</p>
-<p>html&gt;<br>```<br><img src="https://user-gold-cdn.xitu.io/2016/11/29/dc365eb77d5e52853f7644b11d5c52f2" alt="Generating"></p>
-</style></title></head></p></html>
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/12/03/正则表达式学习笔记/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="Fenglin">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="/images/avatar.gif">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="Feng~Lin">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="Feng~Lin" src="">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/12/03/正则表达式学习笔记/" itemprop="url">
-                  正则表达式学习笔记
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-03T12:15:45+08:00">
-                2016-12-03
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>正则表达式对于我来说一直像黑暗魔法一样的存在。手机正则去网上搜，邮箱正则去网上搜，复杂点的看看文档拼凑一下，再复杂只能厚着脸皮让其他同事给写一个。从来没有系统的学习过，今天准备拿下它。</p>
-<h4 id="1-学习目标："><a href="#1-学习目标：" class="headerlink" title="1. 学习目标："></a>1. 学习目标：</h4><p>了解正则表达式语法<br>在IDE中使用正则表达式<br>在javascript 中使用正则表达式处理字符串</p>
-<h4 id="2-什么是正则表达式"><a href="#2-什么是正则表达式" class="headerlink" title="2. 什么是正则表达式"></a>2. 什么是正则表达式</h4><p>正则表达式，又称正规表示式、正规表示法、正规表达式、规则表达式、常规表示法（英语：Regular Expression，在代码中常简写为regex、regexp或RE），计算机科学的一个概念。正则表达式使用单个字符串来描述、匹配一系列匹配某个句法规则的字符串。在很多文本编辑器里，正则表达式通常被用来检索、替换那些匹配某个模式的文本。</p>
-<p>通俗的讲就是按照某种规则去匹配符合条件的字符串</p>
-<h4 id="3-利用图形化工具理解正则表达式"><a href="#3-利用图形化工具理解正则表达式" class="headerlink" title="3.利用图形化工具理解正则表达式"></a>3.利用图形化工具理解正则表达式</h4><p>辅助理解正则表达的在线工具 <a href="https://regexper.com/" target="_blank" rel="external">https://regexper.com/</a> 我们利用这个工具辅助理解，正则表达式。语法没懂表着急，后面会有，这里只是学会用工具帮助我们学习。<br>手机号正则</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">```</div><div class="line">![Generating](https://dn-myg6wstv.qbox.me/1ce345adabe2cc8b2b96.jpg)</div><div class="line">注释：以1开头，第二位为3 4 5 7 9 其中一个，以9位（本身1次加重复8次）0-9数字结尾</div><div class="line"></div><div class="line">单词边界</div><div class="line"></div><div class="line">```/\bis\b/</div></pre></td></tr></table></figure>
-<p><img src="https://dn-myg6wstv.qbox.me/3fd0c8d1c0e6614ddffc.jpg" alt="Generating"></p>
-<p>注释： is前后都是单词的边界，比较晦涩难懂？感受下两者的区别，\b 会方道语法部分讲解<br><img src="https://dn-myg6wstv.qbox.me/a774384e61752ce942a0.jpg" alt="Generating"><br><img src="https://dn-myg6wstv.qbox.me/f536f473724093a5548e.jpg" alt="Generating"><br>URL分组替换</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">```</div><div class="line">看不懂的不要慌语法部分后面会有介绍，这里只是展示利用可视化的图形帮助我们理解正则表达式，可以回来再看木有关系</div><div class="line"></div><div class="line">![Generating](https://dn-myg6wstv.qbox.me/72a64c0f5f5ba4e7eaee.jpg)</div><div class="line"></div><div class="line">正则表达式中括号用来分组，这个时候我们可以通过用$1来获取 group#1的内容</div><div class="line"></div><div class="line">![Generating](https://user-gold-cdn.xitu.io/2016/11/29/1e337fa1b28952765d0f60e834c884ea)</div><div class="line"></div><div class="line">说下这个正则的意义，如果网站用了https，网站引用静态资源也必须是https，否则报错。如果写成 // 会自动识别 http 或者 https</div><div class="line"></div><div class="line">日期匹配与分组替换</div><div class="line"></div><div class="line">```/^\d&#123;4&#125;[/-]\d&#123;2&#125;[/-]\d&#123;2&#125;$/</div></pre></td></tr></table></figure>
-<p><img src="https://dn-myg6wstv.qbox.me/eeb1d71e254fde06090e.jpg" alt="Generating"></p>
-<p>这个正则比较复杂，画符念咒的地方太多了，一一分析：</p>
-<p>1.Start of line 是由^生效的表示以此开头</p>
-<p>2.对应结尾End of line 由$生效表示以此结尾</p>
-<p>2.接着看digit 由 \d 生效表示数字</p>
-<p>4.3times 由{4} 生效表示重复4次，开始的时候有疑问，为什么不是 4times 。后来明白作者的用意，正则表达式是一个规则，用这个规则去从字符串开始匹配到结束（注意计算机读字符串可是不会分行的，都是一个串，我们看到的多行，人家会认为是个 \t ）这里设计好像小火车的轨道一直开到末尾。digit 传过一次，3times表示再来三次循环，共4次，后面的once同理。 自己被自己啰嗦到了。</p>
-<p>5.接下来，是 one of 在手机正则里面已经出现了。表示什么都行。只要符合这两个都让通过。</p>
-<h2 id="Js中Regexp对象"><a href="#Js中Regexp对象" class="headerlink" title="Js中Regexp对象"></a>Js中Regexp对象</h2><p>Javascript 通过内置对象RegExp支持正则表达式，有两种方法实例化RegExp对象</p>
-<p>字面量方法</p>
-<figure class="highlight plain"><figcaption><span>reg =/\bis\b/g```</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">构造函数</div><div class="line"></div><div class="line">```const reg = new RegExp(&apos;\\bis\\b&apos;, &apos;g&apos;)</div></pre></td></tr></table></figure>
-<p>注意：第一个参数为正则表达式字符串（注意转译），第二个参数为修饰符，修饰符g代表全局搜索，后面会有详细介绍。</p>
-<h2 id="正则表达式语法"><a href="#正则表达式语法" class="headerlink" title="正则表达式语法"></a>正则表达式语法</h2><p>1 修饰符 （三个 g i m）</p>
-<p>修饰符与其他语法特殊，字面量方法声名的时候放到//后，构造函数声明的时候，作为第二个参数传入。整个正则表达式可以理解为正则表达式规则字符串+修饰符</p>
-<p>g：global 执行一个全局匹配<br>i：ignore case执行一个不区分大小写的匹配<br>m: multiple lines多行匹配<br>修饰符可以一起用 const reg =/\bis\b/gim</p>
-<p>来说说他们有什么作用</p>
-<p>有g和没有g的区别</p>
-<p><img src="https://dn-myg6wstv.qbox.me/d7f51998f922e51426cb.jpg" alt="Generating"></p>
-<p>没有g只替换了第一个，有g 所有的都换了</p>
-<p><img src="https://user-gold-cdn.xitu.io/2016/11/29/98b62e4c4bb46a7d4bb6caaf609bb2e1" alt="Generating"></p>
-<p>有i和没有i的区别</p>
-<p><img src="https://user-gold-cdn.xitu.io/2016/11/29/b5b8d1d93fa5dced5a98f4dca5f52632" alt="Generating"></p>
-<p>有i忽略大小写，没有i严格区分大小写</p>
-<p><img src="https://dn-myg6wstv.qbox.me/bb10c84bef012f611b82.jpg" alt="Generating"></p>
-<p>2 元字符</p>
-<p>正则表达式由两种基本字符组成：</p>
-<p>原义字符<br>非打印字符<br>元字符 (* + ? $ ^ . | \ ( ) { } [ ])<br>3 原义字符</p>
-<p>这个没什么好解释的，我们一直在举例的 /is/ 匹配字符串’is’</p>
-<p>\将下一个字符标记为一个特殊字符、或一个原义字符、或一个向后引用、或一个八进制转义符。例如，n”匹配字符“n”。“\n”匹配一个换行符。序列“\”匹配“\”而“(”则匹配“(”。</p>
-<p>4 非打印字符</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">字符	描述</div><div class="line">\cx	匹配由x指明的控制字符。例如， \cM 匹配一个 Control-M 或回车符。x 的值必须为 A-Z 或 a-z 之一。否则，将 c 视为一个原义的 &apos;c&apos; 字符。</div><div class="line">\f	匹配一个换页符。等价于 \x0c 和 \cL。</div><div class="line">\n	匹配一个换行符。等价于 \x0a 和 \cJ。</div><div class="line">\r	匹配一个回车符。等价于 \x0d 和 \cM。</div><div class="line">\s	匹配任何空白字符，包括空格、制表符、换页符等等。等价于 [ \f\n\r\t\v]。</div><div class="line">\S	匹配任何非空白字符。等价于 [^ \f\n\r\t\v]。</div><div class="line">\t	匹配一个制表符。等价于 \x09 和 \cI。</div><div class="line">\v	匹配一个垂直制表符。等价于 \x0b 和 \cK。</div></pre></td></tr></table></figure>
-<p>非打印字符，以\n为例</p>
-<p><img src="https://user-gold-cdn.xitu.io/2016/11/29/ffe199631d6c0de91fbdbe8343419b24" alt="Genearating"><br>其他的在前端引用比较少，应该在后端处理文本文件的时候会用到</p>
-<ol>
-<li>字符类 []</li>
-</ol>
-<p>在前面的手机号正则例子🌰中，我们已经使用过[] /^1[34578][0-9]{9}$/ : [34578]表示34578任意一个数字即可。在日期匹配与分组替换例子🌰中 /^\d{4}[/-]\d{2}[/-]\d{2}$/ 表示符合 ／ - 都可以<br><img src="https://dn-myg6wstv.qbox.me/dbd465a091a35072deef.jpg" alt="Generating"></p>
-<ol>
-<li>字符类取反 [^]</li>
-</ol>
-<p>表示不属于此类</p>
-<p><img src="https://user-gold-cdn.xitu.io/2016/11/29/eb573baedf3ae2c4d6255070b80d2303" alt="Generating"></p>
-<p>空格也不属于，好多狗🐶</p>
-<ol>
-<li>范围类[-]</li>
-</ol>
-<p>正则表达式支持一定范围规则比如 [a-z] [A-Z] [0-9] 可以连写[a-z0-9] 如果你只是想匹配-在 范围类最后加-即可。请看实例。<br><img src="https://user-gold-cdn.xitu.io/2016/11/30/7dfdc4fb6d063e1c2918b132cd1f78fe" alt="Generating"></p>
-<ol>
-<li>预定义类</li>
-</ol>
-<p>常用为了方便书写</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">字符	等价类	含义</div><div class="line">.	[^\n\r]	除了回车符和换行符之外的所有字符</div><div class="line">\d	[0-9]	数字字符</div><div class="line">\D	[^0-9]	非数字字符</div><div class="line">\s	[\t\n\x0B\f\r]	空白符</div><div class="line">\S	[^\t\n\x0B\f\r]	非空白符</div><div class="line">\w	[a-zA-Z_0-9]	单词字符（字母、数字、下划线）</div><div class="line">\W	[^a-zA-Z_0-9]	非单词字符</div></pre></td></tr></table></figure>
-<p>有了这些预定义类，写一些正则就很方便了，比如我们希望匹配一个 ab+数字+任意字符 的字符串，就可以这样写了 /ab\d./</p>
-<p><img src="https://dn-myg6wstv.qbox.me/13f9df65830c8ab8777a.jpg" alt="Generating"></p>
-<ol>
-<li>边界</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">字符	含义</div><div class="line">^	以xx开头</div><div class="line">$	以xx结尾</div><div class="line">\b	单词边界，指[a-zA-Z_0-9]之外的字符</div><div class="line">\B	非单词边界</div></pre></td></tr></table></figure>
-<p>边界顾名思义即定义匹配的边界条件，上面基本都在前面的例子碰到了，这里演示下\b与\B 的区别</p>
-<p><img src="https://user-gold-cdn.xitu.io/2016/11/29/fe3bba2938289b6c77b0b2072687027d" alt="Generating"></p>
-<ol>
-<li>量词</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">字符	含义</div><div class="line">?	出现零次或一次</div><div class="line">*	出现零次或多次(任意次)</div><div class="line">+	出现一次或多次（至道一次）</div><div class="line">&#123;n&#125;	对应零次或者n次</div><div class="line">&#123;n,m&#125;	至少出现n次但不超过m次</div><div class="line">&#123;n,&#125;	至少出现n次(+的升级版)</div><div class="line">&#123;0,n&#125;	至多出现n次(其实就是&#123;n,m&#125; 方便记忆而已)</div></pre></td></tr></table></figure>
-<p>如果没有量词，要匹配4位数字这样写就可以/\d\d\d\d/, 如果匹配50位100位呢？那不是要疯掉了？<br>有了量词，就可以这样写/\d{100}/, 量词的使用我们在手机号中使用过，表现在可视化中就是循环多少次。</p>
-<p>凑一个上面都包含的实例<br><code>/\d?@\d*@\d+@\d{10}@\d{10,20}@\d{10,}@\d{0,10}/</code><br><img src="https://dn-myg6wstv.qbox.me/92296621793c1e9b289e.jpg" alt="Generating"></p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/12/03/javascript之BOM/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="Fenglin">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="/images/avatar.gif">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="Feng~Lin">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="Feng~Lin" src="">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/12/03/javascript之BOM/" itemprop="url">
-                  Unbenannt
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-03T12:00:24+08:00">
-                2016-12-03
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <hr>
-<h2 id="title-《JavaScript-闯关记》之-BOM"><a href="#title-《JavaScript-闯关记》之-BOM" class="headerlink" title="title:《JavaScript 闯关记》之 BOM"></a>title:《JavaScript 闯关记》之 BOM</h2><p>ECMAScript 是 JavaScript 的核心，但如果要在 Web 中使用 JavaScript，那么 BOM（浏览器对象模型）则无疑才是真正的核心。BOM 提供了很多对象，用于访问浏览器的功能，这些功能与任何网页内容无关。多年来，缺少事实上的规范导致 BOM 有很多问题，因为浏览器提供商会按照各自的想法随意去扩展它。W3C 为了把浏览器中 JavaScript 最基本的部分标准化，已经将 BOM 的主要方面纳入了 HTML5 的规范中。</p>
-<h2 id="window-对象"><a href="#window-对象" class="headerlink" title="window 对象"></a>window 对象</h2><p>BOM 的核心对象是 window，它表示浏览器的一个实例。在浏览器中，window 对象有双重角色，它既是通过 JavaScript 访问浏览器窗口的一个接口，又是 ECMAScript 规定的 Global 对象。这意味着在网页中定义的任何一个对象、变量和函数，都以 window 作为其 Global 对象，因此有权访问 isNaN()、isFinite()、parseInt()、parseFloat() 等方法。</p>
-<h3 id="全局作用域"><a href="#全局作用域" class="headerlink" title="全局作用域"></a>全局作用域</h3><p>由于 window 对象同时扮演着 ECMAScript 中 Global 对象的角色，因此所有在全局作用域中声明的变量、函数都会变成 window 对象的属性和方法。来看下面的例子。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">var age = 29;</div><div class="line">function sayAge()&#123;</div><div class="line">    console.log(this.age);</div><div class="line">&#125;</div><div class="line"></div><div class="line">console.log(window.age);    // 29</div><div class="line">sayAge();                   // 29</div><div class="line">window.sayAge();</div></pre></td></tr></table></figure>
-<p>抛开全局变量会成为 window 对象的属性不谈，定义全局变量与在 window 对象上直接定义属性还是有一点差别：全局变量不能通过 delete 运算符删除，而直接在 window 对象上的定义的属性可以。例如：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">var age = 29;</div><div class="line">window.color = &quot;red&quot;;</div><div class="line"></div><div class="line">// 在 IE &lt; 9 时抛出错误，在其他所有浏览器中都返回 false </div><div class="line">delete window.age;</div><div class="line"></div><div class="line">// 在 IE &lt; 9 时抛出错误，在其他所有浏览器中都返回 true</div><div class="line">delete window.color;        // return true</div><div class="line"></div><div class="line">console.log(window.age);    // 29</div><div class="line">console.log(window.color);  // undefined</div></pre></td></tr></table></figure>
-<p>使用 var 语句添加的 window 属性有一个名为 Configurable 的特性，这个特性的值被默认设置为 false，因此这样定义的属性不可以通过 delete 运算符删除。IE8 及更早版本在遇到使用 delete 删除 window 属性的语句时，不管该属性最初是如何创建的，都会抛出错误，以示警告。IE9 及更高版本不会抛出错误。</p>
-<p>另外，还要记住一件事：尝试访问未声明的变量会抛出错误，但是通过查询 window 对象，可以知道某个可能未声明的变量是否存在。例如：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">// 这里会抛出错误，因为 oldValue 未定义</div><div class="line">var newValue = oldValue;</div><div class="line"></div><div class="line">// 这里不会抛出错误，因为这是一次属性查询</div><div class="line">// newValue 的值是 undefined</div><div class="line">var newValue = window.oldValue;</div></pre></td></tr></table></figure>
-<h3 id="窗口关系及框架"><a href="#窗口关系及框架" class="headerlink" title="窗口关系及框架"></a>窗口关系及框架</h3><p>如果页面中包含框架，则每个框架都拥有自己的 window 对象，并且保存在 frames 集合中。在 frames 集合中，可以通过数值索引（从0开始，从左至右，从上到下）或者框架名称来访问相应的 window 对象。每个 window 对象都有一个 name 属性，其中包含框架的名称。下面是一个包含框架的页面：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">&lt;html&gt;</div><div class="line">    &lt;head&gt;</div><div class="line">        &lt;title&gt;Frameset Example&lt;/title&gt;</div><div class="line">    &lt;/head&gt;</div><div class="line">    &lt;frameset rows=&quot;160,*&quot;&gt;</div><div class="line">        &lt;frame src=&quot;frame.htm&quot; name=&quot;topFrame&quot;&gt;</div><div class="line">        &lt;frameset cols=&quot;50%,50%&quot;&gt;</div><div class="line">            &lt;frame src=&quot;anotherframe.htm&quot; name=&quot;leftFrame&quot;&gt;</div><div class="line">            &lt;frame src=&quot;yetanotherframe.htm&quot; name=&quot;rightFrame&quot;&gt;</div><div class="line">        &lt;/frameset&gt;</div><div class="line">    &lt;/frameset&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
-<p>对这个例子而言，可以通过 window.frames[0] 或者 window.frames[“topFrame”] 来引用上方的框架。不过最好使用 top 而非 window 来引用这些框架（例如 top.frames[0]），因为 top 对象始终指向最高（最外）层的框架，也就是浏览器窗口。使用它可以确保在一个框架中正确地访问另一个框架。因为对于在一个框架中编写的任何代码来说，其中的 window 对象指向的都是那个框架的特定实例，而非最高层的框架。</p>
-<p>与 top 相对的另一个 window 对象是 parent。顾名思义，parent（父）对象始终指向当前框架的直接上层框架。在某些情况下，parent 有可能等于 top；但在没有框架的情况下，parent 一定等于 top（此时它们都等于 window）。</p>
-<p>与框架有关的最后一个对象是 self，它始终指向 window；实际上，self 和 window 对象可以互换使用。引入 self 对象的目的只是为了与 top 和 parent 对象对应起来，因此它不格外包含其他值。</p>
-<p>所有这些对象都是 window 对象的属性，可以通过 window.parent、window.top 等形式来访问。同时，这也意味着可以将不同层次的 window 对象连缀起来，例如 window.parent.parent.frames[0]。</p>
-<p>在使用框架的情况下，浏览器中会存在多个 Global 对象。在每个框架中定义的全局变量会自动成为框架中 window 对象的属性。由于每个 window 对象都包含原生类型的构造函数，因此每个框架都有一套自己的构造函数，这些构造函数一一对应，但并不相等。例如，top.Object 并不等于 top.frames[0].Object。这个问题会影响到对跨框架传递的对象使用 instanceof 运算符。</p>
-<h3 id="导航和打开窗口"><a href="#导航和打开窗口" class="headerlink" title="导航和打开窗口"></a>导航和打开窗口</h3><p>使用 window.open() 方法既可以导航到一个特定的 URL，也可以打开一个新的浏览器窗口。这个方法可以接收4个参数：要加载的URL、窗口目标、一个特性字符串以及一个表示新页面是否取代浏览器历史记录中当前加载页面的布尔值。通常只须传递第一个参数，最后一个参数只在不打开新窗口的情况下使用。</p>
-<p>如果为 window.open() 传递了第二个参数，而且该参数是已有窗口或框架的名称，那么就会在具有该名称的窗口或框架中加载第一个参数指定的 URL。看下面的例子。</p>
-<figure class="highlight plain"><figcaption><span>等同于 <a href="http://shijiajie.com" target="newWindow"></a></span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">window.open(&quot;http://shijiajie.com/&quot;, &quot;newWindow&quot;);</div></pre></td></tr></table></figure>
-<h3 id="弹出窗口"><a href="#弹出窗口" class="headerlink" title="弹出窗口"></a>弹出窗口</h3><p>如果给 window.open() 传递的第二个参数并不是一个已经存在的窗口或框架，那么该方法就会根据在第三个参数位置上传入的字符串创建一个新窗口或新标签页。如果没有传入第三个参数，那么就会打开一个带有全部默认设置（工具栏、地址栏和状态栏等）的新浏览器窗口（或者打开一个新标签页）。在不打开新窗口的情况下，会忽略第三个参数。</p>
-<p>第三个参数是一个逗号分隔的设置字符串，表示在新窗口中都显示哪些特性。下表列出了可以出现在这个字符串中的设置选项。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">设置	值	说明</div><div class="line">fullscreen	yes或no	表示浏览器窗口是否最大化。仅限IE</div><div class="line">height	数值	表示新窗口的高度。不能小于100</div><div class="line">left	数值	表示新窗口的左坐标。不能是负值</div><div class="line">location	yes或no	表示是否在浏览器窗口中显示地址栏。不同浏览器的默认值不同。如果设置为no，地址栏可能会隐藏，也可能会被禁用（取决于浏览器）</div><div class="line">menubar	yes或no	表示是否在浏览器窗口中显示菜单栏。默认值为no</div><div class="line">resizable	yes或no	表示是否可以通过拖动浏览器窗口的边框改变其大小。默认值为no</div><div class="line">scrollbars	yes或no	表示如果内容在视口中显示不下，是否允许滚动。默认值为no</div><div class="line">status	yes或no	表示是否在浏览器窗口中显示状态栏。默认值为no</div><div class="line">toolbar	yes或no	表示是否在浏览器窗口中显示工具栏。默认值为no</div><div class="line">top	数值	表示新窗口的上坐标。不能是负值</div><div class="line">width	数值	表示新窗口的宽度。不能小于100</div></pre></td></tr></table></figure>
-<p>这行代码会打开一个新的可以调整大小的窗口，窗口初始大小为400×400像素，并且距屏幕上沿和左边各10像素。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&quot;height=400,width=400,top=10,left=10,resizable=yes&quot;);</div></pre></td></tr></table></figure>
-<p>window.open() 方法会返回一个指向新窗口的引用。引用的对象与其他 window 对象大致相似，但我们可以对其进行更多控制。例如，有些浏览器在默认情况下可能不允许我们针对主浏览器窗口调整大小或移动位置，但却允许我们针对通过window.open()创建的窗口调整大小或移动位置。通过这个返回的对象，可以像操作其他窗口一样操作新打开的窗口，如下所示。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">var win = window.open(&quot;http://shijiajie.com/&quot;,&quot;newWindow&quot;,</div><div class="line">    &quot;height=400,width=400,top=10,left=10,resizable=yes&quot;);</div><div class="line"></div><div class="line">// 调整大小</div><div class="line">win.resizeTo(500,500);</div><div class="line"></div><div class="line">// 移动位置</div><div class="line">win.moveTo(100,100);</div><div class="line"></div><div class="line">// 关闭窗口</div><div class="line">win.close();</div></pre></td></tr></table></figure>
-<p>但是，close() 方法仅适用于通过 window.open() 打开的弹出窗口。对于浏览器的主窗口，如果没有得到用户的允许是不能关闭它的。</p>
-<p>新创建的 window 对象有一个 opener 属性，其中保存着打开它的原始窗口对象。这个属性只在弹出窗口中的最外层 window 对象（top）中有定义，而且指向调用 window.open() 的窗口或框架。例如：</p>
-<figure class="highlight plain"><figcaption><span>win = window.open("http://shijiajie.com/","newWindow",</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">    &quot;height=400,width=400,top=10,left=10,resizable=yes&quot;);</div><div class="line">console.log(win.opener === window);   // true</div></pre></td></tr></table></figure>
-<p>虽然弹出窗口中有一个指针指向打开它的原始窗口，但原始窗口中并没有这样的指针指向弹出窗口。窗口并不跟踪记录它们打开的弹出窗口，因此我们只能在必要的时候自己来手动实现跟踪。</p>
-<h3 id="弹出窗口屏蔽程序"><a href="#弹出窗口屏蔽程序" class="headerlink" title="弹出窗口屏蔽程序"></a>弹出窗口屏蔽程序</h3><p>曾经有一段时间，广告商在网上使用弹出窗口达到了肆无忌惮的程度。他们经常把弹出窗口打扮成系统对话框的模样，引诱用户去点击其中的广告。由于看起来像是系统对话框，一般用户很难分辨是真是假。为了解决这个问题，大多数浏览器内置有弹出窗口屏蔽程序，将绝大多数用户不想看到弹出窗口屏蔽掉。</p>
-<p>于是，在弹出窗口被屏蔽时，就应该考虑两种可能性。如果是浏览器内置的屏蔽程序阻止的弹出窗口，那么 window.open() 很可能会返回 null，如果是浏览器扩展或其他程序阻止的弹出窗口，那么 window.open() 通常会抛出一个错误。因此，要想准确地检测出弹出窗口是否被屏蔽，必须在检测返回值的同时，将对 window.open() 的调用封装在一个 try-catch 块中，如下所示。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">var blocked = false;</div><div class="line"></div><div class="line">try &#123;</div><div class="line">    var win = window.open(&quot;http://shijiajie.com&quot;, &quot;_blank&quot;);</div><div class="line">    if (win == null)&#123;</div><div class="line">        blocked = true;</div><div class="line">    &#125;</div><div class="line">&#125; catch (ex)&#123;</div><div class="line">    blocked = true;</div><div class="line">&#125;</div><div class="line">if (blocked)&#123;</div><div class="line">    console.log(&quot;The popup was blocked!&quot;);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3 id="间歇调用和超时调用"><a href="#间歇调用和超时调用" class="headerlink" title="间歇调用和超时调用"></a>间歇调用和超时调用</h3><p>JavaScript 是单线程语言，但它允许通过设置超时值和间歇时间值来调度代码在特定的时刻执行。前者是在指定的时间过后执行代码，而后者则是每隔指定的时间就执行一次代码。</p>
-<p>超时调用需要使用 window 对象的 setTimeout() 方法，它接受两个参数：要执行的代码和以毫秒表示的时间（即在执行代码前需要等待多少毫秒）。其中，第一个参数可以是一个包含 JavaScript 代码的字符串（就和在 eval() 函数中使用的字符串一样），也可以是一个函数。例如，下面对 setTimeout() 的两次调用都会在一秒钟后显示一个警告框。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">// 不建议传递字符串</div><div class="line">setTimeout(&quot;console.log(&apos;Hello world!&apos;) &quot;, 1000);</div><div class="line"></div><div class="line">// 推荐的调用方式</div><div class="line">setTimeout(function() &#123; </div><div class="line">    console.log(&quot;Hello world!&quot;); </div><div class="line">&#125;, 1000);</div></pre></td></tr></table></figure>
-<p>虽然这两种调用方式都没有问题，但由于传递字符串可能导致性能损失，因此不建议以字符串作为第一个参数。</p>
-<p>第二个参数是一个表示等待多长时间的毫秒数，但经过该时间后指定的代码不一定会执行。JavaScript 是一个单线程序的解释器，因此一定时间内只能执行一段代码。为了控制要执行的代码，就有一个 JavaScript 任务队列。这些任务会按照将它们添加到队列的顺序执行。setTimeout() 的第二个参数告诉 JavaScript 再过多长时间把当前任务添加到队列中。如果队列是空的，那么添加的代码会立即执行；如果队列不是空的，那么它就要等前面的代码执行完了以后再执行。</p>
-<p>调用 setTimeout() 之后，该方法会返回一个数值 ID，表示超时调用。这个超时调用 ID 是计划执行代码的唯一标识符，可以通过它来取消超时调用。要取消尚未执行的超时调用计划，可以调用 clearTimeout() 方法并将相应的超时调用 ID 作为参数传递给它，如下所示。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">// 设置超时调用</div><div class="line">var timeoutId = setTimeout(function() &#123;</div><div class="line">    console.log(&quot;Hello world!&quot;);</div><div class="line">&#125;, 1000);</div><div class="line"></div><div class="line">// 注意：把它取消</div><div class="line">clearTimeout(timeoutId);</div></pre></td></tr></table></figure>
-<p>只要是在指定的时间尚未过去之前调用 clearTimeout()，就可以完全取消超时调用。前面的代码在设置超时调用之后马上又调用了 clearTimeout()，结果就跟什么也没有发生一样。</p>
-<p>间歇调用与超时调用类似，只不过它会按照指定的时间间隔重复执行代码，直至间歇调用被取消或者页面被卸载。设置间歇调用的方法是 setInterval()，它接受的参数与 setTimeout() 相同：要执行的代码（字符串或函数）和每次执行之前需要等待的毫秒数。下面来看一个例子。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">// 不建议传递字符串</div><div class="line">setInterval (&quot;console.log(&apos;Hello world!&apos;) &quot;, 10000);</div><div class="line"></div><div class="line">// 推荐的调用方式</div><div class="line">setInterval (function() &#123; </div><div class="line">    console.log(&quot;Hello world!&quot;); </div><div class="line">&#125;, 10000);</div></pre></td></tr></table></figure>
-<p>调用 setInterval() 方法同样也会返回一个间歇调用 ID，该 ID 可用于在将来某个时刻取消间歇调用。要取消尚未执行的间歇调用，可以使用 clearInterval() 方法并传入相应的间歇调用 ID。取消间歇调用的重要性要远远高于取消超时调用，因为在不加干涉的情况下，间歇调用将会一直执行到页面卸载。以下是一个常见的使用间歇调用的例子。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">var num = 0;</div><div class="line">var max = 10;</div><div class="line">var intervalId = null;</div><div class="line"></div><div class="line">function incrementNumber() &#123;</div><div class="line">    num++;</div><div class="line">    // 如果执行次数达到了max设定的值，则取消后续尚未执行的调用</div><div class="line">    if (num == max) &#123;</div><div class="line">        clearInterval(intervalId);</div><div class="line">        console.log(&quot;Done&quot;);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">intervalId = setInterval(incrementNumber, 500);</div></pre></td></tr></table></figure>
-<p>在这个例子中，变量num每半秒钟递增一次，当递增到最大值时就会取消先前设定的间歇调用。这个模式也可以使用超时调用来实现，如下所示。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">var num = 0;</div><div class="line">var max = 10;</div><div class="line"></div><div class="line">function incrementNumber() &#123;</div><div class="line">    num++;</div><div class="line"></div><div class="line">    // 如果执行次数未达到max设定的值，则设置另一次超时调用</div><div class="line">    if (num &lt; max) &#123;</div><div class="line">        setTimeout(incrementNumber, 500);</div><div class="line">    &#125; else &#123;</div><div class="line">        console.log(&quot;Done&quot;);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">setTimeout(incrementNumber, 500);</div></pre></td></tr></table></figure>
-<p>可见，在使用超时调用时，没有必要跟踪超时调用 ID，因为每次执行代码之后，如果不再设置另一次超时调用，调用就会自行停止。一般认为，使用超时调用来模拟间歇调用的是一种最佳模式。在开发环境下，很少使用真正的间歇调用，原因是后一个间歇调用可能会在前一个间歇调用结束之前启动。而像前面示例中那样使用超时调用，则完全可以避免这一点。所以，最好不要使用间歇调用。</p>
-<h3 id="系统对话框"><a href="#系统对话框" class="headerlink" title="系统对话框"></a>系统对话框</h3><p>浏览器通过 alert()、confirm() 和 prompt() 方法可以调用系统对话框向用户显示消息。系统对话框与在浏览器中显示的网页没有关系，也不包含 HTML。它们的外观由操作系统及（或）浏览器设置决定，而不是由 CSS 决定。此外，通过这几个方法打开的对话框都是同步和模态的。也就是说，显示这些对话框的时候代码会停止执行，而关掉这些对话框后代码又会恢复执行。</p>
-<p>第一种对话框是调用 alert() 方法生成的。它向用户显示一个系统对话框，其中包含指定的文本和一个 OK（“确定”）按钮。通常使用 alert() 生成的“警告”对话框向用户显示一些他们无法控制的消息，例如错误消息。而用户只能在看完消息后关闭对话框。</p>
-<p>第二种对话框是调用 confirm() 方法生成的。从向用户显示消息的方面来看，这种“确认”对话框很像是一个“警告”对话框。但二者的主要区别在于“确认”对话框除了显示OK按钮外，还会显示一个 Cancel（“取消”）按钮，两个按钮可以让用户决定是否执行给定的操作。</p>
-<p>为了确定用户是单击了OK还是Cancel，可以检查 confirm() 方法返回的布尔值：true 表示单击了OK，false 表示单击了Cancel或单击了右上角的 X 按钮。确认对话框的典型用法如下。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">if (confirm(&quot;Are you sure?&quot;)) &#123;</div><div class="line">    alert(&quot;I&apos;m so glad you&apos;re sure! &quot;);</div><div class="line">&#125; else &#123;</div><div class="line">    alert(&quot;I&apos;m sorry to hear you&apos;re not sure.&quot;);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>最后一种对话框是通过调用 prompt() 方法生成的，这是一个“提示”框，用于提示用户输入一些文本。提示框中除了显示 OK 和 Cancel 按钮之外，还会显示一个文本输入域，以供用户在其中输入内容。prompt() 方法接受两个参数：要显示给用户的文本提示和文本输入域的默认值（可以是一个空字符串）。</p>
-<p>如果用户单击了 OK 按钮，则 promp() 返回文本输入域的值；如果用户单击了 Cancel 或没有单击 OK 而是通过其他方式关闭了对话框，则该方法返回 null。下面是一个例子。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">var result = prompt(&quot;What is your name? &quot;, &quot;&quot;);</div><div class="line">if (result !== null) &#123;</div><div class="line">    alert(&quot;Welcome, &quot; + result);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/12/03/JavaScript的原型对象与原型链/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="Fenglin">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="/images/avatar.gif">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="Feng~Lin">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="Feng~Lin" src="">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/12/03/JavaScript的原型对象与原型链/" itemprop="url">
-                  JavaScript的原型对象与原型链
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-03T11:50:10+08:00">
-                2016-12-03
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>早前在博客园发的几篇基础文，都是图解系列，总结了一些JavaScript容易混淆的知识点，现在拿来在掘金分享一下吧。</p>
-<p>原文地址：<a href="http://shuiyi.io/article/5" target="_blank" rel="external">三张图搞懂JavaScript的原型对象与原型链</a></p>
-<p>对于新人来说，JavaScript的原型是一个很让人头疼的事情，一来prototype容易与<strong>proto</strong>混淆，二来它们之间的各种指向实在有些复杂，其实市面上已经有非常多的文章在尝试说清楚，有一张所谓很经典的图，上面画了各种线条，一会连接这个一会连接那个，说实话我自己看得就非常头晕，更谈不上完全理解了。所以我自己也想尝试一下，看看能不能把原型中的重要知识点拆分出来，用最简单的图表形式说清楚。</p>
-<p>我们知道原型是一个对象，其他对象可以通过它实现属性继承。但是尼玛除了prototype，又有一个<strong>proto</strong>是用来干嘛的？长那么像，让人怎么区分呢？它们都指向谁，那么混乱怎么记啊？原型链又是什么鬼？相信不少初学者甚至有一定经验的老鸟都不一定能完全说清楚，下面用三张简单的图，配合一些示例代码来理解一下。</p>
-<h3 id="1、prototype和proto的区别"><a href="#1、prototype和proto的区别" class="headerlink" title="1、prototype和proto的区别"></a>1、prototype和<strong>proto</strong>的区别</h3><p><img src="https://dn-myg6wstv.qbox.me/2e7817d676e605e54e62.png" alt="Generating"></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">var a = &#123;&#125;;</div><div class="line">console.log(a.prototype); //undefined</div><div class="line">console.log(a.__proto__);  //Object &#123;&#125;</div><div class="line"></div><div class="line">var b = function()&#123;&#125;</div><div class="line">console.log(b.prototype); //b &#123;&#125;</div><div class="line">console.log(b.__proto__);  //function() &#123;&#125;</div></pre></td></tr></table></figure>
-<h3 id="2、proto属性指向谁"><a href="#2、proto属性指向谁" class="headerlink" title="2、proto属性指向谁"></a>2、<strong>proto</strong>属性指向谁</h3><p><img src="https://dn-myg6wstv.qbox.me/414693e5821245adeb86.png" alt="Generating"></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">/*1、字面量方式*/</div><div class="line">var a = &#123;&#125;;</div><div class="line">console.log(a.constructor); //function Object() &#123; [native code] &#125; (即构造器Object）</div><div class="line">console.log(a.__proto__ === a.constructor.prototype); //true</div><div class="line"></div><div class="line">/*2、构造器方式*/</div><div class="line">var A = function ()&#123;&#125;; var a = new A();</div><div class="line">console.log(a.constructor); // function()&#123;&#125;（即构造器function A）</div><div class="line">console.log(a.__proto__ === a.constructor.prototype); //true</div><div class="line"></div><div class="line">/*3、Object.create()方式*/</div><div class="line">var a1 = &#123;a:1&#125; </div><div class="line">var a2 = Object.create(a1);</div><div class="line">console.log(a2.constructor); //function Object() &#123; [native code] &#125; (即构造器Object)</div><div class="line">console.log(a2.__proto__ === a1);// true </div><div class="line">console.log(a2.__proto__ === a2.constructor.prototype); //false（此处即为图1中的例外情况）</div></pre></td></tr></table></figure>
-<h2 id="什么是原型链"><a href="#什么是原型链" class="headerlink" title="什么是原型链"></a>什么是原型链</h2><p><img src="https://user-gold-cdn.xitu.io/2016/11/29/877d6c73f3b810ddd1692fffd06c290b" alt="Generating"></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">var A = function()&#123;&#125;;</div><div class="line">var a = new A();</div><div class="line">console.log(a.__proto__); //Object &#123;&#125;（即构造器function A 的原型对象）</div><div class="line">console.log(a.__proto__.__proto__); //Object &#123;&#125;（即构造器function Object 的原型对象）</div><div class="line">console.log(a.__proto__.__proto__.__proto__); //null</div></pre></td></tr></table></figure>
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1838,8 +1797,8 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">25</span>
-              <span class="site-state-item-name">Artikel</span>
+              <span class="site-state-item-count">30</span>
+              <span class="site-state-item-name">posts</span>
             </a>
           </div>
 
@@ -1890,7 +1849,7 @@
 
 
 <div class="powered-by">
-  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
 </div>
 
 <div class="theme-info">

@@ -84,16 +84,16 @@
 
 
 
-<meta name="description" content="title:《JavaScript 闯关记》之BOMECMAScript 是 JavaScript 的核心，但如果要在 Web 中使用 JavaScript，那么 BOM（浏览器对象模型）则无疑才是真正的核心。BOM 提供了很多对象，用于访问浏览器的功能，这些功能与任何网页内容无关。多年来，缺少事实上的规范导致 BOM 有很多问题，因为浏览器提供商会按照各自的想法随意去扩展它。W3C 为了把浏览">
+<meta name="description" content="title:JavaScript之BOMECMAScript 是 JavaScript 的核心，但如果要在 Web 中使用 JavaScript，那么 BOM（浏览器对象模型）则无疑才是真正的核心。BOM 提供了很多对象，用于访问浏览器的功能，这些功能与任何网页内容无关。多年来，缺少事实上的规范导致 BOM 有很多问题，因为浏览器提供商会按照各自的想法随意去扩展它。W3C 为了把浏览器中 Jav">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Feng~Lin">
 <meta property="og:url" content="http://yoursite.com/2016/12/03/javascript之BOM/index.html">
 <meta property="og:site_name" content="Feng~Lin">
-<meta property="og:description" content="title:《JavaScript 闯关记》之BOMECMAScript 是 JavaScript 的核心，但如果要在 Web 中使用 JavaScript，那么 BOM（浏览器对象模型）则无疑才是真正的核心。BOM 提供了很多对象，用于访问浏览器的功能，这些功能与任何网页内容无关。多年来，缺少事实上的规范导致 BOM 有很多问题，因为浏览器提供商会按照各自的想法随意去扩展它。W3C 为了把浏览">
-<meta property="og:updated_time" content="2016-12-03T12:21:57.000Z">
+<meta property="og:description" content="title:JavaScript之BOMECMAScript 是 JavaScript 的核心，但如果要在 Web 中使用 JavaScript，那么 BOM（浏览器对象模型）则无疑才是真正的核心。BOM 提供了很多对象，用于访问浏览器的功能，这些功能与任何网页内容无关。多年来，缺少事实上的规范导致 BOM 有很多问题，因为浏览器提供商会按照各自的想法随意去扩展它。W3C 为了把浏览器中 Jav">
+<meta property="og:updated_time" content="2016-12-03T12:23:43.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Feng~Lin">
-<meta name="twitter:description" content="title:《JavaScript 闯关记》之BOMECMAScript 是 JavaScript 的核心，但如果要在 Web 中使用 JavaScript，那么 BOM（浏览器对象模型）则无疑才是真正的核心。BOM 提供了很多对象，用于访问浏览器的功能，这些功能与任何网页内容无关。多年来，缺少事实上的规范导致 BOM 有很多问题，因为浏览器提供商会按照各自的想法随意去扩展它。W3C 为了把浏览">
+<meta name="twitter:description" content="title:JavaScript之BOMECMAScript 是 JavaScript 的核心，但如果要在 Web 中使用 JavaScript，那么 BOM（浏览器对象模型）则无疑才是真正的核心。BOM 提供了很多对象，用于访问浏览器的功能，这些功能与任何网页内容无关。多年来，缺少事实上的规范导致 BOM 有很多问题，因为浏览器提供商会按照各自的想法随意去扩展它。W3C 为了把浏览器中 Jav">
 
 
 
@@ -312,7 +312,7 @@
 
       
         <hr>
-<h2 id="title-《JavaScript-闯关记》之BOM"><a href="#title-《JavaScript-闯关记》之BOM" class="headerlink" title="title:《JavaScript 闯关记》之BOM"></a>title:《JavaScript 闯关记》之BOM</h2><p>ECMAScript 是 JavaScript 的核心，但如果要在 Web 中使用 JavaScript，那么 BOM（浏览器对象模型）则无疑才是真正的核心。BOM 提供了很多对象，用于访问浏览器的功能，这些功能与任何网页内容无关。多年来，缺少事实上的规范导致 BOM 有很多问题，因为浏览器提供商会按照各自的想法随意去扩展它。W3C 为了把浏览器中 JavaScript 最基本的部分标准化，已经将 BOM 的主要方面纳入了 HTML5 的规范中。</p>
+<h2 id="title-JavaScript之BOM"><a href="#title-JavaScript之BOM" class="headerlink" title="title:JavaScript之BOM"></a>title:JavaScript之BOM</h2><p>ECMAScript 是 JavaScript 的核心，但如果要在 Web 中使用 JavaScript，那么 BOM（浏览器对象模型）则无疑才是真正的核心。BOM 提供了很多对象，用于访问浏览器的功能，这些功能与任何网页内容无关。多年来，缺少事实上的规范导致 BOM 有很多问题，因为浏览器提供商会按照各自的想法随意去扩展它。W3C 为了把浏览器中 JavaScript 最基本的部分标准化，已经将 BOM 的主要方面纳入了 HTML5 的规范中。</p>
 <h2 id="window-对象"><a href="#window-对象" class="headerlink" title="window 对象"></a>window 对象</h2><p>BOM 的核心对象是 window，它表示浏览器的一个实例。在浏览器中，window 对象有双重角色，它既是通过 JavaScript 访问浏览器窗口的一个接口，又是 ECMAScript 规定的 Global 对象。这意味着在网页中定义的任何一个对象、变量和函数，都以 window 作为其 Global 对象，因此有权访问 isNaN()、isFinite()、parseInt()、parseFloat() 等方法。</p>
 <h3 id="全局作用域"><a href="#全局作用域" class="headerlink" title="全局作用域"></a>全局作用域</h3><p>由于 window 对象同时扮演着 ECMAScript 中 Global 对象的角色，因此所有在全局作用域中声明的变量、函数都会变成 window 对象的属性和方法。来看下面的例子。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">var age = 29;</div><div class="line">function sayAge()&#123;</div><div class="line">    console.log(this.age);</div><div class="line">&#125;</div><div class="line"></div><div class="line">console.log(window.age);    // 29</div><div class="line">sayAge();                   // 29</div><div class="line">window.sayAge();</div></pre></td></tr></table></figure>
@@ -508,7 +508,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#title-《JavaScript-闯关记》之BOM"><span class="nav-number">1.</span> <span class="nav-text">title:《JavaScript 闯关记》之BOM</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#window-对象"><span class="nav-number">2.</span> <span class="nav-text">window 对象</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#全局作用域"><span class="nav-number">2.1.</span> <span class="nav-text">全局作用域</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#窗口关系及框架"><span class="nav-number">2.2.</span> <span class="nav-text">窗口关系及框架</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#导航和打开窗口"><span class="nav-number">2.3.</span> <span class="nav-text">导航和打开窗口</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#弹出窗口"><span class="nav-number">2.4.</span> <span class="nav-text">弹出窗口</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#弹出窗口屏蔽程序"><span class="nav-number">2.5.</span> <span class="nav-text">弹出窗口屏蔽程序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#间歇调用和超时调用"><span class="nav-number">2.6.</span> <span class="nav-text">间歇调用和超时调用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#系统对话框"><span class="nav-number">2.7.</span> <span class="nav-text">系统对话框</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#title-JavaScript之BOM"><span class="nav-number">1.</span> <span class="nav-text">title:JavaScript之BOM</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#window-对象"><span class="nav-number">2.</span> <span class="nav-text">window 对象</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#全局作用域"><span class="nav-number">2.1.</span> <span class="nav-text">全局作用域</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#窗口关系及框架"><span class="nav-number">2.2.</span> <span class="nav-text">窗口关系及框架</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#导航和打开窗口"><span class="nav-number">2.3.</span> <span class="nav-text">导航和打开窗口</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#弹出窗口"><span class="nav-number">2.4.</span> <span class="nav-text">弹出窗口</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#弹出窗口屏蔽程序"><span class="nav-number">2.5.</span> <span class="nav-text">弹出窗口屏蔽程序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#间歇调用和超时调用"><span class="nav-number">2.6.</span> <span class="nav-text">间歇调用和超时调用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#系统对话框"><span class="nav-number">2.7.</span> <span class="nav-text">系统对话框</span></a></li></ol></li></ol></div>
             
 
           </div>

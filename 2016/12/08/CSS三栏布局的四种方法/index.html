@@ -1,0 +1,678 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="前言总括： 不管是三栏布局还是两栏布局都是我们在平时项目里经常使用的，也许你不知道什么事三栏布局什么是两栏布局但实际已经在用，或许你知道三栏布局的一种或两种方法，但实际操作中也只会依赖那某一种方法，本文具体的介绍了三栏布局的四种方法，并介绍了它的使用场景。
+
+原文地址：CSS三栏布局的四种方法
+
+知乎专栏&amp;amp;&amp;amp;简书专题：前端进击者（知乎）&amp;amp;&amp;amp;前端进击者（简书）
+
+博主">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CSS三栏布局的四种方法">
+<meta property="og:url" content="http://yoursite.com/2016/12/08/CSS三栏布局的四种方法/index.html">
+<meta property="og:site_name" content="Feng~Lin">
+<meta property="og:description" content="前言总括： 不管是三栏布局还是两栏布局都是我们在平时项目里经常使用的，也许你不知道什么事三栏布局什么是两栏布局但实际已经在用，或许你知道三栏布局的一种或两种方法，但实际操作中也只会依赖那某一种方法，本文具体的介绍了三栏布局的四种方法，并介绍了它的使用场景。
+
+原文地址：CSS三栏布局的四种方法
+
+知乎专栏&amp;amp;&amp;amp;简书专题：前端进击者（知乎）&amp;amp;&amp;amp;前端进击者（简书）
+
+博主">
+<meta property="og:updated_time" content="2016-12-08T09:02:21.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="CSS三栏布局的四种方法">
+<meta name="twitter:description" content="前言总括： 不管是三栏布局还是两栏布局都是我们在平时项目里经常使用的，也许你不知道什么事三栏布局什么是两栏布局但实际已经在用，或许你知道三栏布局的一种或两种方法，但实际操作中也只会依赖那某一种方法，本文具体的介绍了三栏布局的四种方法，并介绍了它的使用场景。
+
+原文地址：CSS三栏布局的四种方法
+
+知乎专栏&amp;amp;&amp;amp;简书专题：前端进击者（知乎）&amp;amp;&amp;amp;前端进击者（简书）
+
+博主">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2016/12/08/CSS三栏布局的四种方法/"/>
+
+
+
+
+
+  <title> CSS三栏布局的四种方法 | Feng~Lin </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Feng~Lin</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/12/08/CSS三栏布局的四种方法/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Fenglin">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.gif">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Feng~Lin">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Feng~Lin" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                CSS三栏布局的四种方法
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-08T17:02:21+08:00">
+                2016-12-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>总括： 不管是三栏布局还是两栏布局都是我们在平时项目里经常使用的，也许你不知道什么事三栏布局什么是两栏布局但实际已经在用，或许你知道三栏布局的一种或两种方法，但实际操作中也只会依赖那某一种方法，本文具体的介绍了三栏布局的四种方法，并介绍了它的使用场景。</p>
+<ul>
+<li><p>原文地址：<a href="http://damonare.github.io/2016/12/07/CSS%E4%B8%89%E6%A0%8F%E5%B8%83%E5%B1%80%E7%9A%84%E5%9B%9B%E7%A7%8D%E6%96%B9%E6%B3%95/#more" target="_blank" rel="external">CSS三栏布局的四种方法</a></p>
+</li>
+<li><p>知乎专栏&amp;&amp;简书专题：<a href="https://zhuanlan.zhihu.com/damonare" target="_blank" rel="external">前端进击者（知乎）&amp;&amp;前端进击者（简书）</a></p>
+</li>
+<li><p>博主博客地址：<a href="http://damonare.github.io/" target="_blank" rel="external">Damonare的个人博客</a></p>
+</li>
+</ul>
+<h3 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h3><p>所谓三栏布局就是指页面分为左中右三部分然后对中间一部分做自适应的一种布局方式。</p>
+<h4 id="1-绝对定位法"><a href="#1-绝对定位法" class="headerlink" title="1.绝对定位法"></a>1.绝对定位法</h4><p>HTML代码如下:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;div class=&quot;left&quot;&gt;Left&lt;/div&gt;</div><div class="line">&lt;div class=&quot;main&quot;&gt;Main&lt;/div&gt;</div><div class="line">&lt;div class=&quot;right&quot;&gt;Right&lt;/div&gt;</div></pre></td></tr></table></figure>
+<p>CSS代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">//简单的进行CSS reset</div><div class="line">body,html&#123;</div><div class="line">    height:100%;</div><div class="line">    padding: 0px;</div><div class="line">    margin:0px;</div><div class="line">&#125;</div><div class="line">//左右绝对定位</div><div class="line">.left,.right&#123;</div><div class="line">    position: absolute;</div><div class="line">    top:0px;</div><div class="line">    background: red;</div><div class="line">    height:100%;</div><div class="line">&#125;</div><div class="line">.left&#123;</div><div class="line">    left:0;</div><div class="line">    width:100px;</div><div class="line">&#125;</div><div class="line">.right&#123;</div><div class="line">    right:0px;</div><div class="line">    width:200px;</div><div class="line">&#125;</div><div class="line">//中间使用margin空出左右元素所占据的空间</div><div class="line">.main&#123;</div><div class="line">    margin:0px 100px 0px 200px;</div><div class="line">    height:100%;</div><div class="line">    background: blue;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>该方法有个明显的缺点，就是如果中间栏含有最小宽度限制，或是含有宽度的内部元素，当浏览器宽度小到一定程度，会发生层重叠的情况。</p>
+<h4 id="2-圣杯布局"><a href="#2-圣杯布局" class="headerlink" title="2. 圣杯布局"></a>2. 圣杯布局</h4><p>HTML代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">//注意元素次序</div><div class="line">&lt;div class=&quot;main&quot;&gt;Main&lt;/div&gt;</div><div class="line">&lt;div class=&quot;left&quot;&gt;Left&lt;/div&gt;</div><div class="line">&lt;div class=&quot;right&quot;&gt;Right&lt;/div&gt;</div></pre></td></tr></table></figure>
+<p>CSS代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div></pre></td><td class="code"><pre><div class="line">//习惯性的CSS reset</div><div class="line">body,html&#123;</div><div class="line">    height:100%;</div><div class="line">    padding: 0;</div><div class="line">    margin: 0</div><div class="line">&#125;</div><div class="line">//父元素body空出左右栏位</div><div class="line">body &#123;</div><div class="line">    padding-left: 100px;</div><div class="line">    padding-right: 200px;</div><div class="line">&#125;</div><div class="line">//左边元素更改</div><div class="line">.left &#123;</div><div class="line">    background: red;</div><div class="line">    width: 100px;</div><div class="line">    float: left;</div><div class="line">    margin-left: -100%;</div><div class="line">    position: relative;</div><div class="line">    left: -100px;</div><div class="line">    height: 100%;</div><div class="line">&#125;</div><div class="line">//中间部分</div><div class="line">.main &#123;</div><div class="line">    background: blue;</div><div class="line">    width: 100%;</div><div class="line">    height: 100%;</div><div class="line">    float: left;</div><div class="line">&#125;</div><div class="line">//右边元素定义</div><div class="line">.right &#123;</div><div class="line">    background: red;</div><div class="line">    width: 200px;</div><div class="line">    height: 100%;</div><div class="line">    float: left;</div><div class="line">    margin-left: -200px;</div><div class="line">    position: relative;</div><div class="line">    right: -200px;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="相关解释如下："><a href="#相关解释如下：" class="headerlink" title="相关解释如下："></a>相关解释如下：</h4><ul>
+<li>(1)中间部分需要根据浏览器宽度的变化而变化，所以要用100%，这里设左中右向左浮动，因为中间100%，左层和右层根本没有位置上去</li>
+<li>(2)把左层margin负100后，发现left上去了，因为负到出窗口没位置了，只能往上挪</li>
+<li>(3)按第二步这个方法，可以得出它只要挪动窗口宽度那么宽就能到最左边了，利用负边距，把左右栏定位</li>
+<li>(4)但由于左右栏遮挡住了中间部分，于是采用相对定位方法，各自相对于自己把自己挪出去，得到最终结果</li>
+</ul>
+<h3 id="3-双飞翼布局"><a href="#3-双飞翼布局" class="headerlink" title="3. 双飞翼布局"></a>3. 双飞翼布局</h3><p>HTML代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&lt;div class=&quot;main&quot;&gt;</div><div class="line">   &lt;div class=&quot;inner&quot;&gt;</div><div class="line">       Main</div><div class="line">   &lt;/div&gt;</div><div class="line">&lt;/div&gt;</div><div class="line">&lt;div class=&quot;left&quot;&gt;Left&lt;/div&gt;</div><div class="line">&lt;div class=&quot;right&quot;&gt;Right&lt;/div&gt;</div></pre></td></tr></table></figure>
+<p>CSS代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line">//CSS reset</div><div class="line">body,html &#123;</div><div class="line">    height:100%;</div><div class="line">    padding: 0;</div><div class="line">    margin: 0</div><div class="line">&#125;</div><div class="line">body &#123;</div><div class="line">    /*padding-left:100px;*/</div><div class="line">    /*padding-right:200px;*/</div><div class="line">&#125;</div><div class="line">.left &#123;</div><div class="line">    background: red;</div><div class="line">    width: 100px;</div><div class="line">    float: left;</div><div class="line">    margin-left: -100%;</div><div class="line">    height: 100%;</div><div class="line">    /*position: relative;*/</div><div class="line">    /*left:-100px;*/</div><div class="line">&#125;</div><div class="line">.main &#123;</div><div class="line">    background: blue;</div><div class="line">    width: 100%;</div><div class="line">    float: left;</div><div class="line">    height: 100%;</div><div class="line">&#125;</div><div class="line">.right &#123;</div><div class="line">    background: red;</div><div class="line">    width: 200px;</div><div class="line">    float: left;</div><div class="line">    margin-left: -200px;</div><div class="line">    height: 100%;</div><div class="line">    /*position:relative;*/</div><div class="line">    /*right:-200px;*/</div><div class="line">&#125;</div><div class="line">//新增inner元素</div><div class="line">.inner &#123;</div><div class="line">    margin-left: 100px;</div><div class="line">    margin-right: 200px;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>圣杯布局实际看起来是复杂的后期维护性也不是很高，在淘宝UED的探讨下，出来了一种新的布局方式就是双飞翼布局，代码如上。增加多一个div就可以不用相对布局了，只用到了浮动和负边距。和圣杯布局差异的地方已经被注释。</p>
+<h3 id="4-浮动"><a href="#4-浮动" class="headerlink" title="4. 浮动"></a>4. 浮动</h3><p>HTML代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">	//注意元素次序</div><div class="line">	&lt;div class=&quot;left&quot;&gt;Left&lt;/div&gt;</div><div class="line">	&lt;div class=&quot;right&quot;&gt;Right&lt;/div&gt;</div><div class="line">	&lt;div class=&quot;main&quot;&gt;Main&lt;/div&gt;</div><div class="line">``</div><div class="line">CSS代码如下：</div></pre></td></tr></table></figure>
+<pre><code>//CSS reset
+body,html {
+    height:100%;
+    padding: 0;
+    margin: 0
+}
+//左栏左浮动
+.left {
+    background: red;
+    width: 100px;
+        float: left;
+    height: 100%;
+}
+//中间自适应
+.main {
+    background: blue;
+    height: 100%;
+    margin:0px 100px 200px 0px;
+}
+//右栏右浮动
+.right {
+background: red;
+width: 200px;
+float: right;
+height: 100%;
+}
+</code></pre><p>```</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/12/08/svg图标使用说明/" rel="next" title="SVG图标的使用">
+                <i class="fa fa-chevron-left"></i> SVG图标的使用
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/12/08/15 个有趣的前端库（September 2016）/" rel="prev" title="">
+                 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="Fenglin" />
+          <p class="site-author-name" itemprop="name">Fenglin</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">36</span>
+              <span class="site-state-item-name">posts</span>
+            </a>
+          </div>
+
+          
+
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#正文"><span class="nav-number">2.</span> <span class="nav-text">正文</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-绝对定位法"><span class="nav-number">2.1.</span> <span class="nav-text">1.绝对定位法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-圣杯布局"><span class="nav-number">2.2.</span> <span class="nav-text">2. 圣杯布局</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#相关解释如下："><span class="nav-number">2.3.</span> <span class="nav-text">相关解释如下：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-双飞翼布局"><span class="nav-number">3.</span> <span class="nav-text">3. 双飞翼布局</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-浮动"><span class="nav-number">4.</span> <span class="nav-text">4. 浮动</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Fenglin</span>
+</div>
+
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>

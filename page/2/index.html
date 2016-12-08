@@ -183,7 +183,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Startseite
+            Home
           </a>
         </li>
       
@@ -193,7 +193,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archiv
+            Archives
           </a>
         </li>
       
@@ -226,6 +226,742 @@
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/03/20/JS中的call、apply、bind方法/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Fenglin">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.gif">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Feng~Lin">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Feng~Lin" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/03/20/JS中的call、apply、bind方法/" itemprop="url">
+                  JS中的call、applay、bind方法
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-03-20T00:00:00+08:00">
+                2016-03-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="title-JS中的call、applay、bind方法"><a href="#title-JS中的call、applay、bind方法" class="headerlink" title="title: JS中的call、applay、bind方法"></a>title: JS中的call、applay、bind方法</h2><p>在JavaScript中，call、apply和bind是Function对象自带的三个方法，这三个方法的主要作用是改变函数中的this指向。</p>
+<hr>
+<p>call、apply、bind方法的共同点和区别：<br>apply 、 call 、bind 三者都是用来改变函数的this对象的指向的；<br>apply 、 call 、bind 三者第一个参数都是this要指向的对象，也就是想指定的上下文（函数的每次调用都会拥有一个特殊值——本次调用的上下文（context）——这就是this关键字的值。）；<br>apply 、 call 、bind 三者都可以利用后续参数传参；<br>bind 是返回对应函数，便于稍后调用；apply 、call 则是立即调用 。</p>
+<hr>
+<h2 id="一、call"><a href="#一、call" class="headerlink" title="一、call"></a>一、call</h2><p>call()<br>语法：</p>
+<figure class="highlight plain"><figcaption><span>arg2[, [,.argN]]]]])```</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">定义：调用一个对象的一个方法，以另一个对象替换当前对象。</div><div class="line"></div><div class="line">说明： call 方法可以用来代替另一个对象调用一个方法。</div><div class="line">call 方法可将一个函数的对象上下文从初始的上下文改变为由 thisObj 指定的新对象。</div><div class="line"></div><div class="line">thisObj的取值有以下4种情况：</div><div class="line"></div><div class="line">*  不传，或者传null,undefined， 函数中的this指向window对象</div><div class="line">*  传递另一个函数的函数名，函数中的this指向这个函数的引用</div><div class="line">*  传递字符串、数值或布尔类型等基础类型，函数中的this指向其对应的包装对象，如 String、Number、Boolean</div><div class="line">*  传递一个对象，函数中的this指向这个对象</div></pre></td></tr></table></figure>
+<p>function a(){<br>  console.log(this);   //输出函数a中的this对象<br>}       </p>
+<p>function b(){}       </p>
+<p>var c={name:”call”};    //定义对象c  </p>
+<p>a.call();   //window<br>a.call(null);   //window<br>a.call(undefined);   //window<br>a.call(1);   //Number<br>a.call(‘’);   //String<br>a.call(true);   //Boolean<br>a.call(b);   //function b(){}<br>a.call(c);   //Object<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">如果你不理解上面的，没关系，我们再来看一个例子：</div></pre></td></tr></table></figure></p>
+<p>function class1(){<br>  this.name=function(){<br>    console.log(“我是class1内的方法”);<br>  }<br>}<br>function class2(){<br>  class1.call(this);  //此行代码执行后，当前的this指向了class1（也可以说class2继承了class1）<br>}   </p>
+<p>var f=new class2();<br>f.name();   //调用的是class1内的方法，将class1的name方法交给class2使用<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">常用例子：</div><div class="line">（1）</div></pre></td></tr></table></figure></p>
+<p>function eat(x,y){<br>  console.log(x+y);<br>}<br>function drink(x,y){<br>  console.log(x-y);<br>}<br>eat.call(drink,3,2);</p>
+<p>输出：5<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">这个例子中的意思就是用 eat 来替换 drink，eat.call(drink,3,2) == eat(3,2) ，所以运行结果为：console.log(5);</div><div class="line">注意：js 中的函数其实是对象，函数名是对 Function 对象的引用。</div><div class="line">（2）</div></pre></td></tr></table></figure></p>
+<p>function Animal(){<br>  this.name=”animal”;<br>  this.showName=function(){<br>    console.log(this.name);<br>  }<br>}<br>function Dog(){<br>  this.name=”dog”;<br>}<br>var animal=new Animal();<br>var dog=new Dog();       </p>
+<p>animal.showName.call(dog);</p>
+<p>输出：dog<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">在上面的代码中，我们可以看到Dog里并没有showName方法，那为什么（this.name）的值是dog呢？</div><div class="line"></div><div class="line">关键就在于最后一段代码（animal.showName.call(dog)），意思是把animal的方法放到dog上执行，也可以说，把animal 的showName()方法放到 dog上来执行，所以this.name 应该是 dog。</div><div class="line"></div><div class="line">（3）继承</div></pre></td></tr></table></figure></p>
+<p>function Animal(name){<br>  this.name=name;<br>  this.showName=function(){<br>    console.log(this.name);<br>  }<br>}<br>function Dog(name){<br>  Animal.call(this,name);<br>}<br>var dog=new Dog(“Crazy dog”);<br>dog.showName();</p>
+<p>输出：Crazy dog<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">Animal.call(this) 的意思就是使用 Animal对象代替this对象，那么Dog就能直接调用Animal的所有属性和方法。</div><div class="line"></div><div class="line">二、apply()</div><div class="line">语法：```apply([thisObj[,argArray]])</div></pre></td></tr></table></figure></p>
+<p>定义：应用某一对象的一个方法，用另一个对象替换当前对象。</p>
+<p>说明：<br>如果 argArray 不是一个有效的数组或者不是 arguments 对象，那么将导致一个 TypeError。<br>如果没有提供 argArray 和 thisObj 任何一个参数，那么 Global 对象将被用作 thisObj， 并且无法被传递任何参数。</p>
+<p>call 和 apply的区别<br>对于 apply、call 二者而言，作用完全一样，只是接受参数的方式不太一样。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">function class1(args1,args2)&#123;       </div><div class="line">  this.name=function()&#123;      </div><div class="line">   console.log(args,args);      </div><div class="line">  &#125;     </div><div class="line">&#125;     </div><div class="line">function class2()&#123;    </div><div class="line">  var args1=&quot;1&quot;;</div><div class="line">  var args2=&quot;2&quot;;</div><div class="line">  class1.call(this,args1,args2);  </div><div class="line">  /*或*/</div><div class="line">  class1.apply(this,[args1,args2]);</div><div class="line">&#125;</div><div class="line"></div><div class="line">var c=new class2();   </div><div class="line">c.name();</div><div class="line"></div><div class="line">输出：1 2</div></pre></td></tr></table></figure>
+<p>call 需要把参数按顺序传递进去，而 apply 则是把参数放在数组里。</p>
+<p>既然两者功能一样，那该用哪个呢？</p>
+<p>在JavaScript 中，某个函数的参数数量是不固定的，因此要说适用条件的话，当你的参数是明确知道数量时用 call ；而不确定的时候用 apply，然后把参数 push 进数组传递进去。当参数数量不确定时，函数内部也可以通过 arguments 这个类数组对象来遍历所有的参数。</p>
+<p>三、bind</p>
+<p>bind是在EcmaScript5中扩展的方法（IE6,7,8不支持）<br>bind() 方法与 apply 和 call 很相似，也是可以改变函数体内 this 的指向。</p>
+<p>　　MDN的解释是：bind()方法会创建一个新函数，称为绑定函数，当调用这个绑定函数时，绑定函数会以创建它时传入 bind()方法的第一个参数作为 this，传入 bind() 方法的第二个以及以后的参数加上绑定函数运行时本身的参数按照顺序作为原函数的参数来调用原函数。</p>
+<p>注意：bind方法的返回值是函数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">var bar=function()&#123;   </div><div class="line">  console.log(this.x);   </div><div class="line">&#125;</div><div class="line">var foo=&#123; </div><div class="line">     x:3   </div><div class="line">&#125;   </div><div class="line">bar();  </div><div class="line">bar.bind(foo)();</div><div class="line"> /*或*/</div><div class="line">var func=bar.bind(foo);   </div><div class="line">func();</div><div class="line"></div><div class="line">输出：</div><div class="line">undefined</div><div class="line">3</div></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/03/11/Ajax/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Fenglin">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.gif">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Feng~Lin">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Feng~Lin" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/03/11/Ajax/" itemprop="url">
+                  Ajax语法浅析
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-03-11T00:00:00+08:00">
+                2016-03-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>Ajax是目前很普遍的一门技术，也是很值得探讨和研究的一门技术。本文将针对Ajax的发展过程并结合其在不同库框架中的使用方式来和大家分享下Ajax的那些新老语法。</p>
+<h2 id="Ajax简介"><a href="#Ajax简介" class="headerlink" title="Ajax简介"></a>Ajax简介</h2><p>Ajax全称为“Asynchronous Javascript And XML”，即“异步javascript和XML”的意思。通过Ajax我们可以向服务器发送请求，在不阻塞页面的情况下进行数据交互，也可以理解为异步数据传输。在Ajax的帮助下我们的网页只需局部刷新即可更新数据的显示，减少了不少必要的数据量，大大提高了用户体验，缩短了用户等待的时间，使得web应用程序更小、更快、更友好。</p>
+<h3 id="原生Ajax"><a href="#原生Ajax" class="headerlink" title="原生Ajax"></a>原生Ajax</h3><p>基本上现在的所有浏览器都支持原生Ajax的功能，下面就详细介绍利用原生js我们怎样来发起和处理Ajax请求。</p>
+<h4 id="1-获取XMLHttpRequest对象"><a href="#1-获取XMLHttpRequest对象" class="headerlink" title="1.获取XMLHttpRequest对象"></a>1.获取XMLHttpRequest对象</h4><p><code>var xhr =new XMLHttpRequest();//获取浏览器内置的XMLHttpRequest对象</code></p>
+<p>如果你的项目应用不考虑低版本IE，那么可以直接用上面的方法，所有现代浏览器 (Firefox、Chrome、Safari 以及 Opera) 都内建了 XMLHttpRequest 对象。如果需要兼容老版本IE（IE5、IE6），那么可以使用 ActiveX 对象:</p>
+<pre><code>var xhr;
+if (window.XMLHttpRequest) {
+xhr=new XMLHttpRequest();
+} else if (window.ActiveXObject) { // 兼容老版本浏览器
+xhr=new ActiveXObject(&quot;Microsoft.XMLHTTP&quot;);
+}
+</code></pre><h4 id="2-参数配置"><a href="#2-参数配置" class="headerlink" title="2.参数配置"></a>2.参数配置</h4><p>有了XMLHttpRequest对象，我们还需要配置一些请求的参数信息来完成数据交互，利用open方法即可:</p>
+<pre><code>var xhr;
+if(window.XMLHttpRequest){
+    xhr=new XMLHttpRequest();
+}else if(window.ActiveXObject){
+    xhr=new ActiveXObject(&quot;Microsoft&quot;)
+}
+if(xhr){
+    xhr.open(&apos;GET&apos;,&apos;/TEST/&apos;,true);//以GET请求的方式向&apos;/test/&apos;路径发送异步请求
+}
+</code></pre><p>open方法为我们创建了一个新的http请求，其中第一个参数为请求方式，一般为’GET’或’POST’;第二个参数为请求URL;第三个参数为是否异步，默认为true。</p>
+<h4 id="发送请求"><a href="#发送请求" class="headerlink" title="发送请求"></a>发送请求</h4><p>配置完了基本参数信息，我们直接调用send方法发送请求，代码如下:</p>
+<pre><code>var xhr;
+if(window.XMLHttpRequest){
+    xhr=new XMLHttpRequest();
+}else if(window.ActiveXObject){
+    xhr = new ActiveXObject(&quot;Microsoft.XMLHTTP&quot;);
+}
+if(xhr){
+    xhr.open(&apos;GET&apos;,&apos;&apos;/test/&apos;,true);//以GET请求的方式向&apos;/test/&apos;路径发送异步请求
+    xhr.send();//调用send方法发送请求
+}
+</code></pre><p>你需要注意的是如果使用GET方法传递参数，我们可以直接将参数放在URL后面，比如’/test/?username=fl&amp;pwd=666’;如果使用POST方法，那么我们的参数需要写在send方法里</p>
+<pre><code>xhr.open(&apos;POST&apos;,&apos;/test/&apos;,true);
+xhr.setRequestHeader(&quot;Content-type&quot;,&quot;application/x-www-form-urlencoded&quot;);//将请求头设置为表单方式提交
+xhr.send(&apos;username=fl&amp;pwd=666&apos;);
+</code></pre><p>最终会以Form Data的形式传递,因此我们要修改成我们期望的数据格式JSON格式。</p>
+<pre><code>xhr.open(&apos;POST&apos;,&apos;/test/&apos;,true);
+xhr.send(JSON.stringify({username:&apos;fl&apos;,pwd:666}));
+</code></pre><h4 id="监测状态"><a href="#监测状态" class="headerlink" title="监测状态"></a>监测状态</h4><p>发送完Ajax请求之后，我们需要针对服务器返回的状态进行监测并进行相应的处理，这里我们需要使用onreadystatechange方法。<br>代码如下：</p>
+<pre><code>var xhr;
+if(window.XMLHttpRequest){
+    xhr=new XMLHttpRequest();
+}else if(window.ActiveXObject){
+    xhr = new ActiveXObject(&apos;Microsoft.XMLHTTP&apos;);
+}
+if(xhr){
+    xhr.open(&apos;GET&apos;,&apos;/test/&apos;,true);//以get请求的方式向&apos;/test/&apos;路径发送异步请求
+    xhr.send();
+    xhr.onreadystatechange = function(){//利用onreadystatechange检测状态
+        if(xhr.readyState ==4){//readyState为4表示请求响应完成
+            if(xhr.status ===200){//status为200表示请求成功
+                console.log(&apos;执行成功&apos;);
+            }else{
+                console.log(&apos;执行出错&apos;);
+            }
+        }
+    }
+}
+</code></pre><p>上面我们利用onreadystatechange监测状态，并在内部利用readyState获取当前的状态。readyState一共有5个阶段，当其为4时表示响应内容解析完成，可以在客户端调用了。当readyState为4时，我们又通过status来获取状态码，状态码为200时执行成功代码，否则执行出错代码。</p>
+<p>当然我们可以用onload来代替onreadystatechange等于4的情况，因为onload只在状态为4的时候才被调用，代码如下：</p>
+<pre><code>xhr.onload = function () {    // 调用onload           if (xhr.status === 200) {    // status为200表示请求成功
+    }
+        console.log(&apos;执行成功&apos;);
+    } else {
+    console.log(&apos;执行出错&apos;);
+    }   
+}
+</code></pre>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/03/10/ajax简介/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Fenglin">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.gif">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Feng~Lin">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Feng~Lin" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/03/10/ajax简介/" itemprop="url">
+                  Ajax 完整教程
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-03-10T00:00:00+08:00">
+                2016-03-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>Ajax 由 HTML、JavaScript™ 技术、DHTML 和 DOM 组成，这一杰出的方法可以将笨拙的 Web 界面转化成交互性的 Ajax 应用程序。本文的作者是一位 Ajax 专家，他演示了这些技术如何协同工作 —— 从总体概述到细节的讨论 —— 使高效的 Web 开发成为现实。他还揭开了 Ajax 核心概念的神秘面纱，包括 XMLHttpRequest 对象。</p>
+<p>五年前，如果不知道 XML，您就是一只无人重视的丑小鸭。十八个月前，Ruby 成了关注的中心，不知道 Ruby 的程序员只能坐冷板凳了。今天，如果想跟上最新的技术时尚，那您的目标就是 Ajax。</p>
+<h2 id="Ajax简介"><a href="#Ajax简介" class="headerlink" title="Ajax简介"></a>Ajax简介</h2><p>Ajax 不仅仅 是一种时尚，它是一种构建网站的强大方法，而且不像学习一种全新的语言那样困难。</p>
+<p>但在详细探讨 Ajax 是什么之前，先让我们花几分钟了解 Ajax 做 什么。目前，编写应用程序时有两种基本的选择：</p>
+<h3 id="·桌面应用程序和·Web-应用程序"><a href="#·桌面应用程序和·Web-应用程序" class="headerlink" title="·桌面应用程序和·Web 应用程序"></a>·桌面应用程序和·Web 应用程序</h3><p>两者是类似的，桌面应用程序通常以 CD 为介质（有时候可从网站下载）并完全安装到您的计算机上。桌面应用程序可能使用互联网下载更新，但运行这些应用程序的代码在桌面计算机上。Web 应用程序运行在某处的 Web 服务器上 —— 毫不奇怪，要通过 Web 浏览器访问这种应用程序。</p>
+<p>不过，比这些应用程序的运行代码放在何处更重要的是，应用程序如何运转以及如何与其进行交互。桌面应用程序一般很快（就在您的计算机上运行，不用等待互联网连接），具有漂亮的用户界面（通常和操作系统有关）和非凡的动态性。可以单击、选择、输入、打开菜单和子菜单、到处巡游，基本上不需要等待。</p>
+<p>另一方面，Web 应用程序是最新的潮流，它们提供了在桌面上不能实现的服务（比如 Amazon.com 和 eBay）。但是，伴随着 Web 的强大而出现的是等待，等待服务器响应，等待屏幕刷新，等待请求返回和生成新的页面。</p>
+<p>显然这样说过于简略了，但基本的概念就是如此。您可能已经猜到，Ajax 尝试建立桌面应用程序的功能和交互性，与不断更新的 Web 应用程序之间的桥梁。可以使用像桌面应用程序中常见的动态用户界面和漂亮的控件，不过是在 Web 应用程序中。</p>
+<p>还等什么呢？我们来看看 Ajax 如何将笨拙的 Web 界面转化成能迅速响应的 Ajax 应用程序吧。</p>
+<p>老技术，新技巧</p>
+<p>在谈到 Ajax 时，实际上涉及到多种技术，要灵活地运用它必须深入了解这些不同的技术（本系列的头几篇文章将分别讨论这些技术）。好消息是您可能已经非常熟悉其中的大部分技术，更好的是这些技术都很容易学习，并不像完整的编程语言（如 Java 或 Ruby）那样困难。</p>
+<h4 id="Ajax应用程序用到的技术"><a href="#Ajax应用程序用到的技术" class="headerlink" title="Ajax应用程序用到的技术"></a>Ajax应用程序用到的技术</h4><figure class="highlight plain"><figcaption><span>用于建立 Web 表单并确定应用程序其他部分使用的字段。 </span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">```</div><div class="line"></div><div class="line">```·JavaScript 代码是运行 Ajax 应用程序的核心代码，帮助改进与服务器应用程序的通信。</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><figcaption><span>或 Dynamic HTML，用于动态更新表单。我们将使用 div、span 和其他动态 HTML 元素来标记 HTML。</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">```</div><div class="line"></div><div class="line">```·文档对象模型 DOM 用于（通过 JavaScript 代码）处理 HTML 结构和（某些情况下）服务器返回的 XML。</div></pre></td></tr></table></figure>
+<h3 id="Ajax-的定义"><a href="#Ajax-的定义" class="headerlink" title="Ajax 的定义"></a>Ajax 的定义</h3><p>Ajax 是 Asynchronous JavaScript and XML（以及 DHTML 等）的缩写。这个短语是 Adaptive Path 的 Jesse James Garrett 发明的（请参阅 参考资料），按照 Jesse 的解释，这不是 个首字母缩写词。</p>
+<h3 id="XMLHttpRequest-对象"><a href="#XMLHttpRequest-对象" class="headerlink" title="XMLHttpRequest 对象"></a>XMLHttpRequest 对象</h3><p>要了解的一个对象可能对您来说也是最陌生的，即 XMLHttpRequest。这是一个 JavaScript 对象，创建该对象很简单，如清单 1 所示。</p>
+<h4 id="清单1-创建新的XMLHttpRequest-对象"><a href="#清单1-创建新的XMLHttpRequest-对象" class="headerlink" title="清单1.创建新的XMLHttpRequest 对象"></a>清单1.创建新的XMLHttpRequest 对象</h4><figure class="highlight plain"><figcaption><span>language="javascript" type="text/javascript">```</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">```var xmlHttp =new XMLHttpRequest();</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">下一期文章中将进一步讨论这个对象，现在要知道这是处理所有服务器通信的对象。继续阅读之前，先停下来想一想：通过 XMLHttpRequest 对象与服务器进行对话的是 JavaScript 技术。这不是一般的应用程序流，这恰恰是 Ajax 的强大功能的来源。</div><div class="line"></div><div class="line">然后，服务器将数据返回 JavaScript 代码（仍然在 Web 表单中），后者决定如何处理这些数据。它可以迅速更新表单数据，让人感觉应用程序是立即完成的，表单没有提交或刷新而用户得到了新数据。JavaScript 代码甚至可以对收到的数据执行某种计算，再发送另一个请求，完全不需要用户干预！这就是 XMLHttpRequest 的强大之处。它可以根据需要自行与服务器进行交互，用户甚至可以完全不知道幕后发生的一切。结果就是类似于桌面应用程序的动态、快速响应、高交互性的体验，但是背后又拥有互联网的全部强大力量。</div><div class="line"></div><div class="line">加入一些 JavaScript</div><div class="line"></div><div class="line">得到 XMLHttpRequest 的句柄后，其他的 JavaScript 代码就非常简单了。事实上，我们将使用 JavaScript 代码完成非常基本的任务：</div></pre></td></tr></table></figure>
+<p>·获取表单数据：JavaScript 代码很容易从 HTML 表单中抽取数据并发送到服务器。<br>·修改表单上的数据：更新表单也很简单，从设置字段值到迅速替换图像。<br>·解析 HTML 和 XML：使用 JavaScript 代码操纵 DOM（请参阅 下一节），处理 HTML 表单服务器返回的 XML 数据的结构。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">#### 清单 2. 用 JavaScript 代码捕获和设置字段值</div><div class="line">// Get the value of the &quot;phone&quot; field and stuff it in a variable called phone</div><div class="line">var phone = document.getElementById(&quot;phone&quot;).value;</div><div class="line"></div><div class="line">// Set some values on a form using an array called response</div><div class="line">document.getElementById(&quot;order&quot;).value = response[0];</div><div class="line">document.getElementById(&quot;address&quot;).value = response[1];</div><div class="line"></div><div class="line">这里没有特别需要注意的地方，真是好极了！您应该认识到这里并没有非常复杂的东西。只要掌握了 XMLHttpRequest，Ajax 应用程序的其他部分就是如 清单 2 所示的简单 JavaScript 代码了，混合有少量的 HTML。同时，还要用一点儿 DOM，我们就来看看吧。</div><div class="line"></div><div class="line">以 DOM 结束</div><div class="line"></div><div class="line">最后还有 DOM，即文档对象模型。可能对有些读者来说 DOM 有点儿令人生畏，HTML 设计者很少使用它，即使 JavaScript 程序员也不大用到它，除非要完成某项高端编程任务。大量使用 DOM 的是 复杂的 Java 和 C/C++ 程序，这可能就是 DOM 被认为难以学习的原因。</div><div class="line"></div><div class="line">幸运的是，在 JavaScript 技术中使用 DOM 很容易，也非常直观。现在，按照常规也许应该说明如何使用 DOM，或者至少要给出一些示例代码，但这样做也可能误导您。即使不理会 DOM，仍然能深入地探讨 Ajax，这也是我准备采用的方法。以后的文章将再次讨论 DOM，现在只要知道可能需要 DOM 就可以了。当需要在 JavaScript 代码和服务器之间传递 XML 和改变 HTML 表单的时候，我们再深入研究 DOM。没有它也能做一些有趣的工作，因此现在就把 DOM 放到一边吧。</div><div class="line"></div><div class="line">#### 获取 Request 对象</div><div class="line">有了上面的基础知识后，我们来看看一些具体的例子。XMLHttpRequest 是 Ajax 应用程序的核心，而且对很多读者来说可能还比较陌生，我们就从这里开始吧。从 清单 1 可以看出，创建和使用这个对象非常简单，不是吗？等一等。</div><div class="line"></div><div class="line">还记得几年前的那些讨厌的浏览器战争吗？没有一样东西在不同的浏览器上得到同样的结果。不管您是否相信，这些战争仍然在继续，虽然规模较小。但令人奇怪的是，XMLHttpRequest 成了这场战争的牺牲品之一。因此获得 XMLHttpRequest 对象可能需要采用不同的方法。下面我将详细地进行解释。</div><div class="line">#### 清单 3. 在 Microsoft 浏览器上创建 XMLHttpRequest 对象</div></pre></td></tr></table></figure></p>
+<p>var xmlHttp = false;<br>try {<br>  xmlHttp = new ActiveXObject(“Msxml2.XMLHTTP”);<br>} catch (e) {<br>  try {<br>    xmlHttp = new ActiveXObject(“Microsoft.XMLHTTP”);<br>  } catch (e2) {<br>    xmlHttp = false;<br>  }<br>}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">您对这些代码可能还不完全理解，但没有关系。当本系列文章结束的时候，您将对 JavaScript 编程、错误处理、条件编译等有更深的了解。现在只要牢牢记住其中的两行代码：</div><div class="line">xmlHttp = new ActiveXObject(&quot;Msxml2.XMLHTTP&quot;);</div><div class="line"></div><div class="line">和</div><div class="line"></div><div class="line">xmlHttp = new ActiveXObject(&quot;Microsoft.XMLHTTP&quot;);。</div><div class="line"></div><div class="line">这两行代码基本上就是尝试使用一个版本的 MSXML 创建对象，如果失败则使用另一个版本创建该对象。不错吧？如果都不成功，则将 xmlHttp 变量设为 false，告诉您的代码出现了问题。如果出现这种情况，可能是因为安装了非 Microsoft 浏览器，需要使用不同的代码。</div><div class="line"></div><div class="line">#### 清单 4. 以支持多种浏览器的方式创建 XMLHttpRequest 对象</div></pre></td></tr></table></figure></p>
+<p>/<em> Create a new XMLHttpRequest object to talk to the Web server </em>/<br>var xmlHttp = false;<br>/<em>@cc_on @</em>/<br>/<em>@if (@_jscript_version &gt;= 5)<br>try {<br>  xmlHttp = new ActiveXObject(“Msxml2.XMLHTTP”);<br>} catch (e) {<br>  try {<br>    xmlHttp = new ActiveXObject(“Microsoft.XMLHTTP”);<br>  } catch (e2) {<br>    xmlHttp = false;<br>  }<br>}<br>@end @</em>/<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">if (!xmlHttp &amp;amp;&amp; typeof XMLHttpRequest != &apos;undefined&apos;) &#123;</div><div class="line">  xmlHttp = new XMLHttpRequest();</div><div class="line">&#125;</div><div class="line"></div><div class="line">现在先不管那些注释掉的奇怪符号，如 @cc_on，这是特殊的 JavaScript 编译器命令，将在下一期针对 XMLHttpRequest 的文章中详细讨论。这段代码的核心分为三步</div></pre></td></tr></table></figure></p>
+<p>1、建立一个变量 xmlHttp 来引用即将创建的 XMLHttpRequest 对象。<br>2、尝试在 Microsoft 浏览器中创建该对象：<br>      1）尝试使用 Msxml2.XMLHTTP 对象创建它。<br>      2）如果失败，再尝试 Microsoft.XMLHTTP 对象。<br>2、如果仍然没有建立 xmlHttp，则以非 Microsoft 的方式创建该对象。<br>最后，xmlHttp 应该引用一个有效的 XMLHttpRequest 对象，无论运行什么样的浏览器。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">### Ajax 世界中的请求/响应</div><div class="line">现在我们介绍了 Ajax，对 XMLHttpRequest 对象以及如何创建它也有了基本的了解。如果阅读得很仔细，您可能已经知道与服务器上的 Web 应用程序打交道的是 JavaScript 技术，而不是直接提交给那个应用程序的 HTML 表单。</div><div class="line"></div><div class="line">还缺少什么呢？到底如何使用 XMLHttpRequest。因为这段代码非常重要，您编写的每个 Ajax 应用程序都要以某种形式使用它，先看看 Ajax 的基本请求/响应模型是什么样吧。</div><div class="line"></div><div class="line">发出请求</div><div class="line"></div><div class="line">您已经有了一个崭新的 XMLHttpRequest 对象，现在让它干点活儿吧。首先需要一个 Web 页面能够调用的 JavaScript 方法（比如当用户输入文本或者从菜单中选择一项时）。接下来就是在所有 Ajax 应用程序中基本都雷同的流程：</div></pre></td></tr></table></figure></p>
+<p>1、从 Web 表单中获取需要的数据。<br>2、建立要连接的 URL。<br>3、打开到服务器的连接。<br>4、设置服务器在完成后要运行的函数。<br>5、发送请求。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">#### 清单 5. 发出 Ajax 请求</div></pre></td></tr></table></figure></p>
+<p>function callServer() {<br>  // Get the city and state from the web form<br>  var city = document.getElementById(“city”).value;<br>  var state = document.getElementById(“state”).value;<br>  // Only go on if there are values for both fields<br>  if ((city == null) || (city == “”)) return;<br>  if ((state == null) || (state == “”)) return;</p>
+<p>  // Build the URL to connect to<br>  var url = “/scripts/getZipCode.php?city=” + escape(city) + “&amp;state=” + escape(state);</p>
+<p>  // Open a connection to the server<br>  xmlHttp.open(“GET”, url, true);</p>
+<p>  // Setup a function for the server to run when it’s done<br>  xmlHttp.onreadystatechange = updatePage;</p>
+<p>  // Send the request<br>  xmlHttp.send(null);<br>}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">其中大部分代码意义都很明确。开始的代码使用基本 JavaScript 代码获取几个表单字段的值。然后设置一个 PHP 脚本作为链接的目标。要注意脚本 URL 的指定方式，city 和 state（来自表单）使用简单的 GET 参数附加在 URL 之后。</div><div class="line"></div><div class="line">然后打开一个连接，这是您第一次看到使用 XMLHttpRequest。其中指定了连接方法（GET）和要连接的 URL。最后一个参数如果设为 true，那么将请求一个异步连接（这就是 Ajax 的由来）。如果使用 false，那么代码发出请求后将等待服务器返回的响应。如果设为 true，当服务器在后台处理请求的时候用户仍然可以使用表单（甚至调用其他 JavaScript 方法）。</div><div class="line"></div><div class="line">xmlHttp（要记住，这是 XMLHttpRequest 对象实例）的 onreadystatechange 属性可以告诉服务器在运行完成 后（可能要用五分钟或者五个小时）做什么。因为代码没有等待服务器，必须让服务器知道怎么做以便您能作出响应。在这个示例中，如果服务器处理完了请求，一个特殊的名为 updatePage() 的方法将被触发。</div><div class="line"></div><div class="line">最后，使用值 null 调用 send()。因为已经在请求 URL 中添加了要发送给服务器的数据（city 和 state），所以请求中不需要发送任何数据。这样就发出了请求，服务器按照您的要求工作。</div><div class="line"></div><div class="line">如果没有发现任何新鲜的东西，您应该体会到这是多么简单明了！除了牢牢记住 Ajax 的异步特性外，这些内容都相当简单。应该感激 Ajax 使您能够专心编写漂亮的应用程序和界面，而不用担心复杂的 HTTP 请求/响应代码。</div><div class="line"></div><div class="line">#### 清单 5 中的代码说明了 Ajax 的易用性。数据是简单的文本，可以作为请求 URL 的一部分。用 GET 而不是更复杂的 POST 发送请求。没有 XML 和要添加的内容头部，请求体中没有要发送的数据；换句话说，这就是 Ajax 的乌托邦。</div><div class="line">#####处理响应</div><div class="line">现在要面对服务器的响应了。现在只要知道两点：</div><div class="line"></div><div class="line">·什么也不要做，直到 xmlHttp.readyState 属性的值等于 4。 </div><div class="line">·服务器将把响应填充到 xmlHttp.responseText 属性中。 </div><div class="line"></div><div class="line">其中的第一点，即就绪状态，将在下一篇文章中详细讨论，您将进一步了解 HTTP 请求的阶段，可能比您设想的还多。现在只要检查一个特定的值（4）就可以了（下一期文章中还有更多的值要介绍）。第二点，使用 xmlHttp.responseText 属性获得服务器的响应，这很简单。清单 6 中的示例方法可供服务器根据 清单 5 中发送的数据调用。</div><div class="line"></div><div class="line">#### 清单 6. 处理服务器响应</div></pre></td></tr></table></figure></p>
+<p>function updatePage() {<br>  if (xmlHttp.readyState == 4) {<br>    var response = xmlHttp.responseText;<br>    document.getElementById(“zipCode”).value = response;<br>  }<br>}<br>```</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/01/15/十大经典算法排序总结对比/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Fenglin">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.gif">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Feng~Lin">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Feng~Lin" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/01/15/十大经典算法排序总结对比/" itemprop="url">
+                  JS家的排序算法
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-01-15T00:00:00+08:00">
+                2016-01-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>原文作者：<a href="http://www.jianshu.com/p/1b4068ccd505" target="_blank" rel="external">不是小羊的肖恩</a></p>
+<h2 id="十大经典算法排序总结对比"><a href="#十大经典算法排序总结对比" class="headerlink" title="十大经典算法排序总结对比"></a>十大经典算法排序总结对比</h2><p><img src="http://upload-images.jianshu.io/upload_images/1867034-1d3e43cdb301fc9b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Generating"></p>
+<p>####名词解释：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">n: 数据规模</div><div class="line">k:“桶”的个数</div><div class="line">In-place: 占用常数内存，不占用额外内存</div><div class="line">Out-place: 占用额外内存</div><div class="line">稳定性：排序后2个相等键值的顺序和排序之前它们的顺序相同</div></pre></td></tr></table></figure></p>
+<h3 id="冒泡排序（Bubble-Sort）"><a href="#冒泡排序（Bubble-Sort）" class="headerlink" title="冒泡排序（Bubble Sort）"></a>冒泡排序（Bubble Sort）</h3><h4 id="冒泡排序须知："><a href="#冒泡排序须知：" class="headerlink" title="冒泡排序须知："></a>冒泡排序须知：</h4><p>作为最简单的排序算法之一，冒泡排序给我的感觉就像Abandon在单词书里出现的感觉一样，每次都在第一页第一位，所以最熟悉。。。冒泡排序还有一种优化算法，就是立一个flag，当在一趟序列遍历中元素没有发生交换，则证明该序列已经有序。但这种改进对于提升性能来说并没有什么太大作用。。</p>
+<h5 id="什么时候最快（Best-Cases）："><a href="#什么时候最快（Best-Cases）：" class="headerlink" title="什么时候最快（Best Cases）："></a>什么时候最快（Best Cases）：</h5><p>当输入的数据已经是正序时（都已经是正序了，我还要你冒泡排序有何用啊。。。。）</p>
+<h5 id="什么时候最慢（Worst-Cases）："><a href="#什么时候最慢（Worst-Cases）：" class="headerlink" title="什么时候最慢（Worst Cases）："></a>什么时候最慢（Worst Cases）：</h5><p>当输入的数据是反序时（写一个for循环反序输出数据不就行了，干嘛要用你冒泡排序呢，我是闲的吗。。。）</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1867034-e19840224b331fae.gif?imageMogr2/auto-orient/strip" alt="Generating"></p>
+<h4 id="冒泡排序JavaScript代码实现："><a href="#冒泡排序JavaScript代码实现：" class="headerlink" title="冒泡排序JavaScript代码实现："></a>冒泡排序JavaScript代码实现：</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">function bubbleSort(arr) &#123;</div><div class="line">    var len = arr.length;</div><div class="line">    for (var i = 0; i &lt; len; i++) &#123;</div><div class="line">        for (var j = 0; j &lt; len - 1 - i; j++) &#123;</div><div class="line">            if (arr[j] &gt; arr[j+1]) &#123;        //相邻元素两两对比</div><div class="line">                var temp = arr[j+1];        //元素交换</div><div class="line">                arr[j+1] = arr[j];</div><div class="line">                arr[j] = temp;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    return arr;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="选择排序（Selection-Sort）"><a href="#选择排序（Selection-Sort）" class="headerlink" title="选择排序（Selection Sort）"></a>选择排序（Selection Sort）</h2><h3 id="选择排序须知："><a href="#选择排序须知：" class="headerlink" title="选择排序须知："></a>选择排序须知：</h3><p>在时间复杂度上表现最稳定的排序算法之一，因为无论什么数据进去都是O(n²)的时间复杂度。。。所以用到它的时候，数据规模越小越好。唯一的好处可能就是不占用额外的内存空间了吧。</p>
+<h4 id="选择排序动图演示："><a href="#选择排序动图演示：" class="headerlink" title="选择排序动图演示："></a>选择排序动图演示：</h4><p><img src="http://upload-images.jianshu.io/upload_images/1867034-c6cc220cfb2b9ac8.gif?imageMogr2/auto-orient/strip" alt="Generating"></p>
+<h5 id="选择排序JavaScript代码实现："><a href="#选择排序JavaScript代码实现：" class="headerlink" title="选择排序JavaScript代码实现："></a>选择排序JavaScript代码实现：</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">function selectionSort(arr) &#123;</div><div class="line">    var len = arr.length;</div><div class="line">    var minIndex, temp;</div><div class="line">    for (var i = 0; i &lt; len - 1; i++) &#123;</div><div class="line">        minIndex = i;</div><div class="line">        for (var j = i + 1; j &lt; len; j++) &#123;</div><div class="line">            if (arr[j] &lt; arr[minIndex]) &#123;     //寻找最小的数</div><div class="line">                minIndex = j;                 //将最小数的索引保存</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        temp = arr[i];</div><div class="line">        arr[i] = arr[minIndex];</div><div class="line">        arr[minIndex] = temp;</div><div class="line">    &#125;</div><div class="line">    return arr;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="插入排序（Insertion-Sort）"><a href="#插入排序（Insertion-Sort）" class="headerlink" title="插入排序（Insertion Sort）"></a>插入排序（Insertion Sort）</h2><h3 id="插入排序须知："><a href="#插入排序须知：" class="headerlink" title="插入排序须知："></a>插入排序须知：</h3><p>插入排序的代码实现虽然没有冒泡排序和选择排序那么简单粗暴，但它的原理应该是最容易理解的了，因为只要打过扑克牌的人都应该能够秒懂。当然，如果你说你打扑克牌摸牌的时候从来不按牌的大小整理牌，那估计这辈子你对插入排序的算法都不会产生任何兴趣了。。。<br>插入排序和冒泡排序一样，也有一种优化算法，叫做拆半插入。对于这种算法，得了懒癌的我就套用教科书上的一句经典的话吧：感兴趣的同学可以在课后自行研究。。。<br><img src="http://upload-images.jianshu.io/upload_images/1867034-d1537e355abdd298.gif?imageMogr2/auto-orient/strip" alt="Generating"></p>
+<h4 id="插入排序JavaScript代码实现："><a href="#插入排序JavaScript代码实现：" class="headerlink" title="插入排序JavaScript代码实现："></a>插入排序JavaScript代码实现：</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">function insertionSort(arr) &#123;</div><div class="line">    var len = arr.length;</div><div class="line">    var preIndex, current;</div><div class="line">    for (var i = 1; i &lt; len; i++) &#123;</div><div class="line">        preIndex = i - 1;</div><div class="line">        current = arr[i];</div><div class="line">        while(preIndex &gt;= 0 &amp;&amp; arr[preIndex] &gt; current) &#123;</div><div class="line">            arr[preIndex+1] = arr[preIndex];</div><div class="line">            preIndex--;</div><div class="line">        &#125;</div><div class="line">        arr[preIndex+1] = current;</div><div class="line">    &#125;</div><div class="line">    return arr;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="希尔排序（Shell-Sort）"><a href="#希尔排序（Shell-Sort）" class="headerlink" title="希尔排序（Shell Sort）"></a>希尔排序（Shell Sort）</h2><h3 id="希尔排序须知："><a href="#希尔排序须知：" class="headerlink" title="希尔排序须知："></a>希尔排序须知：</h3><p>希尔排序是插入排序的一种更高效率的实现。它与插入排序的不同之处在于，它会优先比较距离较远的元素。希尔排序的核心在于间隔序列的设定。既可以提前设定好间隔序列，也可以动态的定义间隔序列。动态定义间隔序列的算法是《算法（第4版》的合著者Robert Sedgewick提出的。在这里，我就使用了这种方法。</p>
+<h4 id="希尔排序JavaScript代码实现："><a href="#希尔排序JavaScript代码实现：" class="headerlink" title="希尔排序JavaScript代码实现："></a>希尔排序JavaScript代码实现：</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">function shellSort(arr) &#123;</div><div class="line">    var len = arr.length,</div><div class="line">        temp,</div><div class="line">        gap = 1;</div><div class="line">    while(gap &lt; len/3) &#123;          //动态定义间隔序列</div><div class="line">        gap =gap*3+1;</div><div class="line">    &#125;</div><div class="line">    for (gap; gap &gt; 0; gap = Math.floor(gap/3)) &#123;</div><div class="line">        for (var i = gap; i &lt; len; i++) &#123;</div><div class="line">            temp = arr[i];</div><div class="line">            for (var j = i-gap; j &gt;= 0 &amp;&amp; arr[j] &gt; temp; j-=gap) &#123;</div><div class="line">                arr[j+gap] = arr[j];</div><div class="line">            &#125;</div><div class="line">            arr[j+gap] = temp;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    return arr;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="归并排序（Merge-Sort）"><a href="#归并排序（Merge-Sort）" class="headerlink" title="归并排序（Merge Sort）"></a>归并排序（Merge Sort）</h2><h3 id="归并排序须知："><a href="#归并排序须知：" class="headerlink" title="归并排序须知："></a>归并排序须知：</h3><p>作为一种典型的分而治之思想的算法应用，归并排序的实现由两种方法：</p>
+<p>1、自上而下的递归（所有递归的方法都可以用迭代重写，所以就有了第2种方法）<br>2、自下而上的迭代<br>在《数据结构与算法JavaScript描述》中，作者给出了自下而上的迭代方法。但是对于递归法，作者却认为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">However, it is not possible to do so in JavaScript, as the recursion goes too deep</div><div class="line">for the language to handle.</div><div class="line">然而,在 JavaScript 中这种方式不太可行,因为这个算法的递归深度对它来讲太深了。</div></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2015/11/05/http/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Fenglin">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.gif">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Feng~Lin">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Feng~Lin" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2015/11/05/http/" itemprop="url">
+                  一个http请求发送到后端的详细过程
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2015-11-05T00:00:00+08:00">
+                2015-11-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="title-一个http请求发送到后端的详细过程"><a href="#title-一个http请求发送到后端的详细过程" class="headerlink" title="title: 一个http请求发送到后端的详细过程"></a>title: 一个http请求发送到后端的详细过程</h2><p>http是一个应用层协议，在这个层的协议，只是一种通信规范，也就是因为双方要进行通讯，而约定俗成的一个规范。</p>
+<h2 id="通讯步骤"><a href="#通讯步骤" class="headerlink" title="通讯步骤"></a>通讯步骤</h2><h3 id="连接"><a href="#连接" class="headerlink" title="连接"></a>连接</h3><p>当我们输入这样一个请求时，首先要建立一个socket连接，因为socket是通过ip和端口建立连接的所以之前还有一个DNS解析过程，把www.mycompany.com变成ip，如果url里不包含端口号，则会使用该协议的默认端口号。</p>
+<p>DNS的过程是这样的：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">### 请求</div><div class="line">     连接成功建立后，开始向web服务器发送请求，这个请求一般是GET或POST命令（POST用于FORM参数的传递）。GET命令的格式为：　　GET 路径/文件名 HTTP/1.0</div><div class="line"></div><div class="line">     文件名指出所访问的文件，HTTP/1.0指出Web浏览器使用的HTTP版本。现在可以发送GET命令：</div><div class="line">### 应答</div><div class="line">    web服务器收到这个请求，进行处理。从它的文档空间中搜索子目录mydir的文件index.html。如果找到该文件，Web服务器把该文件内容传送给相应的Web浏览器。</div><div class="line"></div><div class="line">为了告知浏览器，，Web服务器首先传送一些HTTP头信息，然后传送具体内容（即HTTP体信息），HTTP头信息和HTTP体信息之间用一个空行分开。</div><div class="line">常用的HTTP头信息有：</div><div class="line">　　```① HTTP 1.0 200 OK 　这是Web服务器应答的第一行，列出服务器正在运行的HTTP版本号和应答代码。代码&quot;200 OK&quot;表示请求完成。</div></pre></td></tr></table></figure></p>
+<p>　　<figure class="highlight plain"><figcaption><span>MIME_Version:1.0　它指示MIME类型的版本。　```　</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">　　```③ content_type:类型　这个头信息非常重要，它指示HTTP体信息的MIME类型。如：content_type:text/html指示传送的数据是HTML文档。</div></pre></td></tr></table></figure></p>
+<p>　　<figure class="highlight plain"><figcaption><span>content_length:长度值　它指示HTTP体信息的长度（字节）。```</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">### 关闭连接</div><div class="line">当应答结束后，Web浏览器与Web服务器必须断开，以保证其它Web浏览器能够与Web服务器建立连接。　　</div><div class="line">## tcp/ip基本模型及概念</div><div class="line">### 物理层</div><div class="line">设备，中继器（repeater）,集线器（hub）。对于这一层来说，从一个端口收到数据，会转发到所有端口。</div><div class="line">### 链路层</div><div class="line"></div><div class="line">协议：SDLC（Synchronous Data Link Control）HDLC（High-level Data Link Control） ppp协议独立的链路设备中最常见的当属网卡，网桥也是链路产品。集线器MODEM的某些功能有人认为属于链路层，对此还有些争议认为属于物理层设备。除此之外，所有的交换机都需要工作在数据链路层，但仅工作在数据链路层的仅是二层交换机。其他像三层交换机、四层交换机和七层交换机虽然可对应工作在OSI的三层、四层和七层，但二层功能仍是它们基本的功能。</div><div class="line"></div><div class="line">因为有了MAC地址表，所以才充分避免了冲突，因为交换机通过目的MAC地址知道应该把这个数据转发到哪个端口。而不会像HUB一样，会转发到所有滴端口。所以，交换机是可以划分冲突域滴。</div><div class="line">### 网络层</div><div class="line"></div><div class="line">四个主要的协议:   </div><div class="line">```网际协议IP：负责在主机和网络之间寻址和路由数据包。 ```    </div><div class="line">```地址解析协议ARP：获得同一物理网络中的硬件主机地址。   ```  </div><div class="line">```网际控制消息协议ICMP：发送消息，并报告有关数据包的传送错误。```     </div><div class="line">```互联组管理协议IGMP：被IP主机拿来向本地多路广播路由器报告主机组成员。</div></pre></td></tr></table></figure></p>
+<p>该层设备有三层交换机，路由器。</p>
+<h3 id="传输层"><a href="#传输层" class="headerlink" title="传输层"></a>传输层</h3><p>两个重要协议 TCP 和 UDP 。</p>
+<p>端口概念：TCP/UDP 使用 IP 地址标识网上主机，使用端口号来标识应用进程，即 TCP/UDP 用主机 IP 地址和为应用进程分配的端口号来标识应用进程。端口号是 16 位的无符号整数， TCP 的端口号和 UDP 的端口号是两个独立的序列。尽管相互独立，如果 TCP 和 UDP 同时提供某种知名服务，两个协议通常选择相同的端口号。这纯粹是为了使用方便，而不是协议本身的要求。利用端口号，一台主机上多个进程可以同时使用 TCP/UDP 提供的传输服务，并且这种通信是端到端的，它的数据由 IP 传递，但与 IP 数据报的传递路径无关。网络通信中用一个三元组可以在全局唯一标志一个应用进程：（协议，本地地址，本地端口号）。</p>
+<p>也就是说tcp和udp可以使用相同的端口。</p>
+<p>可以看到通过(协议,源端口，源ip，目的端口，目的ip)就可以用来完全标识一组网络连接。</p>
+<h3 id="应用层"><a href="#应用层" class="headerlink" title="应用层"></a>应用层</h3><p>基于tcp：Telnet FTP SMTP DNS HTTP<br>基于udp：RIP NTP（网落时间协议）和DNS （DNS也使用TCP）SNMP TFTP</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
     
       
 
@@ -275,7 +1011,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <span class="post-meta-item-text">Posted on</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2015-11-03T00:00:00+08:00">
                 2015-11-03
               </time>
@@ -403,7 +1139,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <span class="post-meta-item-text">Posted on</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2015-10-30T00:00:00+08:00">
                 2015-10-30
               </time>
@@ -565,7 +1301,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <span class="post-meta-item-text">Posted on</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2015-10-25T00:00:00+08:00">
                 2015-10-25
               </time>
@@ -690,7 +1426,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <span class="post-meta-item-text">Posted on</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2015-10-16T00:00:00+08:00">
                 2015-10-16
               </time>
@@ -819,7 +1555,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <span class="post-meta-item-text">Posted on</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2015-08-27T00:00:00+08:00">
                 2015-08-27
               </time>
@@ -906,779 +1642,11 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2015/07/21/高性能滚动 scroll 及页面渲染优化/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="Fenglin">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="/images/avatar.gif">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="Feng~Lin">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="Feng~Lin" src="">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2015/07/21/高性能滚动 scroll 及页面渲染优化/" itemprop="url">
-                  高性能滚动 scroll 及页面渲染优化
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2015-07-21T00:00:00+08:00">
-                2015-07-21
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>本文主要想谈谈页面优化之滚动优化。</p>
-<p>主要内容包括了为何需要优化滚动事件，滚动与页面渲染的关系，节流与防抖，pointer-events:none 优化滚动。因为本文涉及了很多很多基础，可以对照上面的知识点，选择性跳到相应地方阅读。</p>
-<p><a href="http://www.cnblogs.com/coco1s/p/5499469.html" target="_blank" rel="external">博主链接</a></p>
-<h3 id="滚动优化的由来"><a href="#滚动优化的由来" class="headerlink" title="滚动优化的由来"></a>滚动优化的由来</h3><p>滚动优化其实也不仅仅指滚动（scroll 事件），还包括了例如 resize 这类会频繁触发的事件。简单的看看：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">var i = 0;</div><div class="line">window.addEventListener(&apos;scroll&apos;,function()&#123;</div><div class="line">    console.log(i++);</div><div class="line">&#125;,false);</div></pre></td></tr></table></figure>
-<p>输出如下：<br><img src="http://images2015.cnblogs.com/blog/608782/201605/608782-20160516205933748-797476534.gif" alt="Generating"></p>
-<blockquote>
-<p>在绑定 scroll 、resize 这类事件时，当它发生时，它被触发的频次非常高，间隔很近。如果事件中涉及到大量的位置计算、DOM 操作、元素重绘等工作且这些工作无法在下一个 scroll 事件触发前完成，就会造成浏览器掉帧。加之用户鼠标滚动往往是连续的，就会持续触发 scroll 事件导致掉帧扩大、浏览器 CPU 使用率增加、用户体验受到影响。</p>
-</blockquote>
-<p>在滚动事件中绑定回调应用场景也非常多，在图片的懒加载、下滑自动加载数据、侧边浮动导航栏等中有着广泛的应用。</p>
-<p>当用户浏览网页时，拥有平滑滚动经常是被忽视但却是用户体验中至关重要的部分。当滚动表现正常时，用户就会感觉应用十分流畅，令人愉悦，反之，笨重不自然卡顿的滚动，则会给用户带来极大不舒爽的感觉。</p>
-<h3 id="滚动与页面渲染的关系"><a href="#滚动与页面渲染的关系" class="headerlink" title="滚动与页面渲染的关系"></a>滚动与页面渲染的关系</h3><p>&gt;<br>为什么滚动事件需要去优化？因为它影响了性能。那它影响了什么性能呢？额……这个就要从页面性能问题由什么决定说起。</p>
-<p>我觉得搞技术一定要追本溯源，不要看到别人一篇文章说滚动事件会导致卡顿并说了一堆解决方案优化技巧就如获至宝奉为圭臬，我们需要的不是拿来主义而是批判主义，多去源头看看。</p>
-<p>从问题出发，一步一步寻找到最后，就很容易找到问题的症结所在，只有这样得出的解决方法才容易记住。</p>
-<p>说教了一堆废话，不喜欢的直接忽略哈，回到正题，要找到优化的入口就要知道问题出在哪里，对于页面优化而言，那么我们就要知道页面的渲染原理：</p>
-<p>浏览器渲染原理我在我上一篇文章里也要详细的讲到，不过更多的是从动画渲染的角度去讲的：【Web动画】CSS3 3D 行星运转 &amp;&amp; 浏览器渲染原理 。</p>
-<p>想了想，还是再简单的描述下，我发现每次 review 这些知识点都有新的收获，这次换一张图，以 chrome 为例子，一个 Web 页面的展示，简单来说可以认为经历了以下下几个步骤：<br><img src="http://images2015.cnblogs.com/blog/608782/201605/608782-20160516214245123-1124441228.jpg" alt="Generating"></p>
-<ul>
-<li><p>JavaScript：一般来说，我们会使用 JavaScript 来实现一些视觉变化的效果。比如做一个动画或者往页面里添加一些 DOM 元素等。</p>
-</li>
-<li><p>Style：计算样式，这个过程是根据 CSS 选择器，对每个 DOM 元素匹配对应的 CSS 样式。这一步结束之后，就确定了每个 DOM 元素上该应用什么 CSS 样式规则。</p>
-</li>
-<li><p>Layout：布局，上一步确定了每个 DOM 元素的样式规则，这一步就是具体计算每个 DOM 元素最终在屏幕上显示的大小和位置。web 页面中元素的布局是相对的，因此一个元素的布局发生变化，会联动地引发其他元素的布局发生变化。比如，<body> 元素的宽度的变化会影响其子元素的宽度，其子元素宽度的变化也会继续对其孙子元素产生影响。因此对于浏览器来说，布局过程是经常发生的。</body></p>
-</li>
-<li><p>Paint：绘制，本质上就是填充像素的过程。包括绘制文字、颜色、图像、边框和阴影等，也就是一个 DOM 元素所有的可视效果。一般来说，这个绘制过程是在多个层上完成的。</p>
-</li>
-<li><p>Composite：渲染层合并，由上一步可知，对页面中 DOM 元素的绘制是在多个层上进行的。在每个层上完成绘制过程之后，浏览器会将所有层按照合理的顺序合并成一个图层，然后显示在屏幕上。对于有位置重叠的元素的页面，这个过程尤其重要，因为一旦图层的合并顺序出错，将会导致元素显示异常。<br>这里又涉及了层（GraphicsLayer）的概念，GraphicsLayer 层是作为纹理(texture)上传给 GPU 的，现在经常能看到说 GPU 硬件加速，就和所谓的层的概念密切相关。但是和本文的滚动优化相关性不大，有兴趣深入了解的可以自行 google 更多。</p>
-</li>
-</ul>
-<p>简单来说，网页生成的时候，至少会渲染（Layout+Paint）一次。用户访问的过程中，还会不断重新的重排（reflow）和重绘（repaint）。</p>
-<p>其中，用户 scroll 和 resize 行为（即是滑动页面和改变窗口大小）会导致页面不断的重新渲染。</p>
-<p>当你滚动页面时，浏览器可能会需要绘制这些层(有时也被称为合成层)里的一些像素。通过元素分组，当某个层的内容改变时，我们只需要更新该层的结构，并仅仅重绘和栅格化渲染层结构里变化的那一部分，而无需完全重绘。显然，如果当你滚动时，像视差网站(戳我看看)这样有东西在移动时，有可能在多层导致大面积的内容调整，这会导致大量的绘制工作。</p>
-<h3 id="防抖（Debouncing）和节流（Throttling）"><a href="#防抖（Debouncing）和节流（Throttling）" class="headerlink" title="防抖（Debouncing）和节流（Throttling）"></a>防抖（Debouncing）和节流（Throttling）</h3><p>scroll 事件本身会触发页面的重新渲染，同时 scroll 事件的 handler 又会被高频度的触发, 因此事件的 handler 内部不应该有复杂操作，例如 DOM 操作就不应该放在事件处理中。</p>
-<p>针对此类高频度触发事件问题（例如页面 scroll ，屏幕 resize，监听用户输入等），下面介绍两种常用的解决方法，防抖和节流。</p>
-<p>防抖（Debouncing）<br>防抖技术即是可以把多个顺序地调用合并成一次，也就是在一定时间内，规定事件被触发的次数。</p>
-<p>通俗一点来说，看看下面这个简化的例子：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">// 简单的防抖动函数</div><div class="line">function debounce(func, wait, immediate) &#123;</div><div class="line">    // 定时器变量</div><div class="line">    var timeout;</div><div class="line">    return function() &#123;</div><div class="line">        // 每次触发 scroll handler 时先清除定时器</div><div class="line">        clearTimeout(timeout);</div><div class="line">        // 指定 xx ms 后触发真正想进行的操作 handler</div><div class="line">        timeout = setTimeout(func, wait);</div><div class="line">    &#125;;</div><div class="line">&#125;;</div><div class="line"> </div><div class="line">// 实际想绑定在 scroll 事件上的 handler</div><div class="line">function realFunc()&#123;</div><div class="line">    console.log(&quot;Success&quot;);</div><div class="line">&#125;</div><div class="line"> </div><div class="line">// 采用了防抖动</div><div class="line">window.addEventListener(&apos;scroll&apos;,debounce(realFunc,500));</div><div class="line">// 没采用防抖动</div><div class="line">window.addEventListener(&apos;scroll&apos;,realFunc);</div></pre></td></tr></table></figure>
-<p>上面简单的防抖的例子可以拿到浏览器下试一下，大概功能就是如果 500ms 内没有连续触发两次 scroll 事件，那么才会触发我们真正想在 scroll 事件中触发的函数。</p>
-<p>上面的示例可以更好的封装一下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">// 防抖动函数</div><div class="line">function debounce(func, wait, immediate) &#123;</div><div class="line">    var timeout;</div><div class="line">    return function() &#123;</div><div class="line">        var context = this, args = arguments;</div><div class="line">        var later = function() &#123;</div><div class="line">            timeout = null;</div><div class="line">            if (!immediate) func.apply(context, args);</div><div class="line">        &#125;;</div><div class="line">        var callNow = immediate &amp;&amp; !timeout;</div><div class="line">        clearTimeout(timeout);</div><div class="line">        timeout = setTimeout(later, wait);</div><div class="line">        if (callNow) func.apply(context, args);</div><div class="line">    &#125;;</div><div class="line">&#125;;</div><div class="line"> </div><div class="line">var myEfficientFn = debounce(function() &#123;</div><div class="line">    // 滚动中的真正的操作</div><div class="line">&#125;, 250);</div><div class="line"> </div><div class="line">// 绑定监听</div><div class="line">window.addEventListener(&apos;resize&apos;, myEfficientFn);</div></pre></td></tr></table></figure>
-<h3 id="节流（Throttling）"><a href="#节流（Throttling）" class="headerlink" title="节流（Throttling）"></a>节流（Throttling）</h3><p>防抖函数确实不错，但是也存在问题，譬如图片的懒加载，我希望在下滑过程中图片不断的被加载出来，而不是只有当我停止下滑时候，图片才被加载出来。又或者下滑时候的数据的 ajax 请求加载也是同理。</p>
-<p>这个时候，我们希望即使页面在不断被滚动，但是滚动 handler 也可以以一定的频率被触发（譬如 250ms 触发一次），这类场景，就要用到另一种技巧，称为节流函数（throttling）。</p>
-<p>节流函数，只允许一个函数在 X 毫秒内执行一次。</p>
-<p>与防抖相比，节流函数最主要的不同在于它保证在 X 毫秒内至少执行一次我们希望触发的事件 handler。</p>
-<p>与防抖相比，节流函数多了一个 mustRun 属性，代表 mustRun 毫秒内，必然会触发一次 handler ，同样是利用定时器，看看简单的示例：</p>
-<h3 id="简单的节流函数"><a href="#简单的节流函数" class="headerlink" title="// 简单的节流函数"></a>// 简单的节流函数</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">function throttle(func, wait, mustRun) &#123;</div><div class="line">    var timeout,</div><div class="line">        startTime = new Date();</div><div class="line"> </div><div class="line">    return function() &#123;</div><div class="line">        var context = this,</div><div class="line">            args = arguments,</div><div class="line">            curTime = new Date();</div><div class="line"> </div><div class="line">        clearTimeout(timeout);</div><div class="line">        // 如果达到了规定的触发时间间隔，触发 handler</div><div class="line">        if(curTime - startTime &gt;= mustRun)&#123;</div><div class="line">            func.apply(context,args);</div><div class="line">            startTime = curTime;</div><div class="line">        // 没达到触发间隔，重新设定定时器</div><div class="line">        &#125;else&#123;</div><div class="line">            timeout = setTimeout(func, wait);</div><div class="line">        &#125;</div><div class="line">    &#125;;</div><div class="line">&#125;;</div><div class="line">// 实际想绑定在 scroll 事件上的 handler</div><div class="line">function realFunc()&#123;</div><div class="line">    console.log(&quot;Success&quot;);</div><div class="line">&#125;</div><div class="line">// 采用了节流函数</div><div class="line">window.addEventListener(&apos;scroll&apos;,throttle(realFunc,500,1000));</div></pre></td></tr></table></figure>
-<p>上面简单的节流函数的例子可以拿到浏览器下试一下，大概功能就是如果在一段时间内 scroll 触发的间隔一直短于 500ms ，那么能保证事件我们希望调用的 handler 至少在 1000ms 内会触发一次。</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2015/06/18/酷炫的3D旋转透视/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="Fenglin">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="/images/avatar.gif">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="Feng~Lin">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="Feng~Lin" src="">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2015/06/18/酷炫的3D旋转透视/" itemprop="url">
-                  酷炫的3D旋转透视
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2015-06-18T00:00:00+08:00">
-                2015-06-18
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="立方体-3D-旋转"><a href="#立方体-3D-旋转" class="headerlink" title="立方体 3D 旋转"></a>立方体 3D 旋转</h3><p><img src="http://images2015.cnblogs.com/blog/608782/201604/608782-20160420200619726-1892214308.gif" alt="Generating"></p>
-<h3 id="3D-透视照片墙"><a href="#3D-透视照片墙" class="headerlink" title="3D 透视照片墙"></a>3D 透视照片墙</h3><p><img src="http://images2015.cnblogs.com/blog/608782/201604/608782-20160420200713757-1615207836.gif" alt="Generating"></p>
-<h3 id="跳跃的音符"><a href="#跳跃的音符" class="headerlink" title="跳跃的音符"></a>跳跃的音符</h3><p><img src="http://images2015.cnblogs.com/blog/608782/201604/608782-20160420200745726-1099998183.gif" alt="Generating"><br>可能上面的效果对精通 CSS3 的而言小菜一碟，写本文的目的也是我自己学习积累的一个过程，感兴趣的就可以一起往下看啦。</p>
-<p>其实 CSS3 效果真的很强大，上面的效果都是纯 CSS 实现，个人感觉越是深入 CSS 的学习，越是觉得自己不懂 CSS ，不过话说回来，这些效果的实用场景不大，但是作为一个有追求的前端，我觉得还是有必要去好好了解一下这些属性。</p>
-<p>所以本文接下来要讲的大概有：</p>
-<ul>
-<li>transform-style: preserve-3d 三维效果</li>
-<li>perspective and perspective-origin 3D视距，透视/景深效果</li>
-<li>CSS3 filter CSS3滤镜</li>
-<li>transparent、radial-gradient 透明与渐变</li>
-</ul>
-<h3 id="transform-style-实现-3D-效果"><a href="#transform-style-实现-3D-效果" class="headerlink" title="transform-style 实现 3D 效果"></a>transform-style 实现 3D 效果</h3><p>要利用 CSS3 实现 3D 的效果，最主要的就是借助 transform-style 属性。transform-style 只有两个值可以选择：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">// 语法：</div><div class="line">transform-style: flat|preserve-3d;</div><div class="line"> </div><div class="line">transform-style: flat; // 默认，子元素将不保留其 3D 位置</div><div class="line">transform-style: preserve-3d; // 子元素将保留其 3D 位置。</div></pre></td></tr></table></figure>
-<p>当我们指定一个容器的 transform-style 的属性值为 preserve-3d 时，容器的后代元素便会具有 3D 效果，这样说有点抽象，也就是当前父容器设置了 preserve-3d 值后，它的子元素就可以相对于父元素所在的平面，进行 3D 变形操作。</p>
-<p>当父元素设置了 transform-style:preserve-3d 后，就可以对子元素进行 3D 变形操作了，3D 变形和 2D 变形一样可以，使用 transform 属性来设置，或者可以通过制定的函数或者通过三维矩阵来对元素变型操作：</p>
-<p>1、使用 translateX(length) 、translateY(length) 、 translateZ(length) 来进行 3D 位移操作，与 2D 操作一样，对元素进行位移操作，也可以合并为 translate3d(x,y,z) 这种写法；</p>
-<p>2、使用 scaleX() 、scaleY() 、scaleY() 来进行3D 缩放操作，也可以合并为 scale3d(number,number,number) 这种写法；</p>
-<p>3、使用 rotateX(angle) 、rotateY(angle) 、rotateZ(angle) 来进行 3D 旋转操作，也可以合并为 rotate3d(Xangle,Yangle,Zangle) 这种写法。</p>
-<p>对于 API 的学习，我建议去源头看看，不要满足于消费别人的总结，transform-style API。</p>
-<p>这里要特别提出的，3D 坐标轴，所谓的绕 X、Y、Z 轴的三个轴，这个不难，感觉空间想象困难的，照着 API 试试，绕每个轴都转一下就明白了：</p>
-<p><img src="http://images2015.cnblogs.com/blog/608782/201604/608782-20160420204327070-2018617361.jpg" alt="Generating"><br>了解过后，那么依靠上面所说的，其实我们就已经可以做一个立方体出来了。所谓实践出真知，下面就看看该如何一步步得到一个立方体。</p>
-<h4 id="1、准备六个正方形"><a href="#1、准备六个正方形" class="headerlink" title="1、准备六个正方形"></a>1、准备六个正方形</h4><p>这个好理解，正方体六个面，首先用 div 做出 6 个面，包裹在同一个父级容器下面，父级容器设置 transform-style:preserve-3d ，这样接下来就可以对 6 个面进行 3D 变换操作，为了方便演示，我用 6 个颜色不一样的面：<br><img src="http://images2015.cnblogs.com/blog/608782/201604/608782-20160420211622538-1247795543.png" alt="Generating"><br>上面的图是示意有 6 个面，当然我们要把 6 个正方形 div 设置为绝对定位，重叠叠在一起，那么应该是这样的，只能看到一个面：</p>
-<p><img src="http://images2015.cnblogs.com/blog/608782/201604/608782-20160420212046913-8708739.png" alt="Generating"></p>
-<h4 id="2、父容器做简单的变换"><a href="#2、父容器做简单的变换" class="headerlink" title="2、父容器做简单的变换"></a>2、父容器做简单的变换</h4><p>为了最后的看上去的效果好看，我们需要先对父容器进行变换，运用上面说的 rotate 属性，将容器的角度改变一下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">.cube-container&#123;</div><div class="line">    -webkit-transform: rotateX(-33.5deg) rotateY(45deg);</div><div class="line">    transform: rotateX(-33.5deg) rotateY(45deg);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>那么，变换之后，得到这样一个图形：</p>
-<p><img src="http://images2015.cnblogs.com/blog/608782/201604/608782-20160420212424210-970963234.png" alt="Generating"></p>
-<p>嗯，这个时候，6 个 div 面仍然是重叠在一起的。</p>
-<h4 id="3、对每个面做-3D-变换"><a href="#3、对每个面做-3D-变换" class="headerlink" title="3、对每个面做 3D 变换"></a>3、对每个面做 3D 变换</h4><p>接下来就是对每个面进行 3D 变换了，运用 rotate 可以对 div 平面进行旋转，运用 translate 可以对 div 平面进行平移，而且要记住现在我们是在三维空间内变换，转啊转啊，我们可能会得到这样的形状：</p>
-<p><img src="http://images2015.cnblogs.com/blog/608782/201604/608782-20160420213037460-2134833277.png" alt="Generating"></p>
-<p>算好旋转角度和偏移距离，最后上面的 6 个面就可以完美拼成一个立方体咯！为了效果更好，我给每个面增加一些透明度，最后得到一个完整的立方体：</p>
-<p><img src="http://images2015.cnblogs.com/blog/608782/201604/608782-20160420213602023-1033538645.png" alt="Generating"></p>
-<p>为了更有立体感，我们可以调整父容器的旋转角度，旋转看上去更立体的角度:<br><img src="http://images2015.cnblogs.com/blog/608782/201604/608782-20160420213703210-315149157.png" alt="Generating"></p>
-<p>至此，一个 3D 立方体就完成了。写这篇文章的时候，本来到这里，这一块应该就结束了，但是写到这里的时候，突然突发奇想，既然正方体可以（正六面体），那么正四面体，正八面体甚至球体应该也能做出来吧？</p>
-<p>嗯，没有按住躁动的心，立马动手尝试了一番，最后做出了下面的两个：<br><img src="http://images2015.cnblogs.com/blog/608782/201604/608782-20160421144115507-846563066.gif" alt="Generating"><img src="http://images2015.cnblogs.com/blog/608782/201604/608782-20160421144121851-1403370952.gif" alt="Generating"></p>
-<h4 id="CSS3-实现正四面体"><a href="#CSS3-实现正四面体" class="headerlink" title="CSS3 实现正四面体"></a>CSS3 实现正四面体</h4><p>和正方体一样，我们首先要准备 4 个三角形（下面会详细讲如何利用 CSS3 制作一个三角形 div），注意 4 个三角形应该是重叠在一起的，然后将其中三个分别沿着三条边的中心点旋转 70.5 度（正四面体临面夹角），就可以得到一个正四面体。</p>
-<p>注意沿着三条边的中心点旋转 70.5 度这句话，意思是每个图形要定位一次旋转中心，也就是 transform-origin 属性，它允许我们设置旋转元素的基点位置。</p>
-<h4 id="CSS3-实现球体"><a href="#CSS3-实现球体" class="headerlink" title="CSS3 实现球体"></a>CSS3 实现球体</h4><p>上面的 GIF 图因为添加了 animation 动画效果，看上去很像一个球体在运动，其实只用了 4 个 div，每个 div 利用 border-radius:100% 设置为圆形，然后以中心点为基准，每个圆形 div 绕 Y 轴旋转不同的角度，再让整个圆形容器绕 Y 轴动起来，就可以得到这样一个效果了。</p>
-<h5 id="perspective-and-perspective-origin-3D视距，透视-景深效果"><a href="#perspective-and-perspective-origin-3D视距，透视-景深效果" class="headerlink" title="perspective and perspective-origin 3D视距，透视/景深效果"></a>perspective and perspective-origin 3D视距，透视/景深效果</h5><p>继续说 3D ，接下来要说的属性是 persepective 和 perspective-origin 。</p>
-<h5 id="persepective"><a href="#persepective" class="headerlink" title="persepective"></a>persepective</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">// 语法</div><div class="line">perspective: number|none;</div></pre></td></tr></table></figure>
-<p>perspective 为一个元素设置三维透视的距离，仅作用于元素的后代，而不是其元素本身。</p>
-<p>简单来说，当元素没有设置 perspective 时，也就是当 perspective:none/0 时所有后代元素被压缩在同一个二维平面上，不存在景深的效果。</p>
-<p>而如果设置 perspective 后，将会看到三维的效果</p>
-<h5 id="perspective-origin"><a href="#perspective-origin" class="headerlink" title="perspective-origin"></a>perspective-origin</h5><p>perspective-origin 表示 3D 元素透视视角的基点位置，默认的透视视角中心在容器是 perspective 所在的元素，而不是他的后代元素的中点，也就是 perspective-origin: 50% 50%。</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2015/05/20/认识_markdown/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="Fenglin">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="/images/avatar.gif">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="Feng~Lin">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="Feng~Lin" src="">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2015/05/20/认识_markdown/" itemprop="url">
-                  认识与入门 Markdown
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2015-05-20T00:00:00+08:00">
-                2015-05-20
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <blockquote>
-<p>Markdown 是一种轻量级的「标记语言」，它的优点很多，目前也被越来越多的写作爱好者，撰稿者广泛使用。看到这里请不要被「标记」、「语言」所迷惑，Markdown 的语法十分简单。常用的标记符号也不超过十个，这种相对于更为复杂的HTML 标记语言来说，Markdown 可谓是十分轻量的，学习成本也不需要太多，且一旦熟悉这种语法规则，会有一劳永逸的效果。</p>
-</blockquote>
-<h3 id="认识-Markdown"><a href="#认识-Markdown" class="headerlink" title="认识 Markdown"></a>认识 Markdown</h3><p>在刚才的导语里提到，Markdown 是一种用来写作的轻量级「标记语言」，它用简洁的语法代替排版，而不像一般我们用的字处理软件 Word 或 Pages 有大量的排版、字体设置。它使我们专心于码字，用「标记」语法，来代替常见的排版格式。例如此文从内容到格式，甚至插图，键盘就可以通通搞定了。目前来看，支持 Markdown 语法的编辑器有很多，包括很多网站（例如简书）也支持了 Markdown 的文字录入。Markdown 从写作到完成，导出格式随心所欲，你可以导出 HTML 格式的文件用来网站发布，也可以十分方便的导出 PDF 格式，这种格式写出的简历更能得到 HR 的好感。甚至可以利用 CloudApp 这种云服务工具直接上传至网页用来分享你的文章，全球最大的轻博客平台 Tumblr，也支持使用 Mou 这类 Markdown 工具进行编辑并直接上传。</p>
-<h3 id="Markdown-官方文档"><a href="#Markdown-官方文档" class="headerlink" title="Markdown 官方文档"></a>Markdown 官方文档</h3><blockquote>
-<p>这里可以看到官方的 Markdown 语法规则文档，当然，后文我也会用自己的方式，阐述这些语法在实际使用中的用法。</p>
-</blockquote>
-<p><a href="http://daringfireball.net/projects/markdown/syntax" target="_blank" rel="external">创始人 John Gruber 的 Markdown 语法说明
-</a></p>
-<p><a href="http://wowubuntu.com/markdown/#list" target="_blank" rel="external">Markdown 中文版语法说明</a></p>
-<h3 id="使用-Markdown-的优点"><a href="#使用-Markdown-的优点" class="headerlink" title="使用 Markdown 的优点"></a>使用 Markdown 的优点</h3><ul>
-<li>专注你的文字内容而不是排版样式。</li>
-<li>轻松的导出 HTML、PDF 和本身的 .md 文件。</li>
-<li>纯文本内容，兼容所有的文本编辑器与字处理软件。</li>
-<li>可读，直观。适合所有人的写作语言。</li>
-</ul>
-<h3 id="我该用什么工具？"><a href="#我该用什么工具？" class="headerlink" title="我该用什么工具？"></a>我该用什么工具？</h3><p><img src="http://cdn.sspai.com/attachment/thumbnail/2014/04/15/54b0855cf47d559c8c59e8f503af17d410f70_mw_800_wm_1_wmp_3.jpg" alt="Generating"></p>
-<h4 id="Mac-平台"><a href="#Mac-平台" class="headerlink" title="Mac 平台"></a>Mac 平台</h4><ul>
-<li>在 Mac OS X 上，我强烈建议你用 Mou 这款免费且十分好用的 Markdown 编辑器，它支持实时预览，既左边是你编辑 Markdown 语言，右边会实时的生成预览效果，笔者文章就是 Mou 这款应用写出来的。<br><img src="http://cdn.sspai.com/attachment/thumbnail/2014/04/15/1b2329474f348d95f8a38a68fa98c9c310f71_mw_800_wm_1_wmp_3.jpg" alt="Generating"><br>其次还有很多同类选择。如果你是个编辑作者，我强烈建议你购买 Ulysses Ⅲ，这款应用入围了苹果去年 Mac App Store 的 The Best of 2013，相比 Mou 它支持更多的写作格式、多文档的支持。Mou、iA Writer 这些应用都是基于单文档的管理方式，而 Ulysses Ⅲ 支持 Folder、Filter 的管理，一个 Folder 里面可以创建多个 Sheet，Sheet 之间还可以进行 Combine 处理。<br><img src="http://cdn.sspai.com/attachment/thumbnail/2014/04/15/f43f4d7659397398c499180c22c9855a10f72_mw_800_wm_1_wmp_3.jpg" alt="Generating"><h3 id="Windows、iOS、Web-平台"><a href="#Windows、iOS、Web-平台" class="headerlink" title="Windows、iOS、Web 平台"></a>Windows、iOS、Web 平台</h3></li>
-<li><p>笔者并未使用过 Windows 下的 Markdown 工具，但经朋友介绍，有两款还算不错，一款叫 MarkdownPad ，另一款叫 MarkPad。</p>
-</li>
-<li><p>iOS 端已有相当多的 app 支持 Markdown 语法编辑，例如 Drafts、Day One、iA Writer 等。</p>
-</li>
-<li><p>Web 端上，我强烈推荐 简书 这款产品，上面有无数热爱文字的人在不停的创造、分享。在 Web 端使用 Markdown 没有比简书更舒服的地方了，它同样支持左右两栏的实时预览，字体优雅、简洁。<br><img src="http://cdn.sspai.com/attachment/thumbnail/2014/04/15/4f47235736535ed5932b15bdef64263b10f73_mw_800_wm_1_wmp_3.jpg" alt="Generating"></p>
-</li>
-<li>同样是 Web 端，Draftin 这款在线 MD 编辑器也近乎完美。<h3 id="Markdown-语法的简要规则"><a href="#Markdown-语法的简要规则" class="headerlink" title="Markdown 语法的简要规则"></a>Markdown 语法的简要规则</h3><h4 id="标题"><a href="#标题" class="headerlink" title="标题"></a>标题</h4><img src="http://cdn.sspai.com/attachment/thumbnail/2014/04/15/620e64aa6522f5eaeb788a8b5f1faa5c10f74_mw_800_wm_1_wmp_3.jpg" alt="Generating"><br>标题是每篇文章都需要也是最常用的格式，在 Markdown 中，如果一段文字被定义为标题，只要在这段文字前加 # 号即可。</li>
-</ul>
-<h1 id="一级标题"><a href="#一级标题" class="headerlink" title="一级标题"></a>一级标题</h1><h2 id="二级标题"><a href="#二级标题" class="headerlink" title="二级标题"></a>二级标题</h2><h3 id="三级标题"><a href="#三级标题" class="headerlink" title="三级标题"></a>三级标题</h3><p>以此类推，总共六级标题，建议在井号后加一个空格，这是最标准的 Markdown 语法。</p>
-<h4 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h4><p>熟悉 HTML 的同学肯定知道有序列表与无序列表的区别，在 Markdown 下，列表的显示只需要在文字前加上 - 或 * 即可变为无序列表，有序列表则直接在文字前加 1. 2. 3. 符号要和文字之间加上一个字符的空格。<br><img src="http://cdn.sspai.com/attachment/thumbnail/2014/04/15/a72338b96cf4bfc1dacd610756786ae310f75_mw_800_wm_1_wmp_3.jpg" alt="Generating"></p>
-<h3 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h3><p>如果你需要引用一小段别处的句子，那么就要用引用的格式。</p>
-<blockquote>
-<p>例如这样</p>
-</blockquote>
-<p>只需要在文本前加入 &gt; 这种尖括号（大于号）即可<br><img src="http://cdn.sspai.com/attachment/thumbnail/2014/04/15/07bd8bf6fd38ea7d3bffdc3cae04f6f210f76_mw_800_wm_1_wmp_3.jpg" alt="Generating"></p>
-<h3 id="图片与链接"><a href="#图片与链接" class="headerlink" title="图片与链接"></a>图片与链接</h3><p>插入链接与插入图片的语法很像，区别在一个 !号</p>
-<p>插入图片的地址需要图床，这里推荐 CloudApp 的服务，生成URL地址即可。<br><img src="http://cdn.sspai.com/attachment/thumbnail/2014/04/15/f96c892fc63933ab186235f7c910753b10f77_mw_800_wm_1_wmp_3.jpg" alt="Generating"><br>粗体与斜体<br>Markdown 的粗体和斜体也非常简单，用两个 <em> 包含一段文本就是粗体的语法，用一个 </em> 包含一段文本就是斜体的语法。</p>
-<p>例如：这里是粗体 这里是斜体</p>
-<p>表格<br>表格是我觉得 Markdown 比较累人的地方，例子如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">| Tables        | Are           | Cool  |</div><div class="line">| ------------- |:-------------:| -----:|</div><div class="line">| col 3 is      | right-aligned | $1600 |</div><div class="line">| col 2 is      | centered      |   $12 |</div><div class="line">| zebra stripes | are neat      |    $1 |</div></pre></td></tr></table></figure>
-<p>这种语法生成的表格如下：</p>
-<table>
-<thead>
-<tr>
-<th>Tables</th>
-<th style="text-align:center">Are</th>
-<th style="text-align:right">Cool</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>col 3 is</td>
-<td style="text-align:center">right-aligned</td>
-<td style="text-align:right">$1600</td>
-</tr>
-<tr>
-<td>col 2 is</td>
-<td style="text-align:center">centered</td>
-<td style="text-align:right">$12</td>
-</tr>
-<tr>
-<td>zebra stripes</td>
-<td style="text-align:center">are neat</td>
-<td style="text-align:right">$1</td>
-</tr>
-</tbody>
-</table>
-<h3 id="代码框"><a href="#代码框" class="headerlink" title="代码框"></a>代码框</h3><p>如果你是个程序猿，需要在文章里优雅的引用代码框，在 Markdown 下实现也非常简单，只需要用两个 <code>把中间的代码包裹起来，如</code>code`。图例：<br><img src="http://cdn.sspai.com/attachment/thumbnail/2014/04/15/0135456d6a3c1051f0ed54e37cef070010f78_mw_800_wm_1_wmp_3.jpg" alt="Generating"><br>使用 tab 键即可缩进。</p>
-<h3 id="分割线"><a href="#分割线" class="headerlink" title="分割线"></a>分割线</h3><p>分割线的语法只需要另起一行，连续输入三个星号 <em>*</em> 即可。</p>
-<h3 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h3><p>到这里，Markdown 的基本语法在日常的使用中基本就没什么大问题了，只要多加练习，配合好用的工具，写起东西来肯定会行云流水。更多的语法规则，其实 Mou 的 Help 文档例子很好，当你第一次使用 Mou 时，就会显示该文档，其次，你也可在撰写过程中，使用 CMD+R 快捷键来快速打开文档，以随时查阅和学习语法。</p>
-<p><img src="http://cdn.sspai.com/attachment/thumbnail/2014/04/15/0132cbf286123e999adc67e23a9397fe10f79_mw_800_wm_1_wmp_3.jpg" alt="Generating"></p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2015/05/11/javascript的函数声明/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="Fenglin">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="/images/avatar.gif">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="Feng~Lin">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="Feng~Lin" src="">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2015/05/11/javascript的函数声明/" itemprop="url">
-                  JavaScript 的函数声明
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2015-05-11T00:00:00+08:00">
-                2015-05-11
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="title-JavaScript-的函数声明"><a href="#title-JavaScript-的函数声明" class="headerlink" title="title: JavaScript 的函数声明"></a>title: JavaScript 的函数声明</h2><h3 id="使用-function-关键字声明函数"><a href="#使用-function-关键字声明函数" class="headerlink" title="使用 function 关键字声明函数"></a>使用 function 关键字声明函数</h3><figure class="highlight plain"><figcaption><span>foo()&#123;&#125;</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">```</div><div class="line"></div><div class="line"></div><div class="line">### 使用 函数表达式 声明函数</div><div class="line"></div><div class="line">``` var bar = function()&#123;&#125;</div></pre></td></tr></table></figure>
-<h3 id="使用-Function构造函数-声明函数"><a href="#使用-Function构造函数-声明函数" class="headerlink" title="使用 Function构造函数 声明函数"></a>使用 Function构造函数 声明函数</h3><p><code>var foobar = Function(&#39;arg1&#39;, &#39;arg2&#39;, &#39;function body&#39;)</code></p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2015/05/01/15 个有趣的 JavaScript 与 CSS 库/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="Fenglin">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="/images/avatar.gif">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="Feng~Lin">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="Feng~Lin" src="">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2015/05/01/15 个有趣的 JavaScript 与 CSS 库/" itemprop="url">
-                  15 个有趣的 JavaScript 与 CSS 库
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2015-05-01T08:00:00+08:00">
-                2015-05-01
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="title-15-个有趣的-JavaScript-与-CSS-库"><a href="#title-15-个有趣的-JavaScript-与-CSS-库" class="headerlink" title="title: 15 个有趣的 JavaScript 与 CSS 库"></a>title: 15 个有趣的 JavaScript 与 CSS 库</h2><p>在十一月份的前端技术列表中，我们整合了一些令人感到惊叹的 GitHub 项目，其中包含了新的 CSS 框架、node.js包管理器，以及用于实现图标、加载效果、工具提示的纯 CSS 解决方案。</p>
-<p>那么，让我们一起来看看吧。Have Fun ！<br>More info: <a href="http://www.jianshu.com/p/f651fc45e586" target="_blank" rel="external">原文链接</a></p>
-<h2 id="1-Wing"><a href="#1-Wing" class="headerlink" title="1. Wing"></a>1. Wing</h2><p><img src="http://upload-images.jianshu.io/upload_images/675733-cb254909e1a7104b.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Generating"><br>Wing 是一个微型（压缩后仅有4KB）响应式的 CSS 框架，它提供了一个 12 列响应式网格以及基础的样式组件集，可为你的建站工作打下坚实的基础。当然，这个项目最酷的地方在于，它绝大多数的 HTML 元素都是自动样式化的，而不需要任何额外的类。希望你会喜欢！</p>
-<h2 id="2-Shave"><a href="#2-Shave" class="headerlink" title="2. Shave"></a>2. Shave</h2><p><img src="http://upload-images.jianshu.io/upload_images/675733-e5c16f99705b69df.png?imageMogr2/auto-orient/strip%7CimageView2/2" alt="Generating"><br>Shave 是一个零依赖、轻量级的 JavaScript 插件，它能截断多行文本，以适应基于 max-height 设定好的 html 元素，并将原始文本字符串存储在隐藏的<span>元素中，以便你的文本能够完整地保留在页面中。Shave 不依赖任何库，同时它在 jQuery 中提供了一个独立版本的插件。</span></p>
-<h2 id="3-Cerebral"><a href="#3-Cerebral" class="headerlink" title="3. Cerebral"></a>3. Cerebral</h2><p><img src="http://upload-images.jianshu.io/upload_images/675733-e4457a425165d111.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Generating"><br>一个 JavaScript MVC 应用程序状态管理器，并且它有独立的调试器。在 Cerebral 中，应用程序的状态被存储在单个的树模型中，该模型管理着所有服务器端和客户端的状态。</p>
-<p>而调试器具有对模型、控制器以及视图的实时管理权限。</p>
-<h2 id="4-Wenk"><a href="#4-Wenk" class="headerlink" title="4. Wenk"></a>4. Wenk</h2><p><img src="http://upload-images.jianshu.io/upload_images/675733-5a6757e7aeb89123.png?imageMogr2/auto-orient/strip%7CimageView2/2" alt="Generating"><br>Wenk 是一个轻量级纯 CSS 写的文本工具提示库。虽然它的压缩版仅有700字节，但它依然能够管理并提供一些定制选项。诸如不同提示工具的大小、位置和文本对齐。</p>
-<h2 id="5-CSS-Loader"><a href="#5-CSS-Loader" class="headerlink" title="5. CSS Loader"></a>5. CSS Loader</h2><p><img src="http://upload-images.jianshu.io/upload_images/675733-c5f251eac10f50b8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Generating"><br>CSS Loader 是一个非常有用加载器。它允许开发人员利用纯 CSS 文件，以及一个空<div>元素便可以快速的创建加载指示器。</div></p>
-<h2 id="6-Yarn"><a href="#6-Yarn" class="headerlink" title="6. Yarn"></a>6. Yarn</h2><p><img src="http://upload-images.jianshu.io/upload_images/675733-df75ef46172e3d0d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Generating"><br>相信近期 Facebook 推出的开源 Node.js 包管理器 Yarn，大家已经有所耳闻了。它具备强大的缓存系统，能够大大降低包的安装时间，并且能够为参与一个项目的所有用户维持相同的节点模块（node_modules）目录结构，有助于减少难以追踪的 bug 和在多台机器上复制。</p>
-<p>虽然，它与 NPM 产生背景不同，但使用 Yarn 几乎可以等同于使用 NPM ，开发人员需要更快的了解它哦！</p>
-<h2 id="7-Canvas-Gauges"><a href="#7-Canvas-Gauges" class="headerlink" title="7. Canvas Gauges"></a>7. Canvas Gauges</h2><p><img src="http://upload-images.jianshu.io/upload_images/675733-0ee26399dc9c9746.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Generating"><br>Canvas Gauges 是一个利用纯 JavaScript 和 HTML5 Canvas（画布）打造的可完全自定义的仪表，你可以用它来创建诸如机动车速度表、温度计等类型的测量设备。</p>
-<p>由于它的代码量很小，并且没有依赖，同时适用于物联网设备。你可以通过网站的示例来了解它。</p>
-<h2 id="8-CSS-Icon"><a href="#8-CSS-Icon" class="headerlink" title="8. CSS Icon"></a>8. CSS Icon</h2><p><img src="http://upload-images.jianshu.io/upload_images/675733-8baa7d49a03b348a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Generating"><br>CSS Icon 是一个汇聚了500+ 纯 CSS 代码实现的图标集网站。使用起来也十分简单，当你点击了某一个图标，便会弹出图标对应的 HTML 与 CSS 代码，同时你可以直观的了解到 CSS 代码的什么部分，实现了图标的哪些元素。</p>
-<p>如此棒的项目，是不是得给满分呢？快来 Enjoy吧！</p>
-<h2 id="9-CurrencyFormatter-js"><a href="#9-CurrencyFormatter-js" class="headerlink" title="9. CurrencyFormatter.js"></a>9. CurrencyFormatter.js</h2><p><img src="http://upload-images.jianshu.io/upload_images/675733-3e528b67a1975632.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Generating"><br>CurrencyFormatter.js 是一款简单实用的纯 JS 格式化货币库。它支持 155 种不同国家的货币格式，以及超过 700 种不同语言的本地化设置。</p>
-<p>此外，它还能处理某些不采用的货币格式，功能非常强大。</p>
-<h2 id="10-KUTE-js"><a href="#10-KUTE-js" class="headerlink" title="10. KUTE.js"></a>10. KUTE.js</h2><p><img src="http://upload-images.jianshu.io/upload_images/675733-cb8e9ade131f97bd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Generating"><br>一款具有高性能的原生 JavaScript 动画引擎：KUTE.js. 它的核心库提供了所有基本的动画方法，你可以添加许多插件来丰富 KUTE 的功能。同时，它还具备单独的扩展，可以同时与jQuery、SVG、CSS属性等一起工作。</p>
-<h2 id="11-Vue-Material"><a href="#11-Vue-Material" class="headerlink" title="11. Vue Material"></a>11. Vue Material</h2><p><img src="http://upload-images.jianshu.io/upload_images/675733-1f94116a76144d11.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Generating"><br>Vue Material 是一个根据 Material Design 规范构建的轻量级 Vue.js 框架。它旨在提供一组可重用的高品质组件和一系列 UI 元素，通过 Vue2.0 支持现代的 Web 浏览器来构建应用程序。</p>
-<p>该库也很容易实现，除了 Vue.js 之外没有任何依赖。</p>
-<h2 id="12-Test-Cafe"><a href="#12-Test-Cafe" class="headerlink" title="12. Test Cafe"></a>12. Test Cafe</h2><p><img src="http://upload-images.jianshu.io/upload_images/675733-816ea37812a0b5f9.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Generating"><br>Test Cafe 是一个纯 Node.js 编写的用于测试 Web 应用程序端到端的解决方案。它基于 Node.js，并且不需要安装 NPM 包之外的任何东西——不需要浏览器插件以及编译器。</p>
-<p>一旦你编写了测试，运行 Test Cafe，它将为你进行浏览器测试、收集结果并创建报告。</p>
-<h2 id="13-Core-css"><a href="#13-Core-css" class="headerlink" title="13. Core.css"></a>13. Core.css</h2><p><img src="http://upload-images.jianshu.io/upload_images/675733-2a324c854c22cf1c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Generating"><br>Core.css 是一个用于构建响应式网站的轻量级框架。它压缩后仅有 1.3kb，同时它没有预先设定的元素和内置动画。所以适用于搭建任何小型的 Web 项目。</p>
-<h2 id="14-Flv-js"><a href="#14-Flv-js" class="headerlink" title="14. Flv.js"></a>14. Flv.js</h2><p><img src="http://upload-images.jianshu.io/upload_images/675733-ffc24bcc45efbd20.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Generating"><br>B站相信大家都不会陌生，而 Flv.js 就是由 bilibili 网站开源的 HTML5 Flash 视频（FLV）播放器，纯原生 JavaScript 开发（ECMAScript 6 编写） ，没有用到 Flash。</p>
-<p>它的工作原理是 Flv.js 在 JavaScript 中流式解析 flv 文件流，并实时转封装为 fmp4 ，通过 Media Source Extensions 喂给浏览器，实现了 FLV 格式视频的播放。</p>
-<h2 id="15-Next-js"><a href="#15-Next-js" class="headerlink" title="15. Next.js"></a>15. Next.js</h2><p><img src="http://upload-images.jianshu.io/upload_images/675733-b4e20443c458cec1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Generating"><br>Next.js 是一个基于 React 的通用 JavaScript 框架。它提供了一种便利的方式来创建新的 JavaScript Web 应用程序。开发人员不必在搭建 Webpack 或 Babel 的配置上花费太多的时间了。</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1719,8 +1687,8 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">30</span>
-              <span class="site-state-item-name">Artikel</span>
+              <span class="site-state-item-count">36</span>
+              <span class="site-state-item-name">posts</span>
             </a>
           </div>
 
@@ -1771,7 +1739,7 @@
 
 
 <div class="powered-by">
-  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
 </div>
 
 <div class="theme-info">

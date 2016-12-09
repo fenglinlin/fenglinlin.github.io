@@ -86,27 +86,30 @@
 
 <meta name="description" content="题目1、下面这个图形，只使用一个标签，可以有多少种实现方式：
 假设我们的单标签是一个 div:
-123```定义如下通用CSS：
-div{    position:relative;    width:200px;    height:60px;    background:#ddd;}12### 法一：border这个应该是最最最容易想到的了
-div{    border-left:5px so">
+1&amp;lt;div&amp;gt;&amp;lt;/div&amp;gt;
+定义如下通用CSS：
+123456div&amp;#123;    position:relative;    width:200px;    height:60px;    background:#ddd;&amp;#125;
+法一：border这个应该是最最最容易想">
 <meta property="og:type" content="article">
 <meta property="og:title" content="谈谈一些有趣的CSS题目（一）-- 左边竖条的实现方法">
 <meta property="og:url" content="http://yoursite.com/2014/12/29/谈谈一些有趣的CSS题目（一）-- 左边竖条的实现方法/index.html">
 <meta property="og:site_name" content="Feng~Lin">
 <meta property="og:description" content="题目1、下面这个图形，只使用一个标签，可以有多少种实现方式：
 假设我们的单标签是一个 div:
-123```定义如下通用CSS：
-div{    position:relative;    width:200px;    height:60px;    background:#ddd;}12### 法一：border这个应该是最最最容易想到的了
-div{    border-left:5px so">
+1&amp;lt;div&amp;gt;&amp;lt;/div&amp;gt;
+定义如下通用CSS：
+123456div&amp;#123;    position:relative;    width:200px;    height:60px;    background:#ddd;&amp;#125;
+法一：border这个应该是最最最容易想">
 <meta property="og:image" content="http://images2015.cnblogs.com/blog/608782/201609/608782-20160921195001074-1905115525.png">
-<meta property="og:updated_time" content="2016-12-03T12:08:12.000Z">
+<meta property="og:updated_time" content="2016-12-09T08:42:03.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="谈谈一些有趣的CSS题目（一）-- 左边竖条的实现方法">
 <meta name="twitter:description" content="题目1、下面这个图形，只使用一个标签，可以有多少种实现方式：
 假设我们的单标签是一个 div:
-123```定义如下通用CSS：
-div{    position:relative;    width:200px;    height:60px;    background:#ddd;}12### 法一：border这个应该是最最最容易想到的了
-div{    border-left:5px so">
+1&amp;lt;div&amp;gt;&amp;lt;/div&amp;gt;
+定义如下通用CSS：
+123456div&amp;#123;    position:relative;    width:200px;    height:60px;    background:#ddd;&amp;#125;
+法一：border这个应该是最最最容易想">
 <meta name="twitter:image" content="http://images2015.cnblogs.com/blog/608782/201609/608782-20160921195001074-1905115525.png">
 
 
@@ -199,7 +202,7 @@ div{    border-left:5px so">
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Startseite
+            Home
           </a>
         </li>
       
@@ -209,7 +212,7 @@ div{    border-left:5px so">
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archiv
+            Archives
           </a>
         </li>
       
@@ -288,7 +291,7 @@ div{    border-left:5px so">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <span class="post-meta-item-text">Posted on</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2014-12-29T00:00:00+08:00">
                 2014-12-29
               </time>
@@ -327,17 +330,23 @@ div{    border-left:5px so">
       
         <p>题目1、下面这个图形，只使用一个标签，可以有多少种实现方式：<br><img src="http://images2015.cnblogs.com/blog/608782/201609/608782-20160921195001074-1905115525.png" alt="Generating"></p>
 <p>假设我们的单标签是一个 div:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">```</div><div class="line"></div><div class="line">定义如下通用CSS：</div></pre></td></tr></table></figure>
-<p>div{<br>    position:relative;<br>    width:200px;<br>    height:60px;<br>    background:#ddd;<br>}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">### 法一：border</div><div class="line">这个应该是最最最容易想到的了</div></pre></td></tr></table></figure></p>
-<p>div{<br>    border-left:5px solid deeppink;<br>}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">### 法二：使用伪元素</div></pre></td></tr></table></figure></p>
-<p>div::after{<br>    content:””;<br>    width:5px;<br>    height:60px;<br>    position:absolute;<br>    top:0;<br>    left:0;<br>    background:deeppink;<br>}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">### 法三：外 box-shadow</div><div class="line">盒阴影 box-shadow 大部分人都只是用了生成阴影，其实阴影可以有多重阴影，阴影不可以不虚化，这就需要去了解一下 box-shaodw 的每一个参数具体作用。使用 box-shaodw 解题</div></pre></td></tr></table></figure></p>
-<p>div{<br>    box-shadow:-5px 0px 0 0 deeppink;<br>}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">### 法四：内 box-shadow</div><div class="line">盒阴影还有一个参数 inset ，用于设置内阴影，也可以完成：</div></pre></td></tr></table></figure></p>
-<p>div{<br>    box-shadow:inset 5px 0px 0 0 deeppink;<br>}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">### 法五：drop-shadow</div><div class="line">drop-shadow 是 CSS3 新增滤镜 filter 中的其中一个滤镜，也可以生成阴影，不过它的数值参数个数只有 3 个，比之 box-shadow 少一个。</div></pre></td></tr></table></figure></p>
-<p>div{<br>    filter:drop-shadow(-5px 0 0 deeppink);<br>}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">### 法六：渐变 linearGradient</div><div class="line">灵活使用 CSS3 的渐变可以完成大量想不到的图形，CSS3 的渐变分为线性渐变和径向渐变，本题使用线性渐变，可以轻易解题：</div></pre></td></tr></table></figure></p>
-<p>div{<br>    background-image:linear-gradient(90deg, deeppink 0px, deeppink 5px, transparent 5px);<br>}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">### 法七：轮廓 outline</div><div class="line">这个用的比较少，outline （轮廓）是绘制于元素周围的一条线，位于边框边缘的外围，可起到突出元素的作用。这个方法算是下下之选。</div></pre></td></tr></table></figure></p>
-<p>div{<br>    height:50px;<br>    outline:5px solid deeppink;<br>}<br>div{<br>    position:absolute;<br>    content:””;<br>    top:-5px;<br>    bottom:-5px;<br>    right:-5px;<br>    left:0;<br>    background:#ddd;<br>}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">### 法八、滚动条</div></pre></td></tr></table></figure></p>
-<p>div{<br>    width:205px;<br>    background:deeppink;<br>    overflow-y:scroll;<br>}<br>div::-webkit-scrollbar{<br>    width: 200px;<br>    background-color:#ddd;<br>}<br>```</p>
-
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;div&gt;&lt;/div&gt;</div></pre></td></tr></table></figure>
+<p>定义如下通用CSS：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">div&#123;</div><div class="line">    position:relative;</div><div class="line">    width:200px;</div><div class="line">    height:60px;</div><div class="line">    background:#ddd;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="法一：border"><a href="#法一：border" class="headerlink" title="法一：border"></a>法一：border</h3><p>这个应该是最最最容易想到的了</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">div&#123;</div><div class="line">    border-left:5px solid deeppink;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="法二：使用伪元素"><a href="#法二：使用伪元素" class="headerlink" title="法二：使用伪元素"></a>法二：使用伪元素</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">div::after&#123;</div><div class="line">    content:&quot;&quot;;</div><div class="line">    width:5px;</div><div class="line">    height:60px;</div><div class="line">    position:absolute;</div><div class="line">    top:0;</div><div class="line">    left:0;</div><div class="line">    background:deeppink;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="法三：外-box-shadow"><a href="#法三：外-box-shadow" class="headerlink" title="法三：外 box-shadow"></a>法三：外 box-shadow</h3><p>盒阴影 box-shadow 大部分人都只是用了生成阴影，其实阴影可以有多重阴影，阴影不可以不虚化，这就需要去了解一下 box-shaodw 的每一个参数具体作用。使用 box-shaodw 解题</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">div&#123;</div><div class="line">    box-shadow:-5px 0px 0 0 deeppink;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="法四：内-box-shadow"><a href="#法四：内-box-shadow" class="headerlink" title="法四：内 box-shadow"></a>法四：内 box-shadow</h3><p>盒阴影还有一个参数 inset ，用于设置内阴影，也可以完成：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">div&#123;</div><div class="line">    box-shadow:inset 5px 0px 0 0 deeppink;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="法五：drop-shadow"><a href="#法五：drop-shadow" class="headerlink" title="法五：drop-shadow"></a>法五：drop-shadow</h3><p>drop-shadow 是 CSS3 新增滤镜 filter 中的其中一个滤镜，也可以生成阴影，不过它的数值参数个数只有 3 个，比之 box-shadow 少一个。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">div&#123;</div><div class="line">    filter:drop-shadow(-5px 0 0 deeppink);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="法六：渐变-linearGradient"><a href="#法六：渐变-linearGradient" class="headerlink" title="法六：渐变 linearGradient"></a>法六：渐变 linearGradient</h3><p>灵活使用 CSS3 的渐变可以完成大量想不到的图形，CSS3 的渐变分为线性渐变和径向渐变，本题使用线性渐变，可以轻易解题：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">div&#123;</div><div class="line">    background-image:linear-gradient(90deg, deeppink 0px, deeppink 5px, transparent 5px);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="法七：轮廓-outline"><a href="#法七：轮廓-outline" class="headerlink" title="法七：轮廓 outline"></a>法七：轮廓 outline</h3><p>这个用的比较少，outline （轮廓）是绘制于元素周围的一条线，位于边框边缘的外围，可起到突出元素的作用。这个方法算是下下之选。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">div&#123;</div><div class="line">    height:50px;</div><div class="line">    outline:5px solid deeppink;</div><div class="line">&#125;</div><div class="line">div&#123;</div><div class="line">    position:absolute;</div><div class="line">    content:&quot;&quot;;</div><div class="line">    top:-5px;</div><div class="line">    bottom:-5px;</div><div class="line">    right:-5px;</div><div class="line">    left:0;</div><div class="line">    background:#ddd;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="法八、滚动条"><a href="#法八、滚动条" class="headerlink" title="法八、滚动条"></a>法八、滚动条</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">div&#123;</div><div class="line">    width:205px;</div><div class="line">    background:deeppink;</div><div class="line">    overflow-y:scroll;</div><div class="line">&#125;</div><div class="line">div::-webkit-scrollbar&#123;</div><div class="line">    width: 200px;</div><div class="line">    background-color:#ddd;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
       
     </div>
 
@@ -422,8 +431,17 @@ div{    border-left:5px so">
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.gif"
@@ -435,7 +453,7 @@ div{    border-left:5px so">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
               <span class="site-state-item-count">41</span>
-              <span class="site-state-item-name">Artikel</span>
+              <span class="site-state-item-name">posts</span>
             </a>
           </div>
 
@@ -463,6 +481,22 @@ div{    border-left:5px so">
       </section>
 
       
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#法一：border"><span class="nav-number">1.</span> <span class="nav-text">法一：border</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#法二：使用伪元素"><span class="nav-number">2.</span> <span class="nav-text">法二：使用伪元素</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#法三：外-box-shadow"><span class="nav-number">3.</span> <span class="nav-text">法三：外 box-shadow</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#法四：内-box-shadow"><span class="nav-number">4.</span> <span class="nav-text">法四：内 box-shadow</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#法五：drop-shadow"><span class="nav-number">5.</span> <span class="nav-text">法五：drop-shadow</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#法六：渐变-linearGradient"><span class="nav-number">6.</span> <span class="nav-text">法六：渐变 linearGradient</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#法七：轮廓-outline"><span class="nav-number">7.</span> <span class="nav-text">法七：轮廓 outline</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#法八、滚动条"><span class="nav-number">8.</span> <span class="nav-text">法八、滚动条</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
 
     </div>
   </aside>
@@ -486,7 +520,7 @@ div{    border-left:5px so">
 
 
 <div class="powered-by">
-  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
 </div>
 
 <div class="theme-info">

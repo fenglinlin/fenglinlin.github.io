@@ -183,7 +183,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Home
+            Startseite
           </a>
         </li>
       
@@ -193,7 +193,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archives
+            Archiv
           </a>
         </li>
       
@@ -275,7 +275,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Posted on</span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-09T15:31:55+08:00">
                 2016-12-09
               </time>
@@ -314,18 +314,18 @@
       
         
           
-            <h3 id="v-if"><a href="#v-if" class="headerlink" title="v-if"></a>v-if</h3><p>在字符串模板中，如 Handlebars ，我们得像这样写一个条件块：<br><!-- Handlebars 模板 --><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&#123;&#123;#if ok&#125;&#125;</div><div class="line">  &lt;h1&gt;Yes&lt;/h1&gt;</div><div class="line">&#123;&#123;/if&#125;&#125;</div></pre></td></tr></table></figure></p>
+            <h3 id="v-if"><a href="#v-if" class="headerlink" title="v-if"></a>v-if</h3><p>在字符串模板中，如 Handlebars ，我们得像这样写一个条件块：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&#123;&#123;#if ok&#125;&#125;</div><div class="line">  &lt;h1&gt;Yes&lt;/h1&gt;</div><div class="line">&#123;&#123;/if&#125;&#125;</div></pre></td></tr></table></figure>
 <p>在 Vue.js ，我们使用 v-if 指令实现同样的功能：</p>
-<figure class="highlight plain"><figcaption><span>v-if="ok">Yes</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">```</div><div class="line"></div><div class="line">也可以用 v-else 添加一个 “else” 块：</div><div class="line"></div><div class="line">```&lt;h1 v-if=&quot;ok&quot;&gt;Yes&lt;/h1&gt;</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><figcaption><span>v-else>No</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">```</div><div class="line">### template v-if</div><div class="line"></div><div class="line">因为 v-if 是一个指令，需要将它添加到一个元素上。但是如果我们想切换多个元素呢？此时我们可以把一个 \&lt;template&gt; 元素当做包装元素，并在上面使用 v-if，最终的渲染结果不会包含它。</div></pre></td></tr></table></figure>
-<p><template v-if="ok"><br>          <h1>Title</h1><br>          <p>Paragraph 1</p><br>          <p>Paragraph 2</p><br>    </template><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">### v-else</div><div class="line"></div><div class="line">可以用 v-else 指令给 v-if 或 v-show 添加一个 “else” 块：</div></pre></td></tr></table></figure></p>
-<pre><code>&lt;div v-if=&quot;Math.random() &gt; 0.5&quot;&gt;
-      Sorry
-&lt;/div&gt;
-&lt;div v-else&gt;
-      Not sorry
-&lt;/div&gt;
-</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">### v-show</div><div class="line"></div><div class="line">另一个根据条件展示元素的选项是 v-show 指令。用法大体上一样：</div><div class="line"></div><div class="line">```&lt;h1 v-show=&quot;ok&quot;&gt;Hello!&lt;/h1&gt;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;h1 v-if=&quot;ok&quot;&gt;Yes&lt;/h1&gt;</div></pre></td></tr></table></figure>
+<p>也可以用 v-else 添加一个 “else” 块：</p>
+<figure class="highlight plain"><figcaption><span>v-if="ok">Yes</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">```</div><div class="line"></div><div class="line">```&lt;h1 v-else&gt;No&lt;/h1&gt;</div></pre></td></tr></table></figure>
+<h3 id="template-v-if"><a href="#template-v-if" class="headerlink" title="template v-if"></a>template v-if</h3><p>因为 v-if 是一个指令，需要将它添加到一个元素上。但是如果我们想切换多个元素呢？此时我们可以把一个 \<template> 元素当做包装元素，并在上面使用 v-if，最终的渲染结果不会包含它。</template></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;template v-if=&quot;ok&quot;&gt;</div><div class="line">  		&lt;h1&gt;Title&lt;/h1&gt;</div><div class="line">  		&lt;p&gt;Paragraph 1&lt;/p&gt;</div><div class="line">  		&lt;p&gt;Paragraph 2&lt;/p&gt;</div><div class="line">	&lt;/template&gt;</div></pre></td></tr></table></figure>
+<h3 id="v-else"><a href="#v-else" class="headerlink" title="v-else"></a>v-else</h3><p>可以用 v-else 指令给 v-if 或 v-show 添加一个 “else” 块：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&lt;div v-if=&quot;Math.random() &gt; 0.5&quot;&gt;</div><div class="line"> 		Sorry</div><div class="line">&lt;/div&gt;</div><div class="line">&lt;div v-else&gt;</div><div class="line"> 		Not sorry</div><div class="line">&lt;/div&gt;</div></pre></td></tr></table></figure>
+<h3 id="v-show"><a href="#v-show" class="headerlink" title="v-show"></a>v-show</h3><p>另一个根据条件展示元素的选项是 v-show 指令。用法大体上一样：</p>
+<p><code>&lt;h1 v-show=&quot;ok&quot;&gt;Hello!&lt;/h1&gt;</code></p>
 <p>不同的是有 v-show 的元素会始终渲染并保持在 DOM 中。v-show 是简单的切换元素的 CSS 属性 display 。</p>
 <h3 id="v-if-vs-v-show"><a href="#v-if-vs-v-show" class="headerlink" title="v-if vs. v-show"></a>v-if vs. v-show</h3><p>v-if 是真实的条件渲染，因为它会确保条件块在切换当中适当地销毁与重建条件块内的事件监听器和子组件。</p>
 <p>v-if 也是惰性的：如果在初始渲染时条件为假，则什么也不做——在条件第一次变为真时才开始局部编译（编译会被缓存起来）。</p>
@@ -408,7 +408,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Posted on</span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-09T15:25:59+08:00">
                 2016-12-09
               </time>
@@ -551,7 +551,7 @@ data: {
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Posted on</span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-09T15:20:03+08:00">
                 2016-12-09
               </time>
@@ -681,7 +681,7 @@ data: {
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Posted on</span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-09T15:14:24+08:00">
                 2016-12-09
               </time>
@@ -821,7 +821,7 @@ data: {
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Posted on</span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-08T17:14:34+08:00">
                 2016-12-08
               </time>
@@ -974,7 +974,7 @@ data: {
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Posted on</span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-08T17:02:21+08:00">
                 2016-12-08
               </time>
@@ -1149,7 +1149,7 @@ height: 100%;
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Posted on</span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-08T16:45:13+08:00">
                 2016-12-08
               </time>
@@ -1275,7 +1275,7 @@ height: 100%;
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Posted on</span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-08T09:20:36+08:00">
                 2016-12-08
               </time>
@@ -1410,7 +1410,7 @@ height: 100%;
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Posted on</span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-05T20:42:55+08:00">
                 2016-12-05
               </time>
@@ -1560,7 +1560,7 @@ height: 100%;
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Posted on</span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-03T12:00:24+08:00">
                 2016-12-03
               </time>
@@ -1730,7 +1730,7 @@ height: 100%;
           <div class="site-state-item site-state-posts">
             <a href="/archives">
               <span class="site-state-item-count">41</span>
-              <span class="site-state-item-name">posts</span>
+              <span class="site-state-item-name">Artikel</span>
             </a>
           </div>
 
@@ -1781,7 +1781,7 @@ height: 100%;
 
 
 <div class="powered-by">
-  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
 </div>
 
 <div class="theme-info">

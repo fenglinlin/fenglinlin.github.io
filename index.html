@@ -183,7 +183,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Home
+            Startseite
           </a>
         </li>
       
@@ -193,7 +193,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archives
+            Archiv
           </a>
         </li>
       
@@ -275,7 +275,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Posted on</span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-09T15:31:55+08:00">
                 2016-12-09
               </time>
@@ -409,7 +409,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Posted on</span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-09T15:25:59+08:00">
                 2016-12-09
               </time>
@@ -546,7 +546,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Posted on</span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-09T15:20:03+08:00">
                 2016-12-09
               </time>
@@ -676,7 +676,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Posted on</span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-09T15:14:24+08:00">
                 2016-12-09
               </time>
@@ -723,14 +723,14 @@
 <p><span v-once="">This will never change: </span><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">被插入的内容都会被当做 HTML —— 数据绑定会被忽略。注意，你不能使用 v-html 来复合局部模板，因为 Vue 不是基于字符串的模板引擎。组件更适合担任 UI 重用与复合的基本单元。</div><div class="line"></div><div class="line">#### 纯 HTML</div><div class="line"></div><div class="line">双大括号会将数据解释为纯文本，而非 HTML 。为了输出真正的 HTML ，你需要使用 v-html 指令：</div><div class="line"></div><div class="line">```&lt;div v-html=&quot;rawHtml&quot;&gt;&lt;/div&gt;</div></pre></td></tr></table></figure></p>
 <p>被插入的内容都会被当做 HTML —— 数据绑定会被忽略。注意，你不能使用 v-html 来复合局部模板，因为 Vue 不是基于字符串的模板引擎。组件更适合担任 UI 重用与复合的基本单元。</p>
 <h4 id="属性"><a href="#属性" class="headerlink" title="属性"></a>属性</h4><p>Mustache 不能在 HTML 属性中使用，应使用 v-bind 指令：</p>
-<figure class="highlight plain"><figcaption><span>v-bind:id="dynamicId">```</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">这对布尔值的属性也有效 —— 如果条件被求值为 false 的话该属性会被移除：</div><div class="line"></div><div class="line">```&lt;button v-bind:disabled=&quot;someDynamicCondition&quot;&gt;Button&lt;/button&gt;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><figcaption><span>v-bind:id="dynamicId"></span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">```</div><div class="line"></div><div class="line">这对布尔值的属性也有效 —— 如果条件被求值为 false 的话该属性会被移除：</div><div class="line"></div><div class="line">```&lt;button v-bind:disabled=&quot;someDynamicCondition&quot;&gt;Button&lt;/button&gt;</div></pre></td></tr></table></figure>
 <h3 id="属性-1"><a href="#属性-1" class="headerlink" title="属性"></a>属性</h3><p>Mustache 不能在 HTML 属性中使用，应使用 v-bind 指令：</p>
 <figure class="highlight plain"><figcaption><span>v-bind:id="dynamicId"></span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">```</div><div class="line"></div><div class="line">这对布尔值的属性也有效 —— 如果条件被求值为 false 的话该属性会被移除：</div><div class="line"></div><div class="line">```&lt;button v-bind:disabled=&quot;someDynamicCondition&quot;&gt;Button&lt;/button&gt;</div></pre></td></tr></table></figure>
 <p>使用 JavaScript 表达式</p>
 <p>迄今为止，在我们的模板中，我们一直都只绑定简单的属性键值。但实际上，对于所有的数据绑定， Vue.js 都提供了完全的 JavaScript 表达式支持。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&#123;&#123; number + 1 &#125;&#125;</div><div class="line">&#123;&#123; ok ? &apos;YES&apos; : &apos;NO&apos; &#125;&#125;</div><div class="line">&#123;&#123; message.split(&apos;&apos;).reverse().join(&apos;&apos;) &#125;&#125;</div><div class="line">&lt;div v-bind:id=&quot;&apos;list-&apos; + id&quot;&gt;&lt;/div&gt;</div></pre></td></tr></table></figure>
 <p>这些表达式会在所属 Vue 实例的数据作用域下作为 JavaScript 被解析。有个限制就是，每个绑定都只能包含单个表达式，所以下面的例子都不会生效。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&lt;!-- 这是语句，不是表达式 --&gt;</div><div class="line">	&#123;&#123; var a = 1 &#125;&#125;</div><div class="line">	&lt;!-- 流控制也不会生效，请使用三元表达式 --&gt;</div><div class="line">&#123;&#123; if (ok) &#123; return message &#125; &#125;&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&lt;!-- 这是语句，不是表达式 --&gt;</div><div class="line"> &#123; var a = 1 &#125;&#125;</div><div class="line">    &lt;!-- 流控制也不会生效，请使用三元表达式 --&gt;</div><div class="line"> &#123;&#123; if (ok) &#123; return message &#125; &#125;&#125;</div></pre></td></tr></table></figure>
 <p>模板表达式都被放在沙盒中，只能访问全局变量的一个白名单，如 Math 和 Date 。你不应该在模板表达式中试图访问用户定义的全局变量。</p>
 <h3 id="过滤器"><a href="#过滤器" class="headerlink" title="过滤器"></a>过滤器</h3><p>Vue.js 允许你自定义过滤器，被用作一些常见的文本格式化。过滤器应该被添加在 mustache 插值的尾部，由“管道符”指示：</p>
 <figure class="highlight plain"><figcaption><span>message | capitalize &#125;&#125;</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">```</div><div class="line"></div><div class="line">Vue 2.x 中，过滤器只能在 mustache 绑定中使用。为了在指令绑定中实现同样的行为，你应该使用计算属性。</div><div class="line"></div><div class="line">过滤器函数总接受表达式的值作为第一个参数。</div></pre></td></tr></table></figure>
@@ -816,7 +816,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Posted on</span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-08T17:14:34+08:00">
                 2016-12-08
               </time>
@@ -969,7 +969,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Posted on</span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-08T17:02:21+08:00">
                 2016-12-08
               </time>
@@ -1144,7 +1144,7 @@ height: 100%;
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Posted on</span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-08T16:45:13+08:00">
                 2016-12-08
               </time>
@@ -1270,7 +1270,7 @@ height: 100%;
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Posted on</span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-08T09:20:36+08:00">
                 2016-12-08
               </time>
@@ -1405,7 +1405,7 @@ height: 100%;
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Posted on</span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-05T20:42:55+08:00">
                 2016-12-05
               </time>
@@ -1555,7 +1555,7 @@ height: 100%;
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Posted on</span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-03T12:00:24+08:00">
                 2016-12-03
               </time>
@@ -1725,7 +1725,7 @@ height: 100%;
           <div class="site-state-item site-state-posts">
             <a href="/archives">
               <span class="site-state-item-count">41</span>
-              <span class="site-state-item-name">posts</span>
+              <span class="site-state-item-name">Artikel</span>
             </a>
           </div>
 
@@ -1776,7 +1776,7 @@ height: 100%;
 
 
 <div class="powered-by">
-  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
 </div>
 
 <div class="theme-info">

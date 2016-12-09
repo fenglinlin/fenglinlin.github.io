@@ -94,7 +94,7 @@
 <meta property="og:description" content="Vue.js 使用了基于 HTML 的模版语法，允许开发者声明式地将 DOM 绑定至底层 Vue 实例的数据。所有 Vue.js 的模板都是合法的 HTML ，所以能被遵循规范的浏览器和 HTML 解析器解析。
 在底层的实现上， Vue 将模板编译成虚拟 DOM 渲染函数。结合响应系统，在应用状态改变时， Vue 能够智能地计算出重新渲染组件的最小代价并应用到 DOM 操作上。
 如果你熟悉虚拟 D">
-<meta property="og:updated_time" content="2016-12-09T08:21:37.000Z">
+<meta property="og:updated_time" content="2016-12-09T08:23:22.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Vue语法——插值">
 <meta name="twitter:description" content="Vue.js 使用了基于 HTML 的模版语法，允许开发者声明式地将 DOM 绑定至底层 Vue 实例的数据。所有 Vue.js 的模板都是合法的 HTML ，所以能被遵循规范的浏览器和 HTML 解析器解析。
@@ -191,7 +191,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Home
+            Startseite
           </a>
         </li>
       
@@ -201,7 +201,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archives
+            Archiv
           </a>
         </li>
       
@@ -280,7 +280,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Posted on</span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-09T15:14:24+08:00">
                 2016-12-09
               </time>
@@ -343,11 +343,12 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&lt;!-- 这是语句，不是表达式 --&gt;</div><div class="line"> &#123; var a = 1 &#125;&#125;</div><div class="line">    &lt;!-- 流控制也不会生效，请使用三元表达式 --&gt;</div><div class="line"> &#123;&#123; if (ok) &#123; return message &#125; &#125;&#125;</div></pre></td></tr></table></figure>
 <p>模板表达式都被放在沙盒中，只能访问全局变量的一个白名单，如 Math 和 Date 。你不应该在模板表达式中试图访问用户定义的全局变量。</p>
 <h3 id="过滤器"><a href="#过滤器" class="headerlink" title="过滤器"></a>过滤器</h3><p>Vue.js 允许你自定义过滤器，被用作一些常见的文本格式化。过滤器应该被添加在 mustache 插值的尾部，由“管道符”指示：</p>
-<figure class="highlight plain"><figcaption><span>message | capitalize &#125;&#125;</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">```</div><div class="line"></div><div class="line">Vue 2.x 中，过滤器只能在 mustache 绑定中使用。为了在指令绑定中实现同样的行为，你应该使用计算属性。</div><div class="line"></div><div class="line">过滤器函数总接受表达式的值作为第一个参数。</div></pre></td></tr></table></figure>
-<p>new Vue({<br>  // …<br>  filters: {<br>    capitalize: function (value) {<br>      if (!value) return ‘’<br>      value = value.toString()<br>      return value.charAt(0).toUpperCase() + value.slice(1)<br>    }<br>  }<br>})<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">过滤器可以串联：</div><div class="line"></div><div class="line">```&#123;&#123; message | filterA | filterB &#125;&#125;</div></pre></td></tr></table></figure></p>
-<p>过滤器是 JavaScript 函数，因此可以接受参数：</p>
-<pre><code class="{{ message | filterA('arg1', arg2) }}">
-</code></pre>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&#123;&#123; message | capitalize &#125;&#125;</div></pre></td></tr></table></figure>
+<p>Vue 2.x 中，过滤器只能在 mustache 绑定中使用。为了在指令绑定中实现同样的行为，你应该使用计算属性。</p>
+<p>过滤器函数总接受表达式的值作为第一个参数。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">new Vue(&#123;</div><div class="line">  // ...</div><div class="line">  filters: &#123;</div><div class="line">    capitalize: function (value) &#123;</div><div class="line">      if (!value) return &apos;&apos;</div><div class="line">      value = value.toString()</div><div class="line">      return value.charAt(0).toUpperCase() + value.slice(1)</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<p>过滤器可以串联：</p>
+<figure class="highlight plain"><figcaption><span>message | filterA | filterB &#125;&#125;</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">```</div><div class="line"></div><div class="line">过滤器是 JavaScript 函数，因此可以接受参数：</div><div class="line"></div><div class="line"></div><div class="line">```&#123;&#123; message | filterA(&apos;arg1&apos;, arg2) &#125;&#125;</div></pre></td></tr></table></figure>
 <p>这里，字符串 ‘arg1’ 将传给过滤器作为第二个参数， arg2 表达式的值将被求值然后传给过滤器作为第三个参数。</p>
 
       
@@ -436,10 +437,10 @@
       
         <ul class="sidebar-nav motion-element">
           <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            Table of Contents
+            Inhaltsverzeichnis
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview">
-            Overview
+            Übersicht
           </li>
         </ul>
       
@@ -456,7 +457,7 @@
           <div class="site-state-item site-state-posts">
             <a href="/archives">
               <span class="site-state-item-count">41</span>
-              <span class="site-state-item-name">posts</span>
+              <span class="site-state-item-name">Artikel</span>
             </a>
           </div>
 
@@ -523,7 +524,7 @@
 
 
 <div class="powered-by">
-  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
 </div>
 
 <div class="theme-info">

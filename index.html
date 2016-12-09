@@ -470,10 +470,9 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;div v-bind:class=&quot;[activeClass, errorClass]&quot;&gt;</div></pre></td></tr></table></figure>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">data: &#123;</div><div class="line">  activeClass: &apos;active&apos;,</div><div class="line">  errorClass: &apos;text-danger&apos;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>渲染为:</p>
-<figure class="highlight plain"><figcaption><span>class="active text-danger"></span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">```</div><div class="line"></div><div class="line">如果你也想根据条件切换列表中的 class ，可以用三元表达式：</div><div class="line"></div><div class="line">```&lt;div v-bind:class=&quot;[isActive ? activeClass : &apos;&apos;, errorClass]&quot;&gt;</div></pre></td></tr></table></figure>
-<p>此例始终添加 errorClass ，但是只有在 isActive 是 true 时添加 activeClass 。</p>
-<p>不过，当有多个条件 class 时这样写有些繁琐。可以在数组语法中使用对象语法：</p>
-<p><code>&lt;div v-bind:class=&quot;[{ active: isActive }, errorClass]&quot;&gt;</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;div class=&quot;active text-danger&quot;&gt;&lt;/div&gt;</div></pre></td></tr></table></figure>
+<p>如果你也想根据条件切换列表中的 class ，可以用三元表达式：</p>
+<figure class="highlight plain"><figcaption><span>v-bind:class="[isActive ? activeClass : '', errorClass]"></span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">```</div><div class="line"></div><div class="line">此例始终添加 errorClass ，但是只有在 isActive 是 true 时添加 activeClass 。</div><div class="line"></div><div class="line">不过，当有多个条件 class 时这样写有些繁琐。可以在数组语法中使用对象语法：</div><div class="line"></div><div class="line">```&lt;div v-bind:class=&quot;[&#123; active: isActive &#125;, errorClass]&quot;&gt;</div></pre></td></tr></table></figure>
 
           
         

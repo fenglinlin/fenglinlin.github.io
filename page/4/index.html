@@ -183,7 +183,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Home
+            Startseite
           </a>
         </li>
       
@@ -193,7 +193,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archives
+            Archiv
           </a>
         </li>
       
@@ -275,7 +275,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Posted on</span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2015-05-01T08:00:00+08:00">
                 2015-05-01
               </time>
@@ -416,7 +416,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Posted on</span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2015-03-18T00:00:00+08:00">
                 2015-03-18
               </time>
@@ -558,7 +558,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Posted on</span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2015-03-17T00:00:00+08:00">
                 2015-03-17
               </time>
@@ -616,18 +616,34 @@
 <p>这些数据类型总称为MIME type，每个值包括一级类型和二级类型，之间用斜杠分隔。<br>除了预定义的类型，厂商也可以自定义类型。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">application/vnd.debian.binary-package</div></pre></td></tr></table></figure>
 <p>上面的类型表明，发送的是Debian系统的二进制数据包。<br>MIME type还可以在尾部使用分号，添加参数。</p>
-<figure class="highlight plain"><figcaption><span>text/html; charset=utf-8</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">```</div><div class="line"></div><div class="line">上面的类型表明，发送的是网页，而且编码是UTF-8。</div><div class="line">客户端请求的时候，可以使用Accept字段声明自己可以接受哪些数据格式。</div><div class="line"></div><div class="line">MIME type不仅用在HTTP协议，还可以用在其他地方，比如HTML网页。</div></pre></td></tr></table></figure>
-<p><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><br><!-- 等同于 --></p>
-<p><meta charset="utf-8"><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">### 2.5 Content-Encoding 字段</div><div class="line">由于发送的数据可以是任何格式，因此可以把数据压缩后再发送。Content-Encoding字段说明数据的压缩方法。</div></pre></td></tr></table></figure></p>
-<p>Content-Encoding: gzip<br>Content-Encoding: compress<br>Content-Encoding: deflate<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">### 2.6 缺点</div><div class="line">HTTP/1.0 版的主要缺点是，每个TCP连接只能发送一个请求。发送数据完毕，连接就关闭，如果还要请求其他资源，就必须再新建一个连接。</div><div class="line"></div><div class="line">TCP连接的新建成本很高，因为需要客户端和服务器三次握手，并且开始时发送速率较慢（slow start）。所以，HTTP 1.0版本的性能比较差。随着网页加载的外部资源越来越多，这个问题就愈发突出了。</div><div class="line"></div><div class="line">为了解决这个问题，有些浏览器在请求时，用了一个非标准的Connection字段。</div></pre></td></tr></table></figure></p>
-<p>Connection: keep-alive<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">这个字段要求服务器不要关闭TCP连接，以便其他请求复用。服务器同样回应这个字段。</div></pre></td></tr></table></figure></p>
-<p>Connection: keep-alive<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">## 三、HTTP/1.1</div><div class="line">1997年1月，HTTP/1.1 版本发布，只比 1.0 版本晚了半年。它进一步完善了 HTTP 协议，一直用到了20年后的今天，直到现在还是最流行的版本。</div><div class="line">### 3.1 持久连接</div><div class="line">1.1 版的最大变化，就是引入了持久连接（persistent connection），即TCP连接默认不关闭，可以被多个请求复用，不用声明Connection: keep-alive</div><div class="line"></div><div class="line">客户端和服务器发现对方一段时间没有活动，就可以主动关闭连接。不过，规范的做法是，客户端在最后一个请求时，发送Connection: close，明确要求服务器关闭TCP连接。</div><div class="line"></div><div class="line">目前，对于同一个域名，大多数浏览器允许同时建立6个持久连接。</div><div class="line"></div><div class="line">### 3.2 管道机制</div><div class="line">1.1 版还引入了管道机制（pipelining），即在同一个TCP连接里面，客户端可以同时发送多个请求。这样就进一步改进了HTTP协议的效率</div><div class="line"></div><div class="line">举例来说，客户端需要请求两个资源。以前的做法是，在同一个TCP连接里面，先发送A请求，然后等待服务器做出回应，收到后再发出B请求。管道机制则是允许浏览器同时发出A请求和B请求，但是服务器还是按照顺序，先回应A请求，完成后再回应B请求</div><div class="line"></div><div class="line">### 3.3 Content-Length 字段</div><div class="line">一个TCP连接现在可以传送多个回应，势必就要有一种机制，区分数据包是属于哪一个回应的。这就是Content-length字段的作用，声明本次回应的数据长度。</div><div class="line"></div><div class="line">Content-Length: 3495</div><div class="line"></div><div class="line">### 3.4 分块传输编码</div><div class="line">使用Content-Length字段的前提条件是，服务器发送回应之前，必须知道回应的数据长度。</div><div class="line"></div><div class="line">对于一些很耗时的动态操作来说，这意味着，服务器要等到所有操作完成，才能发送数据，显然这样的效率不高。更好的处理方法是，产生一块数据，就发送一块，采用&quot;流模式&quot;（stream）取代&quot;缓存模式&quot;（buffer）。</div><div class="line"></div><div class="line">因此，1.1版规定可以不使用Content-Length字段，而使用&quot;分块传输编码&quot;（chunked transfer encoding）。只要请求或回应的头信息有Transfer-Encoding字段，就表明回应将由数量未定的数据块组成。</div><div class="line"></div><div class="line">Transfer-Encoding: chunked</div><div class="line"></div><div class="line">每个非空的数据块之前，会有一个16进制的数值，表示这个块的长度。最后是一个大小为0的块，就表示本次回应的数据发送完了。下面是一个例子。</div></pre></td></tr></table></figure></p>
-<p>HTTP/1.1 200 OK<br>Content-Type: text/plain<br>Transfer-Encoding: chunked</p>
-<p>25<br>This is the data in the first chunk</p>
-<p>1C<br>and this is the second one</p>
-<p>3<br>con</p>
-<p>8<br>sequence</p>
-<p>0<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">### 3.5 其他功能</div><div class="line">1.1版还新增了许多动词方法：PUT、PATCH、HEAD、 OPTIONS、DELETE。</div><div class="line">另外，客户端请求的头信息新增了Host字段，用来指定服务器的域名。</div><div class="line"></div><div class="line">```Host: www.example.com</div></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Content-Type: text/html; charset=utf-8</div></pre></td></tr></table></figure>
+<p>上面的类型表明，发送的是网页，而且编码是UTF-8。<br>客户端请求的时候，可以使用Accept字段声明自己可以接受哪些数据格式。</p>
+<p>MIME type不仅用在HTTP协议，还可以用在其他地方，比如HTML网页。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=UTF-8&quot; /&gt;</div><div class="line">&lt;!-- 等同于 --&gt;</div><div class="line">&lt;meta charset=&quot;utf-8&quot; /&gt;</div></pre></td></tr></table></figure>
+<h3 id="2-5-Content-Encoding-字段"><a href="#2-5-Content-Encoding-字段" class="headerlink" title="2.5 Content-Encoding 字段"></a>2.5 Content-Encoding 字段</h3><p>由于发送的数据可以是任何格式，因此可以把数据压缩后再发送。Content-Encoding字段说明数据的压缩方法。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Content-Encoding: gzip</div><div class="line">Content-Encoding: compress</div><div class="line">Content-Encoding: deflate</div></pre></td></tr></table></figure>
+<h3 id="2-6-缺点"><a href="#2-6-缺点" class="headerlink" title="2.6 缺点"></a>2.6 缺点</h3><p>HTTP/1.0 版的主要缺点是，每个TCP连接只能发送一个请求。发送数据完毕，连接就关闭，如果还要请求其他资源，就必须再新建一个连接。</p>
+<p>TCP连接的新建成本很高，因为需要客户端和服务器三次握手，并且开始时发送速率较慢（slow start）。所以，HTTP 1.0版本的性能比较差。随着网页加载的外部资源越来越多，这个问题就愈发突出了。</p>
+<p>为了解决这个问题，有些浏览器在请求时，用了一个非标准的Connection字段。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Connection: keep-alive</div></pre></td></tr></table></figure>
+<p>这个字段要求服务器不要关闭TCP连接，以便其他请求复用。服务器同样回应这个字段。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Connection: keep-alive</div></pre></td></tr></table></figure>
+<h2 id="三、HTTP-1-1"><a href="#三、HTTP-1-1" class="headerlink" title="三、HTTP/1.1"></a>三、HTTP/1.1</h2><p>1997年1月，HTTP/1.1 版本发布，只比 1.0 版本晚了半年。它进一步完善了 HTTP 协议，一直用到了20年后的今天，直到现在还是最流行的版本。</p>
+<h3 id="3-1-持久连接"><a href="#3-1-持久连接" class="headerlink" title="3.1 持久连接"></a>3.1 持久连接</h3><p>1.1 版的最大变化，就是引入了持久连接（persistent connection），即TCP连接默认不关闭，可以被多个请求复用，不用声明Connection: keep-alive</p>
+<p>客户端和服务器发现对方一段时间没有活动，就可以主动关闭连接。不过，规范的做法是，客户端在最后一个请求时，发送Connection: close，明确要求服务器关闭TCP连接。</p>
+<p>目前，对于同一个域名，大多数浏览器允许同时建立6个持久连接。</p>
+<h3 id="3-2-管道机制"><a href="#3-2-管道机制" class="headerlink" title="3.2 管道机制"></a>3.2 管道机制</h3><p>1.1 版还引入了管道机制（pipelining），即在同一个TCP连接里面，客户端可以同时发送多个请求。这样就进一步改进了HTTP协议的效率</p>
+<p>举例来说，客户端需要请求两个资源。以前的做法是，在同一个TCP连接里面，先发送A请求，然后等待服务器做出回应，收到后再发出B请求。管道机制则是允许浏览器同时发出A请求和B请求，但是服务器还是按照顺序，先回应A请求，完成后再回应B请求</p>
+<h3 id="3-3-Content-Length-字段"><a href="#3-3-Content-Length-字段" class="headerlink" title="3.3 Content-Length 字段"></a>3.3 Content-Length 字段</h3><p>一个TCP连接现在可以传送多个回应，势必就要有一种机制，区分数据包是属于哪一个回应的。这就是Content-length字段的作用，声明本次回应的数据长度。</p>
+<p>Content-Length: 3495</p>
+<h3 id="3-4-分块传输编码"><a href="#3-4-分块传输编码" class="headerlink" title="3.4 分块传输编码"></a>3.4 分块传输编码</h3><p>使用Content-Length字段的前提条件是，服务器发送回应之前，必须知道回应的数据长度。</p>
+<p>对于一些很耗时的动态操作来说，这意味着，服务器要等到所有操作完成，才能发送数据，显然这样的效率不高。更好的处理方法是，产生一块数据，就发送一块，采用”流模式”（stream）取代”缓存模式”（buffer）。</p>
+<p>因此，1.1版规定可以不使用Content-Length字段，而使用”分块传输编码”（chunked transfer encoding）。只要请求或回应的头信息有Transfer-Encoding字段，就表明回应将由数量未定的数据块组成。</p>
+<p>Transfer-Encoding: chunked</p>
+<p>每个非空的数据块之前，会有一个16进制的数值，表示这个块的长度。最后是一个大小为0的块，就表示本次回应的数据发送完了。下面是一个例子。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">HTTP/1.1 200 OK</div><div class="line">Content-Type: text/plain</div><div class="line">Transfer-Encoding: chunked</div><div class="line"></div><div class="line">25</div><div class="line">This is the data in the first chunk</div><div class="line"></div><div class="line">1C</div><div class="line">and this is the second one</div><div class="line"></div><div class="line">3</div><div class="line">con</div><div class="line"></div><div class="line">8</div><div class="line">sequence</div><div class="line"></div><div class="line">0</div></pre></td></tr></table></figure>
+<h3 id="3-5-其他功能"><a href="#3-5-其他功能" class="headerlink" title="3.5 其他功能"></a>3.5 其他功能</h3><p>1.1版还新增了许多动词方法：PUT、PATCH、HEAD、 OPTIONS、DELETE。<br>另外，客户端请求的头信息新增了Host字段，用来指定服务器的域名。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Host: www.example.com</div></pre></td></tr></table></figure>
 <p>有了Host字段，就可以将请求发往同一台服务器上的不同网站，为虚拟主机的兴起打下了基础。</p>
 <h2 id="四、SPDY-协议"><a href="#四、SPDY-协议" class="headerlink" title="四、SPDY 协议"></a>四、SPDY 协议</h2><p>2009年，谷歌公开了自行研发的 SPDY 协议，主要解决 HTTP/1.1 效率不高的问题。</p>
 <p>这个协议在Chrome浏览器上证明可行以后，就被当作 HTTP/2 的基础，主要特性都在 HTTP/2 之中得到继承。</p>
@@ -722,7 +738,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Posted on</span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2015-03-01T00:00:00+08:00">
                 2015-03-01
               </time>
@@ -882,7 +898,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Posted on</span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2015-01-22T00:00:00+08:00">
                 2015-01-22
               </time>
@@ -1065,7 +1081,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Posted on</span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2015-01-20T00:00:00+08:00">
                 2015-01-20
               </time>
@@ -1197,7 +1213,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Posted on</span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2014-12-29T00:00:00+08:00">
                 2014-12-29
               </time>
@@ -1331,7 +1347,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Posted on</span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2014-12-26T00:00:00+08:00">
                 2014-12-26
               </time>
@@ -1474,7 +1490,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Posted on</span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2014-09-30T00:00:00+08:00">
                 2014-09-30
               </time>
@@ -1646,7 +1662,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Posted on</span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2014-04-30T00:00:00+08:00">
                 2014-04-30
               </time>
@@ -1690,10 +1706,20 @@
 <h4 id="2-什么是正则表达式"><a href="#2-什么是正则表达式" class="headerlink" title="2. 什么是正则表达式"></a>2. 什么是正则表达式</h4><p>正则表达式，又称正规表示式、正规表示法、正规表达式、规则表达式、常规表示法（英语：Regular Expression，在代码中常简写为regex、regexp或RE），计算机科学的一个概念。正则表达式使用单个字符串来描述、匹配一系列匹配某个句法规则的字符串。在很多文本编辑器里，正则表达式通常被用来检索、替换那些匹配某个模式的文本。</p>
 <p>通俗的讲就是按照某种规则去匹配符合条件的字符串</p>
 <h4 id="3-利用图形化工具理解正则表达式"><a href="#3-利用图形化工具理解正则表达式" class="headerlink" title="3.利用图形化工具理解正则表达式"></a>3.利用图形化工具理解正则表达式</h4><p>辅助理解正则表达的在线工具 <a href="https://regexper.com/" target="_blank" rel="external">https://regexper.com/</a> 我们利用这个工具辅助理解，正则表达式。语法没懂表着急，后面会有，这里只是学会用工具帮助我们学习。<br>手机号正则</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">```</div><div class="line">![Generating](https://dn-myg6wstv.qbox.me/1ce345adabe2cc8b2b96.jpg)</div><div class="line">注释：以1开头，第二位为3 4 5 7 9 其中一个，以9位（本身1次加重复8次）0-9数字结尾</div><div class="line"></div><div class="line">单词边界</div><div class="line"></div><div class="line">```/\bis\b/</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/^1[34578][0-9]&#123;9&#125;$/</div></pre></td></tr></table></figure>
+<p><img src="https://dn-myg6wstv.qbox.me/1ce345adabe2cc8b2b96.jpg" alt="Generating"><br>注释：以1开头，第二位为3 4 5 7 9 其中一个，以9位（本身1次加重复8次）0-9数字结尾</p>
+<p>单词边界</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/\bis\b/</div></pre></td></tr></table></figure>
 <p><img src="https://dn-myg6wstv.qbox.me/3fd0c8d1c0e6614ddffc.jpg" alt="Generating"></p>
 <p>注释： is前后都是单词的边界，比较晦涩难懂？感受下两者的区别，\b 会方道语法部分讲解<br><img src="https://dn-myg6wstv.qbox.me/a774384e61752ce942a0.jpg" alt="Generating"><br><img src="https://dn-myg6wstv.qbox.me/f536f473724093a5548e.jpg" alt="Generating"><br>URL分组替换</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">```</div><div class="line">看不懂的不要慌语法部分后面会有介绍，这里只是展示利用可视化的图形帮助我们理解正则表达式，可以回来再看木有关系</div><div class="line"></div><div class="line">![Generating](https://dn-myg6wstv.qbox.me/72a64c0f5f5ba4e7eaee.jpg)</div><div class="line"></div><div class="line">正则表达式中括号用来分组，这个时候我们可以通过用$1来获取 group#1的内容</div><div class="line"></div><div class="line">![Generating](https://user-gold-cdn.xitu.io/2016/11/29/1e337fa1b28952765d0f60e834c884ea)</div><div class="line"></div><div class="line">说下这个正则的意义，如果网站用了https，网站引用静态资源也必须是https，否则报错。如果写成 // 会自动识别 http 或者 https</div><div class="line"></div><div class="line">日期匹配与分组替换</div><div class="line"></div><div class="line">```/^\d&#123;4&#125;[/-]\d&#123;2&#125;[/-]\d&#123;2&#125;$/</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/http:(\/\/.+\.jpg)/</div></pre></td></tr></table></figure>
+<p>看不懂的不要慌语法部分后面会有介绍，这里只是展示利用可视化的图形帮助我们理解正则表达式，可以回来再看木有关系</p>
+<p><img src="https://dn-myg6wstv.qbox.me/72a64c0f5f5ba4e7eaee.jpg" alt="Generating"></p>
+<p>正则表达式中括号用来分组，这个时候我们可以通过用$1来获取 group#1的内容</p>
+<p><img src="https://user-gold-cdn.xitu.io/2016/11/29/1e337fa1b28952765d0f60e834c884ea" alt="Generating"></p>
+<p>说下这个正则的意义，如果网站用了https，网站引用静态资源也必须是https，否则报错。如果写成 // 会自动识别 http 或者 https</p>
+<p>日期匹配与分组替换</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/^\d&#123;4&#125;[/-]\d&#123;2&#125;[/-]\d&#123;2&#125;$/</div></pre></td></tr></table></figure>
 <p><img src="https://dn-myg6wstv.qbox.me/eeb1d71e254fde06090e.jpg" alt="Generating"></p>
 <p>这个正则比较复杂，画符念咒的地方太多了，一一分析：</p>
 <p>1.Start of line 是由^生效的表示以此开头</p>
@@ -1703,7 +1729,9 @@
 <p>5.接下来，是 one of 在手机正则里面已经出现了。表示什么都行。只要符合这两个都让通过。</p>
 <h2 id="Js中Regexp对象"><a href="#Js中Regexp对象" class="headerlink" title="Js中Regexp对象"></a>Js中Regexp对象</h2><p>Javascript 通过内置对象RegExp支持正则表达式，有两种方法实例化RegExp对象</p>
 <p>字面量方法</p>
-<figure class="highlight plain"><figcaption><span>reg =/\bis\b/g```</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">构造函数</div><div class="line"></div><div class="line">```const reg = new RegExp(&apos;\\bis\\b&apos;, &apos;g&apos;)</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">const reg =/\bis\b/g</div></pre></td></tr></table></figure>
+<p>构造函数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">const reg = new RegExp(&apos;\\bis\\b&apos;, &apos;g&apos;)</div></pre></td></tr></table></figure>
 <p>注意：第一个参数为正则表达式字符串（注意转译），第二个参数为修饰符，修饰符g代表全局搜索，后面会有详细介绍。</p>
 <h2 id="正则表达式语法"><a href="#正则表达式语法" class="headerlink" title="正则表达式语法"></a>正则表达式语法</h2><p>1 修饰符 （三个 g i m）</p>
 <p>修饰符与其他语法特殊，字面量方法声名的时候放到//后，构造函数声明的时候，作为第二个参数传入。整个正则表达式可以理解为正则表达式规则字符串+修饰符</p>
@@ -1834,7 +1862,7 @@
           <div class="site-state-item site-state-posts">
             <a href="/archives">
               <span class="site-state-item-count">41</span>
-              <span class="site-state-item-name">posts</span>
+              <span class="site-state-item-name">Artikel</span>
             </a>
           </div>
 
@@ -1885,7 +1913,7 @@
 
 
 <div class="powered-by">
-  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
 </div>
 
 <div class="theme-info">

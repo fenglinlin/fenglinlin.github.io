@@ -183,7 +183,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Startseite
+            Home
           </a>
         </li>
       
@@ -193,7 +193,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archiv
+            Archives
           </a>
         </li>
       
@@ -275,7 +275,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <span class="post-meta-item-text">Posted on</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-09T15:31:55+08:00">
                 2016-12-09
               </time>
@@ -319,11 +319,12 @@
 <p>在 Vue.js ，我们使用 v-if 指令实现同样的功能：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;h1 v-if=&quot;ok&quot;&gt;Yes&lt;/h1&gt;</div></pre></td></tr></table></figure>
 <p>也可以用 v-else 添加一个 “else” 块：</p>
-<figure class="highlight plain"><figcaption><span>v-if="ok">Yes</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">```</div><div class="line"></div><div class="line">```&lt;h1 v-else&gt;No&lt;/h1&gt;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;h1 v-if=&quot;ok&quot;&gt;Yes&lt;/h1&gt;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;h1 v-else&gt;No&lt;/h1&gt;</div></pre></td></tr></table></figure>
 <h3 id="template-v-if"><a href="#template-v-if" class="headerlink" title="template v-if"></a>template v-if</h3><p>因为 v-if 是一个指令，需要将它添加到一个元素上。但是如果我们想切换多个元素呢？此时我们可以把一个 \<template> 元素当做包装元素，并在上面使用 v-if，最终的渲染结果不会包含它。</template></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;template v-if=&quot;ok&quot;&gt;</div><div class="line">  		&lt;h1&gt;Title&lt;/h1&gt;</div><div class="line">  		&lt;p&gt;Paragraph 1&lt;/p&gt;</div><div class="line">  		&lt;p&gt;Paragraph 2&lt;/p&gt;</div><div class="line">	&lt;/template&gt;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;template v-if=&quot;ok&quot;&gt;</div><div class="line">  &lt;h1&gt;Title&lt;/h1&gt;</div><div class="line">  &lt;p&gt;Paragraph 1&lt;/p&gt;</div><div class="line">  &lt;p&gt;Paragraph 2&lt;/p&gt;</div><div class="line">&lt;/template&gt;</div></pre></td></tr></table></figure>
 <h3 id="v-else"><a href="#v-else" class="headerlink" title="v-else"></a>v-else</h3><p>可以用 v-else 指令给 v-if 或 v-show 添加一个 “else” 块：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&lt;div v-if=&quot;Math.random() &gt; 0.5&quot;&gt;</div><div class="line"> 		Sorry</div><div class="line">&lt;/div&gt;</div><div class="line">&lt;div v-else&gt;</div><div class="line"> 		Not sorry</div><div class="line">&lt;/div&gt;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&lt;div v-if=&quot;Math.random() &gt; 0.5&quot;&gt;</div><div class="line"> 	Sorry</div><div class="line">&lt;/div&gt;</div><div class="line">&lt;div v-else&gt;</div><div class="line"> 	Not sorry</div><div class="line">&lt;/div&gt;</div></pre></td></tr></table></figure>
 <h3 id="v-show"><a href="#v-show" class="headerlink" title="v-show"></a>v-show</h3><p>另一个根据条件展示元素的选项是 v-show 指令。用法大体上一样：</p>
 <p><code>&lt;h1 v-show=&quot;ok&quot;&gt;Hello!&lt;/h1&gt;</code></p>
 <p>不同的是有 v-show 的元素会始终渲染并保持在 DOM 中。v-show 是简单的切换元素的 CSS 属性 display 。</p>
@@ -408,7 +409,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <span class="post-meta-item-text">Posted on</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-09T15:25:59+08:00">
                 2016-12-09
               </time>
@@ -452,28 +453,22 @@
 </blockquote>
 <h3 id="绑定-HTML-Class"><a href="#绑定-HTML-Class" class="headerlink" title="绑定 HTML Class"></a>绑定 HTML Class</h3><hr>
 <h4 id="对象语法"><a href="#对象语法" class="headerlink" title="对象语法"></a>对象语法</h4><p>我们可以传给 v-bind:class 一个对象，以动态地切换 class 。</p>
-<figure class="highlight plain"><figcaption><span>v-bind:class="&#123; active: isActive &#125;">```</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">上面的语法表示 classactive 的更新将取决于数据属性 isActive 是否为真值 。</div><div class="line"></div><div class="line">我们也可以在对象中传入更多属性用来动态切换多个 class 。此外， v-bind:class 指令可以与普通的 class 属性共存。如下模板:</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><figcaption><span>v-bind:class="&#123; active: isActive &#125;"></span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">```</div><div class="line"></div><div class="line">上面的语法表示 classactive 的更新将取决于数据属性 isActive 是否为真值 。</div><div class="line"></div><div class="line">我们也可以在对象中传入更多属性用来动态切换多个 class 。此外， v-bind:class 指令可以与普通的 class 属性共存。如下模板:</div></pre></td></tr></table></figure>
 <pre><code>&lt;div class=&quot;static&quot;
      v-bind:class=&quot;{ active: isActive, &apos;text-danger&apos;:     hasError }&quot;&gt;
 &lt;/div&gt;
-</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">如下 data:</div></pre></td></tr></table></figure>
-<p>data: {<br>  isActive: true,<br>  hasError: false<br>}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">渲染为:</div><div class="line"></div><div class="line">```&lt;div class=&quot;static active&quot;&gt;&lt;/div&gt;</div></pre></td></tr></table></figure></p>
+</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">如下 data:</div></pre></td></tr></table></figure>
+<p>data: {<br>  isActive: true,<br>  hasError: false<br>}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">渲染为:</div><div class="line"></div><div class="line"></div><div class="line">```&lt;div class=&quot;static active&quot;&gt;&lt;/div&gt;</div></pre></td></tr></table></figure></p>
 <p>当 isActive 或者 hasError 变化时，class 列表将相应地更新。例如，如果 hasError 的值为 true ， class列表将变为 “static active text-danger”。</p>
 <p>你也可以直接绑定数据里的一个对象：</p>
-<figure class="highlight plain"><figcaption><span>v-bind:class="classObject"></span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">```</div></pre></td></tr></table></figure>
-<p>data: {<br>  classObject: {<br>    active: true,<br>    ‘text-danger’: false<br>  }<br>}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">渲染的结果和上面一样。我们也可以在这里绑定返回对象的计算属性。这是一个常用且强大的模式：</div></pre></td></tr></table></figure></p>
-<pre><code>&lt;div v-bind:class=&quot;classObject&quot;&gt;&lt;/div&gt;
-data: {
-      isActive: true,
-      error: null
-},
-</code></pre><p>computed: {<br>  classObject: function () {<br>    return {<br>      active: this.isActive &amp;&amp; !this.error,<br>      ‘text-danger’: this.error &amp;&amp; this.error.type === ‘fatal’,<br>    }<br>  }<br>}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">### 数组语法</div><div class="line"></div><div class="line">我们可以把一个数组传给 v-bind:class ，以应用一个 class 列表：</div><div class="line"></div><div class="line">```&lt;div v-bind:class=&quot;[activeClass, errorClass]&quot;&gt;</div></pre></td></tr></table></figure></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">data: &#123;</div><div class="line">  activeClass: &apos;active&apos;,</div><div class="line">  errorClass: &apos;text-danger&apos;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>渲染为:</p>
-<figure class="highlight plain"><figcaption><span>class="active text-danger">```</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">如果你也想根据条件切换列表中的 class ，可以用三元表达式：</div><div class="line"></div><div class="line">```&lt;div v-bind:class=&quot;[isActive ? activeClass : &apos;&apos;, errorClass]&quot;&gt;</div></pre></td></tr></table></figure>
-<p>此例始终添加 errorClass ，但是只有在 isActive 是 true 时添加 activeClass 。</p>
-<p>不过，当有多个条件 class 时这样写有些繁琐。可以在数组语法中使用对象语法：</p>
-<p><code>&lt;div v-bind:class=&quot;[{ active: isActive }, errorClass]&quot;&gt;</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&lt;div v-bind:class=&quot;classObject&quot;&gt;&lt;/div&gt;</div><div class="line">data: &#123;</div><div class="line"> classObject: &#123;</div><div class="line">   active: true,</div><div class="line">   &apos;text-danger&apos;: false</div><div class="line"> &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>渲染的结果和上面一样。我们也可以在这里绑定返回对象的计算属性。这是一个常用且强大的模式：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"> &lt;div v-bind:class=&quot;classObject&quot;&gt;&lt;/div&gt;</div><div class="line">  data: &#123;</div><div class="line">  	 isActive: true,</div><div class="line">  	  error: null</div><div class="line">  &#125;,</div><div class="line">computed: &#123;</div><div class="line">  classObject: function () &#123;</div><div class="line">    return &#123;</div><div class="line">      active: this.isActive &amp;&amp; !this.error,</div><div class="line">      &apos;text-danger&apos;: this.error &amp;&amp; this.error.type === &apos;fatal&apos;,</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="数组语法"><a href="#数组语法" class="headerlink" title="数组语法"></a>数组语法</h3><p>我们可以把一个数组传给 v-bind:class ，以应用一个 class 列表：</p>
+<figure class="highlight plain"><figcaption><span>v-bind:class="[activeClass, errorClass]"></span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">```</div></pre></td></tr></table></figure>
+<p>data: {<br>  activeClass: ‘active’,<br>  errorClass: ‘text-danger’<br>}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">渲染为:</div><div class="line"></div><div class="line">``` &lt;div class=&quot;active text-danger&quot;&gt;&lt;/div&gt;</div></pre></td></tr></table></figure></p>
+<p>如果你也想根据条件切换列表中的 class ，可以用三元表达式：</p>
+<figure class="highlight plain"><figcaption><span>v-bind:class="[isActive ? activeClass : '', errorClass]"></span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">```</div><div class="line"></div><div class="line">此例始终添加 errorClass ，但是只有在 isActive 是 true 时添加 activeClass 。</div><div class="line"></div><div class="line">不过，当有多个条件 class 时这样写有些繁琐。可以在数组语法中使用对象语法：</div><div class="line"></div><div class="line">```&lt;div v-bind:class=&quot;[&#123; active: isActive &#125;, errorClass]&quot;&gt;</div></pre></td></tr></table></figure>
 
           
         
@@ -551,7 +546,7 @@ data: {
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <span class="post-meta-item-text">Posted on</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-09T15:20:03+08:00">
                 2016-12-09
               </time>
@@ -593,16 +588,16 @@ data: {
             <blockquote>
 <p>指令（Directives）是带有 v- 前缀的特殊属性。指令属性的值预期是单一 JavaScript 表达式（除了 v-for，之后再讨论）。指令的职责就是当其表达式的值改变时相应地将某些行为应用到 DOM 上。让我们回顾一下在介绍里的例子：</p>
 </blockquote>
-<figure class="highlight plain"><figcaption><span>v-if="seen">Now you see me<p></p></span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">```</div><div class="line"></div><div class="line">这里， v-if 指令将根据表达式 seen 的值的真假来移除/插入 \&lt;p&gt; 元素。</div><div class="line">### 参数</div><div class="line"></div><div class="line">一些指令能接受一个“参数”，在指令后以冒号指明。例如， v-bind 指令被用来响应地更新 HTML 属性：</div><div class="line"></div><div class="line">```&lt;a v-bind:href=&quot;url&quot;&gt;&lt;/a&gt;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><figcaption><span>v-if="seen">Now you see me<p></p></span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">```</div><div class="line"></div><div class="line">这里， v-if 指令将根据表达式 seen 的值的真假来移除/插入 \&lt;p&gt; 元素。</div><div class="line"></div><div class="line">### 参数</div><div class="line"></div><div class="line">一些指令能接受一个“参数”，在指令后以冒号指明。例如， v-bind 指令被用来响应地更新 HTML 属性：</div><div class="line"></div><div class="line">```&lt;a v-bind:href=&quot;url&quot;&gt;&lt;/a&gt;</div></pre></td></tr></table></figure>
 <p>在这里 href 是参数，告知 v-bind 指令将该元素的 href 属性与表达式 url 的值绑定。</p>
 <p>另一个例子是 v-on 指令，它用于监听 DOM 事件：</p>
 <figure class="highlight plain"><figcaption><span>v-on:click="doSomething"></span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">```</div><div class="line"></div><div class="line">在这里参数是监听的事件名。我们也会更详细地讨论事件处理。</div><div class="line"></div><div class="line">### 修饰符</div><div class="line"></div><div class="line">修饰符（Modifiers）是以半角句号 . 指明的特殊后缀，用于指出一个指定应该以特殊方式绑定。例如，.prevent 修饰符告诉 v-on 指令对于触发的事件调用 event.preventDefault()：</div><div class="line"></div><div class="line">```&lt;form v-on:submit.prevent=&quot;onSubmit&quot;&gt;&lt;/form&gt;</div></pre></td></tr></table></figure>
 <p>之后当我们更深入地了解 v-on 与 v-model时，会看到更多修饰符的使用。</p>
 <h3 id="缩写"><a href="#缩写" class="headerlink" title="缩写"></a>缩写</h3><p>v- 前缀在模板中是作为一个标示 Vue 特殊属性的明显标识。当你使用 Vue.js 为现有的标记添加动态行为时，它会很有用，但对于一些经常使用的指令来说有点繁琐。同时，当搭建 Vue.js 管理所有模板的 SPA 时，v- 前缀也变得没那么重要了。因此，Vue.js 为两个最为常用的指令提供了特别的缩写：</p>
-<h4 id="v-bind-缩写"><a href="#v-bind-缩写" class="headerlink" title="v-bind 缩写"></a>v-bind 缩写</h4><figure class="highlight plain"><figcaption><span>完整语法 -->```</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">```&lt;a v-bind:href=&quot;url&quot;&gt;&lt;/a&gt;</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><figcaption><span>缩写 -->```</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">```&lt;a :href=&quot;url&quot;&gt;&lt;/a&gt;</div></pre></td></tr></table></figure>
-<h4 id="v-on-缩写"><a href="#v-on-缩写" class="headerlink" title="v-on 缩写"></a>v-on 缩写</h4><figure class="highlight plain"><figcaption><span>完整语法 -->```</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">```&lt;a v-on:click=&quot;doSomething&quot;&gt;&lt;/a&gt;</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><figcaption><span>缩写 -->```</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">```&lt;a @click=&quot;doSomething&quot;&gt;&lt;/a&gt;</div></pre></td></tr></table></figure>
+<h4 id="v-bind-缩写"><a href="#v-bind-缩写" class="headerlink" title="v-bind 缩写"></a>v-bind 缩写</h4><figure class="highlight plain"><figcaption><span>完整语法 --></span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">```</div><div class="line"></div><div class="line">```&lt;a v-bind:href=&quot;url&quot;&gt;&lt;/a&gt;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><figcaption><span>缩写 --></span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">```</div><div class="line"></div><div class="line">```&lt;a :href=&quot;url&quot;&gt;&lt;/a&gt;</div></pre></td></tr></table></figure>
+<h4 id="v-on-缩写"><a href="#v-on-缩写" class="headerlink" title="v-on 缩写"></a>v-on 缩写</h4><figure class="highlight plain"><figcaption><span>完整语法 --></span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">```</div><div class="line"></div><div class="line">```&lt;a v-on:click=&quot;doSomething&quot;&gt;&lt;/a&gt;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><figcaption><span>缩写 --></span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">```</div><div class="line"></div><div class="line">```&lt;a @click=&quot;doSomething&quot;&gt;&lt;/a&gt;</div></pre></td></tr></table></figure>
 <p>它们看起来可能与普通的 HTML 略有不同，但 : 与 @ 对于属性名来说都是合法字符，在所有支持 Vue.js 的浏览器都能被正确地解析。而且，它们不会出现在最终渲染的标记。缩写语法是完全可选的，但随着你更深入地了解它们的作用，你会庆幸拥有它们。</p>
 
           
@@ -681,7 +676,7 @@ data: {
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <span class="post-meta-item-text">Posted on</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-09T15:14:24+08:00">
                 2016-12-09
               </time>
@@ -821,7 +816,7 @@ data: {
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <span class="post-meta-item-text">Posted on</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-08T17:14:34+08:00">
                 2016-12-08
               </time>
@@ -974,7 +969,7 @@ data: {
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <span class="post-meta-item-text">Posted on</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-08T17:02:21+08:00">
                 2016-12-08
               </time>
@@ -1149,7 +1144,7 @@ height: 100%;
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <span class="post-meta-item-text">Posted on</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-08T16:45:13+08:00">
                 2016-12-08
               </time>
@@ -1275,7 +1270,7 @@ height: 100%;
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <span class="post-meta-item-text">Posted on</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-08T09:20:36+08:00">
                 2016-12-08
               </time>
@@ -1410,7 +1405,7 @@ height: 100%;
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <span class="post-meta-item-text">Posted on</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-05T20:42:55+08:00">
                 2016-12-05
               </time>
@@ -1560,7 +1555,7 @@ height: 100%;
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <span class="post-meta-item-text">Posted on</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-03T12:00:24+08:00">
                 2016-12-03
               </time>
@@ -1730,7 +1725,7 @@ height: 100%;
           <div class="site-state-item site-state-posts">
             <a href="/archives">
               <span class="site-state-item-count">41</span>
-              <span class="site-state-item-name">Artikel</span>
+              <span class="site-state-item-name">posts</span>
             </a>
           </div>
 
@@ -1781,7 +1776,7 @@ height: 100%;
 
 
 <div class="powered-by">
-  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
 </div>
 
 <div class="theme-info">

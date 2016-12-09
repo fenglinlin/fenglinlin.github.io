@@ -86,20 +86,23 @@
 
 <meta name="description" content="指令（Directives）是带有 v- 前缀的特殊属性。指令属性的值预期是单一 JavaScript 表达式（除了 v-for，之后再讨论）。指令的职责就是当其表达式的值改变时相应地将某些行为应用到 DOM 上。让我们回顾一下在介绍里的例子：
 
-v-if=&quot;seen&quot;&amp;gt;Now you see me123456789```这里， v-if 指令将根据表达式 seen 的值的真假来移除/插入 \&amp;">
+1&amp;lt;p v-if=&amp;quot;seen&amp;quot;&amp;gt;Now you see me&amp;lt;/p&amp;gt;
+这里， v-if 指令将根据表达式">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Vue模板语法之指令">
 <meta property="og:url" content="http://yoursite.com/2016/12/09/Vue模板语法之指令/index.html">
 <meta property="og:site_name" content="Feng~Lin">
 <meta property="og:description" content="指令（Directives）是带有 v- 前缀的特殊属性。指令属性的值预期是单一 JavaScript 表达式（除了 v-for，之后再讨论）。指令的职责就是当其表达式的值改变时相应地将某些行为应用到 DOM 上。让我们回顾一下在介绍里的例子：
 
-v-if=&quot;seen&quot;&amp;gt;Now you see me123456789```这里， v-if 指令将根据表达式 seen 的值的真假来移除/插入 \&amp;">
-<meta property="og:updated_time" content="2016-12-09T08:15:34.000Z">
+1&amp;lt;p v-if=&amp;quot;seen&amp;quot;&amp;gt;Now you see me&amp;lt;/p&amp;gt;
+这里， v-if 指令将根据表达式">
+<meta property="og:updated_time" content="2016-12-09T08:19:49.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Vue模板语法之指令">
 <meta name="twitter:description" content="指令（Directives）是带有 v- 前缀的特殊属性。指令属性的值预期是单一 JavaScript 表达式（除了 v-for，之后再讨论）。指令的职责就是当其表达式的值改变时相应地将某些行为应用到 DOM 上。让我们回顾一下在介绍里的例子：
 
-v-if=&quot;seen&quot;&amp;gt;Now you see me123456789```这里， v-if 指令将根据表达式 seen 的值的真假来移除/插入 \&amp;">
+1&amp;lt;p v-if=&amp;quot;seen&amp;quot;&amp;gt;Now you see me&amp;lt;/p&amp;gt;
+这里， v-if 指令将根据表达式">
 
 
 
@@ -191,7 +194,7 @@ v-if=&quot;seen&quot;&amp;gt;Now you see me123456789```这里， v-if 指令将�
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Startseite
+            Home
           </a>
         </li>
       
@@ -201,7 +204,7 @@ v-if=&quot;seen&quot;&amp;gt;Now you see me123456789```这里， v-if 指令将�
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archiv
+            Archives
           </a>
         </li>
       
@@ -280,7 +283,7 @@ v-if=&quot;seen&quot;&amp;gt;Now you see me123456789```这里， v-if 指令将�
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <span class="post-meta-item-text">Posted on</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-09T15:20:03+08:00">
                 2016-12-09
               </time>
@@ -320,16 +323,20 @@ v-if=&quot;seen&quot;&amp;gt;Now you see me123456789```这里， v-if 指令将�
         <blockquote>
 <p>指令（Directives）是带有 v- 前缀的特殊属性。指令属性的值预期是单一 JavaScript 表达式（除了 v-for，之后再讨论）。指令的职责就是当其表达式的值改变时相应地将某些行为应用到 DOM 上。让我们回顾一下在介绍里的例子：</p>
 </blockquote>
-<figure class="highlight plain"><figcaption><span>v-if="seen">Now you see me<p></p></span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">```</div><div class="line"></div><div class="line">这里， v-if 指令将根据表达式 seen 的值的真假来移除/插入 \&lt;p&gt; 元素。</div><div class="line"></div><div class="line">### 参数</div><div class="line"></div><div class="line">一些指令能接受一个“参数”，在指令后以冒号指明。例如， v-bind 指令被用来响应地更新 HTML 属性：</div><div class="line"></div><div class="line">```&lt;a v-bind:href=&quot;url&quot;&gt;&lt;/a&gt;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;p v-if=&quot;seen&quot;&gt;Now you see me&lt;/p&gt;</div></pre></td></tr></table></figure>
+<p>这里， v-if 指令将根据表达式 seen 的值的真假来移除/插入 \</p><p> 元素。</p>
+<h3 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h3><p>一些指令能接受一个“参数”，在指令后以冒号指明。例如， v-bind 指令被用来响应地更新 HTML 属性：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;a v-bind:href=&quot;url&quot;&gt;&lt;/a&gt;</div></pre></td></tr></table></figure>
 <p>在这里 href 是参数，告知 v-bind 指令将该元素的 href 属性与表达式 url 的值绑定。</p>
 <p>另一个例子是 v-on 指令，它用于监听 DOM 事件：</p>
-<figure class="highlight plain"><figcaption><span>v-on:click="doSomething"></span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">```</div><div class="line"></div><div class="line">在这里参数是监听的事件名。我们也会更详细地讨论事件处理。</div><div class="line"></div><div class="line">### 修饰符</div><div class="line"></div><div class="line">修饰符（Modifiers）是以半角句号 . 指明的特殊后缀，用于指出一个指定应该以特殊方式绑定。例如，.prevent 修饰符告诉 v-on 指令对于触发的事件调用 event.preventDefault()：</div><div class="line"></div><div class="line">```&lt;form v-on:submit.prevent=&quot;onSubmit&quot;&gt;&lt;/form&gt;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;a v-on:click=&quot;doSomething&quot;&gt;</div></pre></td></tr></table></figure>
+<p>在这里参数是监听的事件名。我们也会更详细地讨论事件处理。</p>
+<h3 id="修饰符"><a href="#修饰符" class="headerlink" title="修饰符"></a>修饰符</h3><p>修饰符（Modifiers）是以半角句号 . 指明的特殊后缀，用于指出一个指定应该以特殊方式绑定。例如，.prevent 修饰符告诉 v-on 指令对于触发的事件调用 event.preventDefault()：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;form v-on:submit.prevent=&quot;onSubmit&quot;&gt;&lt;/form&gt;</div></pre></td></tr></table></figure>
 <p>之后当我们更深入地了解 v-on 与 v-model时，会看到更多修饰符的使用。</p>
 <h3 id="缩写"><a href="#缩写" class="headerlink" title="缩写"></a>缩写</h3><p>v- 前缀在模板中是作为一个标示 Vue 特殊属性的明显标识。当你使用 Vue.js 为现有的标记添加动态行为时，它会很有用，但对于一些经常使用的指令来说有点繁琐。同时，当搭建 Vue.js 管理所有模板的 SPA 时，v- 前缀也变得没那么重要了。因此，Vue.js 为两个最为常用的指令提供了特别的缩写：</p>
-<h4 id="v-bind-缩写"><a href="#v-bind-缩写" class="headerlink" title="v-bind 缩写"></a>v-bind 缩写</h4><figure class="highlight plain"><figcaption><span>完整语法 --></span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">```</div><div class="line"></div><div class="line">```&lt;a v-bind:href=&quot;url&quot;&gt;&lt;/a&gt;</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><figcaption><span>缩写 --></span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">```</div><div class="line"></div><div class="line">```&lt;a :href=&quot;url&quot;&gt;&lt;/a&gt;</div></pre></td></tr></table></figure>
-<h4 id="v-on-缩写"><a href="#v-on-缩写" class="headerlink" title="v-on 缩写"></a>v-on 缩写</h4><figure class="highlight plain"><figcaption><span>完整语法 --></span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">```</div><div class="line"></div><div class="line">```&lt;a v-on:click=&quot;doSomething&quot;&gt;&lt;/a&gt;</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><figcaption><span>缩写 --></span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">```</div><div class="line"></div><div class="line">```&lt;a @click=&quot;doSomething&quot;&gt;&lt;/a&gt;</div></pre></td></tr></table></figure>
+<h4 id="v-bind-缩写"><a href="#v-bind-缩写" class="headerlink" title="v-bind 缩写"></a>v-bind 缩写</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&lt;!-- 完整语法 --&gt;</div><div class="line">&lt;a v-bind:href=&quot;url&quot;&gt;&lt;/a&gt;</div><div class="line">&lt;!-- 缩写 --&gt;</div><div class="line">&lt;a :href=&quot;url&quot;&gt;&lt;/a&gt;</div></pre></td></tr></table></figure>
+<h4 id="v-on-缩写"><a href="#v-on-缩写" class="headerlink" title="v-on 缩写"></a>v-on 缩写</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&lt;!-- 完整语法 --&gt;</div><div class="line">&lt;a v-on:click=&quot;doSomething&quot;&gt;&lt;/a&gt;</div><div class="line">&lt;!-- 缩写 --&gt;</div><div class="line">&lt;a @click=&quot;doSomething&quot;&gt;&lt;/a&gt;</div></pre></td></tr></table></figure>
 <p>它们看起来可能与普通的 HTML 略有不同，但 : 与 @ 对于属性名来说都是合法字符，在所有支持 Vue.js 的浏览器都能被正确地解析。而且，它们不会出现在最终渲染的标记。缩写语法是完全可选的，但随着你更深入地了解它们的作用，你会庆幸拥有它们。</p>
 
       
@@ -418,10 +425,10 @@ v-if=&quot;seen&quot;&amp;gt;Now you see me123456789```这里， v-if 指令将�
       
         <ul class="sidebar-nav motion-element">
           <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            Inhaltsverzeichnis
+            Table of Contents
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview">
-            Übersicht
+            Overview
           </li>
         </ul>
       
@@ -438,7 +445,7 @@ v-if=&quot;seen&quot;&amp;gt;Now you see me123456789```这里， v-if 指令将�
           <div class="site-state-item site-state-posts">
             <a href="/archives">
               <span class="site-state-item-count">41</span>
-              <span class="site-state-item-name">Artikel</span>
+              <span class="site-state-item-name">posts</span>
             </a>
           </div>
 
@@ -475,7 +482,7 @@ v-if=&quot;seen&quot;&amp;gt;Now you see me123456789```这里， v-if 指令将�
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#缩写"><span class="nav-number">1.</span> <span class="nav-text">缩写</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#v-bind-缩写"><span class="nav-number">1.1.</span> <span class="nav-text">v-bind 缩写</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#v-on-缩写"><span class="nav-number">1.2.</span> <span class="nav-text">v-on 缩写</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#参数"><span class="nav-number">1.</span> <span class="nav-text">参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#修饰符"><span class="nav-number">2.</span> <span class="nav-text">修饰符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#缩写"><span class="nav-number">3.</span> <span class="nav-text">缩写</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#v-bind-缩写"><span class="nav-number">3.1.</span> <span class="nav-text">v-bind 缩写</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#v-on-缩写"><span class="nav-number">3.2.</span> <span class="nav-text">v-on 缩写</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -505,7 +512,7 @@ v-if=&quot;seen&quot;&amp;gt;Now you see me123456789```这里， v-if 指令将�
 
 
 <div class="powered-by">
-  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
 </div>
 
 <div class="theme-info">

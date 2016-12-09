@@ -183,7 +183,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Startseite
+            Home
           </a>
         </li>
       
@@ -193,7 +193,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archiv
+            Archives
           </a>
         </li>
       
@@ -275,7 +275,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <span class="post-meta-item-text">Posted on</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-09T15:31:55+08:00">
                 2016-12-09
               </time>
@@ -409,7 +409,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <span class="post-meta-item-text">Posted on</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-09T15:25:59+08:00">
                 2016-12-09
               </time>
@@ -553,7 +553,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <span class="post-meta-item-text">Posted on</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-09T15:20:03+08:00">
                 2016-12-09
               </time>
@@ -595,16 +595,20 @@
             <blockquote>
 <p>指令（Directives）是带有 v- 前缀的特殊属性。指令属性的值预期是单一 JavaScript 表达式（除了 v-for，之后再讨论）。指令的职责就是当其表达式的值改变时相应地将某些行为应用到 DOM 上。让我们回顾一下在介绍里的例子：</p>
 </blockquote>
-<figure class="highlight plain"><figcaption><span>v-if="seen">Now you see me<p></p></span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">```</div><div class="line"></div><div class="line">这里， v-if 指令将根据表达式 seen 的值的真假来移除/插入 \&lt;p&gt; 元素。</div><div class="line"></div><div class="line">### 参数</div><div class="line"></div><div class="line">一些指令能接受一个“参数”，在指令后以冒号指明。例如， v-bind 指令被用来响应地更新 HTML 属性：</div><div class="line"></div><div class="line">```&lt;a v-bind:href=&quot;url&quot;&gt;&lt;/a&gt;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;p v-if=&quot;seen&quot;&gt;Now you see me&lt;/p&gt;</div></pre></td></tr></table></figure>
+<p>这里， v-if 指令将根据表达式 seen 的值的真假来移除/插入 \</p><p> 元素。</p>
+<h3 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h3><p>一些指令能接受一个“参数”，在指令后以冒号指明。例如， v-bind 指令被用来响应地更新 HTML 属性：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;a v-bind:href=&quot;url&quot;&gt;&lt;/a&gt;</div></pre></td></tr></table></figure>
 <p>在这里 href 是参数，告知 v-bind 指令将该元素的 href 属性与表达式 url 的值绑定。</p>
 <p>另一个例子是 v-on 指令，它用于监听 DOM 事件：</p>
-<figure class="highlight plain"><figcaption><span>v-on:click="doSomething"></span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">```</div><div class="line"></div><div class="line">在这里参数是监听的事件名。我们也会更详细地讨论事件处理。</div><div class="line"></div><div class="line">### 修饰符</div><div class="line"></div><div class="line">修饰符（Modifiers）是以半角句号 . 指明的特殊后缀，用于指出一个指定应该以特殊方式绑定。例如，.prevent 修饰符告诉 v-on 指令对于触发的事件调用 event.preventDefault()：</div><div class="line"></div><div class="line">```&lt;form v-on:submit.prevent=&quot;onSubmit&quot;&gt;&lt;/form&gt;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;a v-on:click=&quot;doSomething&quot;&gt;</div></pre></td></tr></table></figure>
+<p>在这里参数是监听的事件名。我们也会更详细地讨论事件处理。</p>
+<h3 id="修饰符"><a href="#修饰符" class="headerlink" title="修饰符"></a>修饰符</h3><p>修饰符（Modifiers）是以半角句号 . 指明的特殊后缀，用于指出一个指定应该以特殊方式绑定。例如，.prevent 修饰符告诉 v-on 指令对于触发的事件调用 event.preventDefault()：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;form v-on:submit.prevent=&quot;onSubmit&quot;&gt;&lt;/form&gt;</div></pre></td></tr></table></figure>
 <p>之后当我们更深入地了解 v-on 与 v-model时，会看到更多修饰符的使用。</p>
 <h3 id="缩写"><a href="#缩写" class="headerlink" title="缩写"></a>缩写</h3><p>v- 前缀在模板中是作为一个标示 Vue 特殊属性的明显标识。当你使用 Vue.js 为现有的标记添加动态行为时，它会很有用，但对于一些经常使用的指令来说有点繁琐。同时，当搭建 Vue.js 管理所有模板的 SPA 时，v- 前缀也变得没那么重要了。因此，Vue.js 为两个最为常用的指令提供了特别的缩写：</p>
-<h4 id="v-bind-缩写"><a href="#v-bind-缩写" class="headerlink" title="v-bind 缩写"></a>v-bind 缩写</h4><figure class="highlight plain"><figcaption><span>完整语法 --></span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">```</div><div class="line"></div><div class="line">```&lt;a v-bind:href=&quot;url&quot;&gt;&lt;/a&gt;</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><figcaption><span>缩写 --></span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">```</div><div class="line"></div><div class="line">```&lt;a :href=&quot;url&quot;&gt;&lt;/a&gt;</div></pre></td></tr></table></figure>
-<h4 id="v-on-缩写"><a href="#v-on-缩写" class="headerlink" title="v-on 缩写"></a>v-on 缩写</h4><figure class="highlight plain"><figcaption><span>完整语法 --></span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">```</div><div class="line"></div><div class="line">```&lt;a v-on:click=&quot;doSomething&quot;&gt;&lt;/a&gt;</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><figcaption><span>缩写 --></span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">```</div><div class="line"></div><div class="line">```&lt;a @click=&quot;doSomething&quot;&gt;&lt;/a&gt;</div></pre></td></tr></table></figure>
+<h4 id="v-bind-缩写"><a href="#v-bind-缩写" class="headerlink" title="v-bind 缩写"></a>v-bind 缩写</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&lt;!-- 完整语法 --&gt;</div><div class="line">&lt;a v-bind:href=&quot;url&quot;&gt;&lt;/a&gt;</div><div class="line">&lt;!-- 缩写 --&gt;</div><div class="line">&lt;a :href=&quot;url&quot;&gt;&lt;/a&gt;</div></pre></td></tr></table></figure>
+<h4 id="v-on-缩写"><a href="#v-on-缩写" class="headerlink" title="v-on 缩写"></a>v-on 缩写</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&lt;!-- 完整语法 --&gt;</div><div class="line">&lt;a v-on:click=&quot;doSomething&quot;&gt;&lt;/a&gt;</div><div class="line">&lt;!-- 缩写 --&gt;</div><div class="line">&lt;a @click=&quot;doSomething&quot;&gt;&lt;/a&gt;</div></pre></td></tr></table></figure>
 <p>它们看起来可能与普通的 HTML 略有不同，但 : 与 @ 对于属性名来说都是合法字符，在所有支持 Vue.js 的浏览器都能被正确地解析。而且，它们不会出现在最终渲染的标记。缩写语法是完全可选的，但随着你更深入地了解它们的作用，你会庆幸拥有它们。</p>
 
           
@@ -683,7 +687,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <span class="post-meta-item-text">Posted on</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-09T15:14:24+08:00">
                 2016-12-09
               </time>
@@ -726,15 +730,23 @@
 <p>在底层的实现上， Vue 将模板编译成虚拟 DOM 渲染函数。结合响应系统，在应用状态改变时， Vue 能够智能地计算出重新渲染组件的最小代价并应用到 DOM 操作上。</p>
 <p>如果你熟悉虚拟 DOM 并且偏爱 JavaScript 的原始力量，你也可以不用模板，直接写渲染（render）函数，使用可选的 JSX 语法。</p>
 <h3 id="插值"><a href="#插值" class="headerlink" title="插值"></a>插值</h3><h4 id="文本"><a href="#文本" class="headerlink" title="文本"></a>文本</h4><p>数据绑定最常见的形式就是使用 “Mustache” 语法（双大括号）的文本插值：</p>
-<figure class="highlight plain"><figcaption><span>&#123;&#123; msg &#125;&#125;</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">```</div><div class="line"></div><div class="line">Mustache 标签将会被替代为对应数据对象上 msg 属性的值。无论何时，绑定的数据对象上 msg 属性发生了改变，插值处的内容都会更新。</div><div class="line"></div><div class="line">通过使用 v-once 指令，你也能执行一次性地插值，当数据改变时，插值处的内容不会更新。但请留心这会影响到该节点上所有的数据绑定：</div></pre></td></tr></table></figure>
-<p><span v-once="">This will never change: </span><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">被插入的内容都会被当做 HTML —— 数据绑定会被忽略。注意，你不能使用 v-html 来复合局部模板，因为 Vue 不是基于字符串的模板引擎。组件更适合担任 UI 重用与复合的基本单元。</div><div class="line"></div><div class="line">#### 纯 HTML</div><div class="line"></div><div class="line">双大括号会将数据解释为纯文本，而非 HTML 。为了输出真正的 HTML ，你需要使用 v-html 指令：</div><div class="line"></div><div class="line">```&lt;div v-html=&quot;rawHtml&quot;&gt;&lt;/div&gt;</div></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;span&gt;Message: &#123;&#123; msg &#125;&#125;&lt;/span&gt;</div></pre></td></tr></table></figure>
+<p>Mustache 标签将会被替代为对应数据对象上 msg 属性的值。无论何时，绑定的数据对象上 msg 属性发生了改变，插值处的内容都会更新。</p>
+<p>通过使用 v-once 指令，你也能执行一次性地插值，当数据改变时，插值处的内容不会更新。但请留心这会影响到该节点上所有的数据绑定：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;span v-once&gt;This will never change: &#123;&#123; msg &#125;&#125;&lt;/span&gt;</div></pre></td></tr></table></figure>
+<p>被插入的内容都会被当做 HTML —— 数据绑定会被忽略。注意，你不能使用 v-html 来复合局部模板，因为 Vue 不是基于字符串的模板引擎。组件更适合担任 UI 重用与复合的基本单元。</p>
+<h4 id="纯-HTML"><a href="#纯-HTML" class="headerlink" title="纯 HTML"></a>纯 HTML</h4><p>双大括号会将数据解释为纯文本，而非 HTML 。为了输出真正的 HTML ，你需要使用 v-html 指令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;div v-html=&quot;rawHtml&quot;&gt;&lt;/div&gt;</div></pre></td></tr></table></figure>
 <p>被插入的内容都会被当做 HTML —— 数据绑定会被忽略。注意，你不能使用 v-html 来复合局部模板，因为 Vue 不是基于字符串的模板引擎。组件更适合担任 UI 重用与复合的基本单元。</p>
 <h4 id="属性"><a href="#属性" class="headerlink" title="属性"></a>属性</h4><p>Mustache 不能在 HTML 属性中使用，应使用 v-bind 指令：</p>
-<figure class="highlight plain"><figcaption><span>v-bind:id="dynamicId"></span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">```</div><div class="line"></div><div class="line">这对布尔值的属性也有效 —— 如果条件被求值为 false 的话该属性会被移除：</div><div class="line"></div><div class="line">```&lt;button v-bind:disabled=&quot;someDynamicCondition&quot;&gt;Button&lt;/button&gt;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;div v-bind:id=&quot;dynamicId&quot;&gt;&lt;/div&gt;</div></pre></td></tr></table></figure>
+<p>这对布尔值的属性也有效 —— 如果条件被求值为 false 的话该属性会被移除：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;button v-bind:disabled=&quot;someDynamicCondition&quot;&gt;Button&lt;/button&gt;</div></pre></td></tr></table></figure>
 <h3 id="属性-1"><a href="#属性-1" class="headerlink" title="属性"></a>属性</h3><p>Mustache 不能在 HTML 属性中使用，应使用 v-bind 指令：</p>
-<figure class="highlight plain"><figcaption><span>v-bind:id="dynamicId"></span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">```</div><div class="line"></div><div class="line">这对布尔值的属性也有效 —— 如果条件被求值为 false 的话该属性会被移除：</div><div class="line"></div><div class="line">```&lt;button v-bind:disabled=&quot;someDynamicCondition&quot;&gt;Button&lt;/button&gt;</div></pre></td></tr></table></figure>
-<p>使用 JavaScript 表达式</p>
-<p>迄今为止，在我们的模板中，我们一直都只绑定简单的属性键值。但实际上，对于所有的数据绑定， Vue.js 都提供了完全的 JavaScript 表达式支持。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;div v-bind:id=&quot;dynamicId&quot;&gt;&lt;/div&gt;</div></pre></td></tr></table></figure>
+<p>这对布尔值的属性也有效 —— 如果条件被求值为 false 的话该属性会被移除：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;button v-bind:disabled=&quot;someDynamicCondition&quot;&gt;Button&lt;/button&gt;</div></pre></td></tr></table></figure>
+<h3 id="使用-JavaScript-表达式"><a href="#使用-JavaScript-表达式" class="headerlink" title="使用 JavaScript 表达式"></a>使用 JavaScript 表达式</h3><p>迄今为止，在我们的模板中，我们一直都只绑定简单的属性键值。但实际上，对于所有的数据绑定， Vue.js 都提供了完全的 JavaScript 表达式支持。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&#123;&#123; number + 1 &#125;&#125;</div><div class="line">&#123;&#123; ok ? &apos;YES&apos; : &apos;NO&apos; &#125;&#125;</div><div class="line">&#123;&#123; message.split(&apos;&apos;).reverse().join(&apos;&apos;) &#125;&#125;</div><div class="line">&lt;div v-bind:id=&quot;&apos;list-&apos; + id&quot;&gt;&lt;/div&gt;</div></pre></td></tr></table></figure>
 <p>这些表达式会在所属 Vue 实例的数据作用域下作为 JavaScript 被解析。有个限制就是，每个绑定都只能包含单个表达式，所以下面的例子都不会生效。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&lt;!-- 这是语句，不是表达式 --&gt;</div><div class="line"> &#123; var a = 1 &#125;&#125;</div><div class="line">    &lt;!-- 流控制也不会生效，请使用三元表达式 --&gt;</div><div class="line"> &#123;&#123; if (ok) &#123; return message &#125; &#125;&#125;</div></pre></td></tr></table></figure>
@@ -823,7 +835,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <span class="post-meta-item-text">Posted on</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-08T17:14:34+08:00">
                 2016-12-08
               </time>
@@ -976,7 +988,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <span class="post-meta-item-text">Posted on</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-08T17:02:21+08:00">
                 2016-12-08
               </time>
@@ -1151,7 +1163,7 @@ height: 100%;
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <span class="post-meta-item-text">Posted on</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-08T16:45:13+08:00">
                 2016-12-08
               </time>
@@ -1277,7 +1289,7 @@ height: 100%;
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <span class="post-meta-item-text">Posted on</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-08T09:20:36+08:00">
                 2016-12-08
               </time>
@@ -1412,7 +1424,7 @@ height: 100%;
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <span class="post-meta-item-text">Posted on</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-05T20:42:55+08:00">
                 2016-12-05
               </time>
@@ -1562,7 +1574,7 @@ height: 100%;
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <span class="post-meta-item-text">Posted on</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-03T12:00:24+08:00">
                 2016-12-03
               </time>
@@ -1732,7 +1744,7 @@ height: 100%;
           <div class="site-state-item site-state-posts">
             <a href="/archives">
               <span class="site-state-item-count">41</span>
-              <span class="site-state-item-name">Artikel</span>
+              <span class="site-state-item-name">posts</span>
             </a>
           </div>
 
@@ -1783,7 +1795,7 @@ height: 100%;
 
 
 <div class="powered-by">
-  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
 </div>
 
 <div class="theme-info">

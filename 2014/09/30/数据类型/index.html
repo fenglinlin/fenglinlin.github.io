@@ -92,7 +92,7 @@ NumberJavaScript不区分整数和浮点数，统一用Number表示，以下都�
 <meta property="og:site_name" content="Feng~Lin">
 <meta property="og:description" content="数据类型计算机顾名思义就是可以做数学计算的机器，因此，计算机程序理所当然地可以处理各种数值。但是，计算机能处理的远不止数值，还可以处理文本、图形、音频、视频、网页等各种各样的数据，不同的数据，需要定义不同的数据类型。在JavaScript中定义了以下几种数据类型：
 NumberJavaScript不区分整数和浮点数，统一用Number表示，以下都是合法的Number类型：123456123; //">
-<meta property="og:updated_time" content="2016-12-03T12:08:03.000Z">
+<meta property="og:updated_time" content="2016-12-09T08:49:03.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JS的数据类型和变量">
 <meta name="twitter:description" content="数据类型计算机顾名思义就是可以做数学计算的机器，因此，计算机程序理所当然地可以处理各种数值。但是，计算机能处理的远不止数值，还可以处理文本、图形、音频、视频、网页等各种各样的数据，不同的数据，需要定义不同的数据类型。在JavaScript中定义了以下几种数据类型：
@@ -188,7 +188,7 @@ NumberJavaScript不区分整数和浮点数，统一用Number表示，以下都�
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Startseite
+            Home
           </a>
         </li>
       
@@ -198,7 +198,7 @@ NumberJavaScript不区分整数和浮点数，统一用Number表示，以下都�
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archiv
+            Archives
           </a>
         </li>
       
@@ -277,7 +277,7 @@ NumberJavaScript不区分整数和浮点数，统一用Number表示，以下都�
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <span class="post-meta-item-text">Posted on</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2014-09-30T00:00:00+08:00">
                 2014-09-30
               </time>
@@ -319,7 +319,10 @@ NumberJavaScript不区分整数和浮点数，统一用Number表示，以下都�
 <p>计算机由于使用二进制，所以，有时候用十六进制表示整数比较方便，十六进制用0x前缀和0-9，a-f表示，例如：0xff00，0xa5b4c3d2，等等，它们和十进制表示的数值完全一样。</p>
 <p>Number可以直接做四则运算，规则和数学一致：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">1 + 2; // 3</div><div class="line">(1 + 2) * 5 / 2; // 7.5</div><div class="line">2 / 0; // Infinity</div><div class="line">0 / 0; // NaN</div><div class="line">10 % 3; // 1</div><div class="line">10.5 % 3; // 1.5</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">```</div><div class="line"></div><div class="line">### 字符串</div><div class="line">字符串是以单引号&apos;或双引号&quot;括起来的任意文本，比如&apos;abc&apos;，&quot;xyz&quot;等等。请注意，&apos;&apos;或&quot;&quot;本身只是一种表示方式，不是字符串的一部分，因此，字符串&apos;abc&apos;只有a，b，c这3个字符。</div><div class="line"></div><div class="line">### 布尔值</div><div class="line">布尔值和布尔代数的表示完全一致，一个布尔值只有true、false两种值，要么是true，要么是false，可以直接用true、false表示布尔值，也可以通过布尔运算计算出来：</div><div class="line"></div><div class="line">``` </div><div class="line">true; // 这是一个true值</div><div class="line">false; // 这是一个false值</div><div class="line">2 &gt; 1; // 这是一个true值</div><div class="line">2 &gt;= 3; // 这是一个false值</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">注意%是求余运算。</div></pre></td></tr></table></figure>
+<h3 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h3><p>字符串是以单引号’或双引号”括起来的任意文本，比如’abc’，”xyz”等等。请注意，’’或””本身只是一种表示方式，不是字符串的一部分，因此，字符串’abc’只有a，b，c这3个字符。</p>
+<h3 id="布尔值"><a href="#布尔值" class="headerlink" title="布尔值"></a>布尔值</h3><p>布尔值和布尔代数的表示完全一致，一个布尔值只有true、false两种值，要么是true，要么是false，可以直接用true、false表示布尔值，也可以通过布尔运算计算出来：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">true; // 这是一个true值</div><div class="line">false; // 这是一个false值</div><div class="line">2 &gt; 1; // 这是一个true值</div><div class="line">2 &gt;= 3; // 这是一个false值</div></pre></td></tr></table></figure>
 <p>&amp;&amp;运算是与运算，只有所有都为true，&amp;&amp;运算结果才是true：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">true &amp;&amp; true; // 这个&amp;&amp;语句计算结果为true</div><div class="line">true &amp;&amp; false; // 这个&amp;&amp;语句计算结果为false</div><div class="line">false &amp;&amp; true &amp;&amp; false; // 这个&amp;&amp;语句计算结果为false</div></pre></td></tr></table></figure>
 <p>||运算是或运算，只要其中有一个为true，||运算结果就是true：</p>
@@ -457,10 +460,10 @@ NumberJavaScript不区分整数和浮点数，统一用Number表示，以下都�
       
         <ul class="sidebar-nav motion-element">
           <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            Inhaltsverzeichnis
+            Table of Contents
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview">
-            Übersicht
+            Overview
           </li>
         </ul>
       
@@ -477,7 +480,7 @@ NumberJavaScript不区分整数和浮点数，统一用Number表示，以下都�
           <div class="site-state-item site-state-posts">
             <a href="/archives">
               <span class="site-state-item-count">41</span>
-              <span class="site-state-item-name">Artikel</span>
+              <span class="site-state-item-name">posts</span>
             </a>
           </div>
 
@@ -514,7 +517,7 @@ NumberJavaScript不区分整数和浮点数，统一用Number表示，以下都�
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#数据类型"><span class="nav-number">1.</span> <span class="nav-text">数据类型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Number"><span class="nav-number">1.1.</span> <span class="nav-text">Number</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#JavaScript不区分整数和浮点数，统一用Number表示，以下都是合法的Number类型："><span class="nav-number">1.1.1.</span> <span class="nav-text">JavaScript不区分整数和浮点数，统一用Number表示，以下都是合法的Number类型：</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#数据类型"><span class="nav-number">1.</span> <span class="nav-text">数据类型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Number"><span class="nav-number">1.1.</span> <span class="nav-text">Number</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#JavaScript不区分整数和浮点数，统一用Number表示，以下都是合法的Number类型："><span class="nav-number">1.1.1.</span> <span class="nav-text">JavaScript不区分整数和浮点数，统一用Number表示，以下都是合法的Number类型：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#字符串"><span class="nav-number">1.2.</span> <span class="nav-text">字符串</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#布尔值"><span class="nav-number">1.3.</span> <span class="nav-text">布尔值</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -544,7 +547,7 @@ NumberJavaScript不区分整数和浮点数，统一用Number表示，以下都�
 
 
 <div class="powered-by">
-  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
 </div>
 
 <div class="theme-info">

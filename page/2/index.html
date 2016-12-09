@@ -183,7 +183,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Startseite
+            Home
           </a>
         </li>
       
@@ -193,7 +193,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archiv
+            Archives
           </a>
         </li>
       
@@ -226,6 +226,705 @@
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/12/03/javascript之BOM/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Fenglin">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.gif">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Feng~Lin">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Feng~Lin" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/12/03/javascript之BOM/" itemprop="url">
+                  JavaScript之BOM
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-03T12:00:24+08:00">
+                2016-12-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>ECMAScript 是 JavaScript 的核心，但如果要在 Web 中使用 JavaScript，那么 BOM（浏览器对象模型）则无疑才是真正的核心。BOM 提供了很多对象，用于访问浏览器的功能，这些功能与任何网页内容无关。多年来，缺少事实上的规范导致 BOM 有很多问题，因为浏览器提供商会按照各自的想法随意去扩展它。W3C 为了把浏览器中 JavaScript 最基本的部分标准化，已经将 BOM 的主要方面纳入了 HTML5 的规范中。</p>
+<h2 id="window-对象"><a href="#window-对象" class="headerlink" title="window 对象"></a>window 对象</h2><p>BOM 的核心对象是 window，它表示浏览器的一个实例。在浏览器中，window 对象有双重角色，它既是通过 JavaScript 访问浏览器窗口的一个接口，又是 ECMAScript 规定的 Global 对象。这意味着在网页中定义的任何一个对象、变量和函数，都以 window 作为其 Global 对象，因此有权访问 isNaN()、isFinite()、parseInt()、parseFloat() 等方法。</p>
+<h3 id="全局作用域"><a href="#全局作用域" class="headerlink" title="全局作用域"></a>全局作用域</h3><p>由于 window 对象同时扮演着 ECMAScript 中 Global 对象的角色，因此所有在全局作用域中声明的变量、函数都会变成 window 对象的属性和方法。来看下面的例子。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">var age = 29;</div><div class="line">function sayAge()&#123;</div><div class="line">    console.log(this.age);</div><div class="line">&#125;</div><div class="line"></div><div class="line">console.log(window.age);    // 29</div><div class="line">sayAge();                   // 29</div><div class="line">window.sayAge();</div></pre></td></tr></table></figure>
+<p>抛开全局变量会成为 window 对象的属性不谈，定义全局变量与在 window 对象上直接定义属性还是有一点差别：全局变量不能通过 delete 运算符删除，而直接在 window 对象上的定义的属性可以。例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">var age = 29;</div><div class="line">window.color = &quot;red&quot;;</div><div class="line"></div><div class="line">// 在 IE &lt; 9 时抛出错误，在其他所有浏览器中都返回 false </div><div class="line">delete window.age;</div><div class="line"></div><div class="line">// 在 IE &lt; 9 时抛出错误，在其他所有浏览器中都返回 true</div><div class="line">delete window.color;        // return true</div><div class="line"></div><div class="line">console.log(window.age);    // 29</div><div class="line">console.log(window.color);  // undefined</div></pre></td></tr></table></figure>
+<p>使用 var 语句添加的 window 属性有一个名为 Configurable 的特性，这个特性的值被默认设置为 false，因此这样定义的属性不可以通过 delete 运算符删除。IE8 及更早版本在遇到使用 delete 删除 window 属性的语句时，不管该属性最初是如何创建的，都会抛出错误，以示警告。IE9 及更高版本不会抛出错误。</p>
+<p>另外，还要记住一件事：尝试访问未声明的变量会抛出错误，但是通过查询 window 对象，可以知道某个可能未声明的变量是否存在。例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">// 这里会抛出错误，因为 oldValue 未定义</div><div class="line">var newValue = oldValue;</div><div class="line"></div><div class="line">// 这里不会抛出错误，因为这是一次属性查询</div><div class="line">// newValue 的值是 undefined</div><div class="line">var newValue = window.oldValue;</div></pre></td></tr></table></figure>
+<h3 id="窗口关系及框架"><a href="#窗口关系及框架" class="headerlink" title="窗口关系及框架"></a>窗口关系及框架</h3><p>如果页面中包含框架，则每个框架都拥有自己的 window 对象，并且保存在 frames 集合中。在 frames 集合中，可以通过数值索引（从0开始，从左至右，从上到下）或者框架名称来访问相应的 window 对象。每个 window 对象都有一个 name 属性，其中包含框架的名称。下面是一个包含框架的页面：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">&lt;html&gt;</div><div class="line">    &lt;head&gt;</div><div class="line">        &lt;title&gt;Frameset Example&lt;/title&gt;</div><div class="line">    &lt;/head&gt;</div><div class="line">    &lt;frameset rows=&quot;160,*&quot;&gt;</div><div class="line">        &lt;frame src=&quot;frame.htm&quot; name=&quot;topFrame&quot;&gt;</div><div class="line">        &lt;frameset cols=&quot;50%,50%&quot;&gt;</div><div class="line">            &lt;frame src=&quot;anotherframe.htm&quot; name=&quot;leftFrame&quot;&gt;</div><div class="line">            &lt;frame src=&quot;yetanotherframe.htm&quot; name=&quot;rightFrame&quot;&gt;</div><div class="line">        &lt;/frameset&gt;</div><div class="line">    &lt;/frameset&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
+<p>对这个例子而言，可以通过 window.frames[0] 或者 window.frames[“topFrame”] 来引用上方的框架。不过最好使用 top 而非 window 来引用这些框架（例如 top.frames[0]），因为 top 对象始终指向最高（最外）层的框架，也就是浏览器窗口。使用它可以确保在一个框架中正确地访问另一个框架。因为对于在一个框架中编写的任何代码来说，其中的 window 对象指向的都是那个框架的特定实例，而非最高层的框架。</p>
+<p>与 top 相对的另一个 window 对象是 parent。顾名思义，parent（父）对象始终指向当前框架的直接上层框架。在某些情况下，parent 有可能等于 top；但在没有框架的情况下，parent 一定等于 top（此时它们都等于 window）。</p>
+<p>与框架有关的最后一个对象是 self，它始终指向 window；实际上，self 和 window 对象可以互换使用。引入 self 对象的目的只是为了与 top 和 parent 对象对应起来，因此它不格外包含其他值。</p>
+<p>所有这些对象都是 window 对象的属性，可以通过 window.parent、window.top 等形式来访问。同时，这也意味着可以将不同层次的 window 对象连缀起来，例如 window.parent.parent.frames[0]。</p>
+<p>在使用框架的情况下，浏览器中会存在多个 Global 对象。在每个框架中定义的全局变量会自动成为框架中 window 对象的属性。由于每个 window 对象都包含原生类型的构造函数，因此每个框架都有一套自己的构造函数，这些构造函数一一对应，但并不相等。例如，top.Object 并不等于 top.frames[0].Object。这个问题会影响到对跨框架传递的对象使用 instanceof 运算符。</p>
+<h3 id="导航和打开窗口"><a href="#导航和打开窗口" class="headerlink" title="导航和打开窗口"></a>导航和打开窗口</h3><p>使用 window.open() 方法既可以导航到一个特定的 URL，也可以打开一个新的浏览器窗口。这个方法可以接收4个参数：要加载的URL、窗口目标、一个特性字符串以及一个表示新页面是否取代浏览器历史记录中当前加载页面的布尔值。通常只须传递第一个参数，最后一个参数只在不打开新窗口的情况下使用。</p>
+<p>如果为 window.open() 传递了第二个参数，而且该参数是已有窗口或框架的名称，那么就会在具有该名称的窗口或框架中加载第一个参数指定的 URL。看下面的例子。</p>
+<figure class="highlight plain"><figcaption><span>等同于 <a href="http://shijiajie.com" target="newWindow"></a></span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">window.open(&quot;http://shijiajie.com/&quot;, &quot;newWindow&quot;);</div></pre></td></tr></table></figure>
+<h3 id="弹出窗口"><a href="#弹出窗口" class="headerlink" title="弹出窗口"></a>弹出窗口</h3><p>如果给 window.open() 传递的第二个参数并不是一个已经存在的窗口或框架，那么该方法就会根据在第三个参数位置上传入的字符串创建一个新窗口或新标签页。如果没有传入第三个参数，那么就会打开一个带有全部默认设置（工具栏、地址栏和状态栏等）的新浏览器窗口（或者打开一个新标签页）。在不打开新窗口的情况下，会忽略第三个参数。</p>
+<p>第三个参数是一个逗号分隔的设置字符串，表示在新窗口中都显示哪些特性。下表列出了可以出现在这个字符串中的设置选项。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">设置	值	说明</div><div class="line">fullscreen	yes或no	表示浏览器窗口是否最大化。仅限IE</div><div class="line">height	数值	表示新窗口的高度。不能小于100</div><div class="line">left	数值	表示新窗口的左坐标。不能是负值</div><div class="line">location	yes或no	表示是否在浏览器窗口中显示地址栏。不同浏览器的默认值不同。如果设置为no，地址栏可能会隐藏，也可能会被禁用（取决于浏览器）</div><div class="line">menubar	yes或no	表示是否在浏览器窗口中显示菜单栏。默认值为no</div><div class="line">resizable	yes或no	表示是否可以通过拖动浏览器窗口的边框改变其大小。默认值为no</div><div class="line">scrollbars	yes或no	表示如果内容在视口中显示不下，是否允许滚动。默认值为no</div><div class="line">status	yes或no	表示是否在浏览器窗口中显示状态栏。默认值为no</div><div class="line">toolbar	yes或no	表示是否在浏览器窗口中显示工具栏。默认值为no</div><div class="line">top	数值	表示新窗口的上坐标。不能是负值</div><div class="line">width	数值	表示新窗口的宽度。不能小于100</div></pre></td></tr></table></figure>
+<p>这行代码会打开一个新的可以调整大小的窗口，窗口初始大小为400×400像素，并且距屏幕上沿和左边各10像素。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&quot;height=400,width=400,top=10,left=10,resizable=yes&quot;);</div></pre></td></tr></table></figure>
+<p>window.open() 方法会返回一个指向新窗口的引用。引用的对象与其他 window 对象大致相似，但我们可以对其进行更多控制。例如，有些浏览器在默认情况下可能不允许我们针对主浏览器窗口调整大小或移动位置，但却允许我们针对通过window.open()创建的窗口调整大小或移动位置。通过这个返回的对象，可以像操作其他窗口一样操作新打开的窗口，如下所示。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">var win = window.open(&quot;http://shijiajie.com/&quot;,&quot;newWindow&quot;,</div><div class="line">    &quot;height=400,width=400,top=10,left=10,resizable=yes&quot;);</div><div class="line"></div><div class="line">// 调整大小</div><div class="line">win.resizeTo(500,500);</div><div class="line"></div><div class="line">// 移动位置</div><div class="line">win.moveTo(100,100);</div><div class="line"></div><div class="line">// 关闭窗口</div><div class="line">win.close();</div></pre></td></tr></table></figure>
+<p>但是，close() 方法仅适用于通过 window.open() 打开的弹出窗口。对于浏览器的主窗口，如果没有得到用户的允许是不能关闭它的。</p>
+<p>新创建的 window 对象有一个 opener 属性，其中保存着打开它的原始窗口对象。这个属性只在弹出窗口中的最外层 window 对象（top）中有定义，而且指向调用 window.open() 的窗口或框架。例如：</p>
+<figure class="highlight plain"><figcaption><span>win = window.open("http://shijiajie.com/","newWindow",</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">    &quot;height=400,width=400,top=10,left=10,resizable=yes&quot;);</div><div class="line">console.log(win.opener === window);   // true</div></pre></td></tr></table></figure>
+<p>虽然弹出窗口中有一个指针指向打开它的原始窗口，但原始窗口中并没有这样的指针指向弹出窗口。窗口并不跟踪记录它们打开的弹出窗口，因此我们只能在必要的时候自己来手动实现跟踪。</p>
+<h3 id="弹出窗口屏蔽程序"><a href="#弹出窗口屏蔽程序" class="headerlink" title="弹出窗口屏蔽程序"></a>弹出窗口屏蔽程序</h3><p>曾经有一段时间，广告商在网上使用弹出窗口达到了肆无忌惮的程度。他们经常把弹出窗口打扮成系统对话框的模样，引诱用户去点击其中的广告。由于看起来像是系统对话框，一般用户很难分辨是真是假。为了解决这个问题，大多数浏览器内置有弹出窗口屏蔽程序，将绝大多数用户不想看到弹出窗口屏蔽掉。</p>
+<p>于是，在弹出窗口被屏蔽时，就应该考虑两种可能性。如果是浏览器内置的屏蔽程序阻止的弹出窗口，那么 window.open() 很可能会返回 null，如果是浏览器扩展或其他程序阻止的弹出窗口，那么 window.open() 通常会抛出一个错误。因此，要想准确地检测出弹出窗口是否被屏蔽，必须在检测返回值的同时，将对 window.open() 的调用封装在一个 try-catch 块中，如下所示。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">var blocked = false;</div><div class="line"></div><div class="line">try &#123;</div><div class="line">    var win = window.open(&quot;http://shijiajie.com&quot;, &quot;_blank&quot;);</div><div class="line">    if (win == null)&#123;</div><div class="line">        blocked = true;</div><div class="line">    &#125;</div><div class="line">&#125; catch (ex)&#123;</div><div class="line">    blocked = true;</div><div class="line">&#125;</div><div class="line">if (blocked)&#123;</div><div class="line">    console.log(&quot;The popup was blocked!&quot;);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="间歇调用和超时调用"><a href="#间歇调用和超时调用" class="headerlink" title="间歇调用和超时调用"></a>间歇调用和超时调用</h3><p>JavaScript 是单线程语言，但它允许通过设置超时值和间歇时间值来调度代码在特定的时刻执行。前者是在指定的时间过后执行代码，而后者则是每隔指定的时间就执行一次代码。</p>
+<p>超时调用需要使用 window 对象的 setTimeout() 方法，它接受两个参数：要执行的代码和以毫秒表示的时间（即在执行代码前需要等待多少毫秒）。其中，第一个参数可以是一个包含 JavaScript 代码的字符串（就和在 eval() 函数中使用的字符串一样），也可以是一个函数。例如，下面对 setTimeout() 的两次调用都会在一秒钟后显示一个警告框。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">// 不建议传递字符串</div><div class="line">setTimeout(&quot;console.log(&apos;Hello world!&apos;) &quot;, 1000);</div><div class="line"></div><div class="line">// 推荐的调用方式</div><div class="line">setTimeout(function() &#123; </div><div class="line">    console.log(&quot;Hello world!&quot;); </div><div class="line">&#125;, 1000);</div></pre></td></tr></table></figure>
+<p>虽然这两种调用方式都没有问题，但由于传递字符串可能导致性能损失，因此不建议以字符串作为第一个参数。</p>
+<p>第二个参数是一个表示等待多长时间的毫秒数，但经过该时间后指定的代码不一定会执行。JavaScript 是一个单线程序的解释器，因此一定时间内只能执行一段代码。为了控制要执行的代码，就有一个 JavaScript 任务队列。这些任务会按照将它们添加到队列的顺序执行。setTimeout() 的第二个参数告诉 JavaScript 再过多长时间把当前任务添加到队列中。如果队列是空的，那么添加的代码会立即执行；如果队列不是空的，那么它就要等前面的代码执行完了以后再执行。</p>
+<p>调用 setTimeout() 之后，该方法会返回一个数值 ID，表示超时调用。这个超时调用 ID 是计划执行代码的唯一标识符，可以通过它来取消超时调用。要取消尚未执行的超时调用计划，可以调用 clearTimeout() 方法并将相应的超时调用 ID 作为参数传递给它，如下所示。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">// 设置超时调用</div><div class="line">var timeoutId = setTimeout(function() &#123;</div><div class="line">    console.log(&quot;Hello world!&quot;);</div><div class="line">&#125;, 1000);</div><div class="line"></div><div class="line">// 注意：把它取消</div><div class="line">clearTimeout(timeoutId);</div></pre></td></tr></table></figure>
+<p>只要是在指定的时间尚未过去之前调用 clearTimeout()，就可以完全取消超时调用。前面的代码在设置超时调用之后马上又调用了 clearTimeout()，结果就跟什么也没有发生一样。</p>
+<p>间歇调用与超时调用类似，只不过它会按照指定的时间间隔重复执行代码，直至间歇调用被取消或者页面被卸载。设置间歇调用的方法是 setInterval()，它接受的参数与 setTimeout() 相同：要执行的代码（字符串或函数）和每次执行之前需要等待的毫秒数。下面来看一个例子。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">// 不建议传递字符串</div><div class="line">setInterval (&quot;console.log(&apos;Hello world!&apos;) &quot;, 10000);</div><div class="line"></div><div class="line">// 推荐的调用方式</div><div class="line">setInterval (function() &#123; </div><div class="line">    console.log(&quot;Hello world!&quot;); </div><div class="line">&#125;, 10000);</div></pre></td></tr></table></figure>
+<p>调用 setInterval() 方法同样也会返回一个间歇调用 ID，该 ID 可用于在将来某个时刻取消间歇调用。要取消尚未执行的间歇调用，可以使用 clearInterval() 方法并传入相应的间歇调用 ID。取消间歇调用的重要性要远远高于取消超时调用，因为在不加干涉的情况下，间歇调用将会一直执行到页面卸载。以下是一个常见的使用间歇调用的例子。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">var num = 0;</div><div class="line">var max = 10;</div><div class="line">var intervalId = null;</div><div class="line"></div><div class="line">function incrementNumber() &#123;</div><div class="line">    num++;</div><div class="line">    // 如果执行次数达到了max设定的值，则取消后续尚未执行的调用</div><div class="line">    if (num == max) &#123;</div><div class="line">        clearInterval(intervalId);</div><div class="line">        console.log(&quot;Done&quot;);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">intervalId = setInterval(incrementNumber, 500);</div></pre></td></tr></table></figure>
+<p>在这个例子中，变量num每半秒钟递增一次，当递增到最大值时就会取消先前设定的间歇调用。这个模式也可以使用超时调用来实现，如下所示。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">var num = 0;</div><div class="line">var max = 10;</div><div class="line"></div><div class="line">function incrementNumber() &#123;</div><div class="line">    num++;</div><div class="line"></div><div class="line">    // 如果执行次数未达到max设定的值，则设置另一次超时调用</div><div class="line">    if (num &lt; max) &#123;</div><div class="line">        setTimeout(incrementNumber, 500);</div><div class="line">    &#125; else &#123;</div><div class="line">        console.log(&quot;Done&quot;);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">setTimeout(incrementNumber, 500);</div></pre></td></tr></table></figure>
+<p>可见，在使用超时调用时，没有必要跟踪超时调用 ID，因为每次执行代码之后，如果不再设置另一次超时调用，调用就会自行停止。一般认为，使用超时调用来模拟间歇调用的是一种最佳模式。在开发环境下，很少使用真正的间歇调用，原因是后一个间歇调用可能会在前一个间歇调用结束之前启动。而像前面示例中那样使用超时调用，则完全可以避免这一点。所以，最好不要使用间歇调用。</p>
+<h3 id="系统对话框"><a href="#系统对话框" class="headerlink" title="系统对话框"></a>系统对话框</h3><p>浏览器通过 alert()、confirm() 和 prompt() 方法可以调用系统对话框向用户显示消息。系统对话框与在浏览器中显示的网页没有关系，也不包含 HTML。它们的外观由操作系统及（或）浏览器设置决定，而不是由 CSS 决定。此外，通过这几个方法打开的对话框都是同步和模态的。也就是说，显示这些对话框的时候代码会停止执行，而关掉这些对话框后代码又会恢复执行。</p>
+<p>第一种对话框是调用 alert() 方法生成的。它向用户显示一个系统对话框，其中包含指定的文本和一个 OK（“确定”）按钮。通常使用 alert() 生成的“警告”对话框向用户显示一些他们无法控制的消息，例如错误消息。而用户只能在看完消息后关闭对话框。</p>
+<p>第二种对话框是调用 confirm() 方法生成的。从向用户显示消息的方面来看，这种“确认”对话框很像是一个“警告”对话框。但二者的主要区别在于“确认”对话框除了显示OK按钮外，还会显示一个 Cancel（“取消”）按钮，两个按钮可以让用户决定是否执行给定的操作。</p>
+<p>为了确定用户是单击了OK还是Cancel，可以检查 confirm() 方法返回的布尔值：true 表示单击了OK，false 表示单击了Cancel或单击了右上角的 X 按钮。确认对话框的典型用法如下。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">if (confirm(&quot;Are you sure?&quot;)) &#123;</div><div class="line">    alert(&quot;I&apos;m so glad you&apos;re sure! &quot;);</div><div class="line">&#125; else &#123;</div><div class="line">    alert(&quot;I&apos;m sorry to hear you&apos;re not sure.&quot;);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>最后一种对话框是通过调用 prompt() 方法生成的，这是一个“提示”框，用于提示用户输入一些文本。提示框中除了显示 OK 和 Cancel 按钮之外，还会显示一个文本输入域，以供用户在其中输入内容。prompt() 方法接受两个参数：要显示给用户的文本提示和文本输入域的默认值（可以是一个空字符串）。</p>
+<p>如果用户单击了 OK 按钮，则 promp() 返回文本输入域的值；如果用户单击了 Cancel 或没有单击 OK 而是通过其他方式关闭了对话框，则该方法返回 null。下面是一个例子。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">var result = prompt(&quot;What is your name? &quot;, &quot;&quot;);</div><div class="line">if (result !== null) &#123;</div><div class="line">    alert(&quot;Welcome, &quot; + result);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/11/12/React/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Fenglin">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.gif">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Feng~Lin">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Feng~Lin" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/11/12/React/" itemprop="url">
+                  React 技术栈
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-11-12T00:00:00+08:00">
+                2016-11-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="title-React-技术栈"><a href="#title-React-技术栈" class="headerlink" title="title: React 技术栈"></a>title: React 技术栈</h2><p>React 是目前最热门的前端框架</p>
+<p>Facebook 公司2013年推出</p>
+<p>现在最好的社区支持和生态圈</p>
+<p>大量的第三方工具<br><img src="https://github.com/ruanyf/jstraining/blob/master/docs/images/react-logo.png?raw=true" alt="Generating"></p>
+<h2 id="React-的优点"><a href="#React-的优点" class="headerlink" title="React 的优点"></a>React 的优点</h2><p>组件模式：代码复用和团队分工</p>
+<p>虚拟 DOM：性能优势</p>
+<p>移动端支持：跨终端</p>
+<h2 id="React-的缺点"><a href="#React-的缺点" class="headerlink" title="React 的缺点"></a>React 的缺点</h2><p>学习曲线较陡峭</p>
+<p>全新的一套概念，与其他所有框架截然不同</p>
+<p>只有采用它的整个技术栈，才能发挥最大威力</p>
+<p>More info: React 非常先进和强大，但是学习和实现成本都不低</p>
+<h3 id="JSX-语法"><a href="#JSX-语法" class="headerlink" title="JSX 语法"></a>JSX 语法</h3><p>React 使用 JSX 语法，JavaScript 代码中可以写 HTML 代码。</p>
+<figure class="highlight plain"><figcaption><span>myTitle = <h1>Hello, world!</h1>;</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">```</div><div class="line"></div><div class="line"></div><div class="line">### JSX 语法解释</div><div class="line">（1）JSX 语法的最外层，只能有一个节点。</div><div class="line"></div><div class="line">``` </div><div class="line">// 错误</div><div class="line">let myTitle = &lt;p&gt;Hello&lt;/p&gt;&lt;p&gt;World&lt;/p&gt;;</div></pre></td></tr></table></figure>
+<p>（2）JSX 语法中可以插入 JavaScript 代码，使用大括号。</p>
+<figure class="highlight plain"><figcaption><span>myTitle = <p>&#123;'Hello ' + 'World'&#125;</p></span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">```</div><div class="line"></div><div class="line">### Babel 转码器</div><div class="line">JavaScript 引擎（包括浏览器和 Node）都不认识 JSX，需要首先使用 Babel 转码，然后才能运行。</div><div class="line"></div><div class="line">React 需要加载两个库：React 和 React-DOM，前者是 React 的核心库，后者是 React 的 DOM 适配库。</div><div class="line"></div><div class="line">Babel 用来在浏览器转换 JSX 语法，如果服务器已经转好了，浏览器就不需要加载这个库。</div><div class="line"></div><div class="line">## React 组件</div><div class="line">#### 实验目的</div><div class="line">学会通过状态变动，引发组件的重新渲染。</div><div class="line">#### 操作步骤</div><div class="line">浏览器打开demos/react-component-demo/index3.html，仔细查看源码。</div><div class="line">#### 注意事项</div></pre></td></tr></table></figure>
+<p> class MyTitle extends React.Component {<br>    constructor(…args) {<br>      super(…args);<br>      this.state = {<br>        name: ‘访问者’<br>      };<br>    }<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">constructor是组件的构造函数，会在创建实例时自动调用。...args表示组件参数，super(...args)是 ES6 规定的写法。this.state对象用来存放内部状态，这里是定义初始状态。</div><div class="line"></div><div class="line">```&lt;div&gt;</div><div class="line">  &lt;input</div><div class="line">    type=&quot;text&quot;</div><div class="line">    onChange=&#123;this.handleChange.bind(this)&#125;</div><div class="line">  /&gt;</div><div class="line">  &lt;p&gt;你好，&#123;this.state.name&#125;&lt;/p&gt;</div><div class="line">&lt;/div&gt;;</div></pre></td></tr></table></figure></p>
+<p>this.state.name表示读取this.state的name属性。每当输入框有变动，就会自动调用onChange指定的监听函数，这里是this.handleChange，.bind(this)表示该方法内部的this，绑定当前组件。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/06/19/nodeJs/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Fenglin">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.gif">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Feng~Lin">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Feng~Lin" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/06/19/nodeJs/" itemprop="url">
+                  nodeJS
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-06-19T00:00:00+08:00">
+                2016-06-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="title-nodeJS"><a href="#title-nodeJS" class="headerlink" title="title: nodeJS"></a>title: nodeJS</h2><h2 id="我的nodejs之路"><a href="#我的nodejs之路" class="headerlink" title="我的nodejs之路"></a>我的nodejs之路</h2><h3 id="fs模块–文件系统API"><a href="#fs模块–文件系统API" class="headerlink" title="fs模块–文件系统API"></a>fs模块–文件系统API</h3><p>File System<br>简介：文件模块是一个简单包装POSIX文件I/O操作方法集。可以通过调用require(‘fs’)来获取该模块。文件系统模块中的所有方法均有异步和同步<br>异步同步的区别：<br>异步：需要一个完成时的回调函数作为最后一个传入形参。回调函数的构成由调用的异步方法所决定，通常情况下回调函数的第一个形参为返回的错误信息。同时，使用异步版本不能保证执行顺序。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">fs.asy(<span class="string">'../hello'</span>,<span class="keyword">function</span>(err)&#123;</div><div class="line">	<span class="keyword">if</span>(err) throw err;</div><div class="line">	console.log(<span class="string">'success'</span>)</div><div class="line">&#125;)</div></pre></td></tr></table></figure></p>
+<p>同步：如果您使用的是同步版本的操作方法，则一旦出现错误，会以通常的抛出错误的形式返回错误。 你可以用try和catch等语句来拦截错误并使程序继续进行。<br>    fs.sy(‘../hello’)<br>    console.log(‘success’);<br><!--核心模块引用--><br>var fs =require(‘fs);<br>1、读取文件readFile函数<br>readFile(filename,[options],callback);<br> filename, 必选参数，文件名<br> [options],可选参数，<br> callback 读取文件之后执行的回调函数，参数默认第一个err,第二个data<br> <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">fs.readFile(__dirname + <span class="string">'/test.js'</span>, &#123;<span class="string">'utf8'</span>&#125;, <span class="keyword">function</span> (err, data) &#123;</div><div class="line">    <span class="keyword">if</span>(err) &#123;</div><div class="line">     console.error(err);</div><div class="line">     <span class="built_in">return</span>;</div><div class="line">    &#125;</div><div class="line">    console.log(data);</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/05/20/利用CSS、JavaScript及Ajax实现图片预加载/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Fenglin">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.gif">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Feng~Lin">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Feng~Lin" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/05/20/利用CSS、JavaScript及Ajax实现图片预加载/" itemprop="url">
+                  利用CSS、JavaScript及Ajax实现图片预加载
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-05-20T00:00:00+08:00">
+                2016-05-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>预加载图片是提高用户体验的一个很好方法。图片预先加载到浏览器中，访问者便可顺利地在你的网站上冲浪，并享受到极快的加载速度。这对图片画廊及图片占据很大比例的网站来说十分有利，它保证了图片快速、无缝地发布，也可帮助用户在浏览你网站内容时获得更好的用户体验。本文将分享三个不同的预加载技术，来增强网站的性能与可用性。</p>
+<p>单纯的使用css可以将图片加载到页面元素的背景上，这种方法简单、高效：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">#preload-01 &#123; background: url(http://domain.tld/image-01.png) no-repeat -9999px -9999px; &#125;</div><div class="line">#preload-02 &#123; background: url(http://domain.tld/image-02.png) no-repeat -9999px -9999px; &#125;</div><div class="line">#preload-03 &#123; background: url(http://domain.tld/image-03.png) no-repeat -9999px -9999px; &#125;</div></pre></td></tr></table></figure>
+<p>将这三个ID选择器应用到(X)HTML元素中，我们便可通过CSS的background属性将图片预加载到屏幕外的背景上。只要这些图片的路径保持不变，当它们在Web页面的其他地方被调用时，浏览器就会在渲染过程中使用预加载（缓存）的图片。简单、高效，不需要任何JavaScript。</p>
+<p>弊端：该方法虽然高效，但仍有改进余地。使用该法加载的图片会同页面的其他内容一起加载，增加了页面的整体加载时间。为了解决这个问题，我们增加了一些JavaScript代码，来推迟预加载的时间，直到页面加载完毕。代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">function preloader() &#123;</div><div class="line">    if (document.getElementById) &#123;</div><div class="line">        document.getElementById(&quot;preload-01&quot;).style.background = &quot;url(http://domain.tld/image-01.png) no-repeat -9999px -9999px&quot;;</div><div class="line">        document.getElementById(&quot;preload-02&quot;).style.background = &quot;url(http://domain.tld/image-02.png) no-repeat -9999px -9999px&quot;;</div><div class="line">        document.getElementById(&quot;preload-03&quot;).style.background = &quot;url(http://domain.tld/image-03.png) no-repeat -9999px -9999px&quot;;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">function addLoadEvent(func) &#123;</div><div class="line">    var oldonload = window.onload;</div><div class="line">    if (typeof window.onload != &apos;function&apos;) &#123;</div><div class="line">        window.onload = func;</div><div class="line">    &#125; else &#123;</div><div class="line">        window.onload = function() &#123;</div><div class="line">            if (oldonload) &#123;</div><div class="line">                oldonload();</div><div class="line">            &#125;</div><div class="line">            func();</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">addLoadEvent(preloader);</div></pre></td></tr></table></figure>
+<p>在该脚本的第一部分，我们获取使用类选择器的元素，并为其设置了background属性，以预加载不同的图片。</p>
+<p>该脚本的第二部分，我们使用addLoadEvent()函数来延迟preloader()函数的加载时间，直到页面加载完毕。</p>
+<p>如果JavaScript无法在用户的浏览器中正常运行，会发生什么？很简单，图片不会被预加载，当页面调用图片时，正常显示即可。</p>
+<h3 id="使用JavaScript实现"><a href="#使用JavaScript实现" class="headerlink" title="使用JavaScript实现"></a>使用JavaScript实现</h3><p>上述方法有时确实很高效，但我们逐渐发现它在实际实现过程中会耗费太多时间。相反，我更喜欢使用纯JavaScript来实现图片的预加载。下面将提供两种这样的预加载方法，它们可以很漂亮地工作于所有现代浏览器之上。</p>
+<h3 id="方法一"><a href="#方法一" class="headerlink" title="方法一"></a>方法一</h3><p>只需简单编辑、加载所需要图片的路径与名称即可，很容易实现：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">&lt;div class=&quot;hidden&quot;&gt;</div><div class="line">  		&lt;script type=&quot;text/javascript&quot;&gt;</div><div class="line">           var images = new Array()</div><div class="line">           function preload() &#123;</div><div class="line">               for (i = 0; i &lt; preload.arguments.length; i++) &#123;</div><div class="line">                   images[i] = new Image()</div><div class="line">                   images[i].src = preload.arguments[i]</div><div class="line">               &#125;</div><div class="line">           &#125;</div><div class="line">           preload(</div><div class="line">               &quot;http://domain.tld/gallery/image-001.jpg&quot;,</div><div class="line">               &quot;http://domain.tld/gallery/image-002.jpg&quot;,</div><div class="line">               &quot;http://domain.tld/gallery/image-003.jpg&quot;</div><div class="line">           )</div><div class="line">           &lt;/script&gt;</div><div class="line">&lt;/div&gt;</div></pre></td></tr></table></figure>
+<p>该方法尤其适用预加载大量的图片。我的画廊网站使用该技术，预加载图片数量达50多张。将该脚本应用到登录页面，只要用户输入登录帐号，大部分画廊图片将被预加载。</p>
+<h3 id="方法二"><a href="#方法二" class="headerlink" title="方法二"></a>方法二</h3><p>该方法与上面的方法类似，也可以预加载任意数量的图片。将下面的脚本添加入任何Web页中，根据程序指令进行编辑即可。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">&lt;div class=&quot;hidden&quot;&gt;</div><div class="line">   	&lt;script type=&quot;text/javascript&quot;&gt;</div><div class="line">           if (document.images) &#123;</div><div class="line">               img1 = new Image();</div><div class="line">               img2 = new Image();</div><div class="line">               img3 = new Image();</div><div class="line">               img1.src = &quot;http://domain.tld/path/to/image-001.gif&quot;;</div><div class="line">               img2.src = &quot;http://domain.tld/path/to/image-002.gif&quot;;</div><div class="line">               img3.src = &quot;http://domain.tld/path/to/image-003.gif&quot;;</div><div class="line">           &#125;</div><div class="line">  		&lt;/script&gt;</div><div class="line">&lt;/div&gt;</div></pre></td></tr></table></figure>
+<p>正如所看见，每加载一个图片都需要创建一个变量，如“img1 = new Image();”，及图片源地址声明，如“img3.src = “../path/to/image-003.gif”;”。参考该模式，你可根据需要加载任意多的图片。</p>
+<p>我们又对该方法进行了改进。将该脚本封装入一个函数中，并使用 addLoadEvent（），延迟预加载时间，直到页面加载完毕。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">function preloader() &#123;</div><div class="line">    if (document.images) &#123;</div><div class="line">        var img1 = new Image();</div><div class="line">        var img2 = new Image();</div><div class="line">        var img3 = new Image();</div><div class="line">        img1.src = &quot;http://domain.tld/path/to/image-001.gif&quot;;</div><div class="line">        img2.src = &quot;http://domain.tld/path/to/image-002.gif&quot;;</div><div class="line">        img3.src = &quot;http://domain.tld/path/to/image-003.gif&quot;;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">function addLoadEvent(func) &#123;</div><div class="line">    var oldonload = window.onload;</div><div class="line">    if (typeof window.onload != &apos;function&apos;) &#123;</div><div class="line">        window.onload = func;</div><div class="line">    &#125; else &#123;</div><div class="line">        window.onload = function() &#123;</div><div class="line">            if (oldonload) &#123;</div><div class="line">                oldonload();</div><div class="line">            &#125;</div><div class="line">            func();</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">addLoadEvent(preloader);</div></pre></td></tr></table></figure>
+<h2 id="使用Ajax"><a href="#使用Ajax" class="headerlink" title="使用Ajax"></a>使用Ajax</h2><p>上面所给出的方法似乎不够酷，那现在来看一个使用Ajax实现图片预加载的方法。该方法利用DOM，不仅仅预加载图片，还会预加载CSS、JavaScript等相关的东西。使用Ajax，比直接使用JavaScript，优越之处在于JavaScript和CSS的加载不会影响到当前页面。该方法简洁、高效。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">window.onload = function() &#123;</div><div class="line">    setTimeout(function() &#123;</div><div class="line">        // XHR to request a JS and a CSS</div><div class="line">        var xhr = new XMLHttpRequest();</div><div class="line">        xhr.open(&apos;GET&apos;, &apos;http://domain.tld/preload.js&apos;);</div><div class="line">        xhr.send(&apos;&apos;);</div><div class="line">        xhr = new XMLHttpRequest();</div><div class="line">        xhr.open(&apos;GET&apos;, &apos;http://domain.tld/preload.css&apos;);</div><div class="line">        xhr.send(&apos;&apos;);</div><div class="line">        // preload image</div><div class="line">        new Image().src = &quot;http://domain.tld/preload.png&quot;;</div><div class="line">    &#125;, 1000);</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<p>上面代码预加载了“preload.js”、“preload.css”和“preload.png”。1000毫秒的超时是为了防止脚本挂起，而导致正常页面出现功能问题。</p>
+<p>下面，我们看看如何用JavaScript来实现该加载过程：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">	window.onload = function() &#123;</div><div class="line">    setTimeout(function() &#123;</div><div class="line">        // reference to &lt;head&gt;</div><div class="line">        var head = document.getElementsByTagName(&apos;head&apos;)[0];</div><div class="line">        // a new CSS</div><div class="line">        var css = document.createElement(&apos;link&apos;);</div><div class="line">        css.type = &quot;text/css&quot;;</div><div class="line">        css.rel  = &quot;stylesheet&quot;;</div><div class="line">        css.href = &quot;http://domain.tld/preload.css&quot;;</div><div class="line">        // a new JS</div><div class="line">        var js  = document.createElement(&quot;script&quot;);</div><div class="line">        js.type = &quot;text/javascript&quot;;</div><div class="line">        js.src  = &quot;http://domain.tld/preload.js&quot;;</div><div class="line">        // preload JS and CSS</div><div class="line">        head.appendChild(css);</div><div class="line">        head.appendChild(js);</div><div class="line">        // preload image</div><div class="line">        new Image().src = &quot;http://domain.tld/preload.png&quot;;</div><div class="line">    &#125;, 1000);</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/04/30/预加载/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Fenglin">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.gif">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Feng~Lin">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Feng~Lin" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/04/30/预加载/" itemprop="url">
+                  利用CSS、JavaScript及Ajax实现图片预加载
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-04-30T00:00:00+08:00">
+                2016-04-30
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>预加载图片是提高用户体验的一个很好方法。图片预先加载到浏览器中，访问者便可顺利地在你的网站上冲浪，并享受到极快的加载速度。这对图片画廊及图片占据很大比例的网站来说十分有利，它保证了图片快速、无缝地发布，也可帮助用户在浏览你网站内容时获得更好的用户体验。本文将分享三个不同的预加载技术，来增强网站的性能与可用性。</p>
+<p>单纯的使用css可以将图片加载到页面元素的背景上，这种方法简单、高效：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">#preload-01 &#123; background: url(http://domain.tld/image-01.png) no-repeat -9999px -9999px; &#125;</div><div class="line">#preload-02 &#123; background: url(http://domain.tld/image-02.png) no-repeat -9999px -9999px; &#125;</div><div class="line">#preload-03 &#123; background: url(http://domain.tld/image-03.png) no-repeat -9999px -9999px; &#125;</div></pre></td></tr></table></figure>
+<p>将这三个ID选择器应用到(X)HTML元素中，我们便可通过CSS的background属性将图片预加载到屏幕外的背景上。只要这些图片的路径保持不变，当它们在Web页面的其他地方被调用时，浏览器就会在渲染过程中使用预加载（缓存）的图片。简单、高效，不需要任何JavaScript。</p>
+<p>弊端：该方法虽然高效，但仍有改进余地。使用该法加载的图片会同页面的其他内容一起加载，增加了页面的整体加载时间。为了解决这个问题，我们增加了一些JavaScript代码，来推迟预加载的时间，直到页面加载完毕。代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">function preloader() &#123;</div><div class="line">    if (document.getElementById) &#123;</div><div class="line">        document.getElementById(&quot;preload-01&quot;).style.background = &quot;url(http://domain.tld/image-01.png) no-repeat -9999px -9999px&quot;;</div><div class="line">        document.getElementById(&quot;preload-02&quot;).style.background = &quot;url(http://domain.tld/image-02.png) no-repeat -9999px -9999px&quot;;</div><div class="line">        document.getElementById(&quot;preload-03&quot;).style.background = &quot;url(http://domain.tld/image-03.png) no-repeat -9999px -9999px&quot;;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">function addLoadEvent(func) &#123;</div><div class="line">    var oldonload = window.onload;</div><div class="line">    if (typeof window.onload != &apos;function&apos;) &#123;</div><div class="line">        window.onload = func;</div><div class="line">    &#125; else &#123;</div><div class="line">        window.onload = function() &#123;</div><div class="line">            if (oldonload) &#123;</div><div class="line">                oldonload();</div><div class="line">            &#125;</div><div class="line">            func();</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">addLoadEvent(preloader);</div></pre></td></tr></table></figure>
+<p>在该脚本的第一部分，我们获取使用类选择器的元素，并为其设置了background属性，以预加载不同的图片。</p>
+<p>该脚本的第二部分，我们使用addLoadEvent()函数来延迟preloader()函数的加载时间，直到页面加载完毕。</p>
+<p>如果JavaScript无法在用户的浏览器中正常运行，会发生什么？很简单，图片不会被预加载，当页面调用图片时，正常显示即可。</p>
+<h3 id="使用JavaScript实现"><a href="#使用JavaScript实现" class="headerlink" title="使用JavaScript实现"></a>使用JavaScript实现</h3><p>上述方法有时确实很高效，但我们逐渐发现它在实际实现过程中会耗费太多时间。相反，我更喜欢使用纯JavaScript来实现图片的预加载。下面将提供两种这样的预加载方法，它们可以很漂亮地工作于所有现代浏览器之上。</p>
+<h3 id="方法一"><a href="#方法一" class="headerlink" title="方法一"></a>方法一</h3><p>只需简单编辑、加载所需要图片的路径与名称即可，很容易实现：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">&lt;div class=&quot;hidden&quot;&gt;</div><div class="line">  		&lt;script type=&quot;text/javascript&quot;&gt;</div><div class="line">           var images = new Array()</div><div class="line">           function preload() &#123;</div><div class="line">               for (i = 0; i &lt; preload.arguments.length; i++) &#123;</div><div class="line">                   images[i] = new Image()</div><div class="line">                   images[i].src = preload.arguments[i]</div><div class="line">               &#125;</div><div class="line">           &#125;</div><div class="line">           preload(</div><div class="line">               &quot;http://domain.tld/gallery/image-001.jpg&quot;,</div><div class="line">               &quot;http://domain.tld/gallery/image-002.jpg&quot;,</div><div class="line">               &quot;http://domain.tld/gallery/image-003.jpg&quot;</div><div class="line">           )</div><div class="line">           &lt;/script&gt;</div><div class="line">&lt;/div&gt;</div></pre></td></tr></table></figure>
+<p>该方法尤其适用预加载大量的图片。我的画廊网站使用该技术，预加载图片数量达50多张。将该脚本应用到登录页面，只要用户输入登录帐号，大部分画廊图片将被预加载。</p>
+<h3 id="方法二"><a href="#方法二" class="headerlink" title="方法二"></a>方法二</h3><p>该方法与上面的方法类似，也可以预加载任意数量的图片。将下面的脚本添加入任何Web页中，根据程序指令进行编辑即可。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">&lt;div class=&quot;hidden&quot;&gt;</div><div class="line">   	&lt;script type=&quot;text/javascript&quot;&gt;</div><div class="line">           if (document.images) &#123;</div><div class="line">               img1 = new Image();</div><div class="line">               img2 = new Image();</div><div class="line">               img3 = new Image();</div><div class="line">               img1.src = &quot;http://domain.tld/path/to/image-001.gif&quot;;</div><div class="line">               img2.src = &quot;http://domain.tld/path/to/image-002.gif&quot;;</div><div class="line">               img3.src = &quot;http://domain.tld/path/to/image-003.gif&quot;;</div><div class="line">           &#125;</div><div class="line">  		&lt;/script&gt;</div><div class="line">&lt;/div&gt;</div></pre></td></tr></table></figure>
+<p>正如所看见，每加载一个图片都需要创建一个变量，如“img1 = new Image();”，及图片源地址声明，如“img3.src = “../path/to/image-003.gif”;”。参考该模式，你可根据需要加载任意多的图片。</p>
+<p>我们又对该方法进行了改进。将该脚本封装入一个函数中，并使用 addLoadEvent（），延迟预加载时间，直到页面加载完毕。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">function preloader() &#123;</div><div class="line">    if (document.images) &#123;</div><div class="line">        var img1 = new Image();</div><div class="line">        var img2 = new Image();</div><div class="line">        var img3 = new Image();</div><div class="line">        img1.src = &quot;http://domain.tld/path/to/image-001.gif&quot;;</div><div class="line">        img2.src = &quot;http://domain.tld/path/to/image-002.gif&quot;;</div><div class="line">        img3.src = &quot;http://domain.tld/path/to/image-003.gif&quot;;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">function addLoadEvent(func) &#123;</div><div class="line">    var oldonload = window.onload;</div><div class="line">    if (typeof window.onload != &apos;function&apos;) &#123;</div><div class="line">        window.onload = func;</div><div class="line">    &#125; else &#123;</div><div class="line">        window.onload = function() &#123;</div><div class="line">            if (oldonload) &#123;</div><div class="line">                oldonload();</div><div class="line">            &#125;</div><div class="line">            func();</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">addLoadEvent(preloader);</div></pre></td></tr></table></figure>
+<h2 id="使用Ajax"><a href="#使用Ajax" class="headerlink" title="使用Ajax"></a>使用Ajax</h2><p>上面所给出的方法似乎不够酷，那现在来看一个使用Ajax实现图片预加载的方法。该方法利用DOM，不仅仅预加载图片，还会预加载CSS、JavaScript等相关的东西。使用Ajax，比直接使用JavaScript，优越之处在于JavaScript和CSS的加载不会影响到当前页面。该方法简洁、高效。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">window.onload = function() &#123;</div><div class="line">    setTimeout(function() &#123;</div><div class="line">        // XHR to request a JS and a CSS</div><div class="line">        var xhr = new XMLHttpRequest();</div><div class="line">        xhr.open(&apos;GET&apos;, &apos;http://domain.tld/preload.js&apos;);</div><div class="line">        xhr.send(&apos;&apos;);</div><div class="line">        xhr = new XMLHttpRequest();</div><div class="line">        xhr.open(&apos;GET&apos;, &apos;http://domain.tld/preload.css&apos;);</div><div class="line">        xhr.send(&apos;&apos;);</div><div class="line">        // preload image</div><div class="line">        new Image().src = &quot;http://domain.tld/preload.png&quot;;</div><div class="line">    &#125;, 1000);</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<p>上面代码预加载了“preload.js”、“preload.css”和“preload.png”。1000毫秒的超时是为了防止脚本挂起，而导致正常页面出现功能问题。</p>
+<p>下面，我们看看如何用JavaScript来实现该加载过程：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">	window.onload = function() &#123;</div><div class="line">    setTimeout(function() &#123;</div><div class="line">        // reference to &lt;head&gt;</div><div class="line">        var head = document.getElementsByTagName(&apos;head&apos;)[0];</div><div class="line">        // a new CSS</div><div class="line">        var css = document.createElement(&apos;link&apos;);</div><div class="line">        css.type = &quot;text/css&quot;;</div><div class="line">        css.rel  = &quot;stylesheet&quot;;</div><div class="line">        css.href = &quot;http://domain.tld/preload.css&quot;;</div><div class="line">        // a new JS</div><div class="line">        var js  = document.createElement(&quot;script&quot;);</div><div class="line">        js.type = &quot;text/javascript&quot;;</div><div class="line">        js.src  = &quot;http://domain.tld/preload.js&quot;;</div><div class="line">        // preload JS and CSS</div><div class="line">        head.appendChild(css);</div><div class="line">        head.appendChild(js);</div><div class="line">        // preload image</div><div class="line">        new Image().src = &quot;http://domain.tld/preload.png&quot;;</div><div class="line">    &#125;, 1000);</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
     
       
 
@@ -275,7 +974,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <span class="post-meta-item-text">Posted on</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-03-20T00:00:00+08:00">
                 2016-03-20
               </time>
@@ -421,7 +1120,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <span class="post-meta-item-text">Posted on</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-03-11T00:00:00+08:00">
                 2016-03-11
               </time>
@@ -606,7 +1305,7 @@ if(xhr){
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <span class="post-meta-item-text">Posted on</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-03-10T00:00:00+08:00">
                 2016-03-10
               </time>
@@ -750,7 +1449,7 @@ if(xhr){
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <span class="post-meta-item-text">Posted on</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-01-15T00:00:00+08:00">
                 2016-01-15
               </time>
@@ -884,7 +1583,7 @@ if(xhr){
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <span class="post-meta-item-text">Posted on</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2015-11-05T00:00:00+08:00">
                 2015-11-05
               </time>
@@ -963,690 +1662,11 @@ if(xhr){
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2015/11/03/一款有趣的Javascript动画效果/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="Fenglin">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="/images/avatar.gif">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="Feng~Lin">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="Feng~Lin" src="">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2015/11/03/一款有趣的Javascript动画效果/" itemprop="url">
-                  【BOOM】一款有趣的Javascript动画效果
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2015-11-03T00:00:00+08:00">
-                2015-11-03
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>实践出真知，有的时候看到一些有趣的现象就想着用自己所学的知识复现一下。</p>
-<h3 id="boomJS-缘起"><a href="#boomJS-缘起" class="headerlink" title="boomJS 缘起"></a>boomJS 缘起</h3><p>前几天在 github 上看到同事的一个这样的小项目，在 IOS 上实现了这样一个小动画效果，看上去蛮炫的，效果图：<br><img src="http://images2015.cnblogs.com/blog/608782/201603/608782-20160329172558519-1556108424.gif" alt="Generating"><br>我就寻思着，在浏览器环境下，用 Javascript 怎么实现呢？</p>
-<p>在浓烈的好奇心驱使下，最终利用 Javascript 和 CSS3 完成了模仿上面的效果，通过调用方法，可以将页面上的图片一键爆炸，我给它起了个 boomJS 的名字，贴两张效果图：<br><img src="http://images2015.cnblogs.com/blog/608782/201603/608782-20160329172955207-1171725961.gif" alt="Generating"><br><img src="http://images2015.cnblogs.com/blog/608782/201604/608782-20160427142448798-1647044740.gif" alt="Generating"></p>
-<h4 id="boomJS-实现"><a href="#boomJS-实现" class="headerlink" title="boomJS 实现"></a>boomJS 实现</h4><p>我感觉效果还是可以的，因为没有使用 canvas ，所以无法取到图片上每个像素的颜色值。使用了一些比较讨（sha）巧（bi）的方法，下面简单讲讲如何实现的：</p>
-<p>1、构造新图容器，隐藏原图</p>
-<p>原本的图是 <img> 标签的图，一张整图，最终的效果当然不是在原图上 boom ，看上去连贯的动画本质上只是一个障眼法，利用 Javascript 做了一些巧妙的变换，所以第一步所做的就是取到原图的高宽及相对浏览器视窗的定位，再创建一个新的容器附着在原图之上，然后隐藏原图。</p>
-<p>这个方法里面我主要用到了 getBoundingClientRect 这个方法，该方法返回元素的大小及其相对于视口的位置，完美满足我的需要。</p>
-<p>嗯，这一步做了什么呢？简单的如下所示：<br><img src="http://images2015.cnblogs.com/blog/608782/201603/608782-20160329174940629-1244384805.jpg" alt="Generating"><br>2、生成一张张是碎裂小图</p>
-<p>最后效果是图片 boom 一下裂开，所以第二步要做的就是模拟出一小块一小块小图，这里每一个小块就是一个新的 div ，然后利用图片的定位 background-position 将其定位到合适的位置，嘿，看看效果：<br><img src="http://images2015.cnblogs.com/blog/608782/201603/608782-20160329175415879-795860893.jpg" alt="Generating"><br>可以看到，这里分割成了很多个小块，每个小块其实是一个 div 然后，这些小块被添加到我们上一步中设置的容器当中，然后利用原图设置 div 的背景图，所有 div 利用的都是原图一张背景图，接着图片定位就可以完成这样一个效果，说起来很简单，但是中间经历了很多计算，如何分割图片，图片的 width 与 height 比（是横图还是竖图），每个小块 div 的定位及小 div 背景图的定位，具体的可以到这里看看:boomJS。</p>
-<p>最后为了好看，设置了圆角，但是这样爆炸的话，感觉不够真实，图片一块一块的清晰可辨。所以利用缩放 scale ，随机让每个小块放大或者缩小，再看看缩放后的效果<br><img src="http://images2015.cnblogs.com/blog/608782/201603/608782-20160329180108660-1834990187.jpg" alt="Generating"><br>嗯，模糊了很多，效果近一步增强，这样爆开来比较真实。<br>3、boom 爆炸！</p>
-<p>嗯，到了鸡冻人心的最后一步，要做的就是给每一个 div 小块设置运动轨迹，然后同时爆开。</p>
-<p>比较繁琐，需要先算出图片的中心点，然后每个 div 块点以中心为基准点向外做直线运动，不得不说，做这个我还特意恶补了一下高中的几何知识（囧）。为了效果更加真实，每个 div 块运动的直线距离添加一个正负值恰当的随机数，那么就可以达到有的块炸的比较远，有的块炸的比较近。利用未缩放的小块图片做一下大概的示意图：<br><img src="http://images2015.cnblogs.com/blog/608782/201603/608782-20160329181134285-701094219.jpg" alt="Generating"></p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2015/10/30/CSS -before 和 -after/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="Fenglin">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="/images/avatar.gif">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="Feng~Lin">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="Feng~Lin" src="">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2015/10/30/CSS -before 和 -after/" itemprop="url">
-                  CSS :before 和 :after
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2015-10-30T00:00:00+08:00">
-                2015-10-30
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="什么是-before和-after？-该如何使用他们？"><a href="#什么是-before和-after？-该如何使用他们？" class="headerlink" title="什么是:before和:after？ 该如何使用他们？"></a>什么是:before和:after？ 该如何使用他们？</h3><p>&gt;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">```</div><div class="line">```:after是css中的一种伪元素，可用于在某个元素之后插入某些内容。</div></pre></td></tr></table></figure></p>
-<p>下面我们先跑个简单的代码测试下效果：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">&lt;style&gt;</div><div class="line">  		p:before&#123;</div><div class="line">       	content: &quot;H&quot;  /*:before和:after必带技能，重要性为满5颗星*/</div><div class="line">   	&#125;</div><div class="line">   	p:after&#123;</div><div class="line">       	content: &quot;d&quot;  /*:before和:after必带技能，重要性为满5颗星*/</div><div class="line">   	&#125;</div><div class="line"> 	&lt;/style&gt;</div><div class="line"> 	&lt;p&gt;ello Worl&lt;/p&gt;</div></pre></td></tr></table></figure>
-<p> 以上的代码将会在页面中展现的是”Hello World”。我们通过浏览器的”审查元素”看到的内容是：</p>
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;p&gt;</div><div class="line"> ::before</div><div class="line"> &quot;ello Worl&quot;</div><div class="line"> ::after</div><div class="line">&lt;/p&gt;</div></pre></td></tr></table></figure>
-<p>  p标签内部的内容的前面会被插入一个:before伪元素，该伪元素内包含的内容是”H”；而在p标签内的内容后面会被插入一个:after伪元素，该元素包含的内容是”d”。作为一只合格的程序猴子，捍卫”Hello World”的完整存在是必要的。<br>既然笔记主要针对是:before和:after，那么肯定不会只是仅仅有以上的简单介绍就完事。下面我们看看平常该怎么使用他们。</p>
-<h3 id="1-结合border写个对话框的样式。"><a href="#1-结合border写个对话框的样式。" class="headerlink" title="1.结合border写个对话框的样式。"></a>1.结合border写个对话框的样式。</h3><p>本兽将上面这句话拆成2部分：结合border，写个对话框的样式。<br>既然是结合border，那么我们先转个小话题，简单由浅入深的介绍下怎么用border画三角形样式(这个三角形在写对话框样式的时候需要)：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&lt;style&gt;</div><div class="line">   .triangle&#123;</div><div class="line">       width: 0;</div><div class="line">       height: 0;</div><div class="line">       border-left:50px solid red;</div><div class="line">       border-bottom:50px solid blue;</div><div class="line">       border-top:50px solid black;</div><div class="line">       border-right:50px solid purple    &#125;</div><div class="line"> &lt;/style&gt;</div><div class="line"> &lt;div class=&quot;triangle&quot;&gt;&lt;/div&gt;</div></pre></td></tr></table></figure>
-<p>以上代码将会在页面上展示一个正方形，左边是个红色的三角形，右边是紫色的三角形，上面是黑色的三角形，下面是蓝色的三角形。那么有人就会问，我们要的不是三角形么？野兽你画个正方形逗我呢？</p>
-<p>我们对上面的样式做些修改：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">.triangle&#123;</div><div class="line">      width: 0;</div><div class="line">      height: 0;</div><div class="line">      border:50px transparent solid; /*这里我们将元素的边框宽度设置为50px，transparent表示边框颜色是透明的，solid表示边框是实线的*/</div><div class="line">      border-top-color: black;  /*这里我们仅将上边框的颜色设置为黑色，众所周知，css后面的样式代码会覆盖之前的相同的样式代码，至于其他三边的还是透明色*/</div><div class="line">      /*border-bottom-color: black; /*这里设置底部边框色为黑色*/</div><div class="line">      border-left-color: black;  /*这里设置左边边框色为黑色*/</div><div class="line">      border-right-color:black*/ /*这里设置右边边框色为黑色*/</div><div class="line">  &#125;</div></pre></td></tr></table></figure>
-<p>然后这时我们就会看到一个在顶部的方向向下的三角形。解释已详细的写在css样式的注释里。</p>
-<p>接下来我们加上:before：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">&lt;style&gt;</div><div class="line">   .test-div&#123;</div><div class="line">       position: relative;  /*日常相对定位*/</div><div class="line">       width:150px;</div><div class="line">       height:36px;</div><div class="line">       border-radius:5px;</div><div class="line">       border:black 1px solid;</div><div class="line">       background: rgba(245,245,245,1)    &#125;</div><div class="line">   .test-div:before&#123;</div><div class="line">       content: &quot;&quot;;  /*:before和:after必带技能，重要性为满5颗星*/</div><div class="line">       display: block;</div><div class="line">       position: absolute;  /*日常绝对定位*/</div><div class="line">       top:8px;</div><div class="line">       width: 0;</div><div class="line">       height: 0;</div><div class="line">       border:6px transparent solid;</div><div class="line">       left:-12px;</div><div class="line">       border-right-color: rgba(245,245,245,1);</div><div class="line">   &#125;</div><div class="line"> &lt;/style&gt;</div><div class="line"> &lt;div class=&quot;test-div&quot;&gt;&lt;/div&gt;</div></pre></td></tr></table></figure>
-<p>通过以上代码，我们将会看见一个类似微信/QQ的对话框样式,但是美中不足的是，在对话框的四周的边框不是完整的，而是在对话框的突出三角形上是木有边框的T_T瞬间冷场有木有，该怎么办呢？让召唤:after穿着棉大衣来救场吧~<br>完整代码：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">&lt;style&gt;</div><div class="line">   .test-div&#123;</div><div class="line">       position: relative;  /*日常相对定位*/</div><div class="line">       width:150px;</div><div class="line">       height: 36px;</div><div class="line">       border:black 1px solid;</div><div class="line">       border-radius:5px;</div><div class="line">       background: rgba(245,245,245,1)    &#125;</div><div class="line">   .test-div:before,.test-div:after&#123;</div><div class="line">       content: &quot;&quot;;  /*:before和:after必带技能，重要性为满5颗星*/</div><div class="line">       display: block;</div><div class="line">       position: absolute;  /*日常绝对定位*/</div><div class="line">       top:8px;</div><div class="line">       width: 0;</div><div class="line">       height: 0;</div><div class="line">       border:6px transparent solid;</div><div class="line">   &#125;</div><div class="line">   .test-div:before&#123;</div><div class="line">       left:-11px;</div><div class="line">       border-right-color: rgba(245,245,245,1);</div><div class="line">       z-index:1    &#125;</div><div class="line">   .test-div:after&#123;</div><div class="line">       left:-12px;</div><div class="line">       border-right-color: rgba(0,0,0,1);</div><div class="line">       z-index: 0    &#125;</div><div class="line"> &lt;/style&gt;</div><div class="line"> &lt;div class=&quot;test-div&quot;&gt;&lt;/div&gt;</div></pre></td></tr></table></figure>
-<p>好了，完整的一个对话框样式呈现在眼前了，至于对话框的小三角形的方向，相信大家看了上上段对于border介绍的代码也都知道该怎么做了吧，没错，就是改下position的位置，改下border显示颜色的方位~ (本兽不喜欢贴图片，体谅下额，需要的可以拷贝代码直接运行看效果，造轮子不仅仅是造轮子，也能让人加深印象，更好的理解)</p>
-<h3 id="2-作为内容的半透明背景层。"><a href="#2-作为内容的半透明背景层。" class="headerlink" title="2.作为内容的半透明背景层。"></a>2.作为内容的半透明背景层。</h3><p>比如我们的需求是做一个半透明的登录框吧(这里也是在代码中通过注释来解释)：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line">&lt;style&gt;</div><div class="line">     body&#123;</div><div class="line">         background: url(img/1.jpg) no-repeat left top /*这里本兽加了个图片背景，用以区分背景的半透明及内容的完全不透明*/</div><div class="line">     &#125;</div><div class="line">     .test-div&#123;</div><div class="line">         position: relative;  /*日常相对定位(重要，下面内容也会介绍)*/</div><div class="line">         width:300px;</div><div class="line">         height: 120px;</div><div class="line">         padding: 20px 10px;</div><div class="line">         font-weight: bold;</div><div class="line">     &#125;</div><div class="line">     .test-div:before&#123;</div><div class="line">         position: absolute;  /*日常绝对定位(重要，下面内容也会略带介绍)*/</div><div class="line">         content: &quot;&quot;;  /*:before和:after必带技能，重要性为满5颗星*/</div><div class="line">         top:0;</div><div class="line">         left: 0;</div><div class="line">         width: 100%;  /*和内容一样的宽度*/</div><div class="line">         height: 100%;  /*和内容一样的高度*/</div><div class="line">         background: rgba(255,255,255,.5); /*给定背景白色，透明度50%*/</div><div class="line">         z-index:-1 /*日常元素堆叠顺序(重要，下面内容也会略带介绍)*/</div><div class="line">     &#125;</div><div class="line"> &lt;/style&gt;</div><div class="line"> &lt;!--这里容兽偷个懒，布局简单写写--&gt;</div><div class="line"> &lt;div class=&quot;test-div&quot;&gt;</div><div class="line">     &lt;table&gt;</div><div class="line">         &lt;tr&gt;</div><div class="line">             &lt;td&gt;Name&lt;/td&gt;</div><div class="line">             &lt;td&gt;&lt;input placeholder=&quot;your name&quot; /&gt;&lt;/td&gt;</div><div class="line">         &lt;/tr&gt; </div><div class="line">         &lt;tr&gt;</div><div class="line">             &lt;td&gt;Password&lt;/td&gt;</div><div class="line">             &lt;td&gt;&lt;input placeholder=&quot;your password&quot; /&gt;&lt;/td&gt;</div><div class="line">         &lt;/tr&gt; </div><div class="line">         &lt;tr&gt;</div><div class="line">             &lt;td&gt;&lt;/td&gt;</div><div class="line">             &lt;td&gt;&lt;input type=&quot;button&quot; value=&quot;login&quot; /&gt;&lt;/td&gt;</div><div class="line">         &lt;/tr&gt;</div><div class="line">     &lt;/table&gt;</div><div class="line"> &lt;/div&gt;</div></pre></td></tr></table></figure>
-<p>上面的代码拷贝过去，加上张图片可测试效果。<br>当然，:bofore和:after也还有其他更多的巧妙用法，这里也不一一列出来了，这里放上一个用这两个伪元素加上css3动画实现一些比较好看及实用的动态效果的链接：ht tp: //tympanus.net/Development/HoverEffectIdeas/</p>
-<p>说完了:before和:after，我们稍微扯扯一些其他的css样式及布局注意点(可能大家不怎么注意，从而导致一些布局和样式出问题)。</p>
-<p>###position 定位的问题<br>position属性规定了元素的定位类型，默认为static。</p>
-<p>该属性还可以有下值：</p>
-<p>absolute：生成绝对定位的元素，相对于 static 定位以外的第一个父元素进行定位。</p>
-<p>fixed：生成绝对定位的元素，相对于浏览器窗口进行定位。</p>
-<p>relative：生成相对定位的元素，相对于其正常位置进行定位。</p>
-<p>inherit：规定应该从父元素继承 position 属性的值。</p>
-<p>效果：</p>
-<!--position:absolute-->
-<p>  <style><br>      body{<br>          height: 2000px  /<em>这里将body的高度设置为2000px是为了区分absolute和fixed的差别</em>/<br>      }<br>      .test-div{<br>          position:absolute;<br>          left:50px;<br>          top:50px      }<br>  </style><br>  <div class="test-div">Hello World</div><!--position:fixed--><br>  <style><br>      body{<br>          height: 2000px  /<em>这里将body的高度设置为2000px是为了区分absolute和fixed的差别</em>/<br>      }<br>      .test-div{<br>          position:fixed;<br>          left:50px;<br>          top:50px      }<br>  </style><br>  <div class="test-div">Hello World</div><!--position:relative + position:absolute--><br>  <style><br>      .out-div{<br>          width: 300px;<br>          height: 300px;<br>          background: purple;  /<em>这里定义个背景，让我们知道这个div在哪</em>/<br>          margin:50px 0px 0px 50px;<br>          position: relative      }<br>      .in-div{<br>          position:absolute;<br>          left:50px;<br>          top:50px      }<br>  </style><br>  <div class="out-div"><br>      <div class="in-div">Hello World</div><br>  </div></p>
-<p>代码：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line">&lt;!--position:absolute--&gt;</div><div class="line"> &lt;style&gt;</div><div class="line">     body&#123;</div><div class="line">         height: 2000px  /*这里将body的高度设置为2000px是为了区分absolute和fixed的差别*/</div><div class="line">     &#125;</div><div class="line">     .test-div&#123;</div><div class="line">         position:absolute;</div><div class="line">         left:50px;</div><div class="line">         top:50px      &#125;</div><div class="line"> &lt;/style&gt;</div><div class="line"> &lt;div class=&quot;test-div&quot;&gt;Hello World&lt;/div&gt;&lt;!--position:fixed--&gt;</div><div class="line"> &lt;style&gt;</div><div class="line">     body&#123;</div><div class="line">         height: 2000px  /*这里将body的高度设置为2000px是为了区分absolute和fixed的差别*/</div><div class="line">     &#125;</div><div class="line">     .test-div&#123;</div><div class="line">         position:fixed;</div><div class="line">         left:50px;</div><div class="line">         top:50px      &#125;</div><div class="line"> &lt;/style&gt;</div><div class="line"> &lt;div class=&quot;test-div&quot;&gt;Hello World&lt;/div&gt;&lt;!--position:relative + position:absolute--&gt;</div><div class="line"> &lt;style&gt;</div><div class="line">     .out-div&#123;</div><div class="line">         width: 300px;</div><div class="line">         height: 300px;</div><div class="line">         background: purple;  /*这里定义个背景，让我们知道这个div在哪*/</div><div class="line">         margin:50px 0px 0px 50px;</div><div class="line">         position: relative      &#125;</div><div class="line">     .in-div&#123;</div><div class="line">         position:absolute;</div><div class="line">         left:50px;</div><div class="line">         top:50px      &#125;</div><div class="line"> &lt;/style&gt;</div><div class="line"> &lt;div class=&quot;out-div&quot;&gt;</div><div class="line">     &lt;div class=&quot;in-div&quot;&gt;Hello World&lt;/div&gt;</div><div class="line"> &lt;/div&gt;</div></pre></td></tr></table></figure>
-<h3 id="z-index-元素堆叠排序"><a href="#z-index-元素堆叠排序" class="headerlink" title="z-index 元素堆叠排序"></a>z-index 元素堆叠排序</h3><p>z-index用于设置或检索对象的堆叠顺序，对应的脚本特性为zIndex。</p>
-<p>z-index的数值越大，该元素的堆叠层级越高。</p>
-<p>代码</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">&lt;style&gt;</div><div class="line">     .first-div&#123;</div><div class="line">         width: 300px;</div><div class="line">         height: 300px;</div><div class="line">         background: purple;  /*这里定义个背景，让我们知道这个div在哪*/</div><div class="line">         position: absolute;</div><div class="line">         left:50px;</div><div class="line">         top:50px;</div><div class="line">         z-index: 1      &#125;</div><div class="line">     .second-div&#123;</div><div class="line">         position:absolute;</div><div class="line">         left:80px;</div><div class="line">         top:80px;</div><div class="line">         width:50px;</div><div class="line">         height: 50px;</div><div class="line">         background: white;</div><div class="line">         z-index: 2      &#125;</div><div class="line"> &lt;/style&gt;</div><div class="line"> &lt;div class=&quot;first-div&quot;&gt;&lt;/div&gt;</div><div class="line"> &lt;div class=&quot;second-div&quot;&gt;&lt;/div&gt;</div></pre></td></tr></table></figure>
-<p>这里我们将第一个div和第二个div位置放到一起，方便看z-index的效果。以上代码的样式是紫色的正方形里面有个白色的小正方形。因为小正方形的z-index大于大正方形的z-index，所以能显示出，当我们把.first-div的z-index设置为3，这时候就看不到白色的小正方形了，它被紫色的大正方形无情的挡掉了…</p>
-<h3 id="zoom-元素缩放比例"><a href="#zoom-元素缩放比例" class="headerlink" title="zoom 元素缩放比例"></a>zoom 元素缩放比例</h3><p>zoom适用于所有元素，用于设置或检索对象的缩放比例，对应的脚本特性为zoom，原比例的值是1。</p>
-<p>代码：</p>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">&lt;style&gt;</div><div class="line">    div&#123;</div><div class="line">        width: 100px;</div><div class="line">        height: 100px;</div><div class="line">        float: left      &#125;</div><div class="line">    .first-div&#123;</div><div class="line">        background: purple;</div><div class="line">        zoom:1.5      &#125;</div><div class="line">    .second-div&#123;</div><div class="line">        background: black;</div><div class="line">        zoom:1      &#125;</div><div class="line">    .third-div&#123;</div><div class="line">        background: red;</div><div class="line">        zoom:.5      &#125;</div><div class="line">&lt;/style&gt;</div><div class="line">&lt;div class=&quot;first-div&quot;&gt;&lt;/div&gt;</div><div class="line">&lt;div class=&quot;second-div&quot;&gt;&lt;/div&gt;</div><div class="line">&lt;div class=&quot;third-div&quot;&gt;&lt;/div&gt;</div></pre></td></tr></table></figure>
-<p>  以上代码将会展示的依次是紫色-黑色-红色的div，大小分别是100px的1.5倍，1倍，0.5倍。</p>
-<h3 id="em-和-rem-是什么"><a href="#em-和-rem-是什么" class="headerlink" title="em 和 rem 是什么"></a>em 和 rem 是什么</h3><p>1em等于当前的字体尺寸，数值的改变意味着字体大小的调整。em 有继承这个特性，也就是说，外部父元素定义了字体的em大小，内部子元素会继承这一属性的样式。<br>rem = root em 。顾名思义，root即根部的，顶部的。也就是根部的em，这个根部指的是HTML根元素。所以rem的大小是针对HTML根元素的大小做字体的相对大小的调整。<br>效果：</p>
-<p> <style><br>      body{<br>        font-size: 12px;<br>      }<br>      /<em>html{<br>          font-size: 12px;<br>      }</em>/<br>      div{<br>          width: 200px;<br>          height: 100px;<br>          float:left      }<br>      .first-div{<br>          font-size: 1em      }<br>      .second-div{<br>          font-size: 2em      }<br>      .third-div{<br>          font-size: 1rem      }<br>      .fourth-div{<br>          font-size: 2rem      }<br>  </style><br>  <div class="first-div">Hello World</div><br>  <div class="second-div">Hello World</div><br>  <div class="third-div">Hello World</div><br>  <div class="fourth-div">Hello World</div></p>
-<p>代码：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">&lt;style&gt;</div><div class="line">     body&#123;</div><div class="line">       font-size: 12px;  </div><div class="line">     &#125;</div><div class="line">     /*html&#123;</div><div class="line">         font-size: 12px;</div><div class="line">     &#125;*/</div><div class="line">     div&#123;</div><div class="line">         width: 200px;</div><div class="line">         height: 100px;</div><div class="line">         float:left      &#125;</div><div class="line">     .first-div&#123;</div><div class="line">         font-size: 1em      &#125;</div><div class="line">     .second-div&#123;</div><div class="line">         font-size: 2em      &#125;</div><div class="line">     .third-div&#123;</div><div class="line">         font-size: 1rem      &#125;</div><div class="line">     .fourth-div&#123;</div><div class="line">         font-size: 2rem      &#125;</div><div class="line"> &lt;/style&gt;</div><div class="line"> &lt;div class=&quot;first-div&quot;&gt;Hello World&lt;/div&gt;</div><div class="line"> &lt;div class=&quot;second-div&quot;&gt;Hello World&lt;/div&gt;</div><div class="line"> &lt;div class=&quot;third-div&quot;&gt;Hello World&lt;/div&gt;</div><div class="line"> &lt;div class=&quot;fourth-div&quot;&gt;Hello World&lt;/div&gt;</div></pre></td></tr></table></figure>
-<p>以上代码分别展示了不同大小的字体，em和rem的区别可以通过仅仅注释body字体样式和html字体样式来看看他们之间的差别。</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2015/10/25/JavaScript的原型对象与原型链/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="Fenglin">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="/images/avatar.gif">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="Feng~Lin">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="Feng~Lin" src="">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2015/10/25/JavaScript的原型对象与原型链/" itemprop="url">
-                  JavaScript的原型对象与原型链
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2015-10-25T00:00:00+08:00">
-                2015-10-25
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="title-JavaScript的原型对象与原型链"><a href="#title-JavaScript的原型对象与原型链" class="headerlink" title="title: JavaScript的原型对象与原型链"></a>title: JavaScript的原型对象与原型链</h2><p>早前在博客园发的几篇基础文，都是图解系列，总结了一些JavaScript容易混淆的知识点，现在拿来在掘金分享一下吧。</p>
-<p>原文地址：<a href="http://shuiyi.io/article/5" target="_blank" rel="external">三张图搞懂JavaScript的原型对象与原型链</a></p>
-<p>对于新人来说，JavaScript的原型是一个很让人头疼的事情，一来prototype容易与<strong>proto</strong>混淆，二来它们之间的各种指向实在有些复杂，其实市面上已经有非常多的文章在尝试说清楚，有一张所谓很经典的图，上面画了各种线条，一会连接这个一会连接那个，说实话我自己看得就非常头晕，更谈不上完全理解了。所以我自己也想尝试一下，看看能不能把原型中的重要知识点拆分出来，用最简单的图表形式说清楚。</p>
-<p>我们知道原型是一个对象，其他对象可以通过它实现属性继承。但是尼玛除了prototype，又有一个<strong>proto</strong>是用来干嘛的？长那么像，让人怎么区分呢？它们都指向谁，那么混乱怎么记啊？原型链又是什么鬼？相信不少初学者甚至有一定经验的老鸟都不一定能完全说清楚，下面用三张简单的图，配合一些示例代码来理解一下。</p>
-<h3 id="1、prototype和proto的区别"><a href="#1、prototype和proto的区别" class="headerlink" title="1、prototype和proto的区别"></a>1、prototype和<strong>proto</strong>的区别</h3><p><img src="https://dn-myg6wstv.qbox.me/2e7817d676e605e54e62.png" alt="Generating"></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">var a = &#123;&#125;;</div><div class="line">console.log(a.prototype); //undefined</div><div class="line">console.log(a.__proto__);  //Object &#123;&#125;</div><div class="line"></div><div class="line">var b = function()&#123;&#125;</div><div class="line">console.log(b.prototype); //b &#123;&#125;</div><div class="line">console.log(b.__proto__);  //function() &#123;&#125;</div></pre></td></tr></table></figure>
-<h3 id="2、proto属性指向谁"><a href="#2、proto属性指向谁" class="headerlink" title="2、proto属性指向谁"></a>2、<strong>proto</strong>属性指向谁</h3><p><img src="https://dn-myg6wstv.qbox.me/414693e5821245adeb86.png" alt="Generating"></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">/*1、字面量方式*/</div><div class="line">var a = &#123;&#125;;</div><div class="line">console.log(a.constructor); //function Object() &#123; [native code] &#125; (即构造器Object）</div><div class="line">console.log(a.__proto__ === a.constructor.prototype); //true</div><div class="line"></div><div class="line">/*2、构造器方式*/</div><div class="line">var A = function ()&#123;&#125;; var a = new A();</div><div class="line">console.log(a.constructor); // function()&#123;&#125;（即构造器function A）</div><div class="line">console.log(a.__proto__ === a.constructor.prototype); //true</div><div class="line"></div><div class="line">/*3、Object.create()方式*/</div><div class="line">var a1 = &#123;a:1&#125; </div><div class="line">var a2 = Object.create(a1);</div><div class="line">console.log(a2.constructor); //function Object() &#123; [native code] &#125; (即构造器Object)</div><div class="line">console.log(a2.__proto__ === a1);// true </div><div class="line">console.log(a2.__proto__ === a2.constructor.prototype); //false（此处即为图1中的例外情况）</div></pre></td></tr></table></figure>
-<h2 id="什么是原型链"><a href="#什么是原型链" class="headerlink" title="什么是原型链"></a>什么是原型链</h2><p><img src="https://user-gold-cdn.xitu.io/2016/11/29/877d6c73f3b810ddd1692fffd06c290b" alt="Generating"></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">var A = function()&#123;&#125;;</div><div class="line">var a = new A();</div><div class="line">console.log(a.__proto__); //Object &#123;&#125;（即构造器function A 的原型对象）</div><div class="line">console.log(a.__proto__.__proto__); //Object &#123;&#125;（即构造器function Object 的原型对象）</div><div class="line">console.log(a.__proto__.__proto__.__proto__); //null</div></pre></td></tr></table></figure>
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2015/10/16/Function 和 Object 的关系/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="Fenglin">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="/images/avatar.gif">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="Feng~Lin">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="Feng~Lin" src="">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2015/10/16/Function 和 Object 的关系/" itemprop="url">
-                  协议入门
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2015-10-16T00:00:00+08:00">
-                2015-10-16
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="title-一张图看懂-Function-和-Object-的关系及简述-instanceof-运算符"><a href="#title-一张图看懂-Function-和-Object-的关系及简述-instanceof-运算符" class="headerlink" title="title: 一张图看懂 Function 和 Object 的关系及简述 instanceof 运算符"></a>title: 一张图看懂 Function 和 Object 的关系及简述 instanceof 运算符</h2><h2 id="一、instanceof究竟是运算什么的？"><a href="#一、instanceof究竟是运算什么的？" class="headerlink" title="一、instanceof究竟是运算什么的？"></a>一、instanceof究竟是运算什么的？</h2><p>我曾经简单理解 instanceof 只是检测一个对象是否是另个对象 new 出来的实例（例如var a = new Object()，a instanceof Object返回true），但实际 instanceof 的运算规则上比这个更复杂。</p>
-<p>首先w3c上有官方解释（传送门，有兴趣的同学可以去看看），但是一如既往地让人无法一目了然地看懂……</p>
-<p>知乎上有同学把这个解释翻译成人能读懂的语言（传送门），看起来似乎明白一些了：</p>
-<p>//假设instanceof运算符左边是L，右边是R<br>L instanceof R //instanceof运算时，通过判断L的原型链上是否存在R.prototype<br>L.<strong>proto</strong>.<strong>proto</strong> ….. === R.prototype ？ //如果存在返回true 否则返回false<br>注意：instanceof 运算时会递归查找L的原型链，即 L.<strong>proto</strong>.<strong>proto</strong>.<strong>proto</strong>.<strong>proto</strong>… 直到找到了或者找到顶层为止。</p>
-<p>所以一句话理解 instanceof 的运算规则为：</p>
-<p>instanceof 检测左侧的 <strong>proto</strong> 原型链上，是否存在右侧的 prototype 原型。</p>
-<h2 id="二、图解构造器Function和Object的关系"><a href="#二、图解构造器Function和Object的关系" class="headerlink" title="二、图解构造器Function和Object的关系"></a>二、图解构造器Function和Object的关系</h2><p><img src="https://user-gold-cdn.xitu.io/2016/11/29/ce8bff088a74cda6789a11f6075b7411" alt="Generating"></p>
-<h4 id="我们再配合代码来看一下就明白了："><a href="#我们再配合代码来看一下就明白了：" class="headerlink" title="我们再配合代码来看一下就明白了："></a>我们再配合代码来看一下就明白了：</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">//①构造器Function的构造器是它自身</div><div class="line">Function.constructor=== Function;//true</div><div class="line"></div><div class="line">//②构造器Object的构造器是Function（由此可知所有构造器的constructor都指向Function）</div><div class="line">Object.constructor === Function;//true</div><div class="line"></div><div class="line">//③构造器Function的__proto__是一个特殊的匿名函数function() &#123;&#125;</div><div class="line">console.log(Function.__proto__);//function() &#123;&#125;</div><div class="line"></div><div class="line">//④这个特殊的匿名函数的__proto__指向Object的prototype原型。</div><div class="line">Function.__proto__.__proto__ === Object.prototype//true</div><div class="line"></div><div class="line">//⑤Object的__proto__指向Function的prototype，也就是上面③中所述的特殊匿名函数</div><div class="line">Object.__proto__ === Function.prototype;//true</div><div class="line">Function.prototype === Function.__proto__;//true</div></pre></td></tr></table></figure>
-<h2 id="三、当构造器Object和Function遇到instanceof"><a href="#三、当构造器Object和Function遇到instanceof" class="headerlink" title="三、当构造器Object和Function遇到instanceof"></a>三、当构造器Object和Function遇到instanceof</h2><p>我们回过头来看第一部分那个“奇怪的现象”，从上面那个图中我们可以看到：</p>
-<p>Function.<strong>proto</strong>.<strong>proto</strong> === Object.prototype;//true<br>Object.<strong>proto</strong> === Function.prototype;//true<br>所以再看回第一点中我们说的 instanceof 的运算规则，Function instanceof Object 和 Object instanceof Function 运算的结果当然都是true啦！</p>
-<p>如果看完以上，你还觉得上面的关系看晕了的话，只需要记住下面两个最重要的关系，其他关系就可以推导出来了：</p>
-<p>所有的构造器的 constructor 都指向 Function</p>
-<p>Function 的 prototype 指向一个特殊匿名函数，而这个特殊匿名函数的 <strong>proto</strong> 指向 Object.prototype</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2015/08/27/SS 伪类before:after content内容生成技术/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="Fenglin">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="/images/avatar.gif">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="Feng~Lin">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="Feng~Lin" src="">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2015/08/27/SS 伪类before:after content内容生成技术/" itemprop="url">
-                  CSS 伪类before/after content内容生成技术----纯CSS实现tooltip
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2015-08-27T00:00:00+08:00">
-                2015-08-27
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="title-CSS-伪类before-after-content内容生成技术—-纯CSS实现tooltip"><a href="#title-CSS-伪类before-after-content内容生成技术—-纯CSS实现tooltip" class="headerlink" title="title: CSS 伪类before/after content内容生成技术—-纯CSS实现tooltip"></a>title: CSS 伪类before/after content内容生成技术—-纯CSS实现tooltip</h2><h3 id="一、介绍before-after"><a href="#一、介绍before-after" class="headerlink" title="一、介绍before/after"></a>一、介绍before/after</h3><p>CSS中的before和after伪类选择器早在CSS2时就被引入，改属性被所有主流浏览器所支持了。<br>before和after顾名思义，分别指的是伪元素在元素前/后添加内容，默认他们是display是inline，但是可以使用CSS设置为block。<br>应用before/和after也比较简单，举个例子：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">a:after &#123;</div><div class="line">      content: &quot; after &quot;;</div><div class="line">      display:  block;</div><div class="line">      coloe: red;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>可以在浏览器看到，a标签元素后面多出了一段文字 after。（在CSS3中伪类元素使用是如a::after的，不过目前两者并无多大区别）。<br>（伪元素不可通过DOM使用，IE6/7对该属性不支持）</p>
-<p>after和before伪元素有许多用处，还可以简化代码，比如可以写一个计数器、tip小三角形、清除浮动……特别在CSS3中新加的一些属性更是丰富了它的应用，这里有个小教程，用before/after伪元素来实现一个纯CSS3的tooltip。</p>
-<h3 id="二、tooltip实现教程"><a href="#二、tooltip实现教程" class="headerlink" title="二、tooltip实现教程"></a>二、tooltip实现教程</h3><p>这里我们主要是用草after/before伪元素content中的attr属性，先来看看实现后的样子：</p>
-<h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h4><p>鼠标hover button之后，出现一个tooltip小标签。<br>代码先贴上：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE html&gt;</div><div class="line">&lt;html lang=&quot;en&quot;&gt;</div><div class="line">&lt;head&gt;</div><div class="line">    &lt;meta charset=&quot;UTF-8&quot;&gt;</div><div class="line">    &lt;title&gt;demo&lt;/title&gt;</div><div class="line">    &lt;style&gt;</div><div class="line">        .btn &#123;</div><div class="line">            position: relative;</div><div class="line">            display: block;</div><div class="line">            margin: 200px auto;</div><div class="line">            width: 200px;</div><div class="line">            padding: 10px 20px;</div><div class="line">            font-size: 20px;</div><div class="line">            background: #fff;</div><div class="line">            color: #6bdf4e;</div><div class="line">            border: 1px solid #6bdf4e;</div><div class="line">            cursor: pointer;</div><div class="line">        &#125;</div><div class="line">        .btn::after &#123;</div><div class="line">            content: attr(data-tip);</div><div class="line">            display: none;</div><div class="line">            position: absolute;</div><div class="line">            padding: 5px 10px;</div><div class="line">            left: 50%;</div><div class="line">            bottom: 100%;</div><div class="line">            margin-bottom: 12px;</div><div class="line">            transform: translateX(-50%);</div><div class="line">            font-size: 16px;</div><div class="line">            background: #000;</div><div class="line">            color: #fff;</div><div class="line">            cursor: default;</div><div class="line">        &#125;</div><div class="line">        .btn::before &#123;</div><div class="line">            content: &quot; &quot;;</div><div class="line">            position: absolute;</div><div class="line">            display: none;</div><div class="line">            left: 50%;</div><div class="line">            bottom: 100%;</div><div class="line">            transform: translateX(-50%);</div><div class="line">            margin-bottom: 3px;</div><div class="line">            width: 0;</div><div class="line">            height: 0;</div><div class="line">            border-left: 6px solid transparent;</div><div class="line">            border-right: 6px solid transparent;</div><div class="line">            border-top: 9px solid #000;</div><div class="line">        &#125;</div><div class="line">        .btn:hover::after,</div><div class="line">        .btn:hover::before &#123;</div><div class="line">            display: block;</div><div class="line">        &#125;</div><div class="line">    &lt;/style&gt;</div><div class="line">&lt;/head&gt;</div><div class="line">&lt;body&gt;</div><div class="line"></div><div class="line">    &lt;button class=&quot;btn&quot; data-tip=&quot;ToolTip&quot;&gt;button&lt;/button&gt;</div><div class="line"></div><div class="line">&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
-<h4 id="实现过程"><a href="#实现过程" class="headerlink" title="实现过程"></a>实现过程</h4><hr>
-<ul>
-<li>一. 创建一个标签，然后在标签内加上一个属性 data-[] = “ToolTip”,[]表示的是自定义的属性名称，引号里面是tooltip需要显示的内容。</li>
-<li>二. 给标签加样式，position设置为relative，因为之后伪元素需要设置绝对定位来设置位置。</li>
-<li>三. 给after加样式，after是需要显示的tooltip，通过content: attr(data-tip);拿到需要显示的内容，设置绝对定位，调整位置。</li>
-<li>四. 给before加样式，before需要设置成一个小三角tip放在after下面。</li>
-<li>五. 给after/before的display都设置为none。</li>
-<li>六. 给需要tooltip的元素伪类选择hover时设置after/before的display为block，这里需要注意的是after/before默认display为inline，所以我们前面创建调试是display应该先设置为block。</li>
-<li>七. 打开浏览器查看效果~</li>
-</ul>
-<p>##三、对于不支持伪元素的IE6/7<br>解决方法：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">var $beforeAfter = function(dom) &#123;</div><div class="line">    if (document.querySelector || !dom &amp;&amp; dom.nodeType !== 1) return;</div><div class="line">    var content = dom.getAttribute(&quot;data-content&quot;) || &apos;&apos;;     </div><div class="line">    var before = document.createElement(&quot;before&quot;)</div><div class="line">        , after = document.createElement(&quot;after&quot;);</div><div class="line">    before.innerHTML = content;</div><div class="line">    after.innerHTML = content;</div><div class="line">    dom.insertBefore(before, dom.firstChild);</div><div class="line">    dom.appendChild(after);</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1687,8 +1707,8 @@ if(xhr){
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">36</span>
-              <span class="site-state-item-name">Artikel</span>
+              <span class="site-state-item-count">41</span>
+              <span class="site-state-item-name">posts</span>
             </a>
           </div>
 
@@ -1739,7 +1759,7 @@ if(xhr){
 
 
 <div class="powered-by">
-  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
 </div>
 
 <div class="theme-info">

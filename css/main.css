@@ -1681,7 +1681,11 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
+<<<<<<< HEAD:blog/css/main.css
+  background: #21eca2;
+=======
   background: #447142;
+>>>>>>> origin/master:css/main.css
 }
 .links-of-blogroll {
   font-size: 13px;

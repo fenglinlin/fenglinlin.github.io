@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>管子动</title>
+	<style>
+		#wrap{
+			width: 343px;
+			height: 480px;
+			background:url(素材/img/bg.jpg);
+			position: relative;
+			margin: 50px auto;
+		}
+		.up_pipe{
+			position: absolute;
+			top: 0;
+			left: 400px;
+			width: 62px;
+			height: 200px;
+			background: url(素材/img/up_mod.png);
+		}
+		.up_pipe img{
+			position: absolute;
+			bottom: 0;
+		}
+		.down_pipe{
+			position: absolute;
+			bottom: 55px;
+			left: 400px;
+			width: 62px;
+			height: 100px;
+			background: url(素材/img/down_mod.png);
+		}
+		.down_pipe img{
+			position: absolute;
+			top: 0;
+		}
+	</style>
+</head>
+<body>
+	<div id="wrap">
+		<div id="pipe">
+			<!-- <div id="up_pipe">
+				<img src="素材/img/up_pipe.png" alt="">
+			</div>
+			<div id="down_pipe">
+				<img src="素材/img/down_pipe.png" alt="">
+			</div> -->
+		</div>
+	</div>
+</body>
+<script>
+	
+function randomHeight(min,max) {
+	return parseInt(Math.random()*(max-min)+min);
+}
+
+var wrap = document.getElementById('wrap');
+var pipe = document.getElementById('pipe');
+// var up_pipe = document.getElementById('up_pipe');
+// var down_pipe = document.getElementById('down_pipe');
+//创建管子
+var pipeTimer = setInterval(function(){
+	//上面管子
+	var up_pipe = document.createElement('div');
+	up_pipe.className = 'up_pipe';
+	up_pipe.innerHTML = '<img src="素材/img/up_pipe.png" alt="">';
+	var up_height = randomHeight(50,200);
+	up_pipe.style.height = up_height + 'px';
+	pipe.appendChild(up_pipe);
+	//下面管子
+	var down_pipe = document.createElement('div');
+	down_pipe.className = 'down_pipe';
+	down_pipe.innerHTML = '<img src="素材/img/down_pipe.png" alt="">';
+	var down_height = 425 - 100 - up_height;
+	down_pipe.style.height = down_height + 'px';
+	pipe.appendChild(down_pipe);
+	//让管子动起来
+	up_pipe.moveTimer = setInterval(function(){
+		up_pipe.style.left = up_pipe.offsetLeft - 3 + 'px';
+		down_pipe.style.left = down_pipe.offsetLeft - 3 + 'px';
+		if(up_pipe.offsetLeft <= -62){
+			pipe.removeChild(up_pipe);
+			pipe.removeChild(down_pipe);
+
+		}
+	},50);
+},3000);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+</html>

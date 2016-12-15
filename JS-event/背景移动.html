@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>背景移动</title>
+	<style>
+		#wrap{
+			width: 343px;
+			height: 480px;
+			background: url(素材/img/bg.jpg);
+			margin: 50px auto;
+			position: relative;
+			overflow: hidden;
+		}
+		#banner{
+			width: 1000px;
+			position: absolute;
+			left: 0;
+			bottom: 41px;
+		}
+		img{
+			float: left;
+		}
+	</style>
+</head>
+<body>
+	<div id="wrap">
+		<div id="banner">
+			<img src="素材/img/banner.jpg" alt="">
+			<img src="素材/img/banner.jpg" alt="">
+		</div>
+	</div>
+</body>
+<script>
+	var wrap = document.getElementById('wrap');
+	var banner = document.getElementById('banner');
+	var distance = 0;
+	banner.move = setInterval(function(){
+		distance += 10;
+		if(distance > 343){
+			distance = 0;
+		}
+		banner.style.left = -distance+'px';
+	},100);
+</script>
+</html>

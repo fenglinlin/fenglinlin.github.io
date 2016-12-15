@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>声音</title>
+	<style>
+		#wrap{
+			width: 343px;
+			height: 480px;
+			background:url(素材/img/bg.jpg);
+			position: relative;
+			margin: 50px auto;
+
+		}
+	</style>
+</head>
+<body>
+	<div id="wrap">
+		<audio src="素材/game_music.mp3" id="backgroundMusic" autoplay="autoplay"></audio>
+		<audio src="素材/bullet.mp3" id="biubiuMusic"></audio>
+	</div>
+</body>
+<script>
+	var biubiuMusic = document.getElementById('biubiuMusic');
+	document.onclick = function(){
+		biubiuMusic.play();
+	}
+</script>
+</html>

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>检测碰撞</title>
+	<style>
+		div{
+			width: 200px;
+			height: 200px;
+			background-color: red;
+			font-size: 100px;
+			line-height: 200px;
+		}
+		#div1{
+			position: absolute;
+			top: 20px;
+			left: 20px;
+		}
+		#div2{
+			position: absolute;
+			top:450px;
+			left: 800px;
+		}
+	</style>
+</head>
+<body>
+	<div id="div1">小鸟</div>
+	<div id="div2">管子</div>
+</body>
+<script>
+	var bird = document.getElementById('div1');
+	var pipe = document.getElementById('div2');
+	//检测碰撞的函数
+	function isCrash(object1,object2){
+		//定义一个变量，标识是否碰撞;
+		var flag = false;
+		//小鸟四条边界
+		var birdLeft = bird.offsetLeft;
+		var birdRight = bird.offsetLeft+bird.offsetWidth;
+		var birdTop = bird.offsetTop;
+		var birdBottom = bird.offsetTop + bird.offsetHeight;
+		//管子的四条边界
+		var pipeLeft = pipe.offsetLeft;
+		var pipeRight = pipe.offsetLeft + pipe.offsetWidth;
+		var pipeTop = pipe.offsetTop;
+		var pipeBottom = pipe.offsetTop + pipe.offsetHeight
+		//碰撞情况
+		if(birdRight > pipeLeft && birdLeft < pipeRight && birdBottom > pipeTop && birdTop < pipeBottom){
+			flag = true;
+		}else{
+			flag = false;
+		}
+		return flag;
+	}
+	bird.onmousedown = function(e){
+		var event = e || window.event;
+		var x = event.clientX;
+		var y = event.clientY;
+		bird.onmousemove = function(e){
+			var event1 = e || window.event;
+			var endX = event1.clientX;
+			var endY = event1.clientY;
+			bird.style.left = bird.offsetLeft+ endX -  x + 'px';
+			bird.style.top = bird.offsetTop+ endY - y  + 'px';
+			x = endX;
+			y = endY;
+			var result = isCrash(bird,pipe);
+			if(result){
+				alert('鸟死了');
+				bird.style.display = 'none';
+			}
+		}
+	}
+	bird.onmouseup =function(){
+		bird.onmousemove = null;
+	}
+	document.onkeydown = function(e){
+		var event = e || window.event;
+		var result = isCrash(bird,pipe);
+		if(result){
+			alert('撞着了');
+			return;
+		}
+		switch(e.keyCode){
+			case 37:
+				bird.style.left = bird.offsetLeft - 10 + 'px';
+				break;
+			case 38:
+				bird.style.top = bird.offsetTop - 10 + 'px';
+				break;
+			case 39:
+				bird.style.left = bird.offsetLeft + 10 + 'px';
+				break;
+			case 40:
+				bird.style.top = bird.offsetTop + 10 + 'px';
+				break;
+		}
+
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+</html>

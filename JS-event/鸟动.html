@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>鸟动</title>
+	<style>
+		#wrap{
+			width: 343px;
+			height: 480px;
+			background:url(素材/img/bg.jpg);
+			position: relative;
+			margin: 50px auto;
+		}
+		#bird{
+			position: absolute;
+			left: 100px;
+			top: 200px;
+		}
+	</style>
+</head>
+<body>
+	<div id="wrap">
+		<div id="bird">
+			<img src="素材/img/bird0.png" alt="">
+		</div>
+	</div>
+</body>
+<script>
+	var wrap = document.getElementById('wrap');
+	var bird = document.getElementById('bird');
+	bird.image = bird.querySelector('img');
+	bird.speed = 0;
+	bird.move = setInterval(function(){
+		bird.speed += 1.5;
+		var top = bird.offsetTop + bird.speed;
+		if( top > wrap.offsetHeight - 55 -bird.offsetHeight){
+			top = wrap.offsetHeight - 55 -bird.offsetHeight;
+			clearInterval(bird.move);
+		}
+		bird.style.top = top + 'px';
+	},100);
+	document.onclick = function(){
+		bird.speed = -10;
+		bird.image.src = '素材/img/up_bird0.png' ;
+	}
+</script>
+</html>

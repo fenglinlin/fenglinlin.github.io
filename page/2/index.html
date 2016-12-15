@@ -183,7 +183,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Home
+            Startseite
           </a>
         </li>
       
@@ -193,7 +193,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archives
+            Archiv
           </a>
         </li>
       
@@ -226,6 +226,163 @@
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/12/11/gulp入门/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Fenglin">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.gif">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Feng~Lin">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Feng~Lin" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/12/11/gulp入门/" itemprop="url">
+                  gulp详细入门教程
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-11T21:24:59+08:00">
+                2016-12-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="简介："><a href="#简介：" class="headerlink" title="简介："></a>简介：</h3><p>gulp是前端开发过程中对代码进行构建的工具，是自动化项目的构建利器；她不仅能对网站资源进行优化，而且在开发过程中很多重复的任务能够使用正确的工具自动完成；使用她，我们不仅可以很愉快的编写代码，而且大大提高我们的工作效率。</p>
+<hr>
+<p>gulp是基于Nodejs的自动任务运行器， 她能自动化地完成 javascript/coffee/sass/less/html/image/css 等文件的的测试、检查、合并、压缩、格式化、浏览器自动刷新、部署文件生成，并监听文件在改动后重复指定的这些步骤。在实现上，她借鉴了Unix操作系统的管道（pipe）思想，前一级的输出，直接变成后一级的输入，使得在操作上非常简单。通过本文，我们将学习如何使用Gulp来改变开发流程，从而使开发更加快速高效。<br>gulp 和 grunt 非常类似，但相比于 grunt 的频繁 IO 操作，gulp 的流操作，能更快地更便捷地完成构建工作。<br>本示例以gulp-less为例（将less编译成css的gulp插件）展示gulp的常规用法，只要我们学会使用一个gulp插件后，其他插件就差看看其帮助文档了。让我们一起来学习gulp吧！ ^_^</p>
+<p>gulp常用地址：</p>
+<ul>
+<li>gulp官方网址：<a href="http://gulpjs.com" target="_blank" rel="external">http://gulpjs.com</a></li>
+<li>gulp插件地址：<a href="http://gulpjs.com/plugins" target="_blank" rel="external">http://gulpjs.com/plugins</a></li>
+<li>gulp 官方API：<a href="https://github.com/gulpjs/gulp/blob/master/docs/API.md" target="_blank" rel="external">https://github.com/gulpjs/gulp/blob/master/docs/API.md</a></li>
+<li>gulp 中文API：<a href="http://www.ydcss.com/archives/424" target="_blank" rel="external">http://www.ydcss.com/archives/424</a></li>
+</ul>
+<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>安装步骤：</p>
+<p>安装nodejs -&gt; 全局安装gulp -&gt; 项目安装gulp以及gulp插件 -&gt; 配置gulpfile.js -&gt; 运行任务</p>
+<h4 id="1、安装nodejs"><a href="#1、安装nodejs" class="headerlink" title="1、安装nodejs"></a>1、安装nodejs</h4><p>1.1、说明：gulp是基于nodejs，理所当然需要安装nodejs；</p>
+<p>1.2、安装：打开nodejs官网，点击硕大的绿色Download按钮，它会根据系统信息选择对应版本（.msi文件）。然后像安装QQ一样安装它就可以了（安装路径随意）。</p>
+<h4 id="2、使用命令行（如果你熟悉命令行，可以直接跳到第3步）"><a href="#2、使用命令行（如果你熟悉命令行，可以直接跳到第3步）" class="headerlink" title="2、使用命令行（如果你熟悉命令行，可以直接跳到第3步）"></a>2、使用命令行（如果你熟悉命令行，可以直接跳到第3步）</h4><p>2.1、说明：什么是命令行？命令行在OSX是终端（Terminal），在windows是命令提示符（Command Prompt）；</p>
+<p>2.2、注：之后操作都是在windows系统下；</p>
+<p>2.3、简单介绍gulp在使用过程中常用命令，打开命令提示符执行下列命令（打开方式：window + r 输入cmd回车）：</p>
+<p>node -v查看安装的nodejs版本，出现版本号，说明刚刚已正确安装nodejs。</p>
+<p>npm -v查看npm的版本号，npm是在安装nodejs时一同安装的nodejs包管理器，那它有什么用呢？稍后解释；</p>
+<p>cd定位到目录，用法：cd + 路径 ；</p>
+<p>dir列出文件列表；</p>
+<p>cls清空命令提示符窗口内容。</p>
+<p><img src="http://static.ydcss.com/uploads/2015/03/gulp-01.png" alt="Generating"></p>
+<h4 id="3、npm介绍"><a href="#3、npm介绍" class="headerlink" title="3、npm介绍"></a>3、npm介绍</h4><h4 id="3-1、说明：npm（node-package-manager）nodejs的包管理器，用于node插件管理（包括安装、卸载、管理依赖等）；"><a href="#3-1、说明：npm（node-package-manager）nodejs的包管理器，用于node插件管理（包括安装、卸载、管理依赖等）；" class="headerlink" title="3.1、说明：npm（node package manager）nodejs的包管理器，用于node插件管理（包括安装、卸载、管理依赖等）；"></a>3.1、说明：npm（node package manager）nodejs的包管理器，用于node插件管理（包括安装、卸载、管理依赖等）；</h4><h4 id="3-2、使用npm安装插件：命令提示符执行npm-install-g-–save-dev-；"><a href="#3-2、使用npm安装插件：命令提示符执行npm-install-g-–save-dev-；" class="headerlink" title="3.2、使用npm安装插件：命令提示符执行npm install  [-g] [–save-dev]；"></a>3.2、使用npm安装插件：命令提示符执行npm install <name> [-g] [–save-dev]；</name></h4><p>3.2.1、<name>：node插件名称。例：npm install gulp-less –save-dev</name></p>
+<p>3.2.2、-g：全局安装。将会安装在C:\Users\Administrator\AppData\Roaming\npm，并且写入系统环境变量；  非全局安装：将会安装在当前定位目录；  全局安装可以通过命令行在任何地方调用它，本地安装将安装在定位目录的node_modules文件夹下，通过require()调用；</p>
+<p>3.2.3、–save：将保存配置信息至package.json（package.json是nodejs项目配置文件）；</p>
+<p>3.2.4、-dev：保存至package.json的devDependencies节点，不指定-dev将保存至dependencies节点；一般保存在dependencies的像这些express/ejs/body-parser等等。</p>
+<p>3.2.5、为什么要保存至package.json？因为node插件包相对来说非常庞大，所以不加入版本管理，将配置信息写入package.json并将其加入版本管理，其他开发者对应下载即可（命令提示符执行npm install，则会根据package.json下载所有需要的包，npm install –production只下载dependencies节点的包）。</p>
+<h4 id="3-3、使用npm卸载插件：npm-uninstall-g-–save-dev-PS：不要直接删除本地插件包"><a href="#3-3、使用npm卸载插件：npm-uninstall-g-–save-dev-PS：不要直接删除本地插件包" class="headerlink" title="3.3、使用npm卸载插件：npm uninstall  [-g] [–save-dev]  PS：不要直接删除本地插件包"></a>3.3、使用npm卸载插件：npm uninstall <name> [-g] [–save-dev]  PS：不要直接删除本地插件包</name></h4><p>3.3.1、删除全部插件：npm uninstall gulp-less gulp-uglify gulp-concat ……???太麻烦</p>
+<p>3.3.2、借助rimraf：npm install rimraf -g 用法：rimraf node_modules</p>
+<h4 id="3-4、使用npm更新插件：npm-update-g-–save-dev"><a href="#3-4、使用npm更新插件：npm-update-g-–save-dev" class="headerlink" title="3.4、使用npm更新插件：npm update  [-g] [–save-dev]"></a>3.4、使用npm更新插件：npm update <name> [-g] [–save-dev]</name></h4><p>3.4.1、更新全部插件：npm update [–save-dev]</p>
+<h4 id="3-5、查看npm帮助：npm-help"><a href="#3-5、查看npm帮助：npm-help" class="headerlink" title="3.5、查看npm帮助：npm help"></a>3.5、查看npm帮助：npm help</h4><h4 id="3-6、当前目录已安装插件：npm-list"><a href="#3-6、当前目录已安装插件：npm-list" class="headerlink" title="3.6、当前目录已安装插件：npm list"></a>3.6、当前目录已安装插件：npm list</h4><h4 id="5、全局安装gulp"><a href="#5、全局安装gulp" class="headerlink" title="5、全局安装gulp"></a>5、全局安装gulp</h4><ul>
+<li>1、说明：全局安装gulp目的是为了通过她执行gulp任务；</li>
+<li>2、安装：命令提示符执行cnpm install gulp -g；</li>
+<li>3、查看是否正确安装：命令提示符执行gulp -v，出现版本号即为正确安装。</li>
+</ul>
+<h4 id="新建package-json文件"><a href="#新建package-json文件" class="headerlink" title="新建package.json文件"></a>新建package.json文件</h4><p>说明：package.json是基于nodejs项目必不可少的配置文件，它是存放在项目根目录的普通json文件；</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  &quot;name&quot;: &quot;test&quot;,   //项目名称（必须）</div><div class="line">  &quot;version&quot;: &quot;1.0.0&quot;,   //项目版本（必须）</div><div class="line">  &quot;description&quot;: &quot;This is for study gulp project !&quot;,   //项目描述（必须）</div><div class="line">  &quot;homepage&quot;: &quot;&quot;,   //项目主页</div><div class="line">  &quot;repository&quot;: &#123;    //项目资源库</div><div class="line">    &quot;type&quot;: &quot;git&quot;,</div><div class="line">    &quot;url&quot;: &quot;https://git.oschina.net/xxxx&quot;</div><div class="line">  &#125;,</div><div class="line">  &quot;author&quot;: &#123;    //项目作者信息</div><div class="line">    &quot;name&quot;: &quot;surging&quot;,</div><div class="line">    &quot;email&quot;: &quot;surging2@qq.com&quot;</div><div class="line">  &#125;,</div><div class="line">  &quot;license&quot;: &quot;ISC&quot;,    //项目许可协议</div><div class="line">  &quot;devDependencies&quot;: &#123;    //项目依赖的插件</div><div class="line">    &quot;gulp&quot;: &quot;^3.8.11&quot;,</div><div class="line">    &quot;gulp-less&quot;: &quot;^3.0.0&quot;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><img src="http://static.ydcss.com/uploads/2015/03/gulp-3.png" alt="Generating"></p>
+<h4 id="本地安装gulp插件"><a href="#本地安装gulp插件" class="headerlink" title="本地安装gulp插件"></a>本地安装gulp插件</h4><p>安装：定位目录命令后提示符执行cnpm install –save-dev；</p>
+<p>将会安装在node_modules的gulp-less目录下，该目录下有一个gulp-less的使用帮助文档README.md；</p>
+<h4 id="新建gulpfile-js文件"><a href="#新建gulpfile-js文件" class="headerlink" title="新建gulpfile.js文件"></a>新建gulpfile.js文件</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">//导入工具包 require(&apos;node_modules里对应模块&apos;)</div><div class="line">var gulp = require(&apos;gulp&apos;), //本地安装gulp所用到的地方</div><div class="line">    less = require(&apos;gulp-less&apos;);</div><div class="line"> </div><div class="line">//定义一个testLess任务（自定义任务名称）</div><div class="line">gulp.task(&apos;testLess&apos;, function () &#123;</div><div class="line">    gulp.src(&apos;src/less/index.less&apos;) //该任务针对的文件</div><div class="line">        .pipe(less()) //该任务调用的模块</div><div class="line">        .pipe(gulp.dest(&apos;src/css&apos;)); //将会在src/css下生成index.css</div><div class="line">&#125;);</div><div class="line"> </div><div class="line">gulp.task(&apos;default&apos;,[&apos;testLess&apos;, &apos;elseTask&apos;]); //定义默认任务 elseTask为其他任务，该示例没有定义elseTask任务</div><div class="line"> </div><div class="line">//gulp.task(name[, deps], fn) 定义任务  name：任务名称 deps：依赖任务名称 fn：回调函数</div><div class="line">//gulp.src(globs[, options]) 执行任务处理的文件  globs：处理的文件路径(字符串或者字符串数组) </div><div class="line">//gulp.dest(path[, options]) 处理完后文件生成路径</div></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
     
       
 
@@ -275,7 +432,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Posted on</span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-11-12T00:00:00+08:00">
                 2016-11-12
               </time>
@@ -417,7 +574,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Posted on</span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-09-14T00:00:00+08:00">
                 2016-09-14
               </time>
@@ -560,7 +717,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Posted on</span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-06-19T00:00:00+08:00">
                 2016-06-19
               </time>
@@ -678,7 +835,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Posted on</span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-05-20T00:00:00+08:00">
                 2016-05-20
               </time>
@@ -816,7 +973,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Posted on</span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-04-30T00:00:00+08:00">
                 2016-04-30
               </time>
@@ -954,7 +1111,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Posted on</span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-03-20T00:00:00+08:00">
                 2016-03-20
               </time>
@@ -1110,7 +1267,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Posted on</span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-03-11T00:00:00+08:00">
                 2016-03-11
               </time>
@@ -1295,7 +1452,7 @@ if(xhr){
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Posted on</span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-03-10T00:00:00+08:00">
                 2016-03-10
               </time>
@@ -1466,7 +1623,7 @@ if(xhr){
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Posted on</span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-01-15T00:00:00+08:00">
                 2016-01-15
               </time>
@@ -1552,133 +1709,6 @@ if(xhr){
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2015/11/05/http/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="Fenglin">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="/images/avatar.gif">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="Feng~Lin">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="Feng~Lin" src="">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2015/11/05/http/" itemprop="url">
-                  一个http请求发送到后端的详细过程
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2015-11-05T00:00:00+08:00">
-                2015-11-05
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="title-一个http请求发送到后端的详细过程"><a href="#title-一个http请求发送到后端的详细过程" class="headerlink" title="title: 一个http请求发送到后端的详细过程"></a>title: 一个http请求发送到后端的详细过程</h2><p>http是一个应用层协议，在这个层的协议，只是一种通信规范，也就是因为双方要进行通讯，而约定俗成的一个规范。</p>
-<h2 id="通讯步骤"><a href="#通讯步骤" class="headerlink" title="通讯步骤"></a>通讯步骤</h2><h3 id="连接"><a href="#连接" class="headerlink" title="连接"></a>连接</h3><p>当我们输入这样一个请求时，首先要建立一个socket连接，因为socket是通过ip和端口建立连接的所以之前还有一个DNS解析过程，把www.mycompany.com变成ip，如果url里不包含端口号，则会使用该协议的默认端口号。</p>
-<p>DNS的过程是这样的：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">### 请求</div><div class="line">     连接成功建立后，开始向web服务器发送请求，这个请求一般是GET或POST命令（POST用于FORM参数的传递）。GET命令的格式为：　　GET 路径/文件名 HTTP/1.0</div><div class="line"></div><div class="line">     文件名指出所访问的文件，HTTP/1.0指出Web浏览器使用的HTTP版本。现在可以发送GET命令：</div><div class="line">### 应答</div><div class="line">    web服务器收到这个请求，进行处理。从它的文档空间中搜索子目录mydir的文件index.html。如果找到该文件，Web服务器把该文件内容传送给相应的Web浏览器。</div><div class="line"></div><div class="line">为了告知浏览器，，Web服务器首先传送一些HTTP头信息，然后传送具体内容（即HTTP体信息），HTTP头信息和HTTP体信息之间用一个空行分开。</div><div class="line">常用的HTTP头信息有：</div><div class="line">　　```① HTTP 1.0 200 OK 　这是Web服务器应答的第一行，列出服务器正在运行的HTTP版本号和应答代码。代码&quot;200 OK&quot;表示请求完成。</div></pre></td></tr></table></figure></p>
-<p>　　<figure class="highlight plain"><figcaption><span>MIME_Version:1.0　它指示MIME类型的版本。　```　</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">　　```③ content_type:类型　这个头信息非常重要，它指示HTTP体信息的MIME类型。如：content_type:text/html指示传送的数据是HTML文档。</div></pre></td></tr></table></figure></p>
-<p>　　<figure class="highlight plain"><figcaption><span>content_length:长度值　它指示HTTP体信息的长度（字节）。```</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">### 关闭连接</div><div class="line">当应答结束后，Web浏览器与Web服务器必须断开，以保证其它Web浏览器能够与Web服务器建立连接。　　</div><div class="line">## tcp/ip基本模型及概念</div><div class="line">### 物理层</div><div class="line">设备，中继器（repeater）,集线器（hub）。对于这一层来说，从一个端口收到数据，会转发到所有端口。</div><div class="line">### 链路层</div><div class="line"></div><div class="line">协议：SDLC（Synchronous Data Link Control）HDLC（High-level Data Link Control） ppp协议独立的链路设备中最常见的当属网卡，网桥也是链路产品。集线器MODEM的某些功能有人认为属于链路层，对此还有些争议认为属于物理层设备。除此之外，所有的交换机都需要工作在数据链路层，但仅工作在数据链路层的仅是二层交换机。其他像三层交换机、四层交换机和七层交换机虽然可对应工作在OSI的三层、四层和七层，但二层功能仍是它们基本的功能。</div><div class="line"></div><div class="line">因为有了MAC地址表，所以才充分避免了冲突，因为交换机通过目的MAC地址知道应该把这个数据转发到哪个端口。而不会像HUB一样，会转发到所有滴端口。所以，交换机是可以划分冲突域滴。</div><div class="line">### 网络层</div><div class="line"></div><div class="line">四个主要的协议:   </div><div class="line">```网际协议IP：负责在主机和网络之间寻址和路由数据包。 ```    </div><div class="line">```地址解析协议ARP：获得同一物理网络中的硬件主机地址。   ```  </div><div class="line">```网际控制消息协议ICMP：发送消息，并报告有关数据包的传送错误。```     </div><div class="line">```互联组管理协议IGMP：被IP主机拿来向本地多路广播路由器报告主机组成员。</div></pre></td></tr></table></figure></p>
-<p>该层设备有三层交换机，路由器。</p>
-<h3 id="传输层"><a href="#传输层" class="headerlink" title="传输层"></a>传输层</h3><p>两个重要协议 TCP 和 UDP 。</p>
-<p>端口概念：TCP/UDP 使用 IP 地址标识网上主机，使用端口号来标识应用进程，即 TCP/UDP 用主机 IP 地址和为应用进程分配的端口号来标识应用进程。端口号是 16 位的无符号整数， TCP 的端口号和 UDP 的端口号是两个独立的序列。尽管相互独立，如果 TCP 和 UDP 同时提供某种知名服务，两个协议通常选择相同的端口号。这纯粹是为了使用方便，而不是协议本身的要求。利用端口号，一台主机上多个进程可以同时使用 TCP/UDP 提供的传输服务，并且这种通信是端到端的，它的数据由 IP 传递，但与 IP 数据报的传递路径无关。网络通信中用一个三元组可以在全局唯一标志一个应用进程：（协议，本地地址，本地端口号）。</p>
-<p>也就是说tcp和udp可以使用相同的端口。</p>
-<p>可以看到通过(协议,源端口，源ip，目的端口，目的ip)就可以用来完全标识一组网络连接。</p>
-<h3 id="应用层"><a href="#应用层" class="headerlink" title="应用层"></a>应用层</h3><p>基于tcp：Telnet FTP SMTP DNS HTTP<br>基于udp：RIP NTP（网落时间协议）和DNS （DNS也使用TCP）SNMP TFTP</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1724,8 +1754,8 @@ if(xhr){
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">41</span>
-              <span class="site-state-item-name">posts</span>
+              <span class="site-state-item-count">42</span>
+              <span class="site-state-item-name">Artikel</span>
             </a>
           </div>
 
@@ -1776,7 +1806,7 @@ if(xhr){
 
 
 <div class="powered-by">
-  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
 </div>
 
 <div class="theme-info">

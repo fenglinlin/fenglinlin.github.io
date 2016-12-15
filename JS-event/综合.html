@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>综合</title>
+	<style>
+		#wrap{
+			width: 343px;
+			height: 480px;
+			background: url(素材/img/bg.jpg);
+			position: relative;
+			margin: 100px auto;
+			overflow: hidden;
+		}
+		#banner{
+			width: 686px;
+			height: 14px;
+			background: url(素材/img/banner.jpg);
+			position: absolute;
+			bottom: 43px;
+			left: 0px;
+		}
+		#bird{
+			width: 40px;
+			height: 26px;
+			background: url(素材/img/bird0.png);
+			position: absolute;
+			top: 150px;
+			left: 50px;
+			z-index: 10;
+
+		}
+		#pipeArea{
+			width: 343px;
+			height: 423px;/*480-43-14*/
+			position: absolute;
+		}
+		.up_pipe{
+			position: absolute;
+			top: 0;
+			left: 400px;
+			width: 62px;
+			height: 200px;
+			background: url(素材/img/up_mod.png)
+		}
+		.up_pipe img{
+			position: absolute;
+			bottom: 0;
+		}
+		.down_pipe{
+			position: absolute;
+			bottom: 0;
+			left: 400px;
+			width: 62px;
+			height: 100px;
+			background: url(素材/img/down_mod.png);
+		}
+		.down_pipe img{
+			position: absolute;
+			top: 0;
+		}
+		#score{
+			width: 60px;
+			height: 40px;
+			position: absolute;
+			top: 20px;
+			left: 140px;
+			z-index: 1;
+		}
+	</style>
+</head>
+<body>
+	<div id="wrap">
+		<div id="score">
+			<img src="素材/img/0.jpg" alt=""><img src="素材/img/0.jpg" alt="">
+		</div>
+		<div id="banner"></div>
+		<div id="bird"></div>
+		<div id="pipeArea">
+			<!-- <div class="up_pipe">
+				<img src="素材/img/up_pipe.png" alt="">
+			</div>
+			<div class="down_pipe">
+				<img src="素材/img/down_pipe.png" alt="">
+			</div> -->
+		</div>
+	</div>
+	<audio src="素材/game_music.mp3" autoplay="autoplay" id="gameMusic"></audio>
+	<audio src="素材/game_over.mp3" id="gameOverMusic"></audio>
+	<audio src="素材/bullet.mp3" id="bulletMusic"></audio>
+</body>
+<script>
+//流程
+		//1。开始按钮--事件
+		//2 时间变化-定时器
+		//容器清空，生成新的图片；
+		//生成的时候随机生成一个不一样的；
+		//给这个不一样的绑定事件
+		//3 点击不一样的--事件
+		//分数的变化，进入下一关--重复步骤2的部分操作
+		//
+
+		//1开始按钮--事件
+		//2 小鸟的运动-通过控制top值来实现
+		//通过事件来控制
+		//3.生成柱子--定时器
+		//4.柱子的移动--通过控制left值来实现
+		//完全移除容器可视区的柱子应该被删除；
+		//柱子移动时候和小鸟做碰撞检测
+		//4.1 小鸟通过柱子--小鸟的left值大于柱子的left值+宽度--加分
+		//4.2 小鸟碰撞柱子--游戏结束，清楚所有的定时器；
+	var gameMusic = document.getElementById('gameMusic');
+	var gameOverMusic = document.getElementById('gameOverMusic');
+	var bulletMusic = document.getElementById('bulletMusic');
+	var score = document.getElementById('score');
+	var scores = 0;
+
+	//分数变化
+	function getScore(scores){
+			score.firstElementChild.src = '素材/img/'+parseInt(scores/10)+'.jpg';
+			score.lastElementChild.src = '素材/img/'+scores%10+'.jpg';
+		
+	}
+
+
+	var wrap = document.getElementById('wrap');
+	//banner移动(里面用到的offsetLeft是异常情况下的值)
+	var banner = document.getElementById('banner');
+	
+	banner.timer = setInterval(function(){
+		banner.style.left = banner.offsetLeft - 3 + 'px';
+		if(banner.offsetLeft < -wrap.offsetWidth){
+			banner.style.left = 0;
+		}
+	},50);
+	//鸟动
+	var bird = document.getElementById('bird');
+	bird.speed1 = 0;
+	
+	//鸟下降
+	function bird_down(){
+			clearInterval(bird.timer1);
+			clearTimeout(bird.timer2);
+			bird.timer = setInterval(function(){
+			bird.speed1 += 0.5
+			bird.style.top = bird.offsetTop + bird.speed1+ 'px';
+			bird.style.background = 'url(素材/img/down_bird0.png)';
+			//鸟掉到地面上，游戏结束
+			if(bird.offsetTop + 26 >= 480 - 43 - 14  ){
+				bird.style.top = '397px'; 
+				clearInterval(bird.timer);
+				gameOver();	
+				gameOverMusic.play();	
+				gameMusic.pause();//暂停		
+			}
+		},40);
+	}
+	bird_down();
+	// 鸟上升
+	bird.clickTimes = 0;//标记点击次数,避免多次点击造成定时器叠加计时出现bug
+	document.onclick = function (){
+		bulletMusic.play();
+		clearInterval(bird.timer);
+		if(bird.clickTimes){
+			clearInterval(bird.timer1);
+			clearTimeout(bird.timer2);
+			bird_up();
+		}else{
+			bird_up();
+		}
+		bird.clickTimes = 1;
+	}
+
+	function bird_up(){
+		bird.timer1 = setInterval(function(){
+			bird.speed1 += 0.5;
+			bird.style.top = bird.offsetTop - bird.speed1+ 'px';
+			bird.style.background = 'url(素材/img/up_bird0.png)';
+			
+		},20);
+		bird.timer2 = setTimeout(function(){
+				clearInterval(bird.timer1);
+				clearTimeout(bird.timer2);
+				bird.speed1 = 0;
+				bird_down();      
+				bird.clickTimes = 0;
+		},160);
+	}
+	//管子出现
+	function randomHeight(min,max){
+		return parseInt(Math.random()*(max-min)+min);
+	}
+
+
+	var pipeArea = document.getElementById('pipeArea');
+	pipeArea.timer = setInterval(function(){
+		//创建上面管子
+		var up_pipe = document.createElement('div');
+		var height = randomHeight(50,200);
+		up_pipe.className = 'up_pipe';
+		up_pipe.style.height = height + 'px';
+		up_pipe.innerHTML = '<img src="素材/img/up_pipe.png" alt="">';
+		pipeArea.appendChild(up_pipe);
+		// 创建下面管子
+		var down_pipe = document.createElement('div');
+		down_pipe.className = 'down_pipe';
+		down_pipe.style.height = pipeArea.offsetHeight - height - 120 + 'px';//120固定两个管子之间的距离
+		down_pipe.innerHTML = '<img src="素材/img/down_pipe.png" alt="">';
+		pipeArea.appendChild(down_pipe);
+
+		//管子向左移动
+		up_pipe.timer = setInterval(function(){
+			up_pipe.style.left = up_pipe.offsetLeft - 1 +'px';
+			down_pipe.style.left = down_pipe.offsetLeft - 1 +'px';
+			if(up_pipe.offsetLeft <= -62){
+				pipeArea.removeChild(up_pipe);
+				pipeArea.removeChild(down_pipe);
+			}
+		//检测碰撞
+		//与管子的碰撞条件
+			var flag = bird.offsetLeft+bird.offsetWidth > up_pipe.offsetLeft && bird.offsetLeft < up_pipe.offsetLeft + up_pipe.offsetWidth &&  (bird.offsetTop < up_pipe.offsetHeight  || bird.offsetTop+bird.offsetHeight > down_pipe.offsetTop )
+			if(flag){
+				gameOver();//碰撞条件成立，游戏结束
+				gameOverMusic.play();
+				gameMusic.pause();
+				
+			}else if(bird.offsetLeft == up_pipe.offsetLeft + up_pipe.offsetWidth  ){
+				scores++;
+				getScore(scores);
+			}
+		},10);	
+	},2000);
+
+	//游戏结束
+	function gameOver(){
+		clearInterval(pipeArea.timer);//清除创造管子的计时器
+		//清除每一个管子的移动的定时器
+		var pipeArr = document.querySelectorAll('#pipeArea div');
+		for(var i = 0;i < pipeArr.length;i++){
+			clearInterval(pipeArr[i].timer);
+		}
+		clearInterval(banner.timer);//清除banner的移动
+		document.onclick = null;//清除单击文本，鸟向上移动的事件
+	}
+	
+
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+</html>

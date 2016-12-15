@@ -84,21 +84,25 @@
 
 
 
-<meta name="description" content="title: 一张图看懂 Function 和 Object 的关系及简述 instanceof 运算符一、instanceof究竟是运算什么的？我曾经简单理解 instanceof 只是检测一个对象是否是另个对象 new 出来的实例（例如var a = new Object()，a instanceof Object返回true），但实际 instanceof 的运算规则上比这个更复杂。
-首先w">
+<meta name="description" content="数据绑定一个常见需求是操作元素的 class 列表和它的内联样式。因为它们都是属性 ，我们可以用v-bind 处理它们：只需要计算出表达式最终的字符串。不过，字符串拼接麻烦又易错。因此，在 v-bind 用于 class 和 style 时， Vue.js 专门增强了它。表达式的结果类型除了字符串之外，还可以是对象或数组。
+
+绑定 HTML Class
+对象语法我们可以传给 v-bind:cla">
 <meta property="og:type" content="article">
-<meta property="og:title" content="协议入门">
-<meta property="og:url" content="http://yoursite.com/2015/10/16/Function 和 Object 的关系/index.html">
+<meta property="og:title" content="Vue之Class 与 Style 绑定">
+<meta property="og:url" content="http://yoursite.com/2016/12/14/Vue绑定事件/index.html">
 <meta property="og:site_name" content="Feng~Lin">
-<meta property="og:description" content="title: 一张图看懂 Function 和 Object 的关系及简述 instanceof 运算符一、instanceof究竟是运算什么的？我曾经简单理解 instanceof 只是检测一个对象是否是另个对象 new 出来的实例（例如var a = new Object()，a instanceof Object返回true），但实际 instanceof 的运算规则上比这个更复杂。
-首先w">
-<meta property="og:image" content="https://user-gold-cdn.xitu.io/2016/11/29/ce8bff088a74cda6789a11f6075b7411">
+<meta property="og:description" content="数据绑定一个常见需求是操作元素的 class 列表和它的内联样式。因为它们都是属性 ，我们可以用v-bind 处理它们：只需要计算出表达式最终的字符串。不过，字符串拼接麻烦又易错。因此，在 v-bind 用于 class 和 style 时， Vue.js 专门增强了它。表达式的结果类型除了字符串之外，还可以是对象或数组。
+
+绑定 HTML Class
+对象语法我们可以传给 v-bind:cla">
 <meta property="og:updated_time" content="2016-12-14T13:49:31.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="协议入门">
-<meta name="twitter:description" content="title: 一张图看懂 Function 和 Object 的关系及简述 instanceof 运算符一、instanceof究竟是运算什么的？我曾经简单理解 instanceof 只是检测一个对象是否是另个对象 new 出来的实例（例如var a = new Object()，a instanceof Object返回true），但实际 instanceof 的运算规则上比这个更复杂。
-首先w">
-<meta name="twitter:image" content="https://user-gold-cdn.xitu.io/2016/11/29/ce8bff088a74cda6789a11f6075b7411">
+<meta name="twitter:title" content="Vue之Class 与 Style 绑定">
+<meta name="twitter:description" content="数据绑定一个常见需求是操作元素的 class 列表和它的内联样式。因为它们都是属性 ，我们可以用v-bind 处理它们：只需要计算出表达式最终的字符串。不过，字符串拼接麻烦又易错。因此，在 v-bind 用于 class 和 style 时， Vue.js 专门增强了它。表达式的结果类型除了字符串之外，还可以是对象或数组。
+
+绑定 HTML Class
+对象语法我们可以传给 v-bind:cla">
 
 
 
@@ -126,13 +130,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2015/10/16/Function 和 Object 的关系/"/>
+  <link rel="canonical" href="http://yoursite.com/2016/12/14/Vue绑定事件/"/>
 
 
 
 
 
-  <title> 协议入门 | Feng~Lin </title>
+  <title> Vue之Class 与 Style 绑定 | Feng~Lin </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="">
@@ -243,7 +247,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2015/10/16/Function 和 Object 的关系/">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/12/14/Vue绑定事件/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="Fenglin">
@@ -267,7 +271,7 @@
             
             
               
-                协议入门
+                Vue之Class 与 Style 绑定
               
             
           </h1>
@@ -280,8 +284,8 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">Veröffentlicht am</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2015-10-16T00:00:00+08:00">
-                2015-10-16
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-14T21:49:31+08:00">
+                2016-12-14
               </time>
             
 
@@ -316,19 +320,34 @@
       
 
       
-        <h2 id="title-一张图看懂-Function-和-Object-的关系及简述-instanceof-运算符"><a href="#title-一张图看懂-Function-和-Object-的关系及简述-instanceof-运算符" class="headerlink" title="title: 一张图看懂 Function 和 Object 的关系及简述 instanceof 运算符"></a>title: 一张图看懂 Function 和 Object 的关系及简述 instanceof 运算符</h2><h2 id="一、instanceof究竟是运算什么的？"><a href="#一、instanceof究竟是运算什么的？" class="headerlink" title="一、instanceof究竟是运算什么的？"></a>一、instanceof究竟是运算什么的？</h2><p>我曾经简单理解 instanceof 只是检测一个对象是否是另个对象 new 出来的实例（例如var a = new Object()，a instanceof Object返回true），但实际 instanceof 的运算规则上比这个更复杂。</p>
-<p>首先w3c上有官方解释（传送门，有兴趣的同学可以去看看），但是一如既往地让人无法一目了然地看懂……</p>
-<p>知乎上有同学把这个解释翻译成人能读懂的语言（传送门），看起来似乎明白一些了：</p>
-<p>//假设instanceof运算符左边是L，右边是R<br>L instanceof R //instanceof运算时，通过判断L的原型链上是否存在R.prototype<br>L.<strong>proto</strong>.<strong>proto</strong> ….. === R.prototype ？ //如果存在返回true 否则返回false<br>注意：instanceof 运算时会递归查找L的原型链，即 L.<strong>proto</strong>.<strong>proto</strong>.<strong>proto</strong>.<strong>proto</strong>… 直到找到了或者找到顶层为止。</p>
-<p>所以一句话理解 instanceof 的运算规则为：</p>
-<p>instanceof 检测左侧的 <strong>proto</strong> 原型链上，是否存在右侧的 prototype 原型。</p>
-<h2 id="二、图解构造器Function和Object的关系"><a href="#二、图解构造器Function和Object的关系" class="headerlink" title="二、图解构造器Function和Object的关系"></a>二、图解构造器Function和Object的关系</h2><p><img src="https://user-gold-cdn.xitu.io/2016/11/29/ce8bff088a74cda6789a11f6075b7411" alt="Generating"></p>
-<h4 id="我们再配合代码来看一下就明白了："><a href="#我们再配合代码来看一下就明白了：" class="headerlink" title="我们再配合代码来看一下就明白了："></a>我们再配合代码来看一下就明白了：</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">//①构造器Function的构造器是它自身</div><div class="line">Function.constructor=== Function;//true</div><div class="line"></div><div class="line">//②构造器Object的构造器是Function（由此可知所有构造器的constructor都指向Function）</div><div class="line">Object.constructor === Function;//true</div><div class="line"></div><div class="line">//③构造器Function的__proto__是一个特殊的匿名函数function() &#123;&#125;</div><div class="line">console.log(Function.__proto__);//function() &#123;&#125;</div><div class="line"></div><div class="line">//④这个特殊的匿名函数的__proto__指向Object的prototype原型。</div><div class="line">Function.__proto__.__proto__ === Object.prototype//true</div><div class="line"></div><div class="line">//⑤Object的__proto__指向Function的prototype，也就是上面③中所述的特殊匿名函数</div><div class="line">Object.__proto__ === Function.prototype;//true</div><div class="line">Function.prototype === Function.__proto__;//true</div></pre></td></tr></table></figure>
-<h2 id="三、当构造器Object和Function遇到instanceof"><a href="#三、当构造器Object和Function遇到instanceof" class="headerlink" title="三、当构造器Object和Function遇到instanceof"></a>三、当构造器Object和Function遇到instanceof</h2><p>我们回过头来看第一部分那个“奇怪的现象”，从上面那个图中我们可以看到：</p>
-<p>Function.<strong>proto</strong>.<strong>proto</strong> === Object.prototype;//true<br>Object.<strong>proto</strong> === Function.prototype;//true<br>所以再看回第一点中我们说的 instanceof 的运算规则，Function instanceof Object 和 Object instanceof Function 运算的结果当然都是true啦！</p>
-<p>如果看完以上，你还觉得上面的关系看晕了的话，只需要记住下面两个最重要的关系，其他关系就可以推导出来了：</p>
-<p>所有的构造器的 constructor 都指向 Function</p>
-<p>Function 的 prototype 指向一个特殊匿名函数，而这个特殊匿名函数的 <strong>proto</strong> 指向 Object.prototype</p>
+        <blockquote>
+<p>数据绑定一个常见需求是操作元素的 class 列表和它的内联样式。因为它们都是属性 ，我们可以用v-bind 处理它们：只需要计算出表达式最终的字符串。不过，字符串拼接麻烦又易错。因此，在 v-bind 用于 class 和 style 时， Vue.js 专门增强了它。表达式的结果类型除了字符串之外，还可以是对象或数组。</p>
+</blockquote>
+<h3 id="绑定-HTML-Class"><a href="#绑定-HTML-Class" class="headerlink" title="绑定 HTML Class"></a>绑定 HTML Class</h3><hr>
+<h4 id="对象语法"><a href="#对象语法" class="headerlink" title="对象语法"></a>对象语法</h4><p>我们可以传给 v-bind:class 一个对象，以动态地切换 class 。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;div v-bind:class=&quot;&#123; active: isActive &#125;&quot;&gt;&lt;/div&gt;</div></pre></td></tr></table></figure>
+<p>上面的语法表示 classactive 的更新将取决于数据属性 isActive 是否为真值 。</p>
+<p>我们也可以在对象中传入更多属性用来动态切换多个 class 。此外， v-bind:class 指令可以与普通的 class 属性共存。如下模板:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;div class=&quot;static&quot;</div><div class="line">    	v-bind:class=&quot;&#123; active: isActive, &apos;text-danger&apos;: 	hasError &#125;&quot;&gt;</div><div class="line">&lt;/div&gt;</div></pre></td></tr></table></figure>
+<p>如下 data:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">data: &#123;</div><div class="line">  isActive: true,</div><div class="line">  hasError: false</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>渲染为:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;div class=&quot;static active&quot;&gt;&lt;/div&gt;</div></pre></td></tr></table></figure>
+<p>当 isActive 或者 hasError 变化时，class 列表将相应地更新。例如，如果 hasError 的值为 true ， class列表将变为 “static active text-danger”。</p>
+<p>你也可以直接绑定数据里的一个对象：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&lt;div v-bind:class=&quot;classObject&quot;&gt;&lt;/div&gt;</div><div class="line">data: &#123;</div><div class="line"> classObject: &#123;</div><div class="line">   active: true,</div><div class="line">   &apos;text-danger&apos;: false</div><div class="line"> &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>渲染的结果和上面一样。我们也可以在这里绑定返回对象的计算属性。这是一个常用且强大的模式：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"> &lt;div v-bind:class=&quot;classObject&quot;&gt;&lt;/div&gt;</div><div class="line">  data: &#123;</div><div class="line">  	 isActive: true,</div><div class="line">  	  error: null</div><div class="line">  &#125;,</div><div class="line">computed: &#123;</div><div class="line">  classObject: function () &#123;</div><div class="line">    return &#123;</div><div class="line">      active: this.isActive &amp;&amp; !this.error,</div><div class="line">      &apos;text-danger&apos;: this.error &amp;&amp; this.error.type === &apos;fatal&apos;,</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="数组语法"><a href="#数组语法" class="headerlink" title="数组语法"></a>数组语法</h3><p>我们可以把一个数组传给 v-bind:class ，以应用一个 class 列表：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;div v-bind:class=&quot;[activeClass, errorClass]&quot;&gt;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">data: &#123;</div><div class="line">  activeClass: &apos;active&apos;,</div><div class="line">  errorClass: &apos;text-danger&apos;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>渲染为:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;div class=&quot;active text-danger&quot;&gt;&lt;/div&gt;</div></pre></td></tr></table></figure>
+<p>如果你也想根据条件切换列表中的 class ，可以用三元表达式：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;div v-bind:class=&quot;[isActive ? activeClass : &apos;&apos;, errorClass]&quot;&gt;</div></pre></td></tr></table></figure>
+<p>此例始终添加 errorClass ，但是只有在 isActive 是 true 时添加 activeClass 。</p>
+<p>不过，当有多个条件 class 时这样写有些繁琐。可以在数组语法中使用对象语法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;div v-bind:class=&quot;[&#123; active: isActive &#125;, errorClass]&quot;&gt;</div></pre></td></tr></table></figure>
 
       
     </div>
@@ -355,8 +374,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/08/27/SS 伪类before:after content内容生成技术/" rel="next" title="CSS 伪类before/after content内容生成技术----纯CSS实现tooltip">
-                <i class="fa fa-chevron-left"></i> CSS 伪类before/after content内容生成技术----纯CSS实现tooltip
+              <a href="/2016/12/14/CSS三栏布局的四种方法/" rel="next" title="CSS三栏布局的四种方法">
+                <i class="fa fa-chevron-left"></i> CSS三栏布局的四种方法
               </a>
             
           </div>
@@ -365,8 +384,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2015/10/25/JavaScript的原型对象与原型链/" rel="prev" title="JavaScript的原型对象与原型链">
-                JavaScript的原型对象与原型链 <i class="fa fa-chevron-right"></i>
+              <a href="/2016/12/14/Vue条件渲染/" rel="prev" title="条件渲染">
+                条件渲染 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -473,7 +492,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#title-一张图看懂-Function-和-Object-的关系及简述-instanceof-运算符"><span class="nav-number">1.</span> <span class="nav-text">title: 一张图看懂 Function 和 Object 的关系及简述 instanceof 运算符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#一、instanceof究竟是运算什么的？"><span class="nav-number">2.</span> <span class="nav-text">一、instanceof究竟是运算什么的？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、图解构造器Function和Object的关系"><span class="nav-number">3.</span> <span class="nav-text">二、图解构造器Function和Object的关系</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#我们再配合代码来看一下就明白了："><span class="nav-number">3.0.1.</span> <span class="nav-text">我们再配合代码来看一下就明白了：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三、当构造器Object和Function遇到instanceof"><span class="nav-number">4.</span> <span class="nav-text">三、当构造器Object和Function遇到instanceof</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#绑定-HTML-Class"><span class="nav-number">1.</span> <span class="nav-text">绑定 HTML Class</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#对象语法"><span class="nav-number">1.1.</span> <span class="nav-text">对象语法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数组语法"><span class="nav-number">2.</span> <span class="nav-text">数组语法</span></a></li></ol></div>
             
 
           </div>

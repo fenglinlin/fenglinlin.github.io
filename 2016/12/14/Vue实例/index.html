@@ -84,21 +84,31 @@
 
 
 
-<meta name="description" content="title: 一张图看懂 Function 和 Object 的关系及简述 instanceof 运算符一、instanceof究竟是运算什么的？我曾经简单理解 instanceof 只是检测一个对象是否是另个对象 new 出来的实例（例如var a = new Object()，a instanceof Object返回true），但实际 instanceof 的运算规则上比这个更复杂。
-首先w">
+<meta name="description" content="构造器
+每个Vue.js应用都是通过构造函数Vue创建一个Vue的根实例启动的：
+123var vm =new Vue(&amp;#123;//选项&amp;#125;)
+虽然没有完全遵循 MVVM 模式， Vue 的设计无疑受到了它的启发。因此在文档中经常会使用 vm 这个变量名表示 Vue 实例。
+在实例化vue的时候，需要传入一个选项对象，他可以包含数据、模板、挂载元素、方法、生命周期钩子等选项。
+可以扩展">
 <meta property="og:type" content="article">
-<meta property="og:title" content="协议入门">
-<meta property="og:url" content="http://yoursite.com/2015/10/16/Function 和 Object 的关系/index.html">
+<meta property="og:title" content="Vue 实例">
+<meta property="og:url" content="http://yoursite.com/2016/12/14/Vue实例/index.html">
 <meta property="og:site_name" content="Feng~Lin">
-<meta property="og:description" content="title: 一张图看懂 Function 和 Object 的关系及简述 instanceof 运算符一、instanceof究竟是运算什么的？我曾经简单理解 instanceof 只是检测一个对象是否是另个对象 new 出来的实例（例如var a = new Object()，a instanceof Object返回true），但实际 instanceof 的运算规则上比这个更复杂。
-首先w">
-<meta property="og:image" content="https://user-gold-cdn.xitu.io/2016/11/29/ce8bff088a74cda6789a11f6075b7411">
+<meta property="og:description" content="构造器
+每个Vue.js应用都是通过构造函数Vue创建一个Vue的根实例启动的：
+123var vm =new Vue(&amp;#123;//选项&amp;#125;)
+虽然没有完全遵循 MVVM 模式， Vue 的设计无疑受到了它的启发。因此在文档中经常会使用 vm 这个变量名表示 Vue 实例。
+在实例化vue的时候，需要传入一个选项对象，他可以包含数据、模板、挂载元素、方法、生命周期钩子等选项。
+可以扩展">
 <meta property="og:updated_time" content="2016-12-14T13:49:31.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="协议入门">
-<meta name="twitter:description" content="title: 一张图看懂 Function 和 Object 的关系及简述 instanceof 运算符一、instanceof究竟是运算什么的？我曾经简单理解 instanceof 只是检测一个对象是否是另个对象 new 出来的实例（例如var a = new Object()，a instanceof Object返回true），但实际 instanceof 的运算规则上比这个更复杂。
-首先w">
-<meta name="twitter:image" content="https://user-gold-cdn.xitu.io/2016/11/29/ce8bff088a74cda6789a11f6075b7411">
+<meta name="twitter:title" content="Vue 实例">
+<meta name="twitter:description" content="构造器
+每个Vue.js应用都是通过构造函数Vue创建一个Vue的根实例启动的：
+123var vm =new Vue(&amp;#123;//选项&amp;#125;)
+虽然没有完全遵循 MVVM 模式， Vue 的设计无疑受到了它的启发。因此在文档中经常会使用 vm 这个变量名表示 Vue 实例。
+在实例化vue的时候，需要传入一个选项对象，他可以包含数据、模板、挂载元素、方法、生命周期钩子等选项。
+可以扩展">
 
 
 
@@ -126,13 +136,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2015/10/16/Function 和 Object 的关系/"/>
+  <link rel="canonical" href="http://yoursite.com/2016/12/14/Vue实例/"/>
 
 
 
 
 
-  <title> 协议入门 | Feng~Lin </title>
+  <title> Vue 实例 | Feng~Lin </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="">
@@ -243,7 +253,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2015/10/16/Function 和 Object 的关系/">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/12/14/Vue实例/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="Fenglin">
@@ -267,7 +277,7 @@
             
             
               
-                协议入门
+                Vue 实例
               
             
           </h1>
@@ -280,8 +290,8 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">Veröffentlicht am</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2015-10-16T00:00:00+08:00">
-                2015-10-16
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-14T21:49:31+08:00">
+                2016-12-14
               </time>
             
 
@@ -316,19 +326,25 @@
       
 
       
-        <h2 id="title-一张图看懂-Function-和-Object-的关系及简述-instanceof-运算符"><a href="#title-一张图看懂-Function-和-Object-的关系及简述-instanceof-运算符" class="headerlink" title="title: 一张图看懂 Function 和 Object 的关系及简述 instanceof 运算符"></a>title: 一张图看懂 Function 和 Object 的关系及简述 instanceof 运算符</h2><h2 id="一、instanceof究竟是运算什么的？"><a href="#一、instanceof究竟是运算什么的？" class="headerlink" title="一、instanceof究竟是运算什么的？"></a>一、instanceof究竟是运算什么的？</h2><p>我曾经简单理解 instanceof 只是检测一个对象是否是另个对象 new 出来的实例（例如var a = new Object()，a instanceof Object返回true），但实际 instanceof 的运算规则上比这个更复杂。</p>
-<p>首先w3c上有官方解释（传送门，有兴趣的同学可以去看看），但是一如既往地让人无法一目了然地看懂……</p>
-<p>知乎上有同学把这个解释翻译成人能读懂的语言（传送门），看起来似乎明白一些了：</p>
-<p>//假设instanceof运算符左边是L，右边是R<br>L instanceof R //instanceof运算时，通过判断L的原型链上是否存在R.prototype<br>L.<strong>proto</strong>.<strong>proto</strong> ….. === R.prototype ？ //如果存在返回true 否则返回false<br>注意：instanceof 运算时会递归查找L的原型链，即 L.<strong>proto</strong>.<strong>proto</strong>.<strong>proto</strong>.<strong>proto</strong>… 直到找到了或者找到顶层为止。</p>
-<p>所以一句话理解 instanceof 的运算规则为：</p>
-<p>instanceof 检测左侧的 <strong>proto</strong> 原型链上，是否存在右侧的 prototype 原型。</p>
-<h2 id="二、图解构造器Function和Object的关系"><a href="#二、图解构造器Function和Object的关系" class="headerlink" title="二、图解构造器Function和Object的关系"></a>二、图解构造器Function和Object的关系</h2><p><img src="https://user-gold-cdn.xitu.io/2016/11/29/ce8bff088a74cda6789a11f6075b7411" alt="Generating"></p>
-<h4 id="我们再配合代码来看一下就明白了："><a href="#我们再配合代码来看一下就明白了：" class="headerlink" title="我们再配合代码来看一下就明白了："></a>我们再配合代码来看一下就明白了：</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">//①构造器Function的构造器是它自身</div><div class="line">Function.constructor=== Function;//true</div><div class="line"></div><div class="line">//②构造器Object的构造器是Function（由此可知所有构造器的constructor都指向Function）</div><div class="line">Object.constructor === Function;//true</div><div class="line"></div><div class="line">//③构造器Function的__proto__是一个特殊的匿名函数function() &#123;&#125;</div><div class="line">console.log(Function.__proto__);//function() &#123;&#125;</div><div class="line"></div><div class="line">//④这个特殊的匿名函数的__proto__指向Object的prototype原型。</div><div class="line">Function.__proto__.__proto__ === Object.prototype//true</div><div class="line"></div><div class="line">//⑤Object的__proto__指向Function的prototype，也就是上面③中所述的特殊匿名函数</div><div class="line">Object.__proto__ === Function.prototype;//true</div><div class="line">Function.prototype === Function.__proto__;//true</div></pre></td></tr></table></figure>
-<h2 id="三、当构造器Object和Function遇到instanceof"><a href="#三、当构造器Object和Function遇到instanceof" class="headerlink" title="三、当构造器Object和Function遇到instanceof"></a>三、当构造器Object和Function遇到instanceof</h2><p>我们回过头来看第一部分那个“奇怪的现象”，从上面那个图中我们可以看到：</p>
-<p>Function.<strong>proto</strong>.<strong>proto</strong> === Object.prototype;//true<br>Object.<strong>proto</strong> === Function.prototype;//true<br>所以再看回第一点中我们说的 instanceof 的运算规则，Function instanceof Object 和 Object instanceof Function 运算的结果当然都是true啦！</p>
-<p>如果看完以上，你还觉得上面的关系看晕了的话，只需要记住下面两个最重要的关系，其他关系就可以推导出来了：</p>
-<p>所有的构造器的 constructor 都指向 Function</p>
-<p>Function 的 prototype 指向一个特殊匿名函数，而这个特殊匿名函数的 <strong>proto</strong> 指向 Object.prototype</p>
+        <h3 id="构造器"><a href="#构造器" class="headerlink" title="构造器"></a>构造器</h3><hr>
+<p>每个Vue.js应用都是通过构造函数Vue创建一个Vue的根实例启动的：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">var vm =new Vue(&#123;</div><div class="line">//选项</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<p>虽然没有完全遵循 MVVM 模式， Vue 的设计无疑受到了它的启发。因此在文档中经常会使用 vm 这个变量名表示 Vue 实例。</p>
+<p>在实例化vue的时候，需要传入一个选项对象，他可以包含数据、模板、挂载元素、方法、生命周期钩子等选项。</p>
+<p>可以扩展 Vue 构造器，从而用预定义选项创建可复用的组件构造器：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">var MyComponent = Vue.extend(&#123;</div><div class="line">  // 扩展选项</div><div class="line">&#125;)</div><div class="line">// 所有的 `MyComponent` 实例都将以预定义的扩展选项被创建</div><div class="line">var myComponentInstance = new MyComponent()</div></pre></td></tr></table></figure>
+<p>尽管可以命令式地创建扩展实例，不过在多数情况下建议将组件构造器注册为一个自定义元素，然后声明式地用在模板中。我们将在后面详细说明组件系统。现在你只需知道所有的 Vue.js 组件其实都是被扩展的 Vue 实例。</p>
+<h3 id="属性与方法"><a href="#属性与方法" class="headerlink" title="属性与方法"></a>属性与方法</h3><p>每个 Vue 实例都会代理其 data 对象里所有的属性：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">var data = &#123; a: 1 &#125;</div><div class="line">var vm = new Vue(&#123;</div><div class="line">  data: data</div><div class="line">&#125;)</div><div class="line">vm.a === data.a // -&gt; true</div><div class="line">// 设置属性也会影响到原始数据</div><div class="line">vm.a = 2</div><div class="line">data.a // -&gt; 2</div><div class="line">// ... 反之亦然</div><div class="line">data.a = 3</div><div class="line">vm.a // -&gt; 3</div></pre></td></tr></table></figure>
+<p>注意只有这些被代理的属性是响应的。如果在实例创建之后添加新的属性到实例上，它不会触发视图更新。我们将在后面详细讨论响应系统。</p>
+<p>除了 data 属性， Vue 实例暴露了一些有用的实例属性与方法。这些属性与方法都有前缀 $，以便与代理的 data 属性区分。例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">var data = &#123; a: 1 &#125;</div><div class="line">var vm = new Vue(&#123;</div><div class="line">  el: &apos;#example&apos;,</div><div class="line">  data: data</div><div class="line">&#125;)</div><div class="line">vm.$data === data // -&gt; true</div><div class="line">vm.$el === document.getElementById(&apos;example&apos;) // -&gt; true</div><div class="line">// $watch 是一个实例方法</div><div class="line">vm.$watch(&apos;a&apos;, function (newVal, oldVal) &#123;</div><div class="line">  // 这个回调将在 `vm.a`  改变后调用</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<blockquote>
+<p>注意，不要在实例属性或者回调函数中（如 vm.$watch(‘a’, newVal =&gt; this.myMethod())）使用箭头函数。因为箭头函数绑定父上下文，所以 this 不会像预想的一样是 Vue 实例，而是 this.myMethod 未被定义。</p>
+</blockquote>
+<h3 id="实例生命周期"><a href="#实例生命周期" class="headerlink" title="实例生命周期"></a>实例生命周期</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">var vm = new Vue(&#123;</div><div class="line">  data: &#123;</div><div class="line">    a: 1</div><div class="line">  &#125;,</div><div class="line">  created: function () &#123;</div><div class="line">    // `this` 指向 vm 实例</div><div class="line">    console.log(&apos;a is: &apos; + this.a)</div><div class="line">  &#125;</div><div class="line">&#125;)</div><div class="line">// -&gt; &quot;a is: 1&quot;</div></pre></td></tr></table></figure>
+<p>也有一些其它的钩子，在实例生命周期的不同阶段调用，如 mounted、 updated 、destroyed 。钩子的 this 指向调用它的 Vue 实例。一些用户可能会问 Vue.js 是否有“控制器”的概念？答案是，没有。组件的自定义逻辑可以分布在这些钩子中。</p>
+<p><a href="http://vuejs.org/guide/instance.html" target="_blank" rel="external">原文</a></p>
 
       
     </div>
@@ -355,8 +371,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/08/27/SS 伪类before:after content内容生成技术/" rel="next" title="CSS 伪类before/after content内容生成技术----纯CSS实现tooltip">
-                <i class="fa fa-chevron-left"></i> CSS 伪类before/after content内容生成技术----纯CSS实现tooltip
+              <a href="/2016/12/14/svg图标使用说明/" rel="next" title="SVG图标的使用">
+                <i class="fa fa-chevron-left"></i> SVG图标的使用
               </a>
             
           </div>
@@ -365,8 +381,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2015/10/25/JavaScript的原型对象与原型链/" rel="prev" title="JavaScript的原型对象与原型链">
-                JavaScript的原型对象与原型链 <i class="fa fa-chevron-right"></i>
+              <a href="/2016/12/14/15 个有趣的前端库（September 2016）/" rel="prev" title="15 个有趣的前端库">
+                15 个有趣的前端库 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -473,7 +489,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#title-一张图看懂-Function-和-Object-的关系及简述-instanceof-运算符"><span class="nav-number">1.</span> <span class="nav-text">title: 一张图看懂 Function 和 Object 的关系及简述 instanceof 运算符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#一、instanceof究竟是运算什么的？"><span class="nav-number">2.</span> <span class="nav-text">一、instanceof究竟是运算什么的？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、图解构造器Function和Object的关系"><span class="nav-number">3.</span> <span class="nav-text">二、图解构造器Function和Object的关系</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#我们再配合代码来看一下就明白了："><span class="nav-number">3.0.1.</span> <span class="nav-text">我们再配合代码来看一下就明白了：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三、当构造器Object和Function遇到instanceof"><span class="nav-number">4.</span> <span class="nav-text">三、当构造器Object和Function遇到instanceof</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#构造器"><span class="nav-number">1.</span> <span class="nav-text">构造器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#属性与方法"><span class="nav-number">2.</span> <span class="nav-text">属性与方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实例生命周期"><span class="nav-number">3.</span> <span class="nav-text">实例生命周期</span></a></li></ol></div>
             
 
           </div>

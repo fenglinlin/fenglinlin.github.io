@@ -84,21 +84,49 @@
 
 
 
-<meta name="description" content="title: 一张图看懂 Function 和 Object 的关系及简述 instanceof 运算符一、instanceof究竟是运算什么的？我曾经简单理解 instanceof 只是检测一个对象是否是另个对象 new 出来的实例（例如var a = new Object()，a instanceof Object返回true），但实际 instanceof 的运算规则上比这个更复杂。
-首先w">
+<meta name="description" content="原作者
+Dropzone非常优秀的JavaScript上传库，可以将任何HTML元素拖放到文件上传区域。 功能包括图片上传的缩略图预览，支持多文件，进度跟踪，支持大文件等。 高度可定制，没有依赖。
+github
+React-MDLGoogle的Material Design Lite（MDL）是最美观的CSS框架之一。提供了大量的React组件
+
+Postmate
+Postmate是Window.">
 <meta property="og:type" content="article">
-<meta property="og:title" content="协议入门">
-<meta property="og:url" content="http://yoursite.com/2015/10/16/Function 和 Object 的关系/index.html">
+<meta property="og:title" content="15 个有趣的前端库">
+<meta property="og:url" content="http://yoursite.com/2016/12/14/15 个有趣的前端库（September 2016）/index.html">
 <meta property="og:site_name" content="Feng~Lin">
-<meta property="og:description" content="title: 一张图看懂 Function 和 Object 的关系及简述 instanceof 运算符一、instanceof究竟是运算什么的？我曾经简单理解 instanceof 只是检测一个对象是否是另个对象 new 出来的实例（例如var a = new Object()，a instanceof Object返回true），但实际 instanceof 的运算规则上比这个更复杂。
-首先w">
-<meta property="og:image" content="https://user-gold-cdn.xitu.io/2016/11/29/ce8bff088a74cda6789a11f6075b7411">
+<meta property="og:description" content="原作者
+Dropzone非常优秀的JavaScript上传库，可以将任何HTML元素拖放到文件上传区域。 功能包括图片上传的缩略图预览，支持多文件，进度跟踪，支持大文件等。 高度可定制，没有依赖。
+github
+React-MDLGoogle的Material Design Lite（MDL）是最美观的CSS框架之一。提供了大量的React组件
+
+Postmate
+Postmate是Window.">
+<meta property="og:image" content="https://dn-mhke0kuv.qbox.me/f4608e07c322b18bbcaa">
+<meta property="og:image" content="https://dn-mhke0kuv.qbox.me/8eef274749a32d245ad0">
+<meta property="og:image" content="https://dn-mhke0kuv.qbox.me/3633cad0edb1faa7d5a5">
+<meta property="og:image" content="https://dn-mhke0kuv.qbox.me/bfdac6c4ba90c825be79">
+<meta property="og:image" content="https://dn-mhke0kuv.qbox.me/c0a8f038cc44d677ae22">
+<meta property="og:image" content="https://dn-mhke0kuv.qbox.me/af1854eae9b4514f8b0a">
+<meta property="og:image" content="https://dn-mhke0kuv.qbox.me/e8f04539f8130c7d0860">
+<meta property="og:image" content="https://dn-mhke0kuv.qbox.me/5517ac2dff106b9f8dc8">
+<meta property="og:image" content="https://dn-mhke0kuv.qbox.me/3f1d89150e8d69d2a4a1">
+<meta property="og:image" content="https://dn-mhke0kuv.qbox.me/787847d2e29c0f38624f">
+<meta property="og:image" content="https://dn-mhke0kuv.qbox.me/ca8655d3f79f7be18b58">
+<meta property="og:image" content="https://dn-mhke0kuv.qbox.me/c1e052ab54cd94502d8b">
+<meta property="og:image" content="https://dn-mhke0kuv.qbox.me/e8c97cb295780af0d2ad">
+<meta property="og:image" content="https://dn-mhke0kuv.qbox.me/cb30ee68566216a69a1b">
 <meta property="og:updated_time" content="2016-12-14T13:49:31.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="协议入门">
-<meta name="twitter:description" content="title: 一张图看懂 Function 和 Object 的关系及简述 instanceof 运算符一、instanceof究竟是运算什么的？我曾经简单理解 instanceof 只是检测一个对象是否是另个对象 new 出来的实例（例如var a = new Object()，a instanceof Object返回true），但实际 instanceof 的运算规则上比这个更复杂。
-首先w">
-<meta name="twitter:image" content="https://user-gold-cdn.xitu.io/2016/11/29/ce8bff088a74cda6789a11f6075b7411">
+<meta name="twitter:title" content="15 个有趣的前端库">
+<meta name="twitter:description" content="原作者
+Dropzone非常优秀的JavaScript上传库，可以将任何HTML元素拖放到文件上传区域。 功能包括图片上传的缩略图预览，支持多文件，进度跟踪，支持大文件等。 高度可定制，没有依赖。
+github
+React-MDLGoogle的Material Design Lite（MDL）是最美观的CSS框架之一。提供了大量的React组件
+
+Postmate
+Postmate是Window.">
+<meta name="twitter:image" content="https://dn-mhke0kuv.qbox.me/f4608e07c322b18bbcaa">
 
 
 
@@ -126,13 +154,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2015/10/16/Function 和 Object 的关系/"/>
+  <link rel="canonical" href="http://yoursite.com/2016/12/14/15 个有趣的前端库（September 2016）/"/>
 
 
 
 
 
-  <title> 协议入门 | Feng~Lin </title>
+  <title> 15 个有趣的前端库 | Feng~Lin </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="">
@@ -243,7 +271,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2015/10/16/Function 和 Object 的关系/">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/12/14/15 个有趣的前端库（September 2016）/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="Fenglin">
@@ -267,7 +295,7 @@
             
             
               
-                协议入门
+                15 个有趣的前端库
               
             
           </h1>
@@ -280,8 +308,8 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">Veröffentlicht am</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2015-10-16T00:00:00+08:00">
-                2015-10-16
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-14T21:49:31+08:00">
+                2016-12-14
               </time>
             
 
@@ -316,19 +344,43 @@
       
 
       
-        <h2 id="title-一张图看懂-Function-和-Object-的关系及简述-instanceof-运算符"><a href="#title-一张图看懂-Function-和-Object-的关系及简述-instanceof-运算符" class="headerlink" title="title: 一张图看懂 Function 和 Object 的关系及简述 instanceof 运算符"></a>title: 一张图看懂 Function 和 Object 的关系及简述 instanceof 运算符</h2><h2 id="一、instanceof究竟是运算什么的？"><a href="#一、instanceof究竟是运算什么的？" class="headerlink" title="一、instanceof究竟是运算什么的？"></a>一、instanceof究竟是运算什么的？</h2><p>我曾经简单理解 instanceof 只是检测一个对象是否是另个对象 new 出来的实例（例如var a = new Object()，a instanceof Object返回true），但实际 instanceof 的运算规则上比这个更复杂。</p>
-<p>首先w3c上有官方解释（传送门，有兴趣的同学可以去看看），但是一如既往地让人无法一目了然地看懂……</p>
-<p>知乎上有同学把这个解释翻译成人能读懂的语言（传送门），看起来似乎明白一些了：</p>
-<p>//假设instanceof运算符左边是L，右边是R<br>L instanceof R //instanceof运算时，通过判断L的原型链上是否存在R.prototype<br>L.<strong>proto</strong>.<strong>proto</strong> ….. === R.prototype ？ //如果存在返回true 否则返回false<br>注意：instanceof 运算时会递归查找L的原型链，即 L.<strong>proto</strong>.<strong>proto</strong>.<strong>proto</strong>.<strong>proto</strong>… 直到找到了或者找到顶层为止。</p>
-<p>所以一句话理解 instanceof 的运算规则为：</p>
-<p>instanceof 检测左侧的 <strong>proto</strong> 原型链上，是否存在右侧的 prototype 原型。</p>
-<h2 id="二、图解构造器Function和Object的关系"><a href="#二、图解构造器Function和Object的关系" class="headerlink" title="二、图解构造器Function和Object的关系"></a>二、图解构造器Function和Object的关系</h2><p><img src="https://user-gold-cdn.xitu.io/2016/11/29/ce8bff088a74cda6789a11f6075b7411" alt="Generating"></p>
-<h4 id="我们再配合代码来看一下就明白了："><a href="#我们再配合代码来看一下就明白了：" class="headerlink" title="我们再配合代码来看一下就明白了："></a>我们再配合代码来看一下就明白了：</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">//①构造器Function的构造器是它自身</div><div class="line">Function.constructor=== Function;//true</div><div class="line"></div><div class="line">//②构造器Object的构造器是Function（由此可知所有构造器的constructor都指向Function）</div><div class="line">Object.constructor === Function;//true</div><div class="line"></div><div class="line">//③构造器Function的__proto__是一个特殊的匿名函数function() &#123;&#125;</div><div class="line">console.log(Function.__proto__);//function() &#123;&#125;</div><div class="line"></div><div class="line">//④这个特殊的匿名函数的__proto__指向Object的prototype原型。</div><div class="line">Function.__proto__.__proto__ === Object.prototype//true</div><div class="line"></div><div class="line">//⑤Object的__proto__指向Function的prototype，也就是上面③中所述的特殊匿名函数</div><div class="line">Object.__proto__ === Function.prototype;//true</div><div class="line">Function.prototype === Function.__proto__;//true</div></pre></td></tr></table></figure>
-<h2 id="三、当构造器Object和Function遇到instanceof"><a href="#三、当构造器Object和Function遇到instanceof" class="headerlink" title="三、当构造器Object和Function遇到instanceof"></a>三、当构造器Object和Function遇到instanceof</h2><p>我们回过头来看第一部分那个“奇怪的现象”，从上面那个图中我们可以看到：</p>
-<p>Function.<strong>proto</strong>.<strong>proto</strong> === Object.prototype;//true<br>Object.<strong>proto</strong> === Function.prototype;//true<br>所以再看回第一点中我们说的 instanceof 的运算规则，Function instanceof Object 和 Object instanceof Function 运算的结果当然都是true啦！</p>
-<p>如果看完以上，你还觉得上面的关系看晕了的话，只需要记住下面两个最重要的关系，其他关系就可以推导出来了：</p>
-<p>所有的构造器的 constructor 都指向 Function</p>
-<p>Function 的 prototype 指向一个特殊匿名函数，而这个特殊匿名函数的 <strong>proto</strong> 指向 Object.prototype</p>
+        <p><a href="https://gold.xitu.io/post/58462c392f301e005c171f85" target="_blank" rel="external">原作者</a></p>
+<h3 id="Dropzone"><a href="#Dropzone" class="headerlink" title="Dropzone"></a>Dropzone</h3><p>非常优秀的JavaScript上传库，可以将任何HTML元素拖放到文件上传区域。 功能包括图片上传的缩略图预览，支持多文件，进度跟踪，支持大文件等。 高度可定制，没有依赖。</p>
+<p><a href="https://github.com/sulihuang/frontend-collection" target="_blank" rel="external">github</a><br><img src="https://dn-mhke0kuv.qbox.me/f4608e07c322b18bbcaa" alt="Generating"></p>
+<p><a href="https://react-mdl.github.io/react-mdl/" target="_blank" rel="external">React-MDL</a><br>Google的Material Design Lite（MDL）是最美观的CSS框架之一。提供了大量的React组件</p>
+<p><img src="https://dn-mhke0kuv.qbox.me/8eef274749a32d245ad0" alt="Generating"></p>
+<p><a href="https://github.com/dollarshaveclub/postmate" target="_blank" rel="external">Postmate</a></p>
+<p>Postmate是Window.postMessage（）方法的包装器，允许页面在它们内部的iFrames。 提供了一个简单的基于promise的API，开发人员可以安全地访问有关iFrame的各种数据，并从父页面向其发送事件。</p>
+<p><img src="https://dn-mhke0kuv.qbox.me/3633cad0edb1faa7d5a5" alt="Generating"></p>
+<p><a href="https://marcbruederlin.github.io/particles.js/" target="_blank" rel="external">Particles</a></p>
+<p>一个非常轻量级(2kb .js)和易于使用的库创建动画背景。 只有一个方法 - Particles.init（{options}）;取一个对象与大量的自定义。 有两个动画可用：单个粒子或连接的粒子形成美丽的星座。<br><img src="https://dn-mhke0kuv.qbox.me/bfdac6c4ba90c825be79" alt="Generating"></p>
+<p><a href="http://recharts.org/" target="_blank" rel="external">Recharts</a></p>
+<p>基于React和D3之上的图表库。 可以通过简单的类似XML的语法创建，许多重要的选项直接设置为属性。 提供了丰富的示例目录，包含50多个即用组件，包括各种Line，Bar，Pie和其他类型的图表。</p>
+<p><img src="https://dn-mhke0kuv.qbox.me/c0a8f038cc44d677ae22" alt="Generating"></p>
+<p><a href="http://github.hubspot.com/shepherd/docs/welcome/" target="_blank" rel="external">Shepherd</a><br><img src="https://dn-mhke0kuv.qbox.me/af1854eae9b4514f8b0a" alt="Generating"></p>
+<p><a href="http://www.waudjs.com/" target="_blank" rel="external">Waud</a></p>
+<p><img src="https://dn-mhke0kuv.qbox.me/e8f04539f8130c7d0860" alt="Generating"></p>
+<p><a href="http://benhowdle.im/grade/" target="_blank" rel="external">Grade</a></p>
+<p>Grade.js采用图像中的两个最主要的颜色，并使用它们创建优雅的渐变。 此效果可用于制作酷的图像帧或设置与整个页面匹配的背景。 该库非常小，没有任何依赖。</p>
+<p><img src="https://dn-mhke0kuv.qbox.me/5517ac2dff106b9f8dc8" alt="Generating"></p>
+<p><a href="http://maroslaw.github.io/rainyday.js/" target="_blank" rel="external">Rainyday</a></p>
+<p>Rainyday是一个很小JavaScript库，提供雨动画功能。 Rainyday使用HTML </p>
+<p><img src="https://dn-mhke0kuv.qbox.me/3f1d89150e8d69d2a4a1" alt="Generating"></p>
+<p><a href="http://cssnano.co/" target="_blank" rel="external">CSSnano</a></p>
+<p>在缩小样式表时，CSSnano不会简单地删除空格，而是进行其他一些优化，例如将属性合并到其速记等效项中，删除注释，缩短颜色值等等。 CSSnano与许多平台兼容，包括Node.js，grunt，gulp，webpack和Atom文本编辑器。</p>
+<p><img src="https://dn-mhke0kuv.qbox.me/787847d2e29c0f38624f" alt="Generating"></p>
+<p><a href="http://leaverou.github.io/multirange/" target="_blank" rel="external">Multirange</a></p>
+<p><img src="https://dn-mhke0kuv.qbox.me/ca8655d3f79f7be18b58" alt="Generating"></p>
+<p><a href="http://jgthms.com/minireset.css/" target="_blank" rel="external">Minireset</a></p>
+<p>Minireset是一个非常简单的CSS重置库，只标准化最重要的CSS属性，没有任何额外的东西。</p>
+<p><img src="https://dn-mhke0kuv.qbox.me/c1e052ab54cd94502d8b" alt="Generating"></p>
+<p><a href="http://cesiumjs.org/" target="_blank" rel="external">Cesium</a></p>
+<p>基于WebGL的JavaScript库，非常的酷炫，用于创建高分辨率的3D地球和2D地图。 它支持不同的地图API，天气API和其他复杂的功能。<br>Demo页面有大量的社区项目，展示功能，包括纽约所有建筑的3D地图和美国宇航局的项目。</p>
+<p><img src="https://dn-mhke0kuv.qbox.me/e8c97cb295780af0d2ad" alt="Generating"></p>
+<p><a href="https://camwiegert.github.io/in-view/" target="_blank" rel="external">In-view</a></p>
+<p>埋点库，用于跟踪页面上的元素，并在他们即将离开或进入视口时做出反应。 该库没有外部依赖，并且真正容易使用简单的回调语法</p>
+<p><img src="https://dn-mhke0kuv.qbox.me/cb30ee68566216a69a1b" alt="Generating"></p>
+<p><a href="http://papaparse.com/" target="_blank" rel="external"> Papa Parse</a><br>Papa Parse是一个强大的客户端CSV解析器。 它充满了令人敬畏的功能，如转换为JSON，支持字符串，本地文件或URLS，异步模式，快速模式等等。 这个库没有依赖性，可以兼容JavaScript和jQuery。</p>
 
       
     </div>
@@ -355,8 +407,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/08/27/SS 伪类before:after content内容生成技术/" rel="next" title="CSS 伪类before/after content内容生成技术----纯CSS实现tooltip">
-                <i class="fa fa-chevron-left"></i> CSS 伪类before/after content内容生成技术----纯CSS实现tooltip
+              <a href="/2016/12/14/Vue实例/" rel="next" title="Vue 实例">
+                <i class="fa fa-chevron-left"></i> Vue 实例
               </a>
             
           </div>
@@ -365,8 +417,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2015/10/25/JavaScript的原型对象与原型链/" rel="prev" title="JavaScript的原型对象与原型链">
-                JavaScript的原型对象与原型链 <i class="fa fa-chevron-right"></i>
+              <a href="/2016/12/14/Vue模板语法之指令/" rel="prev" title="Vue模板语法之指令">
+                Vue模板语法之指令 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -473,7 +525,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#title-一张图看懂-Function-和-Object-的关系及简述-instanceof-运算符"><span class="nav-number">1.</span> <span class="nav-text">title: 一张图看懂 Function 和 Object 的关系及简述 instanceof 运算符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#一、instanceof究竟是运算什么的？"><span class="nav-number">2.</span> <span class="nav-text">一、instanceof究竟是运算什么的？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、图解构造器Function和Object的关系"><span class="nav-number">3.</span> <span class="nav-text">二、图解构造器Function和Object的关系</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#我们再配合代码来看一下就明白了："><span class="nav-number">3.0.1.</span> <span class="nav-text">我们再配合代码来看一下就明白了：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三、当构造器Object和Function遇到instanceof"><span class="nav-number">4.</span> <span class="nav-text">三、当构造器Object和Function遇到instanceof</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Dropzone"><span class="nav-number">1.</span> <span class="nav-text">Dropzone</span></a></li></ol></div>
             
 
           </div>

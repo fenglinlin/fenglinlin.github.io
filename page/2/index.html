@@ -236,7 +236,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/12/14/Vue简介及安装/">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/12/14/Vue绑定事件/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="Fenglin">
@@ -261,8 +261,8 @@
             
               
                 
-                <a class="post-title-link" href="/2016/12/14/Vue简介及安装/" itemprop="url">
-                  Vue.js学习
+                <a class="post-title-link" href="/2016/12/14/Vue绑定事件/" itemprop="url">
+                  Vue之Class 与 Style 绑定
                 </a>
               
             
@@ -313,22 +313,16 @@
 
       
         
-          <p>最近在学vue，并随笔写下自己的心得，如果想了解更多请点击<a href="https://vuefe.cn/v2/guide/index.html#Vue-js-是什么">Vue中文文档</a></p>
-<h3 id="学习之初"><a href="#学习之初" class="headerlink" title="学习之初"></a>学习之初</h3><h4 id="Vue-js是什么为什么要学习Vue"><a href="#Vue-js是什么为什么要学习Vue" class="headerlink" title="Vue.js是什么为什么要学习Vue"></a>Vue.js是什么为什么要学习Vue</h4><ul>
-<li>Vue.js（读音 /vjuː/, 类似于 view） 是一套构建用户界面的 渐进式框架。</li>
-<li>vue的设计模式采用：自底向上增量开发的设计模式。</li>
-<li>Vue的核心库只关注视图层</li>
-<li>简单容易上手，容易与其他库或已有项目整合</li>
-<li>采用单文件组件和vue生态系统支持的库开发的复杂单页应用</li>
-</ul>
-<p>Vue.js的目标是通过简单地API实现相应的数据绑定和组合的视图组件</p>
-<h3 id="Vue的安装"><a href="#Vue的安装" class="headerlink" title="Vue的安装"></a>Vue的安装</h3><h4 id="兼容性"><a href="#兼容性" class="headerlink" title="兼容性"></a>兼容性</h4><p>Vue.js 不支持 IE8 及其以下版本，因为 Vue.js 使用了 IE8 不能模拟的 ECMAScript 5 特性。 Vue.js 支持所有兼容 ECMAScript 5 的浏览器。</p>
-<h5 id="独立版本"><a href="#独立版本" class="headerlink" title="独立版本"></a>独立版本</h5><p>直接下载并用 script标签引入，Vue 会被注册为一个全局变量。<br>重要提示：在开发时请用开发版本，遇到常见错误它会给出友好的警告。</p>
-<h4 id="NPM"><a href="#NPM" class="headerlink" title="NPM"></a>NPM</h4><p>在用 Vue.js 构建大型应用时推荐使用 NPM 安装， NPM 能很好地和诸如 Webpack 或 Browserify 模块打包器配合使用。 Vue.js 也提供配套工具来开发单文件组件。<br>最新稳定版</p>
-<p>$ npm install vue<br>
+          <blockquote>
+<p>数据绑定一个常见需求是操作元素的 class 列表和它的内联样式。因为它们都是属性 ，我们可以用v-bind 处理它们：只需要计算出表达式最终的字符串。不过，字符串拼接麻烦又易错。因此，在 v-bind 用于 class 和 style 时， Vue.js 专门增强了它。表达式的结果类型除了字符串之外，还可以是对象或数组。</p>
+</blockquote>
+<h3 id="绑定-HTML-Class"><a href="#绑定-HTML-Class" class="headerlink" title="绑定 HTML Class"></a>绑定 HTML Class</h3><hr>
+<h4 id="对象语法"><a href="#对象语法" class="headerlink" title="对象语法"></a>对象语法</h4><p>我们可以传给 v-bind:class 一个对象，以动态地切换 class 。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;div v-bind:class=&quot;&#123; active: isActive &#125;&quot;&gt;&lt;/div&gt;</div></pre></td></tr></table></figure>
+<p>上面的语法表示 classactive 的更新将取决于数据属性 isActive 是否为真值 。<br>
           <!--noindex-->
           <div class="post-more-link text-center">
-            <a class="btn" href="/2016/12/14/Vue简介及安装/#more" rel="contents">
+            <a class="btn" href="/2016/12/14/Vue绑定事件/#more" rel="contents">
               Weiterlesen &raquo;
             </a>
           </div>

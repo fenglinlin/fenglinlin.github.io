@@ -86,27 +86,24 @@
 
 <meta name="description" content="原文作者：不是小羊的肖恩
 十大经典算法排序总结对比
-####名词解释：12345n: 数据规模k:“桶”的个数In-place: 占用常数内存，不占用额外内存Out-place: 占用额外内存稳定性：排序后2个相等键值的顺序和排序之前它们的顺序相同
-冒泡排序（Bubble Sort）冒泡排序须知：作为最简单的排序算法之一，冒泡排序给我的感觉就像Abandon在单词书里出现的感觉一样，每次都在第一页">
+####名词解释：12345n: 数据规模k:“桶”的个数In-place: 占用常数内存，不占用额外内存Out-place: 占用额外内存稳定性：排序后2个相等键值的顺序和排序之前它们的顺序相同">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JS家的排序算法">
 <meta property="og:url" content="http://yoursite.com/2016/01/15/十大经典算法排序总结对比/index.html">
 <meta property="og:site_name" content="Feng~Lin">
 <meta property="og:description" content="原文作者：不是小羊的肖恩
 十大经典算法排序总结对比
-####名词解释：12345n: 数据规模k:“桶”的个数In-place: 占用常数内存，不占用额外内存Out-place: 占用额外内存稳定性：排序后2个相等键值的顺序和排序之前它们的顺序相同
-冒泡排序（Bubble Sort）冒泡排序须知：作为最简单的排序算法之一，冒泡排序给我的感觉就像Abandon在单词书里出现的感觉一样，每次都在第一页">
+####名词解释：12345n: 数据规模k:“桶”的个数In-place: 占用常数内存，不占用额外内存Out-place: 占用额外内存稳定性：排序后2个相等键值的顺序和排序之前它们的顺序相同">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1867034-1d3e43cdb301fc9b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1867034-e19840224b331fae.gif?imageMogr2/auto-orient/strip">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1867034-c6cc220cfb2b9ac8.gif?imageMogr2/auto-orient/strip">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1867034-d1537e355abdd298.gif?imageMogr2/auto-orient/strip">
-<meta property="og:updated_time" content="2016-12-14T13:49:31.000Z">
+<meta property="og:updated_time" content="2016-12-16T01:19:49.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JS家的排序算法">
 <meta name="twitter:description" content="原文作者：不是小羊的肖恩
 十大经典算法排序总结对比
-####名词解释：12345n: 数据规模k:“桶”的个数In-place: 占用常数内存，不占用额外内存Out-place: 占用额外内存稳定性：排序后2个相等键值的顺序和排序之前它们的顺序相同
-冒泡排序（Bubble Sort）冒泡排序须知：作为最简单的排序算法之一，冒泡排序给我的感觉就像Abandon在单词书里出现的感觉一样，每次都在第一页">
+####名词解释：12345n: 数据规模k:“桶”的个数In-place: 占用常数内存，不占用额外内存Out-place: 占用额外内存稳定性：排序后2个相等键值的顺序和排序之前它们的顺序相同">
 <meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/1867034-1d3e43cdb301fc9b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 
 
@@ -328,6 +325,7 @@
         <p>原文作者：<a href="http://www.jianshu.com/p/1b4068ccd505" target="_blank" rel="external">不是小羊的肖恩</a></p>
 <h2 id="十大经典算法排序总结对比"><a href="#十大经典算法排序总结对比" class="headerlink" title="十大经典算法排序总结对比"></a>十大经典算法排序总结对比</h2><p><img src="http://upload-images.jianshu.io/upload_images/1867034-1d3e43cdb301fc9b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Generating"></p>
 <p>####名词解释：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">n: 数据规模</div><div class="line">k:“桶”的个数</div><div class="line">In-place: 占用常数内存，不占用额外内存</div><div class="line">Out-place: 占用额外内存</div><div class="line">稳定性：排序后2个相等键值的顺序和排序之前它们的顺序相同</div></pre></td></tr></table></figure></p>
+<a id="more"></a>
 <h3 id="冒泡排序（Bubble-Sort）"><a href="#冒泡排序（Bubble-Sort）" class="headerlink" title="冒泡排序（Bubble Sort）"></a>冒泡排序（Bubble Sort）</h3><h4 id="冒泡排序须知："><a href="#冒泡排序须知：" class="headerlink" title="冒泡排序须知："></a>冒泡排序须知：</h4><p>作为最简单的排序算法之一，冒泡排序给我的感觉就像Abandon在单词书里出现的感觉一样，每次都在第一页第一位，所以最熟悉。。。冒泡排序还有一种优化算法，就是立一个flag，当在一趟序列遍历中元素没有发生交换，则证明该序列已经有序。但这种改进对于提升性能来说并没有什么太大作用。。</p>
 <h5 id="什么时候最快（Best-Cases）："><a href="#什么时候最快（Best-Cases）：" class="headerlink" title="什么时候最快（Best Cases）："></a>什么时候最快（Best Cases）：</h5><p>当输入的数据已经是正序时（都已经是正序了，我还要你冒泡排序有何用啊。。。。）</p>
 <h5 id="什么时候最慢（Worst-Cases）："><a href="#什么时候最慢（Worst-Cases）：" class="headerlink" title="什么时候最慢（Worst Cases）："></a>什么时候最慢（Worst Cases）：</h5><p>当输入的数据是反序时（写一个for循环反序输出数据不就行了，干嘛要用你冒泡排序呢，我是闲的吗。。。）</p>
@@ -449,7 +447,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">42</span>
+              <span class="site-state-item-count">43</span>
               <span class="site-state-item-name">Artikel</span>
             </a>
           </div>

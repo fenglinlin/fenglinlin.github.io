@@ -1,22 +1,24 @@
 $(function(){
 	$.ajax({
 		type: "GET",
-		url: "../ajax/message.json",
+		url: "./Demo/ajax/message.json",
 		dataType: "json",
 		success: function(data){
+			
 			data.about_info.forEach(function(item){
-				$("#about_info").append("<p>"+item+"</p>");
+				console.log(item.fl)
+				$("#about_info").append("<p>"+item.fl+"</p>");
 			});
 			$("#skill_info").append("<p>"+data.skill_info+"</p>");
 			$(".skill_int").append("<ul></ul>");
 			data.vue.forEach(function(item){
-				$("#skill_int1 ul").append("<li>"+item+"</li>");
+				$("#skill_int1 ul").append("<li>"+item.fl+"</li>");
 			});
 			data.html.forEach(function(item){
-				$("#skill_int2 ul").append("<li>"+item+"</li>");
+				$("#skill_int2 ul").append("<li>"+item.fl+"</li>");
 			});
 			data.css.forEach(function(item){
-				$("#skill_int3 ul").append("<li>"+item+"</li>");
+				$("#skill_int3 ul").append("<li>"+item.fl+"</li>");
 			});
 			data.js.forEach(function(item){
 				$("#skill_int4 ul").append("<li>"+item+"</li>");

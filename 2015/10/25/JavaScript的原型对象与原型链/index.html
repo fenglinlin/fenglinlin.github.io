@@ -97,7 +97,7 @@
 <meta property="og:image" content="https://dn-myg6wstv.qbox.me/2e7817d676e605e54e62.png">
 <meta property="og:image" content="https://dn-myg6wstv.qbox.me/414693e5821245adeb86.png">
 <meta property="og:image" content="https://user-gold-cdn.xitu.io/2016/11/29/877d6c73f3b810ddd1692fffd06c290b">
-<meta property="og:updated_time" content="2016-12-14T13:49:31.000Z">
+<meta property="og:updated_time" content="2016-12-16T01:16:48.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JavaScript的原型对象与原型链">
 <meta name="twitter:description" content="title: JavaScript的原型对象与原型链早前在博客园发的几篇基础文，都是图解系列，总结了一些JavaScript容易混淆的知识点，现在拿来在掘金分享一下吧。
@@ -324,7 +324,7 @@
         <h2 id="title-JavaScript的原型对象与原型链"><a href="#title-JavaScript的原型对象与原型链" class="headerlink" title="title: JavaScript的原型对象与原型链"></a>title: JavaScript的原型对象与原型链</h2><p>早前在博客园发的几篇基础文，都是图解系列，总结了一些JavaScript容易混淆的知识点，现在拿来在掘金分享一下吧。</p>
 <p>原文地址：<a href="http://shuiyi.io/article/5" target="_blank" rel="external">三张图搞懂JavaScript的原型对象与原型链</a></p>
 <p>对于新人来说，JavaScript的原型是一个很让人头疼的事情，一来prototype容易与<strong>proto</strong>混淆，二来它们之间的各种指向实在有些复杂，其实市面上已经有非常多的文章在尝试说清楚，有一张所谓很经典的图，上面画了各种线条，一会连接这个一会连接那个，说实话我自己看得就非常头晕，更谈不上完全理解了。所以我自己也想尝试一下，看看能不能把原型中的重要知识点拆分出来，用最简单的图表形式说清楚。</p>
-<p>我们知道原型是一个对象，其他对象可以通过它实现属性继承。但是尼玛除了prototype，又有一个<strong>proto</strong>是用来干嘛的？长那么像，让人怎么区分呢？它们都指向谁，那么混乱怎么记啊？原型链又是什么鬼？相信不少初学者甚至有一定经验的老鸟都不一定能完全说清楚，下面用三张简单的图，配合一些示例代码来理解一下。</p>
+<p>我们知道原型是一个对象，其他对象可以通过它实现属性继承。但是尼玛除了prototype，又有一个<strong>proto</strong>是用来干嘛的？长那么像，让人怎么区分呢？它们都指向谁，那么混乱怎么记啊？原型链又是什么鬼？相信不少初学者甚至有一定经验的老鸟都不一定能完全说清楚，下面用三张简单的图，配合一些示例代码来理解一下。<br><a id="more"></a></p>
 <h3 id="1、prototype和proto的区别"><a href="#1、prototype和proto的区别" class="headerlink" title="1、prototype和proto的区别"></a>1、prototype和<strong>proto</strong>的区别</h3><p><img src="https://dn-myg6wstv.qbox.me/2e7817d676e605e54e62.png" alt="Generating"></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">var a = &#123;&#125;;</div><div class="line">console.log(a.prototype); //undefined</div><div class="line">console.log(a.__proto__);  //Object &#123;&#125;</div><div class="line"></div><div class="line">var b = function()&#123;&#125;</div><div class="line">console.log(b.prototype); //b &#123;&#125;</div><div class="line">console.log(b.__proto__);  //function() &#123;&#125;</div></pre></td></tr></table></figure>
 <h3 id="2、proto属性指向谁"><a href="#2、proto属性指向谁" class="headerlink" title="2、proto属性指向谁"></a>2、<strong>proto</strong>属性指向谁</h3><p><img src="https://dn-myg6wstv.qbox.me/414693e5821245adeb86.png" alt="Generating"></p>
@@ -436,7 +436,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">42</span>
+              <span class="site-state-item-count">43</span>
               <span class="site-state-item-name">Artikel</span>
             </a>
           </div>

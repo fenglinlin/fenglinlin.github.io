@@ -92,7 +92,7 @@ Ajax简介Ajax全称为“Asynchronous Javascript And XML”，即“异步javas
 <meta property="og:site_name" content="Feng~Lin">
 <meta property="og:description" content="Ajax是目前很普遍的一门技术，也是很值得探讨和研究的一门技术。本文将针对Ajax的发展过程并结合其在不同库框架中的使用方式来和大家分享下Ajax的那些新老语法。
 Ajax简介Ajax全称为“Asynchronous Javascript And XML”，即“异步javascript和XML”的意思。通过Ajax我们可以向服务器发送请求，在不阻塞页面的情况下进行数据交互，也可以理解为异步数据传输">
-<meta property="og:updated_time" content="2016-12-14T13:49:31.000Z">
+<meta property="og:updated_time" content="2016-12-16T01:18:35.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Ajax语法浅析">
 <meta name="twitter:description" content="Ajax是目前很普遍的一门技术，也是很值得探讨和研究的一门技术。本文将针对Ajax的发展过程并结合其在不同库框架中的使用方式来和大家分享下Ajax的那些新老语法。
@@ -317,8 +317,7 @@ Ajax简介Ajax全称为“Asynchronous Javascript And XML”，即“异步javas
         <p>Ajax是目前很普遍的一门技术，也是很值得探讨和研究的一门技术。本文将针对Ajax的发展过程并结合其在不同库框架中的使用方式来和大家分享下Ajax的那些新老语法。</p>
 <h2 id="Ajax简介"><a href="#Ajax简介" class="headerlink" title="Ajax简介"></a>Ajax简介</h2><p>Ajax全称为“Asynchronous Javascript And XML”，即“异步javascript和XML”的意思。通过Ajax我们可以向服务器发送请求，在不阻塞页面的情况下进行数据交互，也可以理解为异步数据传输。在Ajax的帮助下我们的网页只需局部刷新即可更新数据的显示，减少了不少必要的数据量，大大提高了用户体验，缩短了用户等待的时间，使得web应用程序更小、更快、更友好。</p>
 <h3 id="原生Ajax"><a href="#原生Ajax" class="headerlink" title="原生Ajax"></a>原生Ajax</h3><p>基本上现在的所有浏览器都支持原生Ajax的功能，下面就详细介绍利用原生js我们怎样来发起和处理Ajax请求。</p>
-<h4 id="1-获取XMLHttpRequest对象"><a href="#1-获取XMLHttpRequest对象" class="headerlink" title="1.获取XMLHttpRequest对象"></a>1.获取XMLHttpRequest对象</h4><p><code>var xhr =new XMLHttpRequest();//获取浏览器内置的XMLHttpRequest对象</code></p>
-<p>如果你的项目应用不考虑低版本IE，那么可以直接用上面的方法，所有现代浏览器 (Firefox、Chrome、Safari 以及 Opera) 都内建了 XMLHttpRequest 对象。如果需要兼容老版本IE（IE5、IE6），那么可以使用 ActiveX 对象:</p>
+<h4 id="1-获取XMLHttpRequest对象"><a href="#1-获取XMLHttpRequest对象" class="headerlink" title="1.获取XMLHttpRequest对象"></a>1.获取XMLHttpRequest对象</h4><p><code>var xhr =new XMLHttpRequest();//获取浏览器内置的XMLHttpRequest对象</code><br><a id="more"></a><br>如果你的项目应用不考虑低版本IE，那么可以直接用上面的方法，所有现代浏览器 (Firefox、Chrome、Safari 以及 Opera) 都内建了 XMLHttpRequest 对象。如果需要兼容老版本IE（IE5、IE6），那么可以使用 ActiveX 对象:</p>
 <pre><code>var xhr;
 if (window.XMLHttpRequest) {
 xhr=new XMLHttpRequest();
@@ -489,7 +488,7 @@ if(xhr){
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">42</span>
+              <span class="site-state-item-count">43</span>
               <span class="site-state-item-name">Artikel</span>
             </a>
           </div>

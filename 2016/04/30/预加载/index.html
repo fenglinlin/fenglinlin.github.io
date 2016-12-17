@@ -94,7 +94,7 @@
 <meta property="og:description" content="预加载图片是提高用户体验的一个很好方法。图片预先加载到浏览器中，访问者便可顺利地在你的网站上冲浪，并享受到极快的加载速度。这对图片画廊及图片占据很大比例的网站来说十分有利，它保证了图片快速、无缝地发布，也可帮助用户在浏览你网站内容时获得更好的用户体验。本文将分享三个不同的预加载技术，来增强网站的性能与可用性。
 单纯的使用css可以将图片加载到页面元素的背景上，这种方法简单、高效：
 123#prel">
-<meta property="og:updated_time" content="2016-12-14T13:49:31.000Z">
+<meta property="og:updated_time" content="2016-12-16T01:19:11.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="利用CSS、JavaScript及Ajax实现图片预加载">
 <meta name="twitter:description" content="预加载图片是提高用户体验的一个很好方法。图片预先加载到浏览器中，访问者便可顺利地在你的网站上冲浪，并享受到极快的加载速度。这对图片画廊及图片占据很大比例的网站来说十分有利，它保证了图片快速、无缝地发布，也可帮助用户在浏览你网站内容时获得更好的用户体验。本文将分享三个不同的预加载技术，来增强网站的性能与可用性。
@@ -320,6 +320,7 @@
         <p>预加载图片是提高用户体验的一个很好方法。图片预先加载到浏览器中，访问者便可顺利地在你的网站上冲浪，并享受到极快的加载速度。这对图片画廊及图片占据很大比例的网站来说十分有利，它保证了图片快速、无缝地发布，也可帮助用户在浏览你网站内容时获得更好的用户体验。本文将分享三个不同的预加载技术，来增强网站的性能与可用性。</p>
 <p>单纯的使用css可以将图片加载到页面元素的背景上，这种方法简单、高效：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">#preload-01 &#123; background: url(http://domain.tld/image-01.png) no-repeat -9999px -9999px; &#125;</div><div class="line">#preload-02 &#123; background: url(http://domain.tld/image-02.png) no-repeat -9999px -9999px; &#125;</div><div class="line">#preload-03 &#123; background: url(http://domain.tld/image-03.png) no-repeat -9999px -9999px; &#125;</div></pre></td></tr></table></figure>
+<a id="more"></a>
 <p>将这三个ID选择器应用到(X)HTML元素中，我们便可通过CSS的background属性将图片预加载到屏幕外的背景上。只要这些图片的路径保持不变，当它们在Web页面的其他地方被调用时，浏览器就会在渲染过程中使用预加载（缓存）的图片。简单、高效，不需要任何JavaScript。</p>
 <p>弊端：该方法虽然高效，但仍有改进余地。使用该法加载的图片会同页面的其他内容一起加载，增加了页面的整体加载时间。为了解决这个问题，我们增加了一些JavaScript代码，来推迟预加载的时间，直到页面加载完毕。代码如下：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">function preloader() &#123;</div><div class="line">    if (document.getElementById) &#123;</div><div class="line">        document.getElementById(&quot;preload-01&quot;).style.background = &quot;url(http://domain.tld/image-01.png) no-repeat -9999px -9999px&quot;;</div><div class="line">        document.getElementById(&quot;preload-02&quot;).style.background = &quot;url(http://domain.tld/image-02.png) no-repeat -9999px -9999px&quot;;</div><div class="line">        document.getElementById(&quot;preload-03&quot;).style.background = &quot;url(http://domain.tld/image-03.png) no-repeat -9999px -9999px&quot;;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">function addLoadEvent(func) &#123;</div><div class="line">    var oldonload = window.onload;</div><div class="line">    if (typeof window.onload != &apos;function&apos;) &#123;</div><div class="line">        window.onload = func;</div><div class="line">    &#125; else &#123;</div><div class="line">        window.onload = function() &#123;</div><div class="line">            if (oldonload) &#123;</div><div class="line">                oldonload();</div><div class="line">            &#125;</div><div class="line">            func();</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">addLoadEvent(preloader);</div></pre></td></tr></table></figure>
@@ -445,7 +446,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">42</span>
+              <span class="site-state-item-count">43</span>
               <span class="site-state-item-name">Artikel</span>
             </a>
           </div>

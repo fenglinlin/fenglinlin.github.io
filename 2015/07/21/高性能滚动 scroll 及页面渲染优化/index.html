@@ -100,7 +100,7 @@
 1234var i = 0;w">
 <meta property="og:image" content="http://images2015.cnblogs.com/blog/608782/201605/608782-20160516205933748-797476534.gif">
 <meta property="og:image" content="http://images2015.cnblogs.com/blog/608782/201605/608782-20160516214245123-1124441228.jpg">
-<meta property="og:updated_time" content="2016-12-14T13:49:31.000Z">
+<meta property="og:updated_time" content="2016-12-16T01:20:19.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="高性能滚动 scroll 及页面渲染优化">
 <meta name="twitter:description" content="本文主要想谈谈页面优化之滚动优化。
@@ -331,6 +331,7 @@
 <p><a href="http://www.cnblogs.com/coco1s/p/5499469.html" target="_blank" rel="external">博主链接</a></p>
 <h3 id="滚动优化的由来"><a href="#滚动优化的由来" class="headerlink" title="滚动优化的由来"></a>滚动优化的由来</h3><p>滚动优化其实也不仅仅指滚动（scroll 事件），还包括了例如 resize 这类会频繁触发的事件。简单的看看：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">var i = 0;</div><div class="line">window.addEventListener(&apos;scroll&apos;,function()&#123;</div><div class="line">    console.log(i++);</div><div class="line">&#125;,false);</div></pre></td></tr></table></figure>
+<a id="more"></a>
 <p>输出如下：<br><img src="http://images2015.cnblogs.com/blog/608782/201605/608782-20160516205933748-797476534.gif" alt="Generating"></p>
 <blockquote>
 <p>在绑定 scroll 、resize 这类事件时，当它发生时，它被触发的频次非常高，间隔很近。如果事件中涉及到大量的位置计算、DOM 操作、元素重绘等工作且这些工作无法在下一个 scroll 事件触发前完成，就会造成浏览器掉帧。加之用户鼠标滚动往往是连续的，就会持续触发 scroll 事件导致掉帧扩大、浏览器 CPU 使用率增加、用户体验受到影响。</p>
@@ -479,7 +480,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">42</span>
+              <span class="site-state-item-count">43</span>
               <span class="site-state-item-name">Artikel</span>
             </a>
           </div>

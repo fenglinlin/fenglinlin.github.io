@@ -94,7 +94,7 @@
 <meta property="og:description" content="什么是:before和:after？ 该如何使用他们？&amp;gt;12``````:after是css中的一种伪元素，可用于在某个元素之后插入某些内容。
 下面我们先跑个简单的代码测试下效果：
 123456789&amp;lt;style&amp;gt;  		p:before&amp;#123;       	content: &amp;quot;H&amp;quot;  /*:before和:after必带技能，重要性为满5颗星*/">
-<meta property="og:updated_time" content="2016-12-14T13:49:31.000Z">
+<meta property="og:updated_time" content="2016-12-16T01:18:20.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CSS :before 和 :after">
 <meta name="twitter:description" content="什么是:before和:after？ 该如何使用他们？&amp;gt;12``````:after是css中的一种伪元素，可用于在某个元素之后插入某些内容。
@@ -320,6 +320,7 @@
         <h3 id="什么是-before和-after？-该如何使用他们？"><a href="#什么是-before和-after？-该如何使用他们？" class="headerlink" title="什么是:before和:after？ 该如何使用他们？"></a>什么是:before和:after？ 该如何使用他们？</h3><p>&gt;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">```</div><div class="line">```:after是css中的一种伪元素，可用于在某个元素之后插入某些内容。</div></pre></td></tr></table></figure></p>
 <p>下面我们先跑个简单的代码测试下效果：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">&lt;style&gt;</div><div class="line">  		p:before&#123;</div><div class="line">       	content: &quot;H&quot;  /*:before和:after必带技能，重要性为满5颗星*/</div><div class="line">   	&#125;</div><div class="line">   	p:after&#123;</div><div class="line">       	content: &quot;d&quot;  /*:before和:after必带技能，重要性为满5颗星*/</div><div class="line">   	&#125;</div><div class="line"> 	&lt;/style&gt;</div><div class="line"> 	&lt;p&gt;ello Worl&lt;/p&gt;</div></pre></td></tr></table></figure>
+ <a id="more"></a>
 <p> 以上的代码将会在页面中展现的是”Hello World”。我们通过浏览器的”审查元素”看到的内容是：</p>
  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;p&gt;</div><div class="line"> ::before</div><div class="line"> &quot;ello Worl&quot;</div><div class="line"> ::after</div><div class="line">&lt;/p&gt;</div></pre></td></tr></table></figure>
 <p>  p标签内部的内容的前面会被插入一个:before伪元素，该伪元素内包含的内容是”H”；而在p标签内的内容后面会被插入一个:after伪元素，该元素包含的内容是”d”。作为一只合格的程序猴子，捍卫”Hello World”的完整存在是必要的。<br>既然笔记主要针对是:before和:after，那么肯定不会只是仅仅有以上的简单介绍就完事。下面我们看看平常该怎么使用他们。</p>
@@ -469,7 +470,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">42</span>
+              <span class="site-state-item-count">43</span>
               <span class="site-state-item-name">Artikel</span>
             </a>
           </div>

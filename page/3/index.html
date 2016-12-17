@@ -236,6 +236,129 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/01/15/十大经典算法排序总结对比/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Fenglin">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.gif">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Feng~Lin">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Feng~Lin" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/01/15/十大经典算法排序总结对比/" itemprop="url">
+                  JS家的排序算法
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-01-15T00:00:00+08:00">
+                2016-01-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>原文作者：<a href="http://www.jianshu.com/p/1b4068ccd505">不是小羊的肖恩</a></p>
+<h2 id="十大经典算法排序总结对比"><a href="#十大经典算法排序总结对比" class="headerlink" title="十大经典算法排序总结对比"></a>十大经典算法排序总结对比</h2><p><img src="http://upload-images.jianshu.io/upload_images/1867034-1d3e43cdb301fc9b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Generating"></p>
+<p>####名词解释：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">n: 数据规模</div><div class="line">k:“桶”的个数</div><div class="line">In-place: 占用常数内存，不占用额外内存</div><div class="line">Out-place: 占用额外内存</div><div class="line">稳定性：排序后2个相等键值的顺序和排序之前它们的顺序相同</div></pre></td></tr></table></figure></p>
+          <!--noindex-->
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/01/15/十大经典算法排序总结对比/#more" rel="contents">
+              Weiterlesen &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
   <link itemprop="mainEntityOfPage" href="http://yoursite.com/2015/11/05/http/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -316,7 +439,7 @@
           
             <h2 id="title-一个http请求发送到后端的详细过程"><a href="#title-一个http请求发送到后端的详细过程" class="headerlink" title="title: 一个http请求发送到后端的详细过程"></a>title: 一个http请求发送到后端的详细过程</h2><p>http是一个应用层协议，在这个层的协议，只是一种通信规范，也就是因为双方要进行通讯，而约定俗成的一个规范。</p>
 <h2 id="通讯步骤"><a href="#通讯步骤" class="headerlink" title="通讯步骤"></a>通讯步骤</h2><h3 id="连接"><a href="#连接" class="headerlink" title="连接"></a>连接</h3><p>当我们输入这样一个请求时，首先要建立一个socket连接，因为socket是通过ip和端口建立连接的所以之前还有一个DNS解析过程，把www.mycompany.com变成ip，如果url里不包含端口号，则会使用该协议的默认端口号。</p>
-<p>DNS的过程是这样的：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">### 请求</div><div class="line">     连接成功建立后，开始向web服务器发送请求，这个请求一般是GET或POST命令（POST用于FORM参数的传递）。GET命令的格式为：　　GET 路径/文件名 HTTP/1.0</div><div class="line"></div><div class="line">     文件名指出所访问的文件，HTTP/1.0指出Web浏览器使用的HTTP版本。现在可以发送GET命令：</div><div class="line">### 应答</div><div class="line">    web服务器收到这个请求，进行处理。从它的文档空间中搜索子目录mydir的文件index.html。如果找到该文件，Web服务器把该文件内容传送给相应的Web浏览器。</div><div class="line"></div><div class="line">为了告知浏览器，，Web服务器首先传送一些HTTP头信息，然后传送具体内容（即HTTP体信息），HTTP头信息和HTTP体信息之间用一个空行分开。</div><div class="line">常用的HTTP头信息有：</div><div class="line">　　```① HTTP 1.0 200 OK 　这是Web服务器应答的第一行，列出服务器正在运行的HTTP版本号和应答代码。代码&quot;200 OK&quot;表示请求完成。</div></pre></td></tr></table></figure></p>
+<p>DNS的过程是这样的：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">&lt;!--more--&gt;</div><div class="line">### 请求</div><div class="line">     连接成功建立后，开始向web服务器发送请求，这个请求一般是GET或POST命令（POST用于FORM参数的传递）。GET命令的格式为：　　GET 路径/文件名 HTTP/1.0</div><div class="line"></div><div class="line">     文件名指出所访问的文件，HTTP/1.0指出Web浏览器使用的HTTP版本。现在可以发送GET命令：</div><div class="line">### 应答</div><div class="line">    web服务器收到这个请求，进行处理。从它的文档空间中搜索子目录mydir的文件index.html。如果找到该文件，Web服务器把该文件内容传送给相应的Web浏览器。</div><div class="line"></div><div class="line">为了告知浏览器，，Web服务器首先传送一些HTTP头信息，然后传送具体内容（即HTTP体信息），HTTP头信息和HTTP体信息之间用一个空行分开。</div><div class="line">常用的HTTP头信息有：</div><div class="line">　　```① HTTP 1.0 200 OK 　这是Web服务器应答的第一行，列出服务器正在运行的HTTP版本号和应答代码。代码&quot;200 OK&quot;表示请求完成。</div></pre></td></tr></table></figure></p>
 <p>　　<figure class="highlight plain"><figcaption><span>MIME_Version:1.0　它指示MIME类型的版本。　```　</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">　　```③ content_type:类型　这个头信息非常重要，它指示HTTP体信息的MIME类型。如：content_type:text/html指示传送的数据是HTML文档。</div></pre></td></tr></table></figure></p>
 <p>　　<figure class="highlight plain"><figcaption><span>content_length:长度值　它指示HTTP体信息的长度（字节）。```</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">### 关闭连接</div><div class="line">当应答结束后，Web浏览器与Web服务器必须断开，以保证其它Web浏览器能够与Web服务器建立连接。　　</div><div class="line">## tcp/ip基本模型及概念</div><div class="line">### 物理层</div><div class="line">设备，中继器（repeater）,集线器（hub）。对于这一层来说，从一个端口收到数据，会转发到所有端口。</div><div class="line">### 链路层</div><div class="line"></div><div class="line">协议：SDLC（Synchronous Data Link Control）HDLC（High-level Data Link Control） ppp协议独立的链路设备中最常见的当属网卡，网桥也是链路产品。集线器MODEM的某些功能有人认为属于链路层，对此还有些争议认为属于物理层设备。除此之外，所有的交换机都需要工作在数据链路层，但仅工作在数据链路层的仅是二层交换机。其他像三层交换机、四层交换机和七层交换机虽然可对应工作在OSI的三层、四层和七层，但二层功能仍是它们基本的功能。</div><div class="line"></div><div class="line">因为有了MAC地址表，所以才充分避免了冲突，因为交换机通过目的MAC地址知道应该把这个数据转发到哪个端口。而不会像HUB一样，会转发到所有滴端口。所以，交换机是可以划分冲突域滴。</div><div class="line">### 网络层</div><div class="line"></div><div class="line">四个主要的协议:   </div><div class="line">```网际协议IP：负责在主机和网络之间寻址和路由数据包。 ```    </div><div class="line">```地址解析协议ARP：获得同一物理网络中的硬件主机地址。   ```  </div><div class="line">```网际控制消息协议ICMP：发送消息，并报告有关数据包的传送错误。```     </div><div class="line">```互联组管理协议IGMP：被IP主机拿来向本地多路广播路由器报告主机组成员。</div></pre></td></tr></table></figure></p>
 <p>该层设备有三层交换机，路由器。</p>
@@ -440,21 +563,15 @@
 
       
         
-          
-            <p>实践出真知，有的时候看到一些有趣的现象就想着用自己所学的知识复现一下。</p>
-<h3 id="boomJS-缘起"><a href="#boomJS-缘起" class="headerlink" title="boomJS 缘起"></a>boomJS 缘起</h3><p>前几天在 github 上看到同事的一个这样的小项目，在 IOS 上实现了这样一个小动画效果，看上去蛮炫的，效果图：<br><img src="http://images2015.cnblogs.com/blog/608782/201603/608782-20160329172558519-1556108424.gif" alt="Generating"><br>我就寻思着，在浏览器环境下，用 Javascript 怎么实现呢？</p>
-<p>在浓烈的好奇心驱使下，最终利用 Javascript 和 CSS3 完成了模仿上面的效果，通过调用方法，可以将页面上的图片一键爆炸，我给它起了个 boomJS 的名字，贴两张效果图：<br><img src="http://images2015.cnblogs.com/blog/608782/201603/608782-20160329172955207-1171725961.gif" alt="Generating"><br><img src="http://images2015.cnblogs.com/blog/608782/201604/608782-20160427142448798-1647044740.gif" alt="Generating"></p>
-<h4 id="boomJS-实现"><a href="#boomJS-实现" class="headerlink" title="boomJS 实现"></a>boomJS 实现</h4><p>我感觉效果还是可以的，因为没有使用 canvas ，所以无法取到图片上每个像素的颜色值。使用了一些比较讨（sha）巧（bi）的方法，下面简单讲讲如何实现的：</p>
-<p>1、构造新图容器，隐藏原图</p>
-<p>原本的图是 <img> 标签的图，一张整图，最终的效果当然不是在原图上 boom ，看上去连贯的动画本质上只是一个障眼法，利用 Javascript 做了一些巧妙的变换，所以第一步所做的就是取到原图的高宽及相对浏览器视窗的定位，再创建一个新的容器附着在原图之上，然后隐藏原图。</p>
-<p>这个方法里面我主要用到了 getBoundingClientRect 这个方法，该方法返回元素的大小及其相对于视口的位置，完美满足我的需要。</p>
-<p>嗯，这一步做了什么呢？简单的如下所示：<br><img src="http://images2015.cnblogs.com/blog/608782/201603/608782-20160329174940629-1244384805.jpg" alt="Generating"><br>2、生成一张张是碎裂小图</p>
-<p>最后效果是图片 boom 一下裂开，所以第二步要做的就是模拟出一小块一小块小图，这里每一个小块就是一个新的 div ，然后利用图片的定位 background-position 将其定位到合适的位置，嘿，看看效果：<br><img src="http://images2015.cnblogs.com/blog/608782/201603/608782-20160329175415879-795860893.jpg" alt="Generating"><br>可以看到，这里分割成了很多个小块，每个小块其实是一个 div 然后，这些小块被添加到我们上一步中设置的容器当中，然后利用原图设置 div 的背景图，所有 div 利用的都是原图一张背景图，接着图片定位就可以完成这样一个效果，说起来很简单，但是中间经历了很多计算，如何分割图片，图片的 width 与 height 比（是横图还是竖图），每个小块 div 的定位及小 div 背景图的定位，具体的可以到这里看看:boomJS。</p>
-<p>最后为了好看，设置了圆角，但是这样爆炸的话，感觉不够真实，图片一块一块的清晰可辨。所以利用缩放 scale ，随机让每个小块放大或者缩小，再看看缩放后的效果<br><img src="http://images2015.cnblogs.com/blog/608782/201603/608782-20160329180108660-1834990187.jpg" alt="Generating"><br>嗯，模糊了很多，效果近一步增强，这样爆开来比较真实。<br>3、boom 爆炸！</p>
-<p>嗯，到了鸡冻人心的最后一步，要做的就是给每一个 div 小块设置运动轨迹，然后同时爆开。</p>
-<p>比较繁琐，需要先算出图片的中心点，然后每个 div 块点以中心为基准点向外做直线运动，不得不说，做这个我还特意恶补了一下高中的几何知识（囧）。为了效果更加真实，每个 div 块运动的直线距离添加一个正负值恰当的随机数，那么就可以达到有的块炸的比较远，有的块炸的比较近。利用未缩放的小块图片做一下大概的示意图：<br><img src="http://images2015.cnblogs.com/blog/608782/201603/608782-20160329181134285-701094219.jpg" alt="Generating"></p>
-
-          
+          <p>实践出真知，有的时候看到一些有趣的现象就想着用自己所学的知识复现一下。</p>
+<h3 id="boomJS-缘起"><a href="#boomJS-缘起" class="headerlink" title="boomJS 缘起"></a>boomJS 缘起</h3><p>前几天在 github 上看到同事的一个这样的小项目，在 IOS 上实现了这样一个小动画效果，看上去蛮炫的，效果图：<br><img src="http://images2015.cnblogs.com/blog/608782/201603/608782-20160329172558519-1556108424.gif" alt="Generating"><br>我就寻思着，在浏览器环境下，用 Javascript 怎么实现呢？<br>
+          <!--noindex-->
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2015/11/03/一款有趣的Javascript动画效果/#more" rel="contents">
+              Weiterlesen &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -568,55 +685,16 @@
 
       
         
-          
-            <h3 id="什么是-before和-after？-该如何使用他们？"><a href="#什么是-before和-after？-该如何使用他们？" class="headerlink" title="什么是:before和:after？ 该如何使用他们？"></a>什么是:before和:after？ 该如何使用他们？</h3><p>&gt;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">```</div><div class="line">```:after是css中的一种伪元素，可用于在某个元素之后插入某些内容。</div></pre></td></tr></table></figure></p>
+          <h3 id="什么是-before和-after？-该如何使用他们？"><a href="#什么是-before和-after？-该如何使用他们？" class="headerlink" title="什么是:before和:after？ 该如何使用他们？"></a>什么是:before和:after？ 该如何使用他们？</h3><p>&gt;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">```</div><div class="line">```:after是css中的一种伪元素，可用于在某个元素之后插入某些内容。</div></pre></td></tr></table></figure></p>
 <p>下面我们先跑个简单的代码测试下效果：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">&lt;style&gt;</div><div class="line">  		p:before&#123;</div><div class="line">       	content: &quot;H&quot;  /*:before和:after必带技能，重要性为满5颗星*/</div><div class="line">   	&#125;</div><div class="line">   	p:after&#123;</div><div class="line">       	content: &quot;d&quot;  /*:before和:after必带技能，重要性为满5颗星*/</div><div class="line">   	&#125;</div><div class="line"> 	&lt;/style&gt;</div><div class="line"> 	&lt;p&gt;ello Worl&lt;/p&gt;</div></pre></td></tr></table></figure>
-<p> 以上的代码将会在页面中展现的是”Hello World”。我们通过浏览器的”审查元素”看到的内容是：</p>
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;p&gt;</div><div class="line"> ::before</div><div class="line"> &quot;ello Worl&quot;</div><div class="line"> ::after</div><div class="line">&lt;/p&gt;</div></pre></td></tr></table></figure>
-<p>  p标签内部的内容的前面会被插入一个:before伪元素，该伪元素内包含的内容是”H”；而在p标签内的内容后面会被插入一个:after伪元素，该元素包含的内容是”d”。作为一只合格的程序猴子，捍卫”Hello World”的完整存在是必要的。<br>既然笔记主要针对是:before和:after，那么肯定不会只是仅仅有以上的简单介绍就完事。下面我们看看平常该怎么使用他们。</p>
-<h3 id="1-结合border写个对话框的样式。"><a href="#1-结合border写个对话框的样式。" class="headerlink" title="1.结合border写个对话框的样式。"></a>1.结合border写个对话框的样式。</h3><p>本兽将上面这句话拆成2部分：结合border，写个对话框的样式。<br>既然是结合border，那么我们先转个小话题，简单由浅入深的介绍下怎么用border画三角形样式(这个三角形在写对话框样式的时候需要)：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&lt;style&gt;</div><div class="line">   .triangle&#123;</div><div class="line">       width: 0;</div><div class="line">       height: 0;</div><div class="line">       border-left:50px solid red;</div><div class="line">       border-bottom:50px solid blue;</div><div class="line">       border-top:50px solid black;</div><div class="line">       border-right:50px solid purple    &#125;</div><div class="line"> &lt;/style&gt;</div><div class="line"> &lt;div class=&quot;triangle&quot;&gt;&lt;/div&gt;</div></pre></td></tr></table></figure>
-<p>以上代码将会在页面上展示一个正方形，左边是个红色的三角形，右边是紫色的三角形，上面是黑色的三角形，下面是蓝色的三角形。那么有人就会问，我们要的不是三角形么？野兽你画个正方形逗我呢？</p>
-<p>我们对上面的样式做些修改：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">.triangle&#123;</div><div class="line">      width: 0;</div><div class="line">      height: 0;</div><div class="line">      border:50px transparent solid; /*这里我们将元素的边框宽度设置为50px，transparent表示边框颜色是透明的，solid表示边框是实线的*/</div><div class="line">      border-top-color: black;  /*这里我们仅将上边框的颜色设置为黑色，众所周知，css后面的样式代码会覆盖之前的相同的样式代码，至于其他三边的还是透明色*/</div><div class="line">      /*border-bottom-color: black; /*这里设置底部边框色为黑色*/</div><div class="line">      border-left-color: black;  /*这里设置左边边框色为黑色*/</div><div class="line">      border-right-color:black*/ /*这里设置右边边框色为黑色*/</div><div class="line">  &#125;</div></pre></td></tr></table></figure>
-<p>然后这时我们就会看到一个在顶部的方向向下的三角形。解释已详细的写在css样式的注释里。</p>
-<p>接下来我们加上:before：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">&lt;style&gt;</div><div class="line">   .test-div&#123;</div><div class="line">       position: relative;  /*日常相对定位*/</div><div class="line">       width:150px;</div><div class="line">       height:36px;</div><div class="line">       border-radius:5px;</div><div class="line">       border:black 1px solid;</div><div class="line">       background: rgba(245,245,245,1)    &#125;</div><div class="line">   .test-div:before&#123;</div><div class="line">       content: &quot;&quot;;  /*:before和:after必带技能，重要性为满5颗星*/</div><div class="line">       display: block;</div><div class="line">       position: absolute;  /*日常绝对定位*/</div><div class="line">       top:8px;</div><div class="line">       width: 0;</div><div class="line">       height: 0;</div><div class="line">       border:6px transparent solid;</div><div class="line">       left:-12px;</div><div class="line">       border-right-color: rgba(245,245,245,1);</div><div class="line">   &#125;</div><div class="line"> &lt;/style&gt;</div><div class="line"> &lt;div class=&quot;test-div&quot;&gt;&lt;/div&gt;</div></pre></td></tr></table></figure>
-<p>通过以上代码，我们将会看见一个类似微信/QQ的对话框样式,但是美中不足的是，在对话框的四周的边框不是完整的，而是在对话框的突出三角形上是木有边框的T_T瞬间冷场有木有，该怎么办呢？让召唤:after穿着棉大衣来救场吧~<br>完整代码：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">&lt;style&gt;</div><div class="line">   .test-div&#123;</div><div class="line">       position: relative;  /*日常相对定位*/</div><div class="line">       width:150px;</div><div class="line">       height: 36px;</div><div class="line">       border:black 1px solid;</div><div class="line">       border-radius:5px;</div><div class="line">       background: rgba(245,245,245,1)    &#125;</div><div class="line">   .test-div:before,.test-div:after&#123;</div><div class="line">       content: &quot;&quot;;  /*:before和:after必带技能，重要性为满5颗星*/</div><div class="line">       display: block;</div><div class="line">       position: absolute;  /*日常绝对定位*/</div><div class="line">       top:8px;</div><div class="line">       width: 0;</div><div class="line">       height: 0;</div><div class="line">       border:6px transparent solid;</div><div class="line">   &#125;</div><div class="line">   .test-div:before&#123;</div><div class="line">       left:-11px;</div><div class="line">       border-right-color: rgba(245,245,245,1);</div><div class="line">       z-index:1    &#125;</div><div class="line">   .test-div:after&#123;</div><div class="line">       left:-12px;</div><div class="line">       border-right-color: rgba(0,0,0,1);</div><div class="line">       z-index: 0    &#125;</div><div class="line"> &lt;/style&gt;</div><div class="line"> &lt;div class=&quot;test-div&quot;&gt;&lt;/div&gt;</div></pre></td></tr></table></figure>
-<p>好了，完整的一个对话框样式呈现在眼前了，至于对话框的小三角形的方向，相信大家看了上上段对于border介绍的代码也都知道该怎么做了吧，没错，就是改下position的位置，改下border显示颜色的方位~ (本兽不喜欢贴图片，体谅下额，需要的可以拷贝代码直接运行看效果，造轮子不仅仅是造轮子，也能让人加深印象，更好的理解)</p>
-<h3 id="2-作为内容的半透明背景层。"><a href="#2-作为内容的半透明背景层。" class="headerlink" title="2.作为内容的半透明背景层。"></a>2.作为内容的半透明背景层。</h3><p>比如我们的需求是做一个半透明的登录框吧(这里也是在代码中通过注释来解释)：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line">&lt;style&gt;</div><div class="line">     body&#123;</div><div class="line">         background: url(img/1.jpg) no-repeat left top /*这里本兽加了个图片背景，用以区分背景的半透明及内容的完全不透明*/</div><div class="line">     &#125;</div><div class="line">     .test-div&#123;</div><div class="line">         position: relative;  /*日常相对定位(重要，下面内容也会介绍)*/</div><div class="line">         width:300px;</div><div class="line">         height: 120px;</div><div class="line">         padding: 20px 10px;</div><div class="line">         font-weight: bold;</div><div class="line">     &#125;</div><div class="line">     .test-div:before&#123;</div><div class="line">         position: absolute;  /*日常绝对定位(重要，下面内容也会略带介绍)*/</div><div class="line">         content: &quot;&quot;;  /*:before和:after必带技能，重要性为满5颗星*/</div><div class="line">         top:0;</div><div class="line">         left: 0;</div><div class="line">         width: 100%;  /*和内容一样的宽度*/</div><div class="line">         height: 100%;  /*和内容一样的高度*/</div><div class="line">         background: rgba(255,255,255,.5); /*给定背景白色，透明度50%*/</div><div class="line">         z-index:-1 /*日常元素堆叠顺序(重要，下面内容也会略带介绍)*/</div><div class="line">     &#125;</div><div class="line"> &lt;/style&gt;</div><div class="line"> &lt;!--这里容兽偷个懒，布局简单写写--&gt;</div><div class="line"> &lt;div class=&quot;test-div&quot;&gt;</div><div class="line">     &lt;table&gt;</div><div class="line">         &lt;tr&gt;</div><div class="line">             &lt;td&gt;Name&lt;/td&gt;</div><div class="line">             &lt;td&gt;&lt;input placeholder=&quot;your name&quot; /&gt;&lt;/td&gt;</div><div class="line">         &lt;/tr&gt; </div><div class="line">         &lt;tr&gt;</div><div class="line">             &lt;td&gt;Password&lt;/td&gt;</div><div class="line">             &lt;td&gt;&lt;input placeholder=&quot;your password&quot; /&gt;&lt;/td&gt;</div><div class="line">         &lt;/tr&gt; </div><div class="line">         &lt;tr&gt;</div><div class="line">             &lt;td&gt;&lt;/td&gt;</div><div class="line">             &lt;td&gt;&lt;input type=&quot;button&quot; value=&quot;login&quot; /&gt;&lt;/td&gt;</div><div class="line">         &lt;/tr&gt;</div><div class="line">     &lt;/table&gt;</div><div class="line"> &lt;/div&gt;</div></pre></td></tr></table></figure>
-<p>上面的代码拷贝过去，加上张图片可测试效果。<br>当然，:bofore和:after也还有其他更多的巧妙用法，这里也不一一列出来了，这里放上一个用这两个伪元素加上css3动画实现一些比较好看及实用的动态效果的链接：ht tp: //tympanus.net/Development/HoverEffectIdeas/</p>
-<p>说完了:before和:after，我们稍微扯扯一些其他的css样式及布局注意点(可能大家不怎么注意，从而导致一些布局和样式出问题)。</p>
-<p>###position 定位的问题<br>position属性规定了元素的定位类型，默认为static。</p>
-<p>该属性还可以有下值：</p>
-<p>absolute：生成绝对定位的元素，相对于 static 定位以外的第一个父元素进行定位。</p>
-<p>fixed：生成绝对定位的元素，相对于浏览器窗口进行定位。</p>
-<p>relative：生成相对定位的元素，相对于其正常位置进行定位。</p>
-<p>inherit：规定应该从父元素继承 position 属性的值。</p>
-<p>效果：</p>
-<!--position:absolute-->
-<p>  <style><br>      body{<br>          height: 2000px  /<em>这里将body的高度设置为2000px是为了区分absolute和fixed的差别</em>/<br>      }<br>      .test-div{<br>          position:absolute;<br>          left:50px;<br>          top:50px      }<br>  </style><br>  <div class="test-div">Hello World</div><!--position:fixed--><br>  <style><br>      body{<br>          height: 2000px  /<em>这里将body的高度设置为2000px是为了区分absolute和fixed的差别</em>/<br>      }<br>      .test-div{<br>          position:fixed;<br>          left:50px;<br>          top:50px      }<br>  </style><br>  <div class="test-div">Hello World</div><!--position:relative + position:absolute--><br>  <style><br>      .out-div{<br>          width: 300px;<br>          height: 300px;<br>          background: purple;  /<em>这里定义个背景，让我们知道这个div在哪</em>/<br>          margin:50px 0px 0px 50px;<br>          position: relative      }<br>      .in-div{<br>          position:absolute;<br>          left:50px;<br>          top:50px      }<br>  </style><br>  <div class="out-div"><br>      <div class="in-div">Hello World</div><br>  </div></p>
-<p>代码：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line">&lt;!--position:absolute--&gt;</div><div class="line"> &lt;style&gt;</div><div class="line">     body&#123;</div><div class="line">         height: 2000px  /*这里将body的高度设置为2000px是为了区分absolute和fixed的差别*/</div><div class="line">     &#125;</div><div class="line">     .test-div&#123;</div><div class="line">         position:absolute;</div><div class="line">         left:50px;</div><div class="line">         top:50px      &#125;</div><div class="line"> &lt;/style&gt;</div><div class="line"> &lt;div class=&quot;test-div&quot;&gt;Hello World&lt;/div&gt;&lt;!--position:fixed--&gt;</div><div class="line"> &lt;style&gt;</div><div class="line">     body&#123;</div><div class="line">         height: 2000px  /*这里将body的高度设置为2000px是为了区分absolute和fixed的差别*/</div><div class="line">     &#125;</div><div class="line">     .test-div&#123;</div><div class="line">         position:fixed;</div><div class="line">         left:50px;</div><div class="line">         top:50px      &#125;</div><div class="line"> &lt;/style&gt;</div><div class="line"> &lt;div class=&quot;test-div&quot;&gt;Hello World&lt;/div&gt;&lt;!--position:relative + position:absolute--&gt;</div><div class="line"> &lt;style&gt;</div><div class="line">     .out-div&#123;</div><div class="line">         width: 300px;</div><div class="line">         height: 300px;</div><div class="line">         background: purple;  /*这里定义个背景，让我们知道这个div在哪*/</div><div class="line">         margin:50px 0px 0px 50px;</div><div class="line">         position: relative      &#125;</div><div class="line">     .in-div&#123;</div><div class="line">         position:absolute;</div><div class="line">         left:50px;</div><div class="line">         top:50px      &#125;</div><div class="line"> &lt;/style&gt;</div><div class="line"> &lt;div class=&quot;out-div&quot;&gt;</div><div class="line">     &lt;div class=&quot;in-div&quot;&gt;Hello World&lt;/div&gt;</div><div class="line"> &lt;/div&gt;</div></pre></td></tr></table></figure>
-<h3 id="z-index-元素堆叠排序"><a href="#z-index-元素堆叠排序" class="headerlink" title="z-index 元素堆叠排序"></a>z-index 元素堆叠排序</h3><p>z-index用于设置或检索对象的堆叠顺序，对应的脚本特性为zIndex。</p>
-<p>z-index的数值越大，该元素的堆叠层级越高。</p>
-<p>代码</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">&lt;style&gt;</div><div class="line">     .first-div&#123;</div><div class="line">         width: 300px;</div><div class="line">         height: 300px;</div><div class="line">         background: purple;  /*这里定义个背景，让我们知道这个div在哪*/</div><div class="line">         position: absolute;</div><div class="line">         left:50px;</div><div class="line">         top:50px;</div><div class="line">         z-index: 1      &#125;</div><div class="line">     .second-div&#123;</div><div class="line">         position:absolute;</div><div class="line">         left:80px;</div><div class="line">         top:80px;</div><div class="line">         width:50px;</div><div class="line">         height: 50px;</div><div class="line">         background: white;</div><div class="line">         z-index: 2      &#125;</div><div class="line"> &lt;/style&gt;</div><div class="line"> &lt;div class=&quot;first-div&quot;&gt;&lt;/div&gt;</div><div class="line"> &lt;div class=&quot;second-div&quot;&gt;&lt;/div&gt;</div></pre></td></tr></table></figure>
-<p>这里我们将第一个div和第二个div位置放到一起，方便看z-index的效果。以上代码的样式是紫色的正方形里面有个白色的小正方形。因为小正方形的z-index大于大正方形的z-index，所以能显示出，当我们把.first-div的z-index设置为3，这时候就看不到白色的小正方形了，它被紫色的大正方形无情的挡掉了…</p>
-<h3 id="zoom-元素缩放比例"><a href="#zoom-元素缩放比例" class="headerlink" title="zoom 元素缩放比例"></a>zoom 元素缩放比例</h3><p>zoom适用于所有元素，用于设置或检索对象的缩放比例，对应的脚本特性为zoom，原比例的值是1。</p>
-<p>代码：</p>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">&lt;style&gt;</div><div class="line">    div&#123;</div><div class="line">        width: 100px;</div><div class="line">        height: 100px;</div><div class="line">        float: left      &#125;</div><div class="line">    .first-div&#123;</div><div class="line">        background: purple;</div><div class="line">        zoom:1.5      &#125;</div><div class="line">    .second-div&#123;</div><div class="line">        background: black;</div><div class="line">        zoom:1      &#125;</div><div class="line">    .third-div&#123;</div><div class="line">        background: red;</div><div class="line">        zoom:.5      &#125;</div><div class="line">&lt;/style&gt;</div><div class="line">&lt;div class=&quot;first-div&quot;&gt;&lt;/div&gt;</div><div class="line">&lt;div class=&quot;second-div&quot;&gt;&lt;/div&gt;</div><div class="line">&lt;div class=&quot;third-div&quot;&gt;&lt;/div&gt;</div></pre></td></tr></table></figure>
-<p>  以上代码将会展示的依次是紫色-黑色-红色的div，大小分别是100px的1.5倍，1倍，0.5倍。</p>
-<h3 id="em-和-rem-是什么"><a href="#em-和-rem-是什么" class="headerlink" title="em 和 rem 是什么"></a>em 和 rem 是什么</h3><p>1em等于当前的字体尺寸，数值的改变意味着字体大小的调整。em 有继承这个特性，也就是说，外部父元素定义了字体的em大小，内部子元素会继承这一属性的样式。<br>rem = root em 。顾名思义，root即根部的，顶部的。也就是根部的em，这个根部指的是HTML根元素。所以rem的大小是针对HTML根元素的大小做字体的相对大小的调整。<br>效果：</p>
-<p> <style><br>      body{<br>        font-size: 12px;<br>      }<br>      /<em>html{<br>          font-size: 12px;<br>      }</em>/<br>      div{<br>          width: 200px;<br>          height: 100px;<br>          float:left      }<br>      .first-div{<br>          font-size: 1em      }<br>      .second-div{<br>          font-size: 2em      }<br>      .third-div{<br>          font-size: 1rem      }<br>      .fourth-div{<br>          font-size: 2rem      }<br>  </style><br>  <div class="first-div">Hello World</div><br>  <div class="second-div">Hello World</div><br>  <div class="third-div">Hello World</div><br>  <div class="fourth-div">Hello World</div></p>
-<p>代码：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">&lt;style&gt;</div><div class="line">     body&#123;</div><div class="line">       font-size: 12px;  </div><div class="line">     &#125;</div><div class="line">     /*html&#123;</div><div class="line">         font-size: 12px;</div><div class="line">     &#125;*/</div><div class="line">     div&#123;</div><div class="line">         width: 200px;</div><div class="line">         height: 100px;</div><div class="line">         float:left      &#125;</div><div class="line">     .first-div&#123;</div><div class="line">         font-size: 1em      &#125;</div><div class="line">     .second-div&#123;</div><div class="line">         font-size: 2em      &#125;</div><div class="line">     .third-div&#123;</div><div class="line">         font-size: 1rem      &#125;</div><div class="line">     .fourth-div&#123;</div><div class="line">         font-size: 2rem      &#125;</div><div class="line"> &lt;/style&gt;</div><div class="line"> &lt;div class=&quot;first-div&quot;&gt;Hello World&lt;/div&gt;</div><div class="line"> &lt;div class=&quot;second-div&quot;&gt;Hello World&lt;/div&gt;</div><div class="line"> &lt;div class=&quot;third-div&quot;&gt;Hello World&lt;/div&gt;</div><div class="line"> &lt;div class=&quot;fourth-div&quot;&gt;Hello World&lt;/div&gt;</div></pre></td></tr></table></figure>
-<p>以上代码分别展示了不同大小的字体，em和rem的区别可以通过仅仅注释body字体样式和html字体样式来看看他们之间的差别。</p>
-
-          
+          <!--noindex-->
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2015/10/30/CSS -before 和 -after/#more" rel="contents">
+              Weiterlesen &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -730,18 +808,17 @@
 
       
         
-          
-            <h2 id="title-JavaScript的原型对象与原型链"><a href="#title-JavaScript的原型对象与原型链" class="headerlink" title="title: JavaScript的原型对象与原型链"></a>title: JavaScript的原型对象与原型链</h2><p>早前在博客园发的几篇基础文，都是图解系列，总结了一些JavaScript容易混淆的知识点，现在拿来在掘金分享一下吧。</p>
-<p>原文地址：<a href="http://shuiyi.io/article/5" target="_blank" rel="external">三张图搞懂JavaScript的原型对象与原型链</a></p>
+          <h2 id="title-JavaScript的原型对象与原型链"><a href="#title-JavaScript的原型对象与原型链" class="headerlink" title="title: JavaScript的原型对象与原型链"></a>title: JavaScript的原型对象与原型链</h2><p>早前在博客园发的几篇基础文，都是图解系列，总结了一些JavaScript容易混淆的知识点，现在拿来在掘金分享一下吧。</p>
+<p>原文地址：<a href="http://shuiyi.io/article/5">三张图搞懂JavaScript的原型对象与原型链</a></p>
 <p>对于新人来说，JavaScript的原型是一个很让人头疼的事情，一来prototype容易与<strong>proto</strong>混淆，二来它们之间的各种指向实在有些复杂，其实市面上已经有非常多的文章在尝试说清楚，有一张所谓很经典的图，上面画了各种线条，一会连接这个一会连接那个，说实话我自己看得就非常头晕，更谈不上完全理解了。所以我自己也想尝试一下，看看能不能把原型中的重要知识点拆分出来，用最简单的图表形式说清楚。</p>
-<p>我们知道原型是一个对象，其他对象可以通过它实现属性继承。但是尼玛除了prototype，又有一个<strong>proto</strong>是用来干嘛的？长那么像，让人怎么区分呢？它们都指向谁，那么混乱怎么记啊？原型链又是什么鬼？相信不少初学者甚至有一定经验的老鸟都不一定能完全说清楚，下面用三张简单的图，配合一些示例代码来理解一下。</p>
-<h3 id="1、prototype和proto的区别"><a href="#1、prototype和proto的区别" class="headerlink" title="1、prototype和proto的区别"></a>1、prototype和<strong>proto</strong>的区别</h3><p><img src="https://dn-myg6wstv.qbox.me/2e7817d676e605e54e62.png" alt="Generating"></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">var a = &#123;&#125;;</div><div class="line">console.log(a.prototype); //undefined</div><div class="line">console.log(a.__proto__);  //Object &#123;&#125;</div><div class="line"></div><div class="line">var b = function()&#123;&#125;</div><div class="line">console.log(b.prototype); //b &#123;&#125;</div><div class="line">console.log(b.__proto__);  //function() &#123;&#125;</div></pre></td></tr></table></figure>
-<h3 id="2、proto属性指向谁"><a href="#2、proto属性指向谁" class="headerlink" title="2、proto属性指向谁"></a>2、<strong>proto</strong>属性指向谁</h3><p><img src="https://dn-myg6wstv.qbox.me/414693e5821245adeb86.png" alt="Generating"></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">/*1、字面量方式*/</div><div class="line">var a = &#123;&#125;;</div><div class="line">console.log(a.constructor); //function Object() &#123; [native code] &#125; (即构造器Object）</div><div class="line">console.log(a.__proto__ === a.constructor.prototype); //true</div><div class="line"></div><div class="line">/*2、构造器方式*/</div><div class="line">var A = function ()&#123;&#125;; var a = new A();</div><div class="line">console.log(a.constructor); // function()&#123;&#125;（即构造器function A）</div><div class="line">console.log(a.__proto__ === a.constructor.prototype); //true</div><div class="line"></div><div class="line">/*3、Object.create()方式*/</div><div class="line">var a1 = &#123;a:1&#125; </div><div class="line">var a2 = Object.create(a1);</div><div class="line">console.log(a2.constructor); //function Object() &#123; [native code] &#125; (即构造器Object)</div><div class="line">console.log(a2.__proto__ === a1);// true </div><div class="line">console.log(a2.__proto__ === a2.constructor.prototype); //false（此处即为图1中的例外情况）</div></pre></td></tr></table></figure>
-<h2 id="什么是原型链"><a href="#什么是原型链" class="headerlink" title="什么是原型链"></a>什么是原型链</h2><p><img src="https://user-gold-cdn.xitu.io/2016/11/29/877d6c73f3b810ddd1692fffd06c290b" alt="Generating"></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">var A = function()&#123;&#125;;</div><div class="line">var a = new A();</div><div class="line">console.log(a.__proto__); //Object &#123;&#125;（即构造器function A 的原型对象）</div><div class="line">console.log(a.__proto__.__proto__); //Object &#123;&#125;（即构造器function Object 的原型对象）</div><div class="line">console.log(a.__proto__.__proto__.__proto__); //null</div></pre></td></tr></table></figure>
-          
+<p>我们知道原型是一个对象，其他对象可以通过它实现属性继承。但是尼玛除了prototype，又有一个<strong>proto</strong>是用来干嘛的？长那么像，让人怎么区分呢？它们都指向谁，那么混乱怎么记啊？原型链又是什么鬼？相信不少初学者甚至有一定经验的老鸟都不一定能完全说清楚，下面用三张简单的图，配合一些示例代码来理解一下。<br>
+          <!--noindex-->
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2015/10/25/JavaScript的原型对象与原型链/#more" rel="contents">
+              Weiterlesen &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -855,22 +932,19 @@
 
       
         
-          
-            <h2 id="title-一张图看懂-Function-和-Object-的关系及简述-instanceof-运算符"><a href="#title-一张图看懂-Function-和-Object-的关系及简述-instanceof-运算符" class="headerlink" title="title: 一张图看懂 Function 和 Object 的关系及简述 instanceof 运算符"></a>title: 一张图看懂 Function 和 Object 的关系及简述 instanceof 运算符</h2><h2 id="一、instanceof究竟是运算什么的？"><a href="#一、instanceof究竟是运算什么的？" class="headerlink" title="一、instanceof究竟是运算什么的？"></a>一、instanceof究竟是运算什么的？</h2><p>我曾经简单理解 instanceof 只是检测一个对象是否是另个对象 new 出来的实例（例如var a = new Object()，a instanceof Object返回true），但实际 instanceof 的运算规则上比这个更复杂。</p>
+          <h2 id="title-一张图看懂-Function-和-Object-的关系及简述-instanceof-运算符"><a href="#title-一张图看懂-Function-和-Object-的关系及简述-instanceof-运算符" class="headerlink" title="title: 一张图看懂 Function 和 Object 的关系及简述 instanceof 运算符"></a>title: 一张图看懂 Function 和 Object 的关系及简述 instanceof 运算符</h2><h2 id="一、instanceof究竟是运算什么的？"><a href="#一、instanceof究竟是运算什么的？" class="headerlink" title="一、instanceof究竟是运算什么的？"></a>一、instanceof究竟是运算什么的？</h2><p>我曾经简单理解 instanceof 只是检测一个对象是否是另个对象 new 出来的实例（例如var a = new Object()，a instanceof Object返回true），但实际 instanceof 的运算规则上比这个更复杂。</p>
 <p>首先w3c上有官方解释（传送门，有兴趣的同学可以去看看），但是一如既往地让人无法一目了然地看懂……</p>
 <p>知乎上有同学把这个解释翻译成人能读懂的语言（传送门），看起来似乎明白一些了：</p>
 <p>//假设instanceof运算符左边是L，右边是R<br>L instanceof R //instanceof运算时，通过判断L的原型链上是否存在R.prototype<br>L.<strong>proto</strong>.<strong>proto</strong> ….. === R.prototype ？ //如果存在返回true 否则返回false<br>注意：instanceof 运算时会递归查找L的原型链，即 L.<strong>proto</strong>.<strong>proto</strong>.<strong>proto</strong>.<strong>proto</strong>… 直到找到了或者找到顶层为止。</p>
 <p>所以一句话理解 instanceof 的运算规则为：</p>
-<p>instanceof 检测左侧的 <strong>proto</strong> 原型链上，是否存在右侧的 prototype 原型。</p>
-<h2 id="二、图解构造器Function和Object的关系"><a href="#二、图解构造器Function和Object的关系" class="headerlink" title="二、图解构造器Function和Object的关系"></a>二、图解构造器Function和Object的关系</h2><p><img src="https://user-gold-cdn.xitu.io/2016/11/29/ce8bff088a74cda6789a11f6075b7411" alt="Generating"></p>
-<h4 id="我们再配合代码来看一下就明白了："><a href="#我们再配合代码来看一下就明白了：" class="headerlink" title="我们再配合代码来看一下就明白了："></a>我们再配合代码来看一下就明白了：</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">//①构造器Function的构造器是它自身</div><div class="line">Function.constructor=== Function;//true</div><div class="line"></div><div class="line">//②构造器Object的构造器是Function（由此可知所有构造器的constructor都指向Function）</div><div class="line">Object.constructor === Function;//true</div><div class="line"></div><div class="line">//③构造器Function的__proto__是一个特殊的匿名函数function() &#123;&#125;</div><div class="line">console.log(Function.__proto__);//function() &#123;&#125;</div><div class="line"></div><div class="line">//④这个特殊的匿名函数的__proto__指向Object的prototype原型。</div><div class="line">Function.__proto__.__proto__ === Object.prototype//true</div><div class="line"></div><div class="line">//⑤Object的__proto__指向Function的prototype，也就是上面③中所述的特殊匿名函数</div><div class="line">Object.__proto__ === Function.prototype;//true</div><div class="line">Function.prototype === Function.__proto__;//true</div></pre></td></tr></table></figure>
-<h2 id="三、当构造器Object和Function遇到instanceof"><a href="#三、当构造器Object和Function遇到instanceof" class="headerlink" title="三、当构造器Object和Function遇到instanceof"></a>三、当构造器Object和Function遇到instanceof</h2><p>我们回过头来看第一部分那个“奇怪的现象”，从上面那个图中我们可以看到：</p>
-<p>Function.<strong>proto</strong>.<strong>proto</strong> === Object.prototype;//true<br>Object.<strong>proto</strong> === Function.prototype;//true<br>所以再看回第一点中我们说的 instanceof 的运算规则，Function instanceof Object 和 Object instanceof Function 运算的结果当然都是true啦！</p>
-<p>如果看完以上，你还觉得上面的关系看晕了的话，只需要记住下面两个最重要的关系，其他关系就可以推导出来了：</p>
-<p>所有的构造器的 constructor 都指向 Function</p>
-<p>Function 的 prototype 指向一个特殊匿名函数，而这个特殊匿名函数的 <strong>proto</strong> 指向 Object.prototype</p>
-
-          
+<p>instanceof 检测左侧的 <strong>proto</strong> 原型链上，是否存在右侧的 prototype 原型。<br>
+          <!--noindex-->
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2015/10/16/Function 和 Object 的关系/#more" rel="contents">
+              Weiterlesen &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -984,28 +1058,17 @@
 
       
         
-          
-            <h2 id="title-CSS-伪类before-after-content内容生成技术—-纯CSS实现tooltip"><a href="#title-CSS-伪类before-after-content内容生成技术—-纯CSS实现tooltip" class="headerlink" title="title: CSS 伪类before/after content内容生成技术—-纯CSS实现tooltip"></a>title: CSS 伪类before/after content内容生成技术—-纯CSS实现tooltip</h2><h3 id="一、介绍before-after"><a href="#一、介绍before-after" class="headerlink" title="一、介绍before/after"></a>一、介绍before/after</h3><p>CSS中的before和after伪类选择器早在CSS2时就被引入，改属性被所有主流浏览器所支持了。<br>before和after顾名思义，分别指的是伪元素在元素前/后添加内容，默认他们是display是inline，但是可以使用CSS设置为block。<br>应用before/和after也比较简单，举个例子：</p>
+          <h2 id="title-CSS-伪类before-after-content内容生成技术—-纯CSS实现tooltip"><a href="#title-CSS-伪类before-after-content内容生成技术—-纯CSS实现tooltip" class="headerlink" title="title: CSS 伪类before/after content内容生成技术—-纯CSS实现tooltip"></a>title: CSS 伪类before/after content内容生成技术—-纯CSS实现tooltip</h2><h3 id="一、介绍before-after"><a href="#一、介绍before-after" class="headerlink" title="一、介绍before/after"></a>一、介绍before/after</h3><p>CSS中的before和after伪类选择器早在CSS2时就被引入，改属性被所有主流浏览器所支持了。<br>before和after顾名思义，分别指的是伪元素在元素前/后添加内容，默认他们是display是inline，但是可以使用CSS设置为block。<br>应用before/和after也比较简单，举个例子：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">a:after &#123;</div><div class="line">      content: &quot; after &quot;;</div><div class="line">      display:  block;</div><div class="line">      coloe: red;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>可以在浏览器看到，a标签元素后面多出了一段文字 after。（在CSS3中伪类元素使用是如a::after的，不过目前两者并无多大区别）。<br>（伪元素不可通过DOM使用，IE6/7对该属性不支持）</p>
-<p>after和before伪元素有许多用处，还可以简化代码，比如可以写一个计数器、tip小三角形、清除浮动……特别在CSS3中新加的一些属性更是丰富了它的应用，这里有个小教程，用before/after伪元素来实现一个纯CSS3的tooltip。</p>
-<h3 id="二、tooltip实现教程"><a href="#二、tooltip实现教程" class="headerlink" title="二、tooltip实现教程"></a>二、tooltip实现教程</h3><p>这里我们主要是用草after/before伪元素content中的attr属性，先来看看实现后的样子：</p>
-<h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h4><p>鼠标hover button之后，出现一个tooltip小标签。<br>代码先贴上：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE html&gt;</div><div class="line">&lt;html lang=&quot;en&quot;&gt;</div><div class="line">&lt;head&gt;</div><div class="line">    &lt;meta charset=&quot;UTF-8&quot;&gt;</div><div class="line">    &lt;title&gt;demo&lt;/title&gt;</div><div class="line">    &lt;style&gt;</div><div class="line">        .btn &#123;</div><div class="line">            position: relative;</div><div class="line">            display: block;</div><div class="line">            margin: 200px auto;</div><div class="line">            width: 200px;</div><div class="line">            padding: 10px 20px;</div><div class="line">            font-size: 20px;</div><div class="line">            background: #fff;</div><div class="line">            color: #6bdf4e;</div><div class="line">            border: 1px solid #6bdf4e;</div><div class="line">            cursor: pointer;</div><div class="line">        &#125;</div><div class="line">        .btn::after &#123;</div><div class="line">            content: attr(data-tip);</div><div class="line">            display: none;</div><div class="line">            position: absolute;</div><div class="line">            padding: 5px 10px;</div><div class="line">            left: 50%;</div><div class="line">            bottom: 100%;</div><div class="line">            margin-bottom: 12px;</div><div class="line">            transform: translateX(-50%);</div><div class="line">            font-size: 16px;</div><div class="line">            background: #000;</div><div class="line">            color: #fff;</div><div class="line">            cursor: default;</div><div class="line">        &#125;</div><div class="line">        .btn::before &#123;</div><div class="line">            content: &quot; &quot;;</div><div class="line">            position: absolute;</div><div class="line">            display: none;</div><div class="line">            left: 50%;</div><div class="line">            bottom: 100%;</div><div class="line">            transform: translateX(-50%);</div><div class="line">            margin-bottom: 3px;</div><div class="line">            width: 0;</div><div class="line">            height: 0;</div><div class="line">            border-left: 6px solid transparent;</div><div class="line">            border-right: 6px solid transparent;</div><div class="line">            border-top: 9px solid #000;</div><div class="line">        &#125;</div><div class="line">        .btn:hover::after,</div><div class="line">        .btn:hover::before &#123;</div><div class="line">            display: block;</div><div class="line">        &#125;</div><div class="line">    &lt;/style&gt;</div><div class="line">&lt;/head&gt;</div><div class="line">&lt;body&gt;</div><div class="line"></div><div class="line">    &lt;button class=&quot;btn&quot; data-tip=&quot;ToolTip&quot;&gt;button&lt;/button&gt;</div><div class="line"></div><div class="line">&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
-<h4 id="实现过程"><a href="#实现过程" class="headerlink" title="实现过程"></a>实现过程</h4><hr>
-<ul>
-<li>一. 创建一个标签，然后在标签内加上一个属性 data-[] = “ToolTip”,[]表示的是自定义的属性名称，引号里面是tooltip需要显示的内容。</li>
-<li>二. 给标签加样式，position设置为relative，因为之后伪元素需要设置绝对定位来设置位置。</li>
-<li>三. 给after加样式，after是需要显示的tooltip，通过content: attr(data-tip);拿到需要显示的内容，设置绝对定位，调整位置。</li>
-<li>四. 给before加样式，before需要设置成一个小三角tip放在after下面。</li>
-<li>五. 给after/before的display都设置为none。</li>
-<li>六. 给需要tooltip的元素伪类选择hover时设置after/before的display为block，这里需要注意的是after/before默认display为inline，所以我们前面创建调试是display应该先设置为block。</li>
-<li>七. 打开浏览器查看效果~</li>
-</ul>
-<p>##三、对于不支持伪元素的IE6/7<br>解决方法：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">var $beforeAfter = function(dom) &#123;</div><div class="line">    if (document.querySelector || !dom &amp;&amp; dom.nodeType !== 1) return;</div><div class="line">    var content = dom.getAttribute(&quot;data-content&quot;) || &apos;&apos;;     </div><div class="line">    var before = document.createElement(&quot;before&quot;)</div><div class="line">        , after = document.createElement(&quot;after&quot;);</div><div class="line">    before.innerHTML = content;</div><div class="line">    after.innerHTML = content;</div><div class="line">    dom.insertBefore(before, dom.firstChild);</div><div class="line">    dom.appendChild(after);</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
-
-          
+<p>after和before伪元素有许多用处，还可以简化代码，比如可以写一个计数器、tip小三角形、清除浮动……特别在CSS3中新加的一些属性更是丰富了它的应用，这里有个小教程，用before/after伪元素来实现一个纯CSS3的tooltip。<br>
+          <!--noindex-->
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2015/08/27/SS 伪类before:after content内容生成技术/#more" rel="contents">
+              Weiterlesen &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1119,56 +1182,18 @@
 
       
         
-          
-            <p>本文主要想谈谈页面优化之滚动优化。</p>
+          <p>本文主要想谈谈页面优化之滚动优化。</p>
 <p>主要内容包括了为何需要优化滚动事件，滚动与页面渲染的关系，节流与防抖，pointer-events:none 优化滚动。因为本文涉及了很多很多基础，可以对照上面的知识点，选择性跳到相应地方阅读。</p>
-<p><a href="http://www.cnblogs.com/coco1s/p/5499469.html" target="_blank" rel="external">博主链接</a></p>
+<p><a href="http://www.cnblogs.com/coco1s/p/5499469.html">博主链接</a></p>
 <h3 id="滚动优化的由来"><a href="#滚动优化的由来" class="headerlink" title="滚动优化的由来"></a>滚动优化的由来</h3><p>滚动优化其实也不仅仅指滚动（scroll 事件），还包括了例如 resize 这类会频繁触发的事件。简单的看看：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">var i = 0;</div><div class="line">window.addEventListener(&apos;scroll&apos;,function()&#123;</div><div class="line">    console.log(i++);</div><div class="line">&#125;,false);</div></pre></td></tr></table></figure>
-<p>输出如下：<br><img src="http://images2015.cnblogs.com/blog/608782/201605/608782-20160516205933748-797476534.gif" alt="Generating"></p>
-<blockquote>
-<p>在绑定 scroll 、resize 这类事件时，当它发生时，它被触发的频次非常高，间隔很近。如果事件中涉及到大量的位置计算、DOM 操作、元素重绘等工作且这些工作无法在下一个 scroll 事件触发前完成，就会造成浏览器掉帧。加之用户鼠标滚动往往是连续的，就会持续触发 scroll 事件导致掉帧扩大、浏览器 CPU 使用率增加、用户体验受到影响。</p>
-</blockquote>
-<p>在滚动事件中绑定回调应用场景也非常多，在图片的懒加载、下滑自动加载数据、侧边浮动导航栏等中有着广泛的应用。</p>
-<p>当用户浏览网页时，拥有平滑滚动经常是被忽视但却是用户体验中至关重要的部分。当滚动表现正常时，用户就会感觉应用十分流畅，令人愉悦，反之，笨重不自然卡顿的滚动，则会给用户带来极大不舒爽的感觉。</p>
-<h3 id="滚动与页面渲染的关系"><a href="#滚动与页面渲染的关系" class="headerlink" title="滚动与页面渲染的关系"></a>滚动与页面渲染的关系</h3><p>&gt;<br>为什么滚动事件需要去优化？因为它影响了性能。那它影响了什么性能呢？额……这个就要从页面性能问题由什么决定说起。</p>
-<p>我觉得搞技术一定要追本溯源，不要看到别人一篇文章说滚动事件会导致卡顿并说了一堆解决方案优化技巧就如获至宝奉为圭臬，我们需要的不是拿来主义而是批判主义，多去源头看看。</p>
-<p>从问题出发，一步一步寻找到最后，就很容易找到问题的症结所在，只有这样得出的解决方法才容易记住。</p>
-<p>说教了一堆废话，不喜欢的直接忽略哈，回到正题，要找到优化的入口就要知道问题出在哪里，对于页面优化而言，那么我们就要知道页面的渲染原理：</p>
-<p>浏览器渲染原理我在我上一篇文章里也要详细的讲到，不过更多的是从动画渲染的角度去讲的：【Web动画】CSS3 3D 行星运转 &amp;&amp; 浏览器渲染原理 。</p>
-<p>想了想，还是再简单的描述下，我发现每次 review 这些知识点都有新的收获，这次换一张图，以 chrome 为例子，一个 Web 页面的展示，简单来说可以认为经历了以下下几个步骤：<br><img src="http://images2015.cnblogs.com/blog/608782/201605/608782-20160516214245123-1124441228.jpg" alt="Generating"></p>
-<ul>
-<li><p>JavaScript：一般来说，我们会使用 JavaScript 来实现一些视觉变化的效果。比如做一个动画或者往页面里添加一些 DOM 元素等。</p>
-</li>
-<li><p>Style：计算样式，这个过程是根据 CSS 选择器，对每个 DOM 元素匹配对应的 CSS 样式。这一步结束之后，就确定了每个 DOM 元素上该应用什么 CSS 样式规则。</p>
-</li>
-<li><p>Layout：布局，上一步确定了每个 DOM 元素的样式规则，这一步就是具体计算每个 DOM 元素最终在屏幕上显示的大小和位置。web 页面中元素的布局是相对的，因此一个元素的布局发生变化，会联动地引发其他元素的布局发生变化。比如，<body> 元素的宽度的变化会影响其子元素的宽度，其子元素宽度的变化也会继续对其孙子元素产生影响。因此对于浏览器来说，布局过程是经常发生的。</body></p>
-</li>
-<li><p>Paint：绘制，本质上就是填充像素的过程。包括绘制文字、颜色、图像、边框和阴影等，也就是一个 DOM 元素所有的可视效果。一般来说，这个绘制过程是在多个层上完成的。</p>
-</li>
-<li><p>Composite：渲染层合并，由上一步可知，对页面中 DOM 元素的绘制是在多个层上进行的。在每个层上完成绘制过程之后，浏览器会将所有层按照合理的顺序合并成一个图层，然后显示在屏幕上。对于有位置重叠的元素的页面，这个过程尤其重要，因为一旦图层的合并顺序出错，将会导致元素显示异常。<br>这里又涉及了层（GraphicsLayer）的概念，GraphicsLayer 层是作为纹理(texture)上传给 GPU 的，现在经常能看到说 GPU 硬件加速，就和所谓的层的概念密切相关。但是和本文的滚动优化相关性不大，有兴趣深入了解的可以自行 google 更多。</p>
-</li>
-</ul>
-<p>简单来说，网页生成的时候，至少会渲染（Layout+Paint）一次。用户访问的过程中，还会不断重新的重排（reflow）和重绘（repaint）。</p>
-<p>其中，用户 scroll 和 resize 行为（即是滑动页面和改变窗口大小）会导致页面不断的重新渲染。</p>
-<p>当你滚动页面时，浏览器可能会需要绘制这些层(有时也被称为合成层)里的一些像素。通过元素分组，当某个层的内容改变时，我们只需要更新该层的结构，并仅仅重绘和栅格化渲染层结构里变化的那一部分，而无需完全重绘。显然，如果当你滚动时，像视差网站(戳我看看)这样有东西在移动时，有可能在多层导致大面积的内容调整，这会导致大量的绘制工作。</p>
-<h3 id="防抖（Debouncing）和节流（Throttling）"><a href="#防抖（Debouncing）和节流（Throttling）" class="headerlink" title="防抖（Debouncing）和节流（Throttling）"></a>防抖（Debouncing）和节流（Throttling）</h3><p>scroll 事件本身会触发页面的重新渲染，同时 scroll 事件的 handler 又会被高频度的触发, 因此事件的 handler 内部不应该有复杂操作，例如 DOM 操作就不应该放在事件处理中。</p>
-<p>针对此类高频度触发事件问题（例如页面 scroll ，屏幕 resize，监听用户输入等），下面介绍两种常用的解决方法，防抖和节流。</p>
-<p>防抖（Debouncing）<br>防抖技术即是可以把多个顺序地调用合并成一次，也就是在一定时间内，规定事件被触发的次数。</p>
-<p>通俗一点来说，看看下面这个简化的例子：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">// 简单的防抖动函数</div><div class="line">function debounce(func, wait, immediate) &#123;</div><div class="line">    // 定时器变量</div><div class="line">    var timeout;</div><div class="line">    return function() &#123;</div><div class="line">        // 每次触发 scroll handler 时先清除定时器</div><div class="line">        clearTimeout(timeout);</div><div class="line">        // 指定 xx ms 后触发真正想进行的操作 handler</div><div class="line">        timeout = setTimeout(func, wait);</div><div class="line">    &#125;;</div><div class="line">&#125;;</div><div class="line"> </div><div class="line">// 实际想绑定在 scroll 事件上的 handler</div><div class="line">function realFunc()&#123;</div><div class="line">    console.log(&quot;Success&quot;);</div><div class="line">&#125;</div><div class="line"> </div><div class="line">// 采用了防抖动</div><div class="line">window.addEventListener(&apos;scroll&apos;,debounce(realFunc,500));</div><div class="line">// 没采用防抖动</div><div class="line">window.addEventListener(&apos;scroll&apos;,realFunc);</div></pre></td></tr></table></figure>
-<p>上面简单的防抖的例子可以拿到浏览器下试一下，大概功能就是如果 500ms 内没有连续触发两次 scroll 事件，那么才会触发我们真正想在 scroll 事件中触发的函数。</p>
-<p>上面的示例可以更好的封装一下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">// 防抖动函数</div><div class="line">function debounce(func, wait, immediate) &#123;</div><div class="line">    var timeout;</div><div class="line">    return function() &#123;</div><div class="line">        var context = this, args = arguments;</div><div class="line">        var later = function() &#123;</div><div class="line">            timeout = null;</div><div class="line">            if (!immediate) func.apply(context, args);</div><div class="line">        &#125;;</div><div class="line">        var callNow = immediate &amp;&amp; !timeout;</div><div class="line">        clearTimeout(timeout);</div><div class="line">        timeout = setTimeout(later, wait);</div><div class="line">        if (callNow) func.apply(context, args);</div><div class="line">    &#125;;</div><div class="line">&#125;;</div><div class="line"> </div><div class="line">var myEfficientFn = debounce(function() &#123;</div><div class="line">    // 滚动中的真正的操作</div><div class="line">&#125;, 250);</div><div class="line"> </div><div class="line">// 绑定监听</div><div class="line">window.addEventListener(&apos;resize&apos;, myEfficientFn);</div></pre></td></tr></table></figure>
-<h3 id="节流（Throttling）"><a href="#节流（Throttling）" class="headerlink" title="节流（Throttling）"></a>节流（Throttling）</h3><p>防抖函数确实不错，但是也存在问题，譬如图片的懒加载，我希望在下滑过程中图片不断的被加载出来，而不是只有当我停止下滑时候，图片才被加载出来。又或者下滑时候的数据的 ajax 请求加载也是同理。</p>
-<p>这个时候，我们希望即使页面在不断被滚动，但是滚动 handler 也可以以一定的频率被触发（譬如 250ms 触发一次），这类场景，就要用到另一种技巧，称为节流函数（throttling）。</p>
-<p>节流函数，只允许一个函数在 X 毫秒内执行一次。</p>
-<p>与防抖相比，节流函数最主要的不同在于它保证在 X 毫秒内至少执行一次我们希望触发的事件 handler。</p>
-<p>与防抖相比，节流函数多了一个 mustRun 属性，代表 mustRun 毫秒内，必然会触发一次 handler ，同样是利用定时器，看看简单的示例：</p>
-<h3 id="简单的节流函数"><a href="#简单的节流函数" class="headerlink" title="// 简单的节流函数"></a>// 简单的节流函数</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">function throttle(func, wait, mustRun) &#123;</div><div class="line">    var timeout,</div><div class="line">        startTime = new Date();</div><div class="line"> </div><div class="line">    return function() &#123;</div><div class="line">        var context = this,</div><div class="line">            args = arguments,</div><div class="line">            curTime = new Date();</div><div class="line"> </div><div class="line">        clearTimeout(timeout);</div><div class="line">        // 如果达到了规定的触发时间间隔，触发 handler</div><div class="line">        if(curTime - startTime &gt;= mustRun)&#123;</div><div class="line">            func.apply(context,args);</div><div class="line">            startTime = curTime;</div><div class="line">        // 没达到触发间隔，重新设定定时器</div><div class="line">        &#125;else&#123;</div><div class="line">            timeout = setTimeout(func, wait);</div><div class="line">        &#125;</div><div class="line">    &#125;;</div><div class="line">&#125;;</div><div class="line">// 实际想绑定在 scroll 事件上的 handler</div><div class="line">function realFunc()&#123;</div><div class="line">    console.log(&quot;Success&quot;);</div><div class="line">&#125;</div><div class="line">// 采用了节流函数</div><div class="line">window.addEventListener(&apos;scroll&apos;,throttle(realFunc,500,1000));</div></pre></td></tr></table></figure>
-<p>上面简单的节流函数的例子可以拿到浏览器下试一下，大概功能就是如果在一段时间内 scroll 触发的间隔一直短于 500ms ，那么能保证事件我们希望调用的 handler 至少在 1000ms 内会触发一次。</p>
-
-          
+          <!--noindex-->
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2015/07/21/高性能滚动 scroll 及页面渲染优化/#more" rel="contents">
+              Weiterlesen &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1496,239 +1521,16 @@
 
       
         
-          
-            <h3 id="立方体-3D-旋转"><a href="#立方体-3D-旋转" class="headerlink" title="立方体 3D 旋转"></a>立方体 3D 旋转</h3><p><img src="http://images2015.cnblogs.com/blog/608782/201604/608782-20160420200619726-1892214308.gif" alt="Generating"></p>
+          <h3 id="立方体-3D-旋转"><a href="#立方体-3D-旋转" class="headerlink" title="立方体 3D 旋转"></a>立方体 3D 旋转</h3><p><img src="http://images2015.cnblogs.com/blog/608782/201604/608782-20160420200619726-1892214308.gif" alt="Generating"></p>
 <h3 id="3D-透视照片墙"><a href="#3D-透视照片墙" class="headerlink" title="3D 透视照片墙"></a>3D 透视照片墙</h3><p><img src="http://images2015.cnblogs.com/blog/608782/201604/608782-20160420200713757-1615207836.gif" alt="Generating"></p>
-<h3 id="跳跃的音符"><a href="#跳跃的音符" class="headerlink" title="跳跃的音符"></a>跳跃的音符</h3><p><img src="http://images2015.cnblogs.com/blog/608782/201604/608782-20160420200745726-1099998183.gif" alt="Generating"><br>可能上面的效果对精通 CSS3 的而言小菜一碟，写本文的目的也是我自己学习积累的一个过程，感兴趣的就可以一起往下看啦。</p>
-<p>其实 CSS3 效果真的很强大，上面的效果都是纯 CSS 实现，个人感觉越是深入 CSS 的学习，越是觉得自己不懂 CSS ，不过话说回来，这些效果的实用场景不大，但是作为一个有追求的前端，我觉得还是有必要去好好了解一下这些属性。</p>
-<p>所以本文接下来要讲的大概有：</p>
-<ul>
-<li>transform-style: preserve-3d 三维效果</li>
-<li>perspective and perspective-origin 3D视距，透视/景深效果</li>
-<li>CSS3 filter CSS3滤镜</li>
-<li>transparent、radial-gradient 透明与渐变</li>
-</ul>
-<h3 id="transform-style-实现-3D-效果"><a href="#transform-style-实现-3D-效果" class="headerlink" title="transform-style 实现 3D 效果"></a>transform-style 实现 3D 效果</h3><p>要利用 CSS3 实现 3D 的效果，最主要的就是借助 transform-style 属性。transform-style 只有两个值可以选择：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">// 语法：</div><div class="line">transform-style: flat|preserve-3d;</div><div class="line"> </div><div class="line">transform-style: flat; // 默认，子元素将不保留其 3D 位置</div><div class="line">transform-style: preserve-3d; // 子元素将保留其 3D 位置。</div></pre></td></tr></table></figure>
-<p>当我们指定一个容器的 transform-style 的属性值为 preserve-3d 时，容器的后代元素便会具有 3D 效果，这样说有点抽象，也就是当前父容器设置了 preserve-3d 值后，它的子元素就可以相对于父元素所在的平面，进行 3D 变形操作。</p>
-<p>当父元素设置了 transform-style:preserve-3d 后，就可以对子元素进行 3D 变形操作了，3D 变形和 2D 变形一样可以，使用 transform 属性来设置，或者可以通过制定的函数或者通过三维矩阵来对元素变型操作：</p>
-<p>1、使用 translateX(length) 、translateY(length) 、 translateZ(length) 来进行 3D 位移操作，与 2D 操作一样，对元素进行位移操作，也可以合并为 translate3d(x,y,z) 这种写法；</p>
-<p>2、使用 scaleX() 、scaleY() 、scaleY() 来进行3D 缩放操作，也可以合并为 scale3d(number,number,number) 这种写法；</p>
-<p>3、使用 rotateX(angle) 、rotateY(angle) 、rotateZ(angle) 来进行 3D 旋转操作，也可以合并为 rotate3d(Xangle,Yangle,Zangle) 这种写法。</p>
-<p>对于 API 的学习，我建议去源头看看，不要满足于消费别人的总结，transform-style API。</p>
-<p>这里要特别提出的，3D 坐标轴，所谓的绕 X、Y、Z 轴的三个轴，这个不难，感觉空间想象困难的，照着 API 试试，绕每个轴都转一下就明白了：</p>
-<p><img src="http://images2015.cnblogs.com/blog/608782/201604/608782-20160420204327070-2018617361.jpg" alt="Generating"><br>了解过后，那么依靠上面所说的，其实我们就已经可以做一个立方体出来了。所谓实践出真知，下面就看看该如何一步步得到一个立方体。</p>
-<h4 id="1、准备六个正方形"><a href="#1、准备六个正方形" class="headerlink" title="1、准备六个正方形"></a>1、准备六个正方形</h4><p>这个好理解，正方体六个面，首先用 div 做出 6 个面，包裹在同一个父级容器下面，父级容器设置 transform-style:preserve-3d ，这样接下来就可以对 6 个面进行 3D 变换操作，为了方便演示，我用 6 个颜色不一样的面：<br><img src="http://images2015.cnblogs.com/blog/608782/201604/608782-20160420211622538-1247795543.png" alt="Generating"><br>上面的图是示意有 6 个面，当然我们要把 6 个正方形 div 设置为绝对定位，重叠叠在一起，那么应该是这样的，只能看到一个面：</p>
-<p><img src="http://images2015.cnblogs.com/blog/608782/201604/608782-20160420212046913-8708739.png" alt="Generating"></p>
-<h4 id="2、父容器做简单的变换"><a href="#2、父容器做简单的变换" class="headerlink" title="2、父容器做简单的变换"></a>2、父容器做简单的变换</h4><p>为了最后的看上去的效果好看，我们需要先对父容器进行变换，运用上面说的 rotate 属性，将容器的角度改变一下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">.cube-container&#123;</div><div class="line">    -webkit-transform: rotateX(-33.5deg) rotateY(45deg);</div><div class="line">    transform: rotateX(-33.5deg) rotateY(45deg);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>那么，变换之后，得到这样一个图形：</p>
-<p><img src="http://images2015.cnblogs.com/blog/608782/201604/608782-20160420212424210-970963234.png" alt="Generating"></p>
-<p>嗯，这个时候，6 个 div 面仍然是重叠在一起的。</p>
-<h4 id="3、对每个面做-3D-变换"><a href="#3、对每个面做-3D-变换" class="headerlink" title="3、对每个面做 3D 变换"></a>3、对每个面做 3D 变换</h4><p>接下来就是对每个面进行 3D 变换了，运用 rotate 可以对 div 平面进行旋转，运用 translate 可以对 div 平面进行平移，而且要记住现在我们是在三维空间内变换，转啊转啊，我们可能会得到这样的形状：</p>
-<p><img src="http://images2015.cnblogs.com/blog/608782/201604/608782-20160420213037460-2134833277.png" alt="Generating"></p>
-<p>算好旋转角度和偏移距离，最后上面的 6 个面就可以完美拼成一个立方体咯！为了效果更好，我给每个面增加一些透明度，最后得到一个完整的立方体：</p>
-<p><img src="http://images2015.cnblogs.com/blog/608782/201604/608782-20160420213602023-1033538645.png" alt="Generating"></p>
-<p>为了更有立体感，我们可以调整父容器的旋转角度，旋转看上去更立体的角度:<br><img src="http://images2015.cnblogs.com/blog/608782/201604/608782-20160420213703210-315149157.png" alt="Generating"></p>
-<p>至此，一个 3D 立方体就完成了。写这篇文章的时候，本来到这里，这一块应该就结束了，但是写到这里的时候，突然突发奇想，既然正方体可以（正六面体），那么正四面体，正八面体甚至球体应该也能做出来吧？</p>
-<p>嗯，没有按住躁动的心，立马动手尝试了一番，最后做出了下面的两个：<br><img src="http://images2015.cnblogs.com/blog/608782/201604/608782-20160421144115507-846563066.gif" alt="Generating"><img src="http://images2015.cnblogs.com/blog/608782/201604/608782-20160421144121851-1403370952.gif" alt="Generating"></p>
-<h4 id="CSS3-实现正四面体"><a href="#CSS3-实现正四面体" class="headerlink" title="CSS3 实现正四面体"></a>CSS3 实现正四面体</h4><p>和正方体一样，我们首先要准备 4 个三角形（下面会详细讲如何利用 CSS3 制作一个三角形 div），注意 4 个三角形应该是重叠在一起的，然后将其中三个分别沿着三条边的中心点旋转 70.5 度（正四面体临面夹角），就可以得到一个正四面体。</p>
-<p>注意沿着三条边的中心点旋转 70.5 度这句话，意思是每个图形要定位一次旋转中心，也就是 transform-origin 属性，它允许我们设置旋转元素的基点位置。</p>
-<h4 id="CSS3-实现球体"><a href="#CSS3-实现球体" class="headerlink" title="CSS3 实现球体"></a>CSS3 实现球体</h4><p>上面的 GIF 图因为添加了 animation 动画效果，看上去很像一个球体在运动，其实只用了 4 个 div，每个 div 利用 border-radius:100% 设置为圆形，然后以中心点为基准，每个圆形 div 绕 Y 轴旋转不同的角度，再让整个圆形容器绕 Y 轴动起来，就可以得到这样一个效果了。</p>
-<h5 id="perspective-and-perspective-origin-3D视距，透视-景深效果"><a href="#perspective-and-perspective-origin-3D视距，透视-景深效果" class="headerlink" title="perspective and perspective-origin 3D视距，透视/景深效果"></a>perspective and perspective-origin 3D视距，透视/景深效果</h5><p>继续说 3D ，接下来要说的属性是 persepective 和 perspective-origin 。</p>
-<h5 id="persepective"><a href="#persepective" class="headerlink" title="persepective"></a>persepective</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">// 语法</div><div class="line">perspective: number|none;</div></pre></td></tr></table></figure>
-<p>perspective 为一个元素设置三维透视的距离，仅作用于元素的后代，而不是其元素本身。</p>
-<p>简单来说，当元素没有设置 perspective 时，也就是当 perspective:none/0 时所有后代元素被压缩在同一个二维平面上，不存在景深的效果。</p>
-<p>而如果设置 perspective 后，将会看到三维的效果</p>
-<h5 id="perspective-origin"><a href="#perspective-origin" class="headerlink" title="perspective-origin"></a>perspective-origin</h5><p>perspective-origin 表示 3D 元素透视视角的基点位置，默认的透视视角中心在容器是 perspective 所在的元素，而不是他的后代元素的中点，也就是 perspective-origin: 50% 50%。</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2015/05/20/认识_markdown/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="Fenglin">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="/images/avatar.gif">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="Feng~Lin">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="Feng~Lin" src="">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2015/05/20/认识_markdown/" itemprop="url">
-                  认识与入门 Markdown
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2015-05-20T00:00:00+08:00">
-                2015-05-20
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <blockquote>
-<p>Markdown 是一种轻量级的「标记语言」，它的优点很多，目前也被越来越多的写作爱好者，撰稿者广泛使用。看到这里请不要被「标记」、「语言」所迷惑，Markdown 的语法十分简单。常用的标记符号也不超过十个，这种相对于更为复杂的HTML 标记语言来说，Markdown 可谓是十分轻量的，学习成本也不需要太多，且一旦熟悉这种语法规则，会有一劳永逸的效果。</p>
-</blockquote>
-<h3 id="认识-Markdown"><a href="#认识-Markdown" class="headerlink" title="认识 Markdown"></a>认识 Markdown</h3><p>在刚才的导语里提到，Markdown 是一种用来写作的轻量级「标记语言」，它用简洁的语法代替排版，而不像一般我们用的字处理软件 Word 或 Pages 有大量的排版、字体设置。它使我们专心于码字，用「标记」语法，来代替常见的排版格式。例如此文从内容到格式，甚至插图，键盘就可以通通搞定了。目前来看，支持 Markdown 语法的编辑器有很多，包括很多网站（例如简书）也支持了 Markdown 的文字录入。Markdown 从写作到完成，导出格式随心所欲，你可以导出 HTML 格式的文件用来网站发布，也可以十分方便的导出 PDF 格式，这种格式写出的简历更能得到 HR 的好感。甚至可以利用 CloudApp 这种云服务工具直接上传至网页用来分享你的文章，全球最大的轻博客平台 Tumblr，也支持使用 Mou 这类 Markdown 工具进行编辑并直接上传。</p>
-<h3 id="Markdown-官方文档"><a href="#Markdown-官方文档" class="headerlink" title="Markdown 官方文档"></a>Markdown 官方文档</h3><blockquote>
-<p>这里可以看到官方的 Markdown 语法规则文档，当然，后文我也会用自己的方式，阐述这些语法在实际使用中的用法。</p>
-</blockquote>
-<p><a href="http://daringfireball.net/projects/markdown/syntax" target="_blank" rel="external">创始人 John Gruber 的 Markdown 语法说明
-</a></p>
-<p><a href="http://wowubuntu.com/markdown/#list" target="_blank" rel="external">Markdown 中文版语法说明</a></p>
-<h3 id="使用-Markdown-的优点"><a href="#使用-Markdown-的优点" class="headerlink" title="使用 Markdown 的优点"></a>使用 Markdown 的优点</h3><ul>
-<li>专注你的文字内容而不是排版样式。</li>
-<li>轻松的导出 HTML、PDF 和本身的 .md 文件。</li>
-<li>纯文本内容，兼容所有的文本编辑器与字处理软件。</li>
-<li>可读，直观。适合所有人的写作语言。</li>
-</ul>
-<h3 id="我该用什么工具？"><a href="#我该用什么工具？" class="headerlink" title="我该用什么工具？"></a>我该用什么工具？</h3><p><img src="http://cdn.sspai.com/attachment/thumbnail/2014/04/15/54b0855cf47d559c8c59e8f503af17d410f70_mw_800_wm_1_wmp_3.jpg" alt="Generating"></p>
-<h4 id="Mac-平台"><a href="#Mac-平台" class="headerlink" title="Mac 平台"></a>Mac 平台</h4><ul>
-<li>在 Mac OS X 上，我强烈建议你用 Mou 这款免费且十分好用的 Markdown 编辑器，它支持实时预览，既左边是你编辑 Markdown 语言，右边会实时的生成预览效果，笔者文章就是 Mou 这款应用写出来的。<br><img src="http://cdn.sspai.com/attachment/thumbnail/2014/04/15/1b2329474f348d95f8a38a68fa98c9c310f71_mw_800_wm_1_wmp_3.jpg" alt="Generating"><br>其次还有很多同类选择。如果你是个编辑作者，我强烈建议你购买 Ulysses Ⅲ，这款应用入围了苹果去年 Mac App Store 的 The Best of 2013，相比 Mou 它支持更多的写作格式、多文档的支持。Mou、iA Writer 这些应用都是基于单文档的管理方式，而 Ulysses Ⅲ 支持 Folder、Filter 的管理，一个 Folder 里面可以创建多个 Sheet，Sheet 之间还可以进行 Combine 处理。<br><img src="http://cdn.sspai.com/attachment/thumbnail/2014/04/15/f43f4d7659397398c499180c22c9855a10f72_mw_800_wm_1_wmp_3.jpg" alt="Generating"><h3 id="Windows、iOS、Web-平台"><a href="#Windows、iOS、Web-平台" class="headerlink" title="Windows、iOS、Web 平台"></a>Windows、iOS、Web 平台</h3></li>
-<li><p>笔者并未使用过 Windows 下的 Markdown 工具，但经朋友介绍，有两款还算不错，一款叫 MarkdownPad ，另一款叫 MarkPad。</p>
-</li>
-<li><p>iOS 端已有相当多的 app 支持 Markdown 语法编辑，例如 Drafts、Day One、iA Writer 等。</p>
-</li>
-<li><p>Web 端上，我强烈推荐 简书 这款产品，上面有无数热爱文字的人在不停的创造、分享。在 Web 端使用 Markdown 没有比简书更舒服的地方了，它同样支持左右两栏的实时预览，字体优雅、简洁。<br><img src="http://cdn.sspai.com/attachment/thumbnail/2014/04/15/4f47235736535ed5932b15bdef64263b10f73_mw_800_wm_1_wmp_3.jpg" alt="Generating"></p>
-</li>
-<li>同样是 Web 端，Draftin 这款在线 MD 编辑器也近乎完美。<h3 id="Markdown-语法的简要规则"><a href="#Markdown-语法的简要规则" class="headerlink" title="Markdown 语法的简要规则"></a>Markdown 语法的简要规则</h3><h4 id="标题"><a href="#标题" class="headerlink" title="标题"></a>标题</h4><img src="http://cdn.sspai.com/attachment/thumbnail/2014/04/15/620e64aa6522f5eaeb788a8b5f1faa5c10f74_mw_800_wm_1_wmp_3.jpg" alt="Generating"><br>标题是每篇文章都需要也是最常用的格式，在 Markdown 中，如果一段文字被定义为标题，只要在这段文字前加 # 号即可。</li>
-</ul>
-<h1 id="一级标题"><a href="#一级标题" class="headerlink" title="一级标题"></a>一级标题</h1><h2 id="二级标题"><a href="#二级标题" class="headerlink" title="二级标题"></a>二级标题</h2><h3 id="三级标题"><a href="#三级标题" class="headerlink" title="三级标题"></a>三级标题</h3><p>以此类推，总共六级标题，建议在井号后加一个空格，这是最标准的 Markdown 语法。</p>
-<h4 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h4><p>熟悉 HTML 的同学肯定知道有序列表与无序列表的区别，在 Markdown 下，列表的显示只需要在文字前加上 - 或 * 即可变为无序列表，有序列表则直接在文字前加 1. 2. 3. 符号要和文字之间加上一个字符的空格。<br><img src="http://cdn.sspai.com/attachment/thumbnail/2014/04/15/a72338b96cf4bfc1dacd610756786ae310f75_mw_800_wm_1_wmp_3.jpg" alt="Generating"></p>
-<h3 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h3><p>如果你需要引用一小段别处的句子，那么就要用引用的格式。</p>
-<blockquote>
-<p>例如这样</p>
-</blockquote>
-<p>只需要在文本前加入 &gt; 这种尖括号（大于号）即可<br><img src="http://cdn.sspai.com/attachment/thumbnail/2014/04/15/07bd8bf6fd38ea7d3bffdc3cae04f6f210f76_mw_800_wm_1_wmp_3.jpg" alt="Generating"></p>
-<h3 id="图片与链接"><a href="#图片与链接" class="headerlink" title="图片与链接"></a>图片与链接</h3><p>插入链接与插入图片的语法很像，区别在一个 !号</p>
-<p>插入图片的地址需要图床，这里推荐 CloudApp 的服务，生成URL地址即可。<br><img src="http://cdn.sspai.com/attachment/thumbnail/2014/04/15/f96c892fc63933ab186235f7c910753b10f77_mw_800_wm_1_wmp_3.jpg" alt="Generating"><br>粗体与斜体<br>Markdown 的粗体和斜体也非常简单，用两个 <em> 包含一段文本就是粗体的语法，用一个 </em> 包含一段文本就是斜体的语法。</p>
-<p>例如：这里是粗体 这里是斜体</p>
-<p>表格<br>表格是我觉得 Markdown 比较累人的地方，例子如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">| Tables        | Are           | Cool  |</div><div class="line">| ------------- |:-------------:| -----:|</div><div class="line">| col 3 is      | right-aligned | $1600 |</div><div class="line">| col 2 is      | centered      |   $12 |</div><div class="line">| zebra stripes | are neat      |    $1 |</div></pre></td></tr></table></figure>
-<p>这种语法生成的表格如下：</p>
-<table>
-<thead>
-<tr>
-<th>Tables</th>
-<th style="text-align:center">Are</th>
-<th style="text-align:right">Cool</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>col 3 is</td>
-<td style="text-align:center">right-aligned</td>
-<td style="text-align:right">$1600</td>
-</tr>
-<tr>
-<td>col 2 is</td>
-<td style="text-align:center">centered</td>
-<td style="text-align:right">$12</td>
-</tr>
-<tr>
-<td>zebra stripes</td>
-<td style="text-align:center">are neat</td>
-<td style="text-align:right">$1</td>
-</tr>
-</tbody>
-</table>
-<h3 id="代码框"><a href="#代码框" class="headerlink" title="代码框"></a>代码框</h3><p>如果你是个程序猿，需要在文章里优雅的引用代码框，在 Markdown 下实现也非常简单，只需要用两个 <code>把中间的代码包裹起来，如</code>code`。图例：<br><img src="http://cdn.sspai.com/attachment/thumbnail/2014/04/15/0135456d6a3c1051f0ed54e37cef070010f78_mw_800_wm_1_wmp_3.jpg" alt="Generating"><br>使用 tab 键即可缩进。</p>
-<h3 id="分割线"><a href="#分割线" class="headerlink" title="分割线"></a>分割线</h3><p>分割线的语法只需要另起一行，连续输入三个星号 <em>*</em> 即可。</p>
-<h3 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h3><p>到这里，Markdown 的基本语法在日常的使用中基本就没什么大问题了，只要多加练习，配合好用的工具，写起东西来肯定会行云流水。更多的语法规则，其实 Mou 的 Help 文档例子很好，当你第一次使用 Mou 时，就会显示该文档，其次，你也可在撰写过程中，使用 CMD+R 快捷键来快速打开文档，以随时查阅和学习语法。</p>
-<p><img src="http://cdn.sspai.com/attachment/thumbnail/2014/04/15/0132cbf286123e999adc67e23a9397fe10f79_mw_800_wm_1_wmp_3.jpg" alt="Generating"></p>
-
-          
+<h3 id="跳跃的音符"><a href="#跳跃的音符" class="headerlink" title="跳跃的音符"></a>跳跃的音符</h3><p><img src="http://images2015.cnblogs.com/blog/608782/201604/608782-20160420200745726-1099998183.gif" alt="Generating"><br>可能上面的效果对精通 CSS3 的而言小菜一碟，写本文的目的也是我自己学习积累的一个过程，感兴趣的就可以一起往下看啦。<br>
+          <!--noindex-->
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2015/06/18/酷炫的3D旋转透视/#more" rel="contents">
+              Weiterlesen &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1801,7 +1603,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">42</span>
+              <span class="site-state-item-count">43</span>
               <span class="site-state-item-name">Artikel</span>
             </a>
           </div>

@@ -93,7 +93,7 @@
 <meta property="og:description" content="title: 一张图看懂 Function 和 Object 的关系及简述 instanceof 运算符一、instanceof究竟是运算什么的？我曾经简单理解 instanceof 只是检测一个对象是否是另个对象 new 出来的实例（例如var a = new Object()，a instanceof Object返回true），但实际 instanceof 的运算规则上比这个更复杂。
 首先w">
 <meta property="og:image" content="https://user-gold-cdn.xitu.io/2016/11/29/ce8bff088a74cda6789a11f6075b7411">
-<meta property="og:updated_time" content="2016-12-14T13:49:31.000Z">
+<meta property="og:updated_time" content="2016-12-16T01:17:21.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="协议入门">
 <meta name="twitter:description" content="title: 一张图看懂 Function 和 Object 的关系及简述 instanceof 运算符一、instanceof究竟是运算什么的？我曾经简单理解 instanceof 只是检测一个对象是否是另个对象 new 出来的实例（例如var a = new Object()，a instanceof Object返回true），但实际 instanceof 的运算规则上比这个更复杂。
@@ -321,7 +321,7 @@
 <p>知乎上有同学把这个解释翻译成人能读懂的语言（传送门），看起来似乎明白一些了：</p>
 <p>//假设instanceof运算符左边是L，右边是R<br>L instanceof R //instanceof运算时，通过判断L的原型链上是否存在R.prototype<br>L.<strong>proto</strong>.<strong>proto</strong> ….. === R.prototype ？ //如果存在返回true 否则返回false<br>注意：instanceof 运算时会递归查找L的原型链，即 L.<strong>proto</strong>.<strong>proto</strong>.<strong>proto</strong>.<strong>proto</strong>… 直到找到了或者找到顶层为止。</p>
 <p>所以一句话理解 instanceof 的运算规则为：</p>
-<p>instanceof 检测左侧的 <strong>proto</strong> 原型链上，是否存在右侧的 prototype 原型。</p>
+<p>instanceof 检测左侧的 <strong>proto</strong> 原型链上，是否存在右侧的 prototype 原型。<br><a id="more"></a></p>
 <h2 id="二、图解构造器Function和Object的关系"><a href="#二、图解构造器Function和Object的关系" class="headerlink" title="二、图解构造器Function和Object的关系"></a>二、图解构造器Function和Object的关系</h2><p><img src="https://user-gold-cdn.xitu.io/2016/11/29/ce8bff088a74cda6789a11f6075b7411" alt="Generating"></p>
 <h4 id="我们再配合代码来看一下就明白了："><a href="#我们再配合代码来看一下就明白了：" class="headerlink" title="我们再配合代码来看一下就明白了："></a>我们再配合代码来看一下就明白了：</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">//①构造器Function的构造器是它自身</div><div class="line">Function.constructor=== Function;//true</div><div class="line"></div><div class="line">//②构造器Object的构造器是Function（由此可知所有构造器的constructor都指向Function）</div><div class="line">Object.constructor === Function;//true</div><div class="line"></div><div class="line">//③构造器Function的__proto__是一个特殊的匿名函数function() &#123;&#125;</div><div class="line">console.log(Function.__proto__);//function() &#123;&#125;</div><div class="line"></div><div class="line">//④这个特殊的匿名函数的__proto__指向Object的prototype原型。</div><div class="line">Function.__proto__.__proto__ === Object.prototype//true</div><div class="line"></div><div class="line">//⑤Object的__proto__指向Function的prototype，也就是上面③中所述的特殊匿名函数</div><div class="line">Object.__proto__ === Function.prototype;//true</div><div class="line">Function.prototype === Function.__proto__;//true</div></pre></td></tr></table></figure>
 <h2 id="三、当构造器Object和Function遇到instanceof"><a href="#三、当构造器Object和Function遇到instanceof" class="headerlink" title="三、当构造器Object和Function遇到instanceof"></a>三、当构造器Object和Function遇到instanceof</h2><p>我们回过头来看第一部分那个“奇怪的现象”，从上面那个图中我们可以看到：</p>
@@ -435,7 +435,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">42</span>
+              <span class="site-state-item-count">43</span>
               <span class="site-state-item-name">Artikel</span>
             </a>
           </div>

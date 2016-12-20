@@ -7,7 +7,7 @@ $(function(){
 			
 			data.about_info.forEach(function(item){
 				console.log(item.fl)
-				$("#about_info").append("<p>"+item.fl+"</p>");
+				// $("#about_info").append("<p>"+item.fl+"</p>");
 			});
 			$("#skill_info").append("<p>"+data.skill_info+"</p>");
 			$(".skill_int").append("<ul></ul>");
@@ -21,11 +21,11 @@ $(function(){
 				$("#skill_int3 ul").append("<li>"+item.fl+"</li>");
 			});
 			data.js.forEach(function(item){
-				$("#skill_int4 ul").append("<li>"+item+"</li>");
+				$("#skill_int4 ul").append("<li>"+item.fl+"</li>");
 			});
 			$("#exp_info").append("<p>"+data.exp_info+"</p>");
 			data.java.forEach(function(item){
-				$("#contact_info ul").append("<li>"+item+"</li>");
+				$("#contact_info ul").append("<li>"+item.fl+"</li>");
 			});
 		}
 	});

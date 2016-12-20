@@ -183,7 +183,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Startseite
+            Accueil
           </a>
         </li>
       
@@ -193,7 +193,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archiv
+            Archives
           </a>
         </li>
       
@@ -236,7 +236,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/12/14/15 个有趣的前端库（September 2016）/">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/12/14/Vue绑定事件/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="Fenglin">
@@ -261,8 +261,8 @@
             
               
                 
-                <a class="post-title-link" href="/2016/12/14/15 个有趣的前端库（September 2016）/" itemprop="url">
-                  15 个有趣的前端库
+                <a class="post-title-link" href="/2016/12/14/Vue绑定事件/" itemprop="url">
+                  Vue之Class 与 Style 绑定
                 </a>
               
             
@@ -275,7 +275,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <span class="post-meta-item-text">Posté le</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-14T21:49:31+08:00">
                 2016-12-14
               </time>
@@ -313,14 +313,17 @@
 
       
         
-          <p><a href="https://gold.xitu.io/post/58462c392f301e005c171f85">原作者</a></p>
-<h3 id="Dropzone"><a href="#Dropzone" class="headerlink" title="Dropzone"></a>Dropzone</h3><p>非常优秀的JavaScript上传库，可以将任何HTML元素拖放到文件上传区域。 功能包括图片上传的缩略图预览，支持多文件，进度跟踪，支持大文件等。 高度可定制，没有依赖。</p>
-<p><a href="https://github.com/sulihuang/frontend-collection">github</a><br><img src="https://dn-mhke0kuv.qbox.me/f4608e07c322b18bbcaa" alt="Generating"></p>
-<p><a href="https://react-mdl.github.io/react-mdl/">React-MDL</a><br>Google的Material Design Lite（MDL）是最美观的CSS框架之一。提供了大量的React组件<br>
+          <blockquote>
+<p>数据绑定一个常见需求是操作元素的 class 列表和它的内联样式。因为它们都是属性 ，我们可以用v-bind 处理它们：只需要计算出表达式最终的字符串。不过，字符串拼接麻烦又易错。因此，在 v-bind 用于 class 和 style 时， Vue.js 专门增强了它。表达式的结果类型除了字符串之外，还可以是对象或数组。</p>
+</blockquote>
+<h3 id="绑定-HTML-Class"><a href="#绑定-HTML-Class" class="headerlink" title="绑定 HTML Class"></a>绑定 HTML Class</h3><hr>
+<h4 id="对象语法"><a href="#对象语法" class="headerlink" title="对象语法"></a>对象语法</h4><p>我们可以传给 v-bind:class 一个对象，以动态地切换 class 。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;div v-bind:class=&quot;&#123; active: isActive &#125;&quot;&gt;&lt;/div&gt;</div></pre></td></tr></table></figure>
+<p>上面的语法表示 classactive 的更新将取决于数据属性 isActive 是否为真值 。<br>
           <!--noindex-->
           <div class="post-more-link text-center">
-            <a class="btn" href="/2016/12/14/15 个有趣的前端库（September 2016）/#more" rel="contents">
-              Weiterlesen &raquo;
+            <a class="btn" href="/2016/12/14/Vue绑定事件/#more" rel="contents">
+              Lire la suite &raquo;
             </a>
           </div>
           <!--/noindex-->
@@ -399,7 +402,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <span class="post-meta-item-text">Posté le</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-11T21:24:59+08:00">
                 2016-12-11
               </time>
@@ -443,7 +446,7 @@
           <!--noindex-->
           <div class="post-more-link text-center">
             <a class="btn" href="/2016/12/11/gulp入门/#more" rel="contents">
-              Weiterlesen &raquo;
+              Lire la suite &raquo;
             </a>
           </div>
           <!--/noindex-->
@@ -522,7 +525,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <span class="post-meta-item-text">Posté le</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-11-12T00:00:00+08:00">
                 2016-11-12
               </time>
@@ -570,7 +573,7 @@
           <!--noindex-->
           <div class="post-more-link text-center">
             <a class="btn" href="/2016/11/12/React/#more" rel="contents">
-              Weiterlesen &raquo;
+              Lire la suite &raquo;
             </a>
           </div>
           <!--/noindex-->
@@ -649,7 +652,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <span class="post-meta-item-text">Posté le</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-09-14T00:00:00+08:00">
                 2016-09-14
               </time>
@@ -698,7 +701,7 @@
           <!--noindex-->
           <div class="post-more-link text-center">
             <a class="btn" href="/2016/09/14/sass语法/#more" rel="contents">
-              Weiterlesen &raquo;
+              Lire la suite &raquo;
             </a>
           </div>
           <!--/noindex-->
@@ -777,7 +780,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <span class="post-meta-item-text">Posté le</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-06-19T00:00:00+08:00">
                 2016-06-19
               </time>
@@ -895,7 +898,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <span class="post-meta-item-text">Posté le</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-05-20T00:00:00+08:00">
                 2016-05-20
               </time>
@@ -939,7 +942,7 @@
           <!--noindex-->
           <div class="post-more-link text-center">
             <a class="btn" href="/2016/05/20/利用CSS、JavaScript及Ajax实现图片预加载/#more" rel="contents">
-              Weiterlesen &raquo;
+              Lire la suite &raquo;
             </a>
           </div>
           <!--/noindex-->
@@ -1018,7 +1021,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <span class="post-meta-item-text">Posté le</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-04-30T00:00:00+08:00">
                 2016-04-30
               </time>
@@ -1062,7 +1065,7 @@
           <!--noindex-->
           <div class="post-more-link text-center">
             <a class="btn" href="/2016/04/30/预加载/#more" rel="contents">
-              Weiterlesen &raquo;
+              Lire la suite &raquo;
             </a>
           </div>
           <!--/noindex-->
@@ -1141,7 +1144,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <span class="post-meta-item-text">Posté le</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-03-20T00:00:00+08:00">
                 2016-03-20
               </time>
@@ -1186,7 +1189,7 @@
           <!--noindex-->
           <div class="post-more-link text-center">
             <a class="btn" href="/2016/03/20/JS中的call、apply、bind方法/#more" rel="contents">
-              Weiterlesen &raquo;
+              Lire la suite &raquo;
             </a>
           </div>
           <!--/noindex-->
@@ -1265,7 +1268,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <span class="post-meta-item-text">Posté le</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-03-11T00:00:00+08:00">
                 2016-03-11
               </time>
@@ -1310,7 +1313,7 @@
           <!--noindex-->
           <div class="post-more-link text-center">
             <a class="btn" href="/2016/03/11/Ajax/#more" rel="contents">
-              Weiterlesen &raquo;
+              Lire la suite &raquo;
             </a>
           </div>
           <!--/noindex-->
@@ -1389,7 +1392,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <span class="post-meta-item-text">Posté le</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-03-10T00:00:00+08:00">
                 2016-03-10
               </time>
@@ -1434,7 +1437,7 @@
           <!--noindex-->
           <div class="post-more-link text-center">
             <a class="btn" href="/2016/03/10/ajax简介/#more" rel="contents">
-              Weiterlesen &raquo;
+              Lire la suite &raquo;
             </a>
           </div>
           <!--/noindex-->
@@ -1511,7 +1514,7 @@
           <div class="site-state-item site-state-posts">
             <a href="/archives">
               <span class="site-state-item-count">43</span>
-              <span class="site-state-item-name">Artikel</span>
+              <span class="site-state-item-name">articles</span>
             </a>
           </div>
 
@@ -1562,11 +1565,11 @@
 
 
 <div class="powered-by">
-  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
 </div>
 
 <div class="theme-info">
-  Theme -
+  Thème -
   <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
     NexT.Muse
   </a>
